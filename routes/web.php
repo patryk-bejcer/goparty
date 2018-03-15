@@ -14,3 +14,17 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+/* Routes for Users */
+Route::group(['namespace' => 'User'], function()
+{
+	Route::resource('/tags', 'TagsController');
+});
+
+/* Routes for Administration */
+Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'namespace' => 'Admin'], function()
+{
+	CRUD::resource('tag', 'TagCrudController');
+});
+
+
