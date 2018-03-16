@@ -11,13 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 /* Routes for Users */
+Auth::routes();
+Route::get('/register', 'Auth\RegisterController@getRegister')->name('register');
+Route::get('/', 'HomeController@index')->name('home');
 Route::group(['namespace' => 'User'], function()
 {
+	Route::resource('/users', 'UsersController', ['except' => ['create', 'store']]);
 	Route::resource('/tags', 'TagsController');
 });
 
@@ -25,6 +26,9 @@ Route::group(['namespace' => 'User'], function()
 Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'namespace' => 'Admin'], function()
 {
 	CRUD::resource('tag', 'TagCrudController');
+	CRUD::resource('music-types', 'MusicTypesCrudController');
 });
+
+
 
 

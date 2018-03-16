@@ -44,4 +44,9 @@ class User extends Authenticatable
         $this->notify(new ResetPasswordNotification($token));
     }
 
+	public function favoriteMusic()
+	{
+		return $this->belongsToMany('App\Models\MusicType','user_music_type');
+	}
+
 }

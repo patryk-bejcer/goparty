@@ -11,6 +11,16 @@ class MusicTypesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+
+    	$musicTypes = array(
+    		'pop', 'techno', 'rock', 'r&b', 'reggae', 'hip-hop', 'jazz'
+	    );
+
+	    foreach ( $musicTypes as $music_type ) {
+		    \App\Models\MusicType::create([
+			    'name' => $music_type
+		    ]);
+    	}
+
     }
 }
