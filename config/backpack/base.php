@@ -15,8 +15,8 @@ return [
     'project_name' => 'Gprty',
 
     // Menu logos
-    'logo_lg'   => '<b>Back</b>pack',
-    'logo_mini' => '<b>B</b>p',
+    'logo_lg'   => '<b>Go</b>Party',
+    'logo_mini' => '<b>G</b>p',
 
     // Developer or company name. Shown in footer.
     'developer_name' => 'Patryk Bejcer',

@@ -13,18 +13,15 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
+        //Make roles and permissions
 	    Role::create(['name' => 'user']);
 	    Role::create(['name' => 'admin']);
 
-        $admin = \App\User::create([
-	        'first_name' => 'Admin',
-	        'last_name' => '',
-	        'email' => 'admin@gmail.com',
-	        'password' => Hash::make('pass'),
-	        'city_id' => 1
+        //Start other seeders.
+        $this->call([
+            MusicTypesTableSeeder::class,
+            UsersTableSeeder::class,
         ]);
-
-	    $admin->assignRole('admin');
 
     }
 }

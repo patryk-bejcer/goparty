@@ -112,16 +112,16 @@
         },
         {
             "name": "backpack/crud",
-            "version": "3.3.12",
+            "version": "3.3.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Laravel-Backpack/CRUD.git",
-                "reference": "d84a84237a605a1464cd21d73041d3995c3bc2b3"
+                "reference": "4039e0c4b5b831ace86b39cfdc9ceeab1f880afa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Laravel-Backpack/CRUD/zipball/d84a84237a605a1464cd21d73041d3995c3bc2b3",
-                "reference": "d84a84237a605a1464cd21d73041d3995c3bc2b3",
+                "url": "https://api.github.com/repos/Laravel-Backpack/CRUD/zipball/4039e0c4b5b831ace86b39cfdc9ceeab1f880afa",
+                "reference": "4039e0c4b5b831ace86b39cfdc9ceeab1f880afa",
                 "shasum": ""
             },
             "require": {
@@ -182,7 +182,7 @@
                 "read",
                 "update"
             ],
-            "time": "2018-03-09T11:18:59+00:00"
+            "time": "2018-03-16T07:12:28+00:00"
         },
         {
             "name": "backpack/permissionmanager",
@@ -261,16 +261,16 @@
         },
         {
             "name": "backpack/settings",
-            "version": "2.0.29",
+            "version": "2.0.30",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Laravel-Backpack/Settings.git",
-                "reference": "0697311005c6efcf7e46bc789c22729bb1f13b9c"
+                "reference": "cf92180045d76f48b59efe46f5023f1f7768d063"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Laravel-Backpack/Settings/zipball/0697311005c6efcf7e46bc789c22729bb1f13b9c",
-                "reference": "0697311005c6efcf7e46bc789c22729bb1f13b9c",
+                "url": "https://api.github.com/repos/Laravel-Backpack/Settings/zipball/cf92180045d76f48b59efe46f5023f1f7768d063",
+                "reference": "cf92180045d76f48b59efe46f5023f1f7768d063",
                 "shasum": ""
             },
             "require": {
@@ -321,7 +321,7 @@
                 "tabacitu",
                 "updivision"
             ],
-            "time": "2018-03-05T15:02:55+00:00"
+            "time": "2018-03-06T17:01:02+00:00"
         },
         {
             "name": "barryvdh/elfinder-flysystem-driver",
@@ -1494,16 +1494,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.6.11",
+            "version": "v5.6.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "195ba6a67bdad2a23105c7ab410cd43e0f20bb73"
+                "reference": "82d8165d1ea86bdd81ddfa1db9343fa19e7d1450"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/195ba6a67bdad2a23105c7ab410cd43e0f20bb73",
-                "reference": "195ba6a67bdad2a23105c7ab410cd43e0f20bb73",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/82d8165d1ea86bdd81ddfa1db9343fa19e7d1450",
+                "reference": "82d8165d1ea86bdd81ddfa1db9343fa19e7d1450",
                 "shasum": ""
             },
             "require": {
@@ -1512,7 +1512,7 @@
                 "erusev/parsedown": "~1.7",
                 "ext-mbstring": "*",
                 "ext-openssl": "*",
-                "league/flysystem": "~1.0",
+                "league/flysystem": "^1.0.8",
                 "monolog/monolog": "~1.12",
                 "nesbot/carbon": "^1.24.1",
                 "php": "^7.1.3",
@@ -1628,7 +1628,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2018-03-09T16:53:27+00:00"
+            "time": "2018-03-14T17:29:38+00:00"
         },
         {
             "name": "laravel/tinker",

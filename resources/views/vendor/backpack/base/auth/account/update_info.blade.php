@@ -68,12 +68,21 @@
 
                     <div class="form-group">
                         @php
-                            $label = trans('backpack::base.name');
-                            $field = 'name';
+                            $label = trans('First Name');
+                            $field = 'first_name';
                         @endphp
                         <label class="required">{{ $label }}</label>
                         <input required class="form-control" type="text" name="{{ $field }}" value="{{ old($field) ? old($field) : $user[$field] }} ">
                     </div>
+
+                    <div class="form-group">
+                        @php
+                            $label = trans('Last name');
+                            $field = 'last_name';
+                        @endphp
+                        <label class="required">{{ $label }}</label>
+                        <input required class="form-control" type="text" name="{{ $field }}" value="{{ old($field) ? old($field) : $user[$field] }} ">
+                    </div>                 
 
                     <div class="form-group">
                         @php
