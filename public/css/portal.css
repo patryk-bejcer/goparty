@@ -15,37 +15,39 @@ body {
     color: #FFF; }
 
 /* REGISTER FORM */
-#register-form {
+.auth-form {
   background: url(../img/square_register.png);
   background-size: 98%;
   background-position: top left;
   background-repeat: no-repeat; }
-  #register-form .card {
+  .auth-form .card {
     background: url(../img/register_background.png);
     background-position: 15px 15px;
     background-size: 100%;
     background-repeat: no-repeat;
     color: #FFF;
     border: 0; }
-    #register-form .card .card-header {
+    .auth-form .card .card-header {
       background: transparent;
       border-bottom: 0; }
-      #register-form .card .card-header h1 {
+      .auth-form .card .card-header h1 {
         font-weight: 800;
         font-size: 3rem;
         letter-spacing: 2px;
         font-family: "Muli", sans-serif; }
-      #register-form .card .card-header h2 {
+      .auth-form .card .card-header h2 {
         letter-spacing: 3px;
         font-weight: 600;
         font-size: 2rem;
         font-family: "Muli", sans-serif; }
-  #register-form input, #register-form select {
+  .auth-form input, .auth-form select {
     background: rgba(255, 255, 255, 0.8);
     border-radius: 0; }
-  #register-form .invalid-feedback strong {
+  .auth-form .invalid-feedback strong {
     text-shadow: hoff voff blur #000; }
-  #register-form .btn {
+  .auth-form .btn-link {
+    color: #FFF; }
+  .auth-form .btn {
     background: rgba(239, 58, 177, 0.7);
     border: 0;
     border-radius: 0;
@@ -56,7 +58,7 @@ body {
     font-family: "Muli", sans-serif;
     font-weight: 800;
     letter-spacing: 3px; }
-    #register-form .btn:hover {
+    .auth-form .btn:hover {
       background: rgba(239, 58, 177, 0.9); }
 
 @media (max-width: 479px) {

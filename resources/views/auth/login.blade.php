@@ -4,8 +4,21 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+            <div id="login-form" class="auth-form" >
+            <div class="card pb-5">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-5 offset-md-1 mt-5">
+                            <a href="{{url('/register')}}" class="btn btn-primary">
+                                Zarejestruj się
+                            </a>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <h1>{{ __('Zaloguj się') }}</h1>
+                            <h2>{{ __('w tej chwili') }}</h2>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -51,11 +64,11 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary mb-3">
                                     {{ __('Login') }}
                                 </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                <br>
+                                <a class="btn-link mt-5" href="{{ route('password.request') }}">
                                     {{ __('Forgot Your Password?') }}
                                 </a>
                             </div>
@@ -63,6 +76,7 @@
                     </form>
                 </div>
             </div>
+        </div>
         </div>
     </div>
 </div>
