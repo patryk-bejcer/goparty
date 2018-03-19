@@ -8,7 +8,7 @@
 
                 <div class="card-header">Dashboard</div>
 
-                {{ $user->favoriteMusic }}
+                {{ $user->city }}
 
                 <div class="card-body">
                     @if (session('status'))

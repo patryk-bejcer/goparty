@@ -12,6 +12,14 @@ class CreateUserMusicTypeTable extends Migration
      */
     public function up()
     {
+
+//	    Schema::table('user_music_type', function(Blueprint $table) {
+//		    $table->dropForeign('user_music_type_user_id_foreign');
+//		    $table->dropColumn('user_id');
+//		    $table->dropForeign('user_music_type_music_type_id_foreign');
+//		    $table->dropColumn('music_type_id');
+//	    });
+
     	/* This table pivoted users - music types */
         Schema::create('user_music_type', function (Blueprint $table) {
 
@@ -37,6 +45,15 @@ class CreateUserMusicTypeTable extends Migration
      */
     public function down()
     {
+//	    Schema::table('user_music_type', function(Blueprint $table) {
+//		    $table->dropForeign('user_music_type_user_id_foreign');
+//		    $table->dropColumn('user_id');
+//		    $table->dropForeign('user_music_type_music_type_id_foreign');
+//		    $table->dropColumn('music_type_id');
+//	    });
+
+//	    Schema::disableForeignKeyConstraints();
         Schema::drop('users_music_types');
+//	    Schema::enableForeignKeyConstraints();
     }
 }

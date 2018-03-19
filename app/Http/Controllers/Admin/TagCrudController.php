@@ -19,7 +19,7 @@ class TagCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel('App\Models\Tag');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/tag');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/cities');
         $this->crud->setEntityNameStrings('tag', 'tags');
 
         /*

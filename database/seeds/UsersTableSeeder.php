@@ -18,7 +18,24 @@ class UsersTableSeeder extends Seeder
 	        'password' => Hash::make('pass'),
 	        'city_id' => 1
         ]);
-
 	    $admin->assignRole('admin');
+
+	    $owner = \App\User::create([
+		    'first_name' => 'Janusz',
+		    'last_name' => 'Kowalski',
+		    'email' => 'owner@gmail.com',
+		    'password' => Hash::make('pass'),
+		    'city_id' => 2
+	    ]);
+	    $owner->assignRole('owner');
+
+	    $user = \App\User::create([
+		    'first_name' => 'Michał',
+		    'last_name' => 'Nowak',
+		    'email' => 'user@gmail.com',
+		    'password' => Hash::make('pass'),
+		    'city_id' => 3
+	    ]);
+	    $user->assignRole('user');
     }
 }

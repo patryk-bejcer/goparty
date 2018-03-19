@@ -27,6 +27,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'namespace' => 'Ad
 {
 	CRUD::resource('tag', 'TagCrudController');
 	CRUD::resource('music-types', 'MusicTypesCrudController');
+	CRUD::resource('cities', 'CitiesCrudController');
 });
 
 

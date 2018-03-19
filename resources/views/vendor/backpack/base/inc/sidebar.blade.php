@@ -15,6 +15,8 @@
           <li><a href="{{ backpack_url('dashboard') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.dashboard') }}</span></a></li>
           <li><a href="{{ backpack_url('tag') }}"><i class="fa fa-tag"></i> <span>Tags</span></a></li>
           <li><a href="{{ backpack_url('music-types') }}"><i class="fa fa-music"></i> <span>Music Types</span></a></li>
+            <!-- Cities, Voivoteships etc. -->
+            <li><a href="{{ url(config('backpack.base.route_prefix', 'admin') . '/cities') }}"><i class="fa fa-send"></i> <span>Cities</span></a></li>
           <li><a href="{{  backpack_url('elfinder') }}"><i class="fa fa-files-o"></i> <span>File manager</span></a></li>
           <!-- Users, Roles Permissions -->
           <li class="treeview">

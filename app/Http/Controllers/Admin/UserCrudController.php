@@ -38,6 +38,23 @@ class UserCrudController extends CrudController
                 'label' => trans('backpack::permissionmanager.email'),
                 'type'  => 'email',
             ],
+            [
+	            'label' => "City",
+	            'type' => 'select',
+	            'name' => 'city_id', // the db column for the foreign key
+	            'entity' => 'city', // the method that defines the relationship in your Model
+	            'attribute' => 'name', // foreign key attribute that is shown to user
+	            'model' => "App\Models\City" // foreign key model
+            ],
+	        [       // SelectMultiple = n-n relationship (with pivot table)
+		        'label' => "Favorite music",
+		        'type' => 'select_multiple',
+		        'name' => 'favoriteMusic', // the method that defines the relationship in your Model
+		        'entity' => 'favoriteMusic', // the method that defines the relationship in your Model
+		        'attribute' => 'name', // foreign key attribute that is shown to user
+		        'model' => "App\Models\MusicType", // foreign key model
+		        'pivot' => true, // on create&update, do you need to add/delete pivot table entries?
+	        ],
             [ // n-n relationship (with pivot table)
                'label'     => trans('backpack::permissionmanager.roles'), // Table column heading
                'type'      => 'select_multiple',
@@ -73,6 +90,23 @@ class UserCrudController extends CrudController
                 'label' => trans('backpack::permissionmanager.email'),
                 'type'  => 'email',
             ],
+	        [
+		        'label' => "City",
+		        'type' => 'select',
+		        'name' => 'city_id', // the db column for the foreign key
+		        'entity' => 'city', // the method that defines the relationship in your Model
+		        'attribute' => 'name', // foreign key attribute that is shown to user
+		        'model' => "App\Models\City" // foreign key model
+	        ],
+	        [       // SelectMultiple = n-n relationship (with pivot table)
+		        'label' => "Favorite music",
+		        'type' => 'select_multiple',
+		        'name' => 'favoriteMusic', // the method that defines the relationship in your Model
+		        'entity' => 'favoriteMusic', // the method that defines the relationship in your Model
+		        'attribute' => 'name', // foreign key attribute that is shown to user
+		        'model' => "App\Models\MusicType", // foreign key model
+		        'pivot' => true, // on create&update, do you need to add/delete pivot table entries?
+	        ],
             [
                 'name'  => 'password',
                 'label' => trans('backpack::permissionmanager.password'),

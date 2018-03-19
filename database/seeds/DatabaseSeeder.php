@@ -14,12 +14,16 @@ class DatabaseSeeder extends Seeder
     {
 
         //Make roles and permissions
-	    Role::create(['name' => 'user']);
-	    Role::create(['name' => 'admin']);
+	    Role::create(['name' => 'user']); // normal register user
+	    Role::create(['name' => 'owner']); // owner club user
+	    Role::create(['name' => 'manager']); // portal manager
+	    Role::create(['name' => 'admin']); // admin with full permission
 
         //Start other seeders.
         $this->call([
             MusicTypesTableSeeder::class,
+            VoivodeshipsTableSeeder::class,
+	        CitiesTableSeeder::class,
             UsersTableSeeder::class,
         ]);
 

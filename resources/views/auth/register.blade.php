@@ -9,6 +9,7 @@
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
+
                         @csrf
 
                         <div class="form-group row">
@@ -74,6 +75,25 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
+
+                        <div class="form-group row">
+
+                            <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('Miasto') }}</label>
+                            <div class="col-md-6">
+                                <select name="city" class="form-control" id="city">
+                                    @foreach($cities as $city)
+                                        <option value="{{$city->id}}">{{ ucfirst($city->name) }}</option>
+                                    @endforeach
+                                </select>
+
+                                @if ($errors->has('city'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('city') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
 
                         <div class="form-group row">
                             <label for="music_types" class="col-md-4 col-form-label text-md-right">{{ __('Music Types') }}</label>

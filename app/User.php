@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'password',
+        'first_name', 'last_name', 'email', 'city_id', 'password',
     ];
 
     /**
@@ -44,9 +44,23 @@ class User extends Authenticatable
         $this->notify(new ResetPasswordNotification($token));
     }
 
+    /* Relationships */
+
 	public function favoriteMusic()
 	{
 		return $this->belongsToMany('App\Models\MusicType','user_music_type');
 	}
+
+	public function voivodeship()
+	{
+		return $this->hasOne('App\Models\Voivodeship','id','voivodeship_id');
+	}
+
+	public function city()
+	{
+		return $this->hasOne('App\Models\City','id','city_id');
+	}
+
+	/* End of Relationships */
 
 }

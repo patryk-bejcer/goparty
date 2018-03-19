@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\City;
 use App\Models\MusicType;
+use App\Models\Voivodeship;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -51,8 +53,7 @@ class RegisterController extends Controller
 	{
 		// Add your stuff there
 		$musicTypes = MusicType::all();
-		$cities = '';
-
+		$cities = City::all();
 		return view('auth.register', compact('musicTypes', 'cities'));
 	}
 
@@ -69,6 +70,7 @@ class RegisterController extends Controller
             'last_name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'city' => 'required',
         ]);
     }
 
@@ -85,6 +87,7 @@ class RegisterController extends Controller
 	            'last_name' => $data['last_name'],
 	            'email' => $data['email'],
 	            'password' => Hash::make($data['password']),
+	            'city_id' => $data['city'],
             ]);
 
 	       if($data['music_types']) {
