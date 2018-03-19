@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         //Start other seeders.
         $this->call([
             MusicTypesTableSeeder::class,
-            VoivodeshipsTableSeeder::class,
+	        VoivodeshipsTableSeeder::class,
 	        CitiesTableSeeder::class,
             UsersTableSeeder::class,
         ]);

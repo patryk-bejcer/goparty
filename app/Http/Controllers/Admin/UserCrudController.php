@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\User;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Http\Requests\CrudRequest;
 use App\Http\Requests\UserStoreCrudRequest as StoreRequest;
 use App\Http\Requests\UserUpdateCrudRequest as UpdateRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+
 
 class UserCrudController extends CrudController
 {
@@ -20,6 +25,8 @@ class UserCrudController extends CrudController
         $this->crud->setEntityNameStrings(trans('backpack::permissionmanager.user'), trans('backpack::permissionmanager.users'));
         $this->crud->setRoute(config('backpack.base.route_prefix').'/user');
         $this->crud->enableAjaxTable();
+	    $this->crud->addButtonFromModelFunction('line','sendEmail', 'sendEmailToUser', 'beginning');
+
 
         // Columns.
         $this->crud->setColumns([
@@ -71,6 +78,7 @@ class UserCrudController extends CrudController
                'attribute' => 'name', // foreign key attribute that is shown to user
                'model'     => config('laravel-permission.models.permission'), // foreign key model
             ],
+
         ]);
 
         // Fields
@@ -194,4 +202,26 @@ class UserCrudController extends CrudController
             $request->request->remove('password');
         }
     }
+
+    public function getEmailForm(User $user){
+		return view('vendor.backpack.base.users.email_to_user_form', compact('user'));
+    }
+
+	public function sendEmail($user_id, Request $request){
+
+
+    	$user = User::findOrFail($user_id);
+		$title = $request->input('title');
+		$content = $request->input('content');
+
+		Mail::send('emails.simple', ['user' => $user, 'title' => $title, 'content' => $content], function ($m) use ($user){
+			$m->from(Auth::user()->email, 'goparty.pl');
+			$m->to($user->email, $user->name)->subject('Nowa wiadomość od goparty.pl');
+		});
+
+		\Alert::success('Message has been send!')->flash();
+
+		return redirect( url(config('backpack.base.route_prefix', 'admin') . '/user') );
+
+	}
 }

@@ -11,30 +11,29 @@ class VoivodeshipsTableSeeder extends Seeder
      */
     public function run()
     {
-        $voivodeships = [
-            'dolnośląskie',
-	        'kujawsko-pomorskie',
-	        'lubelskie',
-	        'lubuskie',
-	        'łódzkie',
-	        'małopolskie',
-	        'mazowieckie',
-	        'opolskie',
-			'podkarpackie',
-			'podlaskie',
-			'pomorskie',
-			'śląskie',
-			'świętokrzyskie',
-			'warmińsko-mazurskie',
-			'wielkopolskie',
-			'zachodniopomorskie'
-        ];
+	    $voivodeships = [
+		    'dolnośląskie',
+		    'kujawsko-pomorskie',
+		    'lubelskie',
+		    'lubuskie',
+		    'łódzkie',
+		    'małopolskie',
+		    'mazowieckie',
+		    'opolskie',
+		    'podkarpackie',
+		    'podlaskie',
+		    'pomorskie',
+		    'śląskie',
+		    'świętokrzyskie',
+		    'warmińsko-mazurskie',
+		    'wielkopolskie',
+		    'zachodniopomorskie'
+	    ];
 
 	    foreach ( $voivodeships as $voivodeship ) {
 		    \App\Models\Voivodeship::create([
 			    'name' => $voivodeship
 		    ]);
 	    }
-
     }
 }

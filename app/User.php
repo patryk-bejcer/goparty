@@ -44,6 +44,16 @@ class User extends Authenticatable
         $this->notify(new ResetPasswordNotification($token));
     }
 
+    /* Admin panel users methods */
+
+    public function sendEmailToUser($crud){
+    	return  '<a href=" ' . url('/admin/user/' .$crud->id . '/send-email' ) . ' " class="btn btn-xs btn-default"><i class="fa fa-envelope-o"></i> Send email</a>';
+    }
+
+	/* End of admin panel users methods */
+
+
+
     /* Relationships */
 
 	public function favoriteMusic()

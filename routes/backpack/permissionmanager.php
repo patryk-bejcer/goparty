@@ -6,6 +6,8 @@ Route::group([
 	'middleware' => ['web', 'admin', 'isAdmin'],
 ], function () {
 	CRUD::resource('user', 'UserCrudController');
+	Route::GET('user/{user}/send-email', 'UserCrudController@getEmailForm');
+	Route::POST('user/{user}/send-email', 'UserCrudController@sendEmail');
 });
 
 Route::group([
