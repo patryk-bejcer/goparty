@@ -1,0 +1,72 @@
+/* Variables */
+/* Colors */
+/* Fonts */
+body {
+  background: purple;
+  background-image: url(../img/bg.jpg);
+  background-position: center; }
+
+.navbar {
+  background: rgba(0, 0, 0, 0.3);
+  color: #FFF; }
+  .navbar .nav-link {
+    color: #FFF !important; }
+  .navbar .navbar-brand {
+    color: #FFF; }
+
+/* REGISTER FORM */
+#register-form {
+  background: url(../img/square_register.png);
+  background-size: 98%;
+  background-position: top left;
+  background-repeat: no-repeat; }
+  #register-form .card {
+    background: url(../img/register_background.png);
+    background-position: 15px 15px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    color: #FFF;
+    border: 0; }
+    #register-form .card .card-header {
+      background: transparent;
+      border-bottom: 0; }
+      #register-form .card .card-header h1 {
+        font-weight: 800;
+        font-size: 3rem;
+        letter-spacing: 2px;
+        font-family: "Muli", sans-serif; }
+      #register-form .card .card-header h2 {
+        letter-spacing: 3px;
+        font-weight: 600;
+        font-size: 2rem;
+        font-family: "Muli", sans-serif; }
+  #register-form input, #register-form select {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 0; }
+  #register-form .invalid-feedback strong {
+    text-shadow: hoff voff blur #000; }
+  #register-form .btn {
+    background: rgba(239, 58, 177, 0.7);
+    border: 0;
+    border-radius: 0;
+    font-size: 16px;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    padding-right: 4em;
+    font-family: "Muli", sans-serif;
+    font-weight: 800;
+    letter-spacing: 3px; }
+    #register-form .btn:hover {
+      background: rgba(239, 58, 177, 0.9); }
+
+@media (max-width: 479px) {
+  #register-form .btn {
+    width: 100%;
+    text-align: center; }
+  #register-form h1 {
+    font-size: 2rem !important; }
+  #register-form h2 {
+    font-size: 1.5rem !important; } }
+/* END OF REGISTER FORM */
+
+/*# sourceMappingURL=portal.css.map */

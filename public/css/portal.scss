@@ -1,0 +1,103 @@
+/* Variables */
+
+/* Colors */
+$primary-color: purple;
+$white-color: #FFF;
+
+/* Fonts */
+$secondary-font: 'Muli', sans-serif;
+
+body{
+  background: $primary-color;
+  background-image: url(../img/bg.jpg);
+  background-position: center;
+}
+
+.navbar{
+  background: rgba(0,0,0,0.3);
+  color: $white-color;
+  .nav-link{
+    color: $white-color !important;
+  }
+  .navbar-brand{
+    color: $white-color;
+  }
+}
+
+/* REGISTER FORM */
+#register-form{
+  background: url(../img/square_register.png);
+  background-size: 98%;
+  background-position: top left;
+  background-repeat: no-repeat;
+  .card{
+    background: url(../img/register_background.png);
+    background-position: 15px 15px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    color: $white-color;
+    border: 0;
+    .card-header {
+      background: transparent;
+      border-bottom: 0;
+      h1{
+        font-weight: 800;
+        font-size: 3rem;
+        letter-spacing: 2px;
+        font-family: $secondary-font;
+      }
+      h2{
+        letter-spacing: 3px;
+        font-weight: 600;
+        font-size: 2rem;
+        font-family: $secondary-font;
+      }
+    }
+  }
+  input, select{
+    background: rgba(255,255,255,0.8);
+    border-radius: 0;
+  }
+  .invalid-feedback{
+    strong{
+      text-shadow: hoff voff blur #000;
+    }
+  }
+  .btn {
+    background: rgba(239, 58, 177, 0.7);
+    border: 0;
+    border-radius: 0;
+    font-size: 16px;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    padding-right: 4em;
+    font-family: $secondary-font;
+    font-weight: 800;
+    letter-spacing: 3px;
+    &:hover{
+      background: rgba(239, 58, 177, 0.9);
+    }
+  }
+
+
+}
+
+@media (max-width:479px){
+
+  #register-form{
+    .btn{
+      width: 100%;
+      text-align: center;
+    }
+    h1{
+      font-size:2rem !important;
+    }
+    h2{
+      font-size:1.5rem !important;
+    }
+  }
+
+}
+
+/* END OF REGISTER FORM */
+
