@@ -27,7 +27,7 @@ body{
 /* REGISTER FORM */
 .auth-form{
   background: url(../img/square_register.png);
-  background-size: 98%;
+  background-size: 98% 98%;
   background-position: top left;
   background-repeat: no-repeat;
   .card{
@@ -60,7 +60,7 @@ body{
   }
   .invalid-feedback{
     strong{
-      text-shadow: hoff voff blur #000;
+      text-shadow: 1px 1px 1px #000;
     }
   }
   .btn-link{

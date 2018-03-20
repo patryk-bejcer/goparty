@@ -10,12 +10,12 @@
                     <div class="row">
                         <div class="col-md-5 offset-md-1 mt-5">
                             <a href="{{url('/register')}}" class="btn btn-primary">
-                                Zarejestruj się
+                                Rejestracja
                             </a>
                         </div>
                         <div class="col-md-6 text-right">
                             <h1>{{ __('Zaloguj się') }}</h1>
-                            <h2>{{ __('w tej chwili') }}</h2>
+                            <h2>{{ __('nie czekaj') }}</h2>
                         </div>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary mb-3">
-                                    {{ __('Login') }}
+                                    {{ __('Zaloguj się') }}
                                 </button>
                                 <br>
                                 <a class="btn-link mt-5" href="{{ route('password.request') }}">

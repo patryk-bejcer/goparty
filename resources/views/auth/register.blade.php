@@ -10,7 +10,7 @@
                     <div class="row">
                         <div class="col-md-5 offset-md-1 mt-5">
                             <a href="{{url('/login')}}" class="btn btn-primary">
-                                Zaloguj się
+                                Logowanie
                             </a>
                         </div>
                         <div class="col-md-6 text-right">

@@ -19,6 +19,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::group(['namespace' => 'User'], function()
 {
 	Route::resource('/users', 'UsersController', ['except' => ['create', 'store']]);
+	Route::resource('/clubs', 'ClubsController');
 	Route::resource('/tags', 'TagsController');
 });
 

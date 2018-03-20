@@ -58,6 +58,7 @@
                                 </div>
                             </li>
                         @endguest
+                        <li><a class="nav-link" href="{{ route('clubs.create') }}">{{ __('Dodaj klub') }}</a></li>
                     </ul>
                 </div>
             </div>
