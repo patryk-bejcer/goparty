@@ -48,8 +48,20 @@ class ClubsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+	    $addressErrorMessage = 'Wprowadzony przez ciebie adres jest niepoprawny. Wprowadź pełny adres (nazwa ulicy/numer
+                    lokalu/miasto/kraj)';
+
+	    $this->validate($request,[
+		    'latitude' => 'required',
+		    'longitude' => 'required',
+	    ], [
+		    'latitude.required' => $addressErrorMessage,
+		    'longitude.required' => $addressErrorMessage,
+	    ]);
+
+        return response($request);
     }
+
 
     /**
      * Display the specified resource.

@@ -17,9 +17,17 @@
                         </div>
 
                         <div class="card-body pt-0 text-white">
-                            <form method="POST" action="{{ route('register') }}">
+                            <form method="POST" action="{{ route('clubs.store') }}">
 
                                 @csrf
+
+                                @if(!empty($errors->first()))
+                                    <div class="row col-lg-12">
+                                        <div class="alert alert-danger">
+                                            <span>{{ $errors->first() }}</span>
+                                        </div>
+                                    </div>
+                                @endif
 
                                 <hr>
                                 <h2 class="mb-4">Informacje dotyczące dodawanego przez Ciebie klubu</h2>
@@ -79,79 +87,9 @@
 
                                 <hr>
 
-                                <div class="form-group row">
-
-                                    <div class="col-md-12">
-                                        <h2>Infomacje odnośnie lokalizacji</h2>
-                                    </div>
-
-                                    {{--<label for="official_name" class="col-md-2 col-form-label text-md-right">{{ __('First name') }}</label>--}}
-                                    <div class="col-md-6">
-                                        <label for="city" style="" class="">{{ __('Miasto') }}</label>
-                                        <select name="city" class="form-control" id="city">
-                                            @foreach($cities as $city)
-                                                <option value="{{$city->id}}">{{ ucfirst($city->name) }}</option>
-                                            @endforeach
-                                        </select>
-                                        @if ($errors->has('official_name'))
-                                            <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('official_name') }}</strong>
-                                    </span>
-                                        @endif
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <label for="city" style="" class="">{{ __('Kod pocztowy') }}</label>
-                                        <input id="official_name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                                               name="official_name" value="{{ old('official_name') }}"
-                                               placeholder="Wprowadź kod pocztowy" required autofocus>
-
-                                        @if ($errors->has('official_name'))
-                                            <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('official_name') }}</strong>
-                                    </span>
-                                        @endif
-                                    </div>
-
-                                </div>
-
-                                <div class="form-group row">
-                                    {{--<label for="official_name" class="col-md-2 col-form-label text-md-right">{{ __('First name') }}</label>--}}
-                                    <div class="col-md-6">
-                                        <label for="city" style="" class="">{{ __('Ulica') }}</label>
-                                        <input id="official_name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                                               name="official_name" value="{{ old('official_name') }}"
-                                               placeholder="Wprowadź adres Twojego klubu" required autofocus>
-
-                                        @if ($errors->has('official_name'))
-                                            <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('official_name') }}</strong>
-                                    </span>
-                                        @endif
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <label for="city" style="" class="">{{ __('Dodatkowe informacje adresowe') }}</label>
-                                        <input id="official_name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                                               name="official_name" value="{{ old('official_name') }}"
-                                               placeholder="Wprowadź dodatkowe informacje" required autofocus>
-
-                                        @if ($errors->has('official_name'))
-                                            <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('official_name') }}</strong>
-                                    </span>
-                                        @endif
-                                    </div>
-
-                                </div>
-
-                                <div class="form-group row">
-                                    <div class="col-md-8">
-                                        <b>Lokalizacja na mapie (znacznik można dowolnie przesuwać)</b>
-                                        <p>Najlepszym rozwiązaniem jest umieszczenie znacznika w miejscu, w którym znajduje się główne wejście obiektu (jeżeli to możliwe). Jeżeli w obiekcie brak głównego wejścia, znacznik należy umieścić w jego centrum.</p>
-                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20382.6768303488!2d17.35093547443469!3d50.31367858521508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471194c8ca55dffd%3A0x1dc02b9b20f488a8!2zNDgtMzQwIEfFgnVjaG_FgmF6eQ!5e0!3m2!1spl!2spl!4v1521569114614" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
-                                    </div>
-                                </div>
+                                <!--  VUE COMPONENT SEARCH BOX ADDRESS -->
+                                <address-search-box></address-search-box>
+                                <!--  END VUE COMPONENT -->
 
                                 <hr>
 
