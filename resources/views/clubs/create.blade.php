@@ -97,7 +97,7 @@
                                     <address-search-box :ismap=true ></address-search-box>
                                     <!--  END VUE COMPONENT -->
 
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <label for="additional_address_info" style="" class="">{{ __('Dodatkowe informacje adresowe') }}</label>
                                         <textarea rows="7" id="additional_address_info" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
                                                name="additional_address_info" value="{{ old('additional_address_info') }}"

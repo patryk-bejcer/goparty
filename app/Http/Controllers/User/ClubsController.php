@@ -72,7 +72,7 @@ class ClubsController extends Controller {
 			'voivodeship'             => $request->voivodeship,
 			'route'                   => $request->route,
 			'street_number'           => $request->street_number,
-			'postal_code'             => $request->postal_code,
+			'postal_code'             => '00000',
 			'latitude'                => $request->latitude,
 			'longitude'               => $request->longitude,
 			'additional_address_info' => $request->additional_address_info,
