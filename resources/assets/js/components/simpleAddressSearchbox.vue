@@ -1,3 +1,4 @@
+
 <template>
     <div>
         <div class="form-group row">
@@ -12,7 +13,7 @@
                     lokalu/miasto/kraj)</label>
 
                 <vue-google-autocomplete
-                        :enable-geolocation="true"
+
                         ref="address"
                         name="address-location"
                         id="address-location"
@@ -20,6 +21,7 @@
                         placeholder="Proszę wpisać w tym polu swój pełny adres"
                         v-on:placechanged="getAddressData"
                         country="pl"
+                        enable-geolocation="true"
                 >
                 </vue-google-autocomplete>
 
@@ -35,6 +37,8 @@
         <input id="latitude" type="hidden" name="latitude" v-model="address.latitude">
         <input id="longitude" type="hidden" name="longitude" v-model="address.longitude">
 
+        <div style="height: 300px; width:100%;" id="map"></div>
+
     </div>
 </template>
 
@@ -44,16 +48,22 @@
     export default {
         components: {VueGoogleAutocomplete},
 
+        props: ['ismap'],
         data: function () {
             return {
                 address: '',
-                checkAddress: false
+                checkAddress: false,
+                lat:52.232855,
+                lng:20.9211115
             }
         },
 
         mounted() {
-
             this.$refs.address.focus();
+            if(this.ismap){
+                this.initMap(11, this.lat, this.lng);
+            }
+
         },
 
         methods: {
@@ -70,8 +80,19 @@
                 // console.log(this.address.longitude);
                 if (this.address.latitude && this.address.longitude) {
                     this.checkAddress = true;
+                    this.initMap(16, this.address.latitude, this.address.longitude);
                 }
                 // console.log('check:' + this.checkAddress);
+            },
+            initMap: function(zoom, lat, lng) {
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: zoom,
+                    center: {lat: lat, lng: lng}
+                });
+                var marker = new google.maps.Marker({
+                    position: {lat: lat, lng: lng},
+                    map: map
+                });
             }
         }
     }

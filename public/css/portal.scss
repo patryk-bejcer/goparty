@@ -2,6 +2,8 @@
 
 /* Colors */
 $primary-color: purple;
+$pink-color: rgb(239, 58, 177);
+$purple-color: #3E1967;
 $white-color: #FFF;
 
 /* Fonts */
@@ -11,6 +13,25 @@ body{
   background: $primary-color;
   background-image: url(../img/bg.jpg);
   background-position: center;
+  input, select, textarea{
+    background-color: rgba(255,255,255,0.85) !important;
+    border-radius: 0 !important;
+    border:0px solid #FFF !important;
+  }
+}
+
+.content{
+  padding:20px;
+  h1{
+    color: $purple-color;
+    a{
+      color: $purple-color;
+    }
+  }
+}
+
+.transparent-bg{
+  background: rgba(255,255,255,0.8);
 }
 
 .navbar{
@@ -54,10 +75,7 @@ body{
       }
     }
   }
-  input, select{
-    background: rgba(255,255,255,0.8);
-    border-radius: 0;
-  }
+
   .invalid-feedback{
     strong{
       text-shadow: 1px 1px 1px #000;
@@ -81,9 +99,28 @@ body{
       background: rgba(239, 58, 177, 0.9);
     }
   }
-
-
 }
+
+
+  #register-club{
+    //background: url(../img/square_register.png);
+    .btn {
+      background: rgba(239, 58, 177, 0.7);
+      border: 0;
+      border-radius: 0;
+      font-size: 16px;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      padding-right: 4em;
+      font-family: $secondary-font;
+      font-weight: 800;
+      letter-spacing: 3px;
+      &:hover{
+        background: rgba(239, 58, 177, 0.9);
+      }
+    }
+  }
+
 
 @media (max-width:479px){
 

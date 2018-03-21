@@ -14,22 +14,31 @@ class CreateClubsTable extends Migration
     public function up()
     {
         Schema::create('clubs', function (Blueprint $table) {
+
             $table->increments('id');
             $table->integer('user_id');
-            $table->integer('user_standing')->nullable();
+            $table->string('role');
 	        $table->string ('official_name');
 	        $table->string ('email');
+
+	        /* Address Fields */
+	        $table->double('latitude');
+	        $table->double('longitude');
 	        $table->string('country');
 	        $table->string ('locality');
 	        $table->string ('voivodeship');
 	        $table->string ('route');
+	        $table->string ('street_number');
 	        $table->string ('postal_code');
-	        $table->double('latitude');
-	        $table->double('longitude');
-	        $table->string ('additional_address_info');
-	        $table->string ('phone')->nullable();
-	        $table->string ('website')->nullable();
+	        $table->text ('additional_address_info')->nullable();
+	        /* End of address fields */
+
+	        /* Contact and social media fields */
+	        $table->string ('phone');
+	        $table->string ('website_url')->nullable();
 	        $table->string ('facebook_url')->nullable();
+	        /* End of Contact and social media fields */
+
             $table->timestamps();
         });
     }

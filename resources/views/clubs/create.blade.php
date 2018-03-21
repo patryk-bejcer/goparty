@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10">
-                <div id="register-form" class="">
+                <div id="register-club" class="">
                     <div class="pb-5 pt-1">
                         <div class="rpw">
                             <div class="col-md-12">
@@ -35,7 +35,7 @@
                                 <div class="form-group row">
 
                                     <div class="col-md-6">
-                                        <label for="city" style="" class="">{{ __('Pełna nazwa klubu') }}</label>
+                                        <label for="city" style="" class="">{{ __('Pełna nazwa klubu *') }}</label>
                                         <input id="official_name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
                                                name="official_name" value="{{ old('official_name') }}"
                                                placeholder="Wprowadź nazwe klubu" required autofocus>
@@ -48,15 +48,15 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label for="city" style="" class="">{{ __('Twoje stanowisko') }}</label>
-                                        <select name="city" class="form-control" id="city">
+                                        <label for="role" style="" class="">{{ __('Twoje stanowisko *') }}</label>
+                                        <select name="role" class="form-control" id="role">
                                             <option value="1">Właściciel</option>
                                             <option value="1">Marketing</option>
                                         </select>
 
-                                        @if ($errors->has('city'))
+                                        @if ($errors->has('role'))
                                             <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('city') }}</strong>
+                                        <strong>{{ $errors->first('role') }}</strong>
                                     </span>
                                         @endif
                                     </div>
@@ -70,14 +70,14 @@
                                 <div class="form-group row">
                                     {{--<label for="official_name" class="col-md-2 col-form-label text-md-right">{{ __('First name') }}</label>--}}
                                     <div class="col-md-6">
-                                        <label for="city" style="" class="">{{ __('Oficjalny aders E-mail') }}</label>
-                                        <input id="official_name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                                               name="official_name" value="{{ old('official_name') }}"
+                                        <label for="email" style="" class="">{{ __('Oficjalny aders E-mail *') }}</label>
+                                        <input id="email" type="email" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
+                                               name="email" value="{{ old('email') }}"
                                                placeholder="Wprowadź adres email" required autofocus>
 
-                                        @if ($errors->has('official_name'))
+                                        @if ($errors->has('email'))
                                             <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('official_name') }}</strong>
+                                        <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                         @endif
                                     </div>
@@ -87,9 +87,32 @@
 
                                 <hr>
 
-                                <!--  VUE COMPONENT SEARCH BOX ADDRESS -->
-                                <address-search-box></address-search-box>
-                                <!--  END VUE COMPONENT -->
+                                <div class="form-group row">
+
+                                    <div class="col-md-12">
+                                        <h2>Infomacje odnośnie lokalizacji</h2>
+                                    </div>
+
+                                    <!--  VUE COMPONENT SEARCH BOX ADDRESS -->
+                                    <address-search-box :ismap=true ></address-search-box>
+                                    <!--  END VUE COMPONENT -->
+
+                                    <div class="col-md-4">
+                                        <label for="additional_address_info" style="" class="">{{ __('Dodatkowe informacje adresowe') }}</label>
+                                        <textarea rows="7" id="additional_address_info" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
+                                               name="additional_address_info" value="{{ old('additional_address_info') }}"
+                                                  placeholder="Wprowadź dotatkowe informacje adresowe (wskazówki dojazdu itp.)"></textarea>
+
+                                        @if ($errors->has('additional_address_info'))
+                                            <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('additional_address_info') }}</strong>
+                                    </span>
+                                        @endif
+                                    </div>
+
+                                </div>
+
+
 
                                 <hr>
 
@@ -101,27 +124,27 @@
 
                                     {{--<label for="official_name" class="col-md-2 col-form-label text-md-right">{{ __('First name') }}</label>--}}
                                     <div class="col-md-6">
-                                        <label for="city" style="" class="">{{ __('Oficjalny numer telefonu klubu') }}</label>
-                                        <input id="official_name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                                               name="official_name" value="{{ old('official_name') }}"
+                                        <label for="phone" style="" class="">{{ __('Oficjalny numer telefonu klubu *') }}</label>
+                                        <input id="phone" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
+                                               name="phone" value="{{ old('phone') }}"
                                                placeholder="Wprowadź oficjalny numer telefonu" required autofocus>
 
-                                        @if ($errors->has('official_name'))
+                                        @if ($errors->has('phone'))
                                             <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('official_name') }}</strong>
+                                        <strong>{{ $errors->first('phone') }}</strong>
                                     </span>
                                         @endif
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label for="city" style="" class="">{{ __('Strona WWW') }}</label>
-                                        <input id="official_name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                                               name="official_name" value="{{ old('official_name') }}"
-                                               placeholder="Wprowadź adres strony www" required autofocus>
+                                        <label for="website_url" style="" class="">{{ __('Strona WWW') }}</label>
+                                        <input id="website_url" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
+                                               name="website_url" value="{{ old('website_url') }}"
+                                               placeholder="Wprowadź adres strony www">
 
-                                        @if ($errors->has('official_name'))
+                                        @if ($errors->has('website_url'))
                                             <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('official_name') }}</strong>
+                                        <strong>{{ $errors->first('website_url') }}</strong>
                                     </span>
                                         @endif
                                     </div>
@@ -131,14 +154,14 @@
                                 <div class="form-group row">
                                     {{--<label for="official_name" class="col-md-2 col-form-label text-md-right">{{ __('First name') }}</label>--}}
                                     <div class="col-md-6">
-                                        <label for="city" style="" class="">{{ __('Adres do facebooka') }}</label>
-                                        <input id="official_name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                                               name="official_name" value="{{ old('official_name') }}"
-                                               placeholder="Wprowadź adres profilu facebook" required autofocus>
+                                        <label for="facebook_url" style="" class="">{{ __('Adres do facebooka') }}</label>
+                                        <input id="facebook_url" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
+                                               name="facebook_url" value="{{ old('facebook_url') }}"
+                                               placeholder="Wprowadź adres profilu facebook">
 
-                                        @if ($errors->has('official_name'))
+                                        @if ($errors->has('facebook_url'))
                                             <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('official_name') }}</strong>
+                                        <strong>{{ $errors->first('facebook_url') }}</strong>
                                     </span>
                                         @endif
                                     </div>
@@ -172,7 +195,7 @@
                                 <div class="form-group row mb-0">
                                     <div class="col-md-6">
                                         <button type="submit" class="btn btn-primary">
-                                            {{ __('Kolejny krok') }}
+                                            {{ __('Dalej >>') }}
                                         </button>
                                     </div>
                                 </div>

@@ -17,7 +17,7 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('address-search-box', require('./components/addressSearchBox'));
+Vue.component('address-search-box', require('./components/addressSearchBoxWithMap'));
 
 const app = new Vue({
     el: '#app'

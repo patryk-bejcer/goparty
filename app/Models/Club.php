@@ -16,6 +16,7 @@ class Club extends Model
 	protected $table = 'clubs';
 	protected $primaryKey = 'id';
 	protected $guarded = ['id'];
+	public $timestamps = true;
 	/*
 	|--------------------------------------------------------------------------
 	| FUNCTIONS
