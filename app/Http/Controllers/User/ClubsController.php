@@ -95,6 +95,9 @@ class ClubsController extends Controller {
 	 */
 	public function show( $id ) {
 		$club = Club::findOrFail( $id );
+
+
+
 		return view('clubs.single', compact('club'));
 	}
 
@@ -105,8 +108,9 @@ class ClubsController extends Controller {
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function edit( $id ) {
-		//
+	public function edit( Club $club ) {
+		$musicTypes = MusicType::all();
+		return view('clubs.edit', compact('club','musicTypes'));
 	}
 
 	/**
@@ -117,8 +121,28 @@ class ClubsController extends Controller {
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update( Request $request, $id ) {
-		//
+	public function update( Request $request, Club $club ) {
+
+		$club->update( [
+			'user_id'                 => Auth::id(),
+			'official_name'           => $request->official_name,
+			'role'                    => $request->role,
+			'email'                   => $request->email,
+			'country'                 => $request->country,
+			'locality'                => $request->locality,
+			'voivodeship'             => $request->voivodeship,
+			'route'                   => $request->route,
+			'street_number'           => $request->street_number,
+			'postal_code'             => '00000',
+			'latitude'                => $request->latitude,
+			'longitude'               => $request->longitude,
+			'additional_address_info' => $request->additional_address_info,
+			'phone'                   => $request->phone,
+			'website_url'             => $request->website_url,
+			'facebook_url'            => $request->facebook_url,
+		] );
+
+		return back();
 	}
 
 	/**

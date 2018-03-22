@@ -11,10 +11,11 @@
                 <vue-google-autocomplete
 
                         ref="address"
-                        name="address-location"
+                        name="address_location"
                         id="address-location"
                         classname="form-control"
                         placeholder="Proszę wpisać w tym polu swój pełny adres"
+                        v-model="fulladdress"
                         v-on:placechanged="getAddressData"
                         country="pl"
                         enable-geolocation="true"
@@ -43,7 +44,7 @@
     export default {
         components: {VueGoogleAutocomplete},
 
-        props: ['ismap'],
+        props: ['ismap', 'latform', 'lngform','fulladdress'],
         data: function () {
             return {
                 address: '',
@@ -56,9 +57,23 @@
         mounted() {
             // alert(this.ismap);
             this.$refs.address.focus();
+
+            console.log(this.latform);
+            console.log(this.lngform);
+            console.log(this.fulladdress);
+
+            if(this.latform && this.lngform){
+                this.lat = this.latform;
+                this.lng = this.lngform;
+            }
+
+            console.log(this.lat);
+            console.log(this.lng);
+
             if(this.ismap){
                 this.initMap(11, this.lat, this.lng);
             }
+
 
         },
 
