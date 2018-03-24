@@ -2,11 +2,22 @@
 /* Colors */
 /* Fonts */
 body {
+  background: purple;
+  background-image: url(../img/bg.jpg);
   background-position: center; }
+  body .no-padding {
+    padding: 0px; }
   body input, body select, body textarea {
     background-color: rgba(255, 255, 255, 0.85) !important;
     border-radius: 0 !important;
     border: 0px solid #FFF !important; }
+  body a {
+    color: #ef3ab1; }
+  body .user-left-menu .list-group-flush:last-child .list-group-item:last-child {
+    border-bottom: 1px solid #333;
+    border-radius: 0 !important; }
+    body .user-left-menu .list-group-flush:last-child .list-group-item:last-child i {
+      padding-right: 5px; }
 
 .content {
   padding: 20px; }

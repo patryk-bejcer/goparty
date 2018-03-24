@@ -95,13 +95,11 @@
                                     </div>
 
                                     <!--  VUE COMPONENT SEARCH BOX ADDRESS -->
-                                    <address-search-box
-                                            :ismap=true :latform={{$club->latitude}} :lngform={{$club->longitude}} :fulladdress="{{$club->route}}"
-                                    >
+                                    <address-search-box :ismap=true  :latform={{$club->latitude}} :lngform={{$club->longitude}} :fulladdress={{$club->route}}>
                                     </address-search-box>
                                     <!--  END VUE COMPONENT -->
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <label for="additional_address_info" style="" class="">{{ __('Dodatkowe informacje adresowe') }}</label>
                                         <textarea rows="7" id="additional_address_info" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
                                                name="additional_address_info"

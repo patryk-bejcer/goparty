@@ -10,13 +10,28 @@ $white-color: #FFF;
 $secondary-font: 'Muli', sans-serif;
 
 body{
-  //background: $primary-color;
-  //background-image: url(../img/bg.jpg);
+  .no-padding{
+    padding:0px;
+  }
+  background: $primary-color;
+  background-image: url(../img/bg.jpg);
   background-position: center;
   input, select, textarea{
     background-color: rgba(255,255,255,0.85) !important;
     border-radius: 0 !important;
     border:0px solid #FFF !important;
+  }
+  a{
+    color:$pink-color;
+  }
+  .user-left-menu{
+    .list-group-flush:last-child .list-group-item:last-child {
+      border-bottom: 1px solid #333;
+      border-radius: 0 !important;
+      i{
+        padding-right: 5px;
+      }
+    }
   }
 }
 

@@ -14,7 +14,7 @@ class ClubsController extends Controller {
 
 	public function __construct() {
 		$this->middleware( 'auth', [ 'except' => [ 'index', 'show' ] ] );
-		$this->middleware( 'club_permission', [ 'except' => [ 'index', 'show', 'create' ] ] );
+		$this->middleware( 'club_permission', [ 'except' => [ 'index', 'show', 'create', 'store' ] ] );
 	}
 
 	/**
@@ -80,6 +80,8 @@ class ClubsController extends Controller {
 			'website_url'             => $request->website_url,
 			'facebook_url'            => $request->facebook_url,
 		] );
+
+		Auth::user()->assignRole('owner');
 
 		var_dump( $club );
 

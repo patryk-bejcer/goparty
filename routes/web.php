@@ -16,11 +16,19 @@
 Auth::routes();
 Route::get('/register', 'Auth\RegisterController@getRegister')->name('register');
 Route::get('/', 'HomeController@index')->name('home');
-Route::group(['namespace' => 'User'], function()
+Route::group(['namespace' => 'User','middleware' => ['auth']], function()
 {
 	Route::resource('/users', 'UsersController', ['except' => ['create', 'store']]);
 	Route::resource('/clubs', 'ClubsController');
 	Route::resource('/tags', 'TagsController');
+
+	Route::get('/dashboard', 'UsersController@dashboard');
+
+});
+
+//Routes for only owner
+Route::group(['namespace' => 'User','middlewareGroups' => ['role:owner']], function() {
+	Route::get('/dashboard/clubs', 'UsersController@clubs');
 });
 
 /* Routes for Administration */
