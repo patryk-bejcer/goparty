@@ -28,7 +28,15 @@ class Club extends Model
 	| RELATIONS
 	|--------------------------------------------------------------------------
 	*/
+	public function user()
+	{
+		return $this->hasOne('App\User','id','user_id');
+	}
 
+	public function events()
+	{
+		return $this->hasMany('App\Models\Event');
+	}
 	/*
 	|--------------------------------------------------------------------------
 	| SCOPES

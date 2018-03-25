@@ -18,6 +18,9 @@ class UsersTableSeeder extends Seeder
 	        'password' => Hash::make('pass'),
 	        'city_id' => 1
         ]);
+
+	    $admin->assignRole('user');
+	    $admin->assignRole('owner');
 	    $admin->assignRole('admin');
 
 	    $owner = \App\User::create([

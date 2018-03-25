@@ -12,7 +12,7 @@
                     Znajomi</li></a>
             @role('owner')
             <a href="{{url('/dashboard/clubs')}}"><li class="list-group-item bg-dark"><i class="fa fa-microphone" aria-hidden="true"></i>
-                    Zarządzaj klubem</li></a>
+                    Zarządzaj klubami</li></a>
             @endrole
             <a href=""><li class="list-group-item bg-dark"><i class="fa fa-gear" aria-hidden="true"></i>
                     Ustawienia konta</li></a>

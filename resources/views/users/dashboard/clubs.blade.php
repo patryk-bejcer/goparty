@@ -21,6 +21,7 @@
                                    <p class="mb-0">Ostania modyfikacja: {{$club->updated_at}}  </p>
                                    <a href=""><i class="fa fa-comments-o" aria-hidden="true"></i> (35)</a>
                                    <a href=""><i class="fa fa-heart pl-2" aria-hidden="true"></i> (125)</a>
+                                   <a href=""><i class="fa fa-star pl-2" aria-hidden="true"></i>  4.85</a>
                                </div>
                                <div class="col-md-2">
                                    <a href="#" class="btn btn-primary btn-sm mb-2">Wydarzenia</a>
