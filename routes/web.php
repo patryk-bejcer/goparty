@@ -11,40 +11,54 @@
 |
 */
 
+/* ====== HOME PAGE ====== */
+Route::get( '/', 'HomeController@index' )->name( 'home' );
+/* ====== END OF HOME PAGE ====== */
 
-/* Routes for login Users */
-/* Use middleware ['auth'] */
+/* ====== AUTH ====== */
 Auth::routes();
-Route::get('/register', 'Auth\RegisterController@getRegister')->name('register');
-Route::get('/', 'HomeController@index')->name('home');
-Route::group(['namespace' => 'User','middleware' => ['auth']], function()
-{
-	Route::resource('/users', 'UsersController', ['except' => ['create', 'store']]);
-	Route::resource('/clubs', 'ClubsController');
-	Route::resource('/tags', 'TagsController');
+Route::get( '/register', 'Auth\RegisterController@getRegister' )->name( 'register' );
+/* ====== END OF AUTH ====== */
 
-	Route::get('/dashboard', 'UsersController@dashboard');
+/* ====== USERS ====== */
+Route::group( [ 'namespace' => 'User', 'middleware' => [ 'auth' ] ], function () {
+	/* Rotes for auth users (show other users and manage your account) */
+	Route::resource( '/users', 'UsersController', [ 'except' => [ 'create', 'store' ] ] );
+	/* Rotes for auth user showing dashboard panel */
+	Route::get( '/dashboard', 'UserDashboardController@index' )->name( 'user-dashboard.index' );;
+} );
+/* ====== END OF USERS ====== */
 
-});
+/* ====== CLUBS ====== */
+/* Rotes for clubs on guest/user front end portal (for all visitors) */
+Route::group( [ 'namespace' => 'Clubs' ], function () {
+	Route::resource( 'clubs', 'ClubsOwnerController', [ 'only' => [ 'index', 'show' ] ] );
+} );
 
-/* Routes for Owner */
-/* Use middleware ['role:owner'] */
-Route::group(['namespace' => 'User','middleware' => ['role:owner']], function() {
-	Route::get('/dashboard/clubs', 'UsersController@clubs');
-});
+/* Rotes for clubs on owner dashboard panel (role: owner) */
+Route::group( [ 'prefix' => 'dashboard', 'namespace' => 'Clubs', 'middleware' => [ 'role:owner' ] ], function () {
+	Route::resource( 'clubs', 'ClubsOwnerController' );
+} );
+/* ====== END OF CLUBS ====== */
 
-Route::group(['namespace' => 'Events', 'middleware' => ['role:owner']], function() {
-	Route::get('/dashboard/clubs/{club}/events', 'OwnerController@index');
-});
+/* ====== EVENTS ====== */
+/* Rotes for events on guest/user front end portal (for all visitors) */
+Route::group( [ 'namespace' => 'Events', ], function () {
+	Route::resource( 'events', 'EventsUserController', [ 'only' => [ 'index', 'show' ] ] );
+} );
 
-/* Routes for Administration */
-Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'namespace' => 'Admin'], function()
-{
-	CRUD::resource('tag', 'TagCrudController');
-	CRUD::resource('music-types', 'MusicTypesCrudController');
-	CRUD::resource('cities', 'CitiesCrudController');
-	CRUD::resource('clubs', 'ClubsCrudController');
-});
+/* Rotes for events on guest/user front end portal (for all visitors) */
+Route::group( [ 'prefix' => 'dashboard', 'namespace' => 'Events', 'middleware' => [ 'role:owner' ] ], function () {
+	Route::resource( 'clubs/{club}/events', 'EventsOwnerController' );
+} );
+/* ====== END OF CLUBS ====== */
+
+/* Routes for administration panel (role: admin) - LARAVEL BACKPACK CRUD */
+Route::group( [ 'prefix' => 'admin', 'middleware' => [ 'admin' ], 'namespace' => 'Admin' ], function () {
+	CRUD::resource( 'music-types', 'MusicTypesCrudController' );
+	CRUD::resource( 'cities', 'CitiesCrudController' );
+	CRUD::resource( 'clubs', 'ClubsCrudController' );
+} );
 
 
 
