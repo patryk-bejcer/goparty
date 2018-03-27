@@ -31,25 +31,32 @@ Route::group( [ 'namespace' => 'User', 'middleware' => [ 'auth' ] ], function ()
 
 /* ====== CLUBS ====== */
 /* Rotes for clubs on guest/user front end portal (for all visitors) */
-Route::group( [ 'namespace' => 'Clubs' ], function () {
-	Route::resource( 'clubs', 'ClubsOwnerController', [ 'only' => [ 'index', 'show' ] ] );
-} );
+/* Middleware is declarate in controller */
+Route::namespace('Clubs')->group(function () {
 
-/* Rotes for clubs on owner dashboard panel (role: owner) */
-Route::group( [ 'prefix' => 'dashboard', 'namespace' => 'Clubs', 'middleware' => [ 'role:owner' ] ], function () {
-	Route::resource( 'clubs', 'ClubsOwnerController' );
+	Route::resource( 'clubs', 'ClubsUserController', [ 'except' => [ 'edit', 'update', 'destroy' ] ] );
+
+	/* Rotes for clubs on owner dashboard panel (role: owner) */
+	Route::prefix('dashboard')->group(function () {
+		Route::resource( 'clubs', 'ClubsOwnerController' );
+	} );
+
 } );
 /* ====== END OF CLUBS ====== */
 
 /* ====== EVENTS ====== */
-/* Rotes for events on guest/user front end portal (for all visitors) */
-Route::group( [ 'namespace' => 'Events', ], function () {
-	Route::resource( 'events', 'EventsUserController', [ 'only' => [ 'index', 'show' ] ] );
-} );
+Route::namespace('Events')->group(function () {
 
-/* Rotes for events on guest/user front end portal (for all visitors) */
-Route::group( [ 'prefix' => 'dashboard', 'namespace' => 'Events', 'middleware' => [ 'role:owner' ] ], function () {
-	Route::resource( 'clubs/{club}/events', 'EventsOwnerController' );
+	/* Rotes for events on guest/user front end portal (for all visitors) */
+	Route::get('events', 'EventsUserController@allEvents')->name('all-events');
+	Route::get('clubs/{club}/events', 'EventsUserController@clubEvents')->name('club-events');
+	Route::get('events/{event}', 'EventsUserController@singleEvent')->name('single-event');
+
+	/* Rotes for events on owner dashboard panel (role: owner) */
+	Route::prefix('dashboard')->group(function () {
+		Route::resource( 'clubs/{club}/events', 'EventsOwnerController' );
+	} );
+
 } );
 /* ====== END OF CLUBS ====== */
 

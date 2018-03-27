@@ -13,8 +13,13 @@ use Illuminate\Support\Facades\Auth;
 class ClubsOwnerController extends Controller {
 
 	public function __construct() {
-		$this->middleware( 'auth', [ 'except' => [ 'index', 'show' ] ] );
-		$this->middleware( 'club_permission', [ 'except' => [ 'index', 'show', 'create', 'store' ] ] );
+
+		/* Check if user has owner role*/
+		$this->middleware( 'role:owner' );
+
+		/* Check if user has permission (club belongs to user etc. in middleware) */
+		$this->middleware( 'club_permission', [ 'only' => [ 'edit', 'update', 'destroy' ] ] );
+
 	}
 
 	/**
@@ -37,7 +42,7 @@ class ClubsOwnerController extends Controller {
 
 		$musicTypes = MusicType::all();
 
-		return view( 'clubs.create', compact(  'musicTypes' ) );
+		return view( 'clubs.create', compact( 'musicTypes' ) );
 	}
 
 	/**
@@ -81,7 +86,7 @@ class ClubsOwnerController extends Controller {
 			'facebook_url'            => $request->facebook_url,
 		] );
 
-		Auth::user()->assignRole('owner');
+		Auth::user()->assignRole( 'owner' );
 
 		var_dump( $club );
 
@@ -99,8 +104,7 @@ class ClubsOwnerController extends Controller {
 		$club = Club::findOrFail( $id );
 
 
-
-		return view('clubs.single', compact('club'));
+		return view( 'clubs.single', compact( 'club' ) );
 	}
 
 	/**
@@ -112,7 +116,8 @@ class ClubsOwnerController extends Controller {
 	 */
 	public function edit( Club $club ) {
 		$musicTypes = MusicType::all();
-		return view('clubs.edit', compact('club','musicTypes'));
+
+		return view( 'clubs.edit', compact( 'club', 'musicTypes' ) );
 	}
 
 	/**

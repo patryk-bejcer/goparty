@@ -8,6 +8,14 @@ use App\Http\Controllers\Controller;
 
 class EventsOwnerController extends Controller
 {
+
+	public function __construct() {
+
+		/* Check if user has owner role*/
+		$this->middleware( 'role:owner' );
+
+	}
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +23,7 @@ class EventsOwnerController extends Controller
      */
     public function index(Club $club)
     {
-    	return view('users.dashboard.events', compact('club'));
+	    echo 'owner.club.events.index';
     }
 
     /**
@@ -23,9 +31,9 @@ class EventsOwnerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Club $club)
     {
-        //
+	    echo 'owner.create.event';
     }
 
     /**
@@ -47,7 +55,7 @@ class EventsOwnerController extends Controller
      */
     public function show($id)
     {
-        //
+	    echo 'owner.show.event';
     }
 
     /**
@@ -58,7 +66,7 @@ class EventsOwnerController extends Controller
      */
     public function edit($id)
     {
-        //
+	    echo 'owner.edit.event';
     }
 
     /**
