@@ -19,7 +19,7 @@ class ClubsUserController extends Controller
      */
     public function index()
     {
-	    echo 'clubs.user.index';
+	    echo 'All clubs';
     }
 
     /**

@@ -23,14 +23,16 @@ class ClubsOwnerController extends Controller {
 	}
 
 	/**
-	 * Display a listing of the resource.
+	 * Display all owner clubs
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-		$clubs = Club::all();
+
+		$clubs = Club::where( 'user_id', Auth::id() )->get();
 
 		return response( $clubs );
+
 	}
 
 	/**
@@ -43,6 +45,7 @@ class ClubsOwnerController extends Controller {
 		$musicTypes = MusicType::all();
 
 		return view( 'clubs.create', compact( 'musicTypes' ) );
+
 	}
 
 	/**
@@ -101,8 +104,8 @@ class ClubsOwnerController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function show( $id ) {
-		$club = Club::findOrFail( $id );
 
+		$club = Club::findOrFail( $id );
 
 		return view( 'clubs.single', compact( 'club' ) );
 	}
@@ -115,9 +118,11 @@ class ClubsOwnerController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function edit( Club $club ) {
+
 		$musicTypes = MusicType::all();
 
 		return view( 'clubs.edit', compact( 'club', 'musicTypes' ) );
+
 	}
 
 	/**
@@ -153,13 +158,17 @@ class ClubsOwnerController extends Controller {
 	}
 
 	/**
-	 * Remove the specified resource from storage.
+	 * Remove the club from database.
 	 *
 	 * @param  int $id
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function destroy( $id ) {
-		//
+	public function destroy( Club $club ) {
+
+		$club->delete();
+
+		return back();
+
 	}
 }
