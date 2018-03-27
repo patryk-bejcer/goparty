@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Events;
 
 use App\Models\Club;
+use App\Models\Event;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class EventsOwnerController extends Controller
 {
@@ -21,9 +23,10 @@ class EventsOwnerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Club $club)
+    public function index()
     {
-	    echo 'owner.club.events.index';
+	    $events = Event::where('user_id', Auth::id())->get();
+	    return view('dashboard.events.index', compact('events'));
     }
 
     /**
@@ -33,7 +36,17 @@ class EventsOwnerController extends Controller
      */
     public function create(Club $club)
     {
-	    echo 'owner.create.event';
+	    $clubExists = Club::where([
+		    'id' => $club->id,
+		    'user_id' => Auth::id(),
+	    ])->exists();
+
+	    if(!$clubExists){
+	    	echo 'nie jestes wlasicielem tego klubu...';
+	    } else {
+		    return view('dashboard.events.create', compact('club'));
+	    }
+
     }
 
     /**
@@ -44,7 +57,19 @@ class EventsOwnerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+	    $clubExists = Club::where([
+		    'id' => $request->club_id,
+		    'user_id' => Auth::id(),
+	    ])->exists();
+
+	    if($clubExists){
+		    Event::create($request->all());
+		    return redirect()->route('club-events', ['club_id' => $request->club_id]);
+	    } else {
+	    	echo 'nie jestes wlascicielem tego klubu!';
+	    }
+
     }
 
     /**

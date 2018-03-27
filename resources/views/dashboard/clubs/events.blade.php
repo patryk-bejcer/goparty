@@ -1,0 +1,25 @@
+@extends('layouts.app')
+
+@section('content')
+    <div class="container">
+        <div class="row justify-content-center">
+            @include('dashboard.includes.sidebar')
+            <div class="col">
+                <div class="card text-white bg-dark mb-3">
+                    <div class="card-header">
+                        <b>Twoje wydarzenia w klubie {{$club->official_name}}}}</b>
+                        <a href="{{route('events.create', ['club_id' => $club->id])}}"
+                           class="btn btn-primary btn-sm mb-2 pull-right">Dodaj wydarzenie</a>
+                    </div>
+                    <div class="card-body">
+                        @foreach($club->events as $event)
+                            <p>{{$event->start_date}} - {{$event->title}}</p>
+                            <p>Klub: {{$event->club->official_name}}</p>
+                            <hr>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

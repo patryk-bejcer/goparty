@@ -30,7 +30,7 @@ Route::group( [ 'namespace' => 'User', 'middleware' => [ 'auth' ] ], function ()
 /* ====== END OF USERS ====== */
 
 /* ====== CLUBS ====== */
-/* Middleware is declarate in controller */
+/* Middleware is declarate in controller!!! */
 Route::namespace('Clubs')->group(function () {
 
 	/* Rotes for clubs on guest/user front end portal (for all visitors) */
@@ -39,23 +39,24 @@ Route::namespace('Clubs')->group(function () {
 	/* Rotes for clubs on owner dashboard panel (role: owner) */
 	Route::prefix('dashboard')->group(function () {
 		Route::resource( 'clubs', 'ClubsOwnerController');
+		Route::get('clubs/{club}/club-events', 'ClubsOwnerController@clubEvents')->name('club-events');
 	} );
 
 } );
 /* ====== END OF CLUBS ====== */
 
 /* ====== EVENTS ====== */
-/* Middleware is declarate in controller */
+/* Middleware is declarate in controller!!! */
 Route::namespace('Events')->group(function () {
 
 	/* Rotes for events on guest/user front end portal (for all visitors) */
 	Route::get('events', 'EventsUserController@allEvents')->name('all-events');
-	Route::get('clubs/{club}/events', 'EventsUserController@clubEvents')->name('club-events');
+//	Route::get('clubs/{club}/events', 'EventsUserController@clubEvents')->name('club-events');
 	Route::get('events/{event}', 'EventsUserController@singleEvent')->name('single-event');
 
 	/* Rotes for events on owner dashboard panel (role: owner) */
 	Route::prefix('dashboard')->group(function () {
-		Route::resource( 'clubs/{club}/events', 'EventsOwnerController' );
+		Route::resource( 'clubs/{club}/events', 'EventsOwnerController', [ 'except' => [ 'index' ] ]);
 	} );
 
 } );

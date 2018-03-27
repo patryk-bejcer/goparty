@@ -15,10 +15,13 @@ class ClubsOwnerController extends Controller {
 	public function __construct() {
 
 		/* Check if user has owner role*/
-		$this->middleware( 'role:owner' );
+		$this->middleware( 'auth', [ 'except' => [ 'index', 'show' ] ] );
+
+		/* Check if user has owner role*/
+		$this->middleware( 'role:owner', [ 'except' => [ 'create', 'store' ] ] );
 
 		/* Check if user has permission (club belongs to user etc. in middleware) */
-		$this->middleware( 'club_permission', [ 'only' => [ 'edit', 'update', 'destroy' ] ] );
+		$this->middleware( 'club_permission', [ 'except' => [ 'index', 'create', 'store' ] ] );
 
 	}
 
@@ -31,7 +34,7 @@ class ClubsOwnerController extends Controller {
 
 		$clubs = Club::where( 'user_id', Auth::id() )->get();
 
-		return response( $clubs );
+		return view( 'dashboard.clubs.index', compact( 'clubs' ) );
 
 	}
 
@@ -89,7 +92,9 @@ class ClubsOwnerController extends Controller {
 			'facebook_url'            => $request->facebook_url,
 		] );
 
-		Auth::user()->assignRole( 'owner' );
+		if(!Auth::user()->hasRole('owner')){
+			Auth::user()->assignRole( 'owner' );
+		}
 
 		var_dump( $club );
 
@@ -171,4 +176,11 @@ class ClubsOwnerController extends Controller {
 		return back();
 
 	}
+
+	public function clubEvents( Club $club ) {
+
+		return view( 'dashboard.clubs.events', compact( 'club' ) );
+
+	}
+
 }
