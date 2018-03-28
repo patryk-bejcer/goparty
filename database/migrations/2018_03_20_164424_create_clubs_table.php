@@ -15,8 +15,8 @@ class CreateClubsTable extends Migration
     {
         Schema::create('clubs', function (Blueprint $table) {
 
-            $table->increments('id');
-            $table->integer('user_id');
+            $table->increments('id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->string('role');
 	        $table->string ('official_name');
 	        $table->string ('email');
@@ -39,7 +39,14 @@ class CreateClubsTable extends Migration
 	        $table->string ('facebook_url')->nullable();
 	        /* End of Contact and social media fields */
 
+	        $table->softDeletes();
             $table->timestamps();
+
+	        $table->foreign('user_id')
+	              ->references('id')
+	              ->on('users')
+	              ->onDelete('cascade');
+
         });
     }
 

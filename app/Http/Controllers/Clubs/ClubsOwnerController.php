@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Auth;
 class ClubsOwnerController extends Controller {
 
 	public function __construct() {
-
 		/* Check if user has owner role*/
 		$this->middleware( 'auth', [ 'except' => [ 'index', 'show' ] ] );
 
@@ -22,44 +21,23 @@ class ClubsOwnerController extends Controller {
 
 		/* Check if user has permission (club belongs to user etc. in middleware) */
 		$this->middleware( 'club_permission', [ 'except' => [ 'index', 'create', 'store' ] ] );
-
 	}
 
-	/**
-	 * Display all owner clubs
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function index() {
 
+	public function index() {
 		$clubs = Club::where( 'user_id', Auth::id() )->get();
 
 		return view( 'dashboard.clubs.index', compact( 'clubs' ) );
-
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
 	public function create() {
-
 		$musicTypes = MusicType::all();
 
 		return view( 'dashboard.clubs.create', compact( 'musicTypes' ) );
-
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request $request
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function store( Request $request ) {
 
+	public function store( Request $request ) {
 		$addressErrorMessage = 'Wprowadzony przez ciebie adres jest niepoprawny. Wprowadź pełny adres (nazwa ulicy/numer
                     lokalu/miasto/kraj)';
 
@@ -92,52 +70,27 @@ class ClubsOwnerController extends Controller {
 			'facebook_url'            => $request->facebook_url,
 		] );
 
-		if(!Auth::user()->hasRole('owner')){
+		if ( ! Auth::user()->hasRole( 'owner' ) ) {
 			Auth::user()->assignRole( 'owner' );
 		}
 
-		var_dump( $club );
-
+		return redirect()->route( 'home' );
 	}
 
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int $id
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
 	public function show( $id ) {
-
 		$club = Club::findOrFail( $id );
 
-		return view( 'clubs.single', compact( 'club' ) );
+		return view( 'dashboard.clubs.single', compact( 'club' ) );
 	}
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int $id
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function edit( Club $club ) {
 
+	public function edit( Club $club ) {
 		$musicTypes = MusicType::all();
 
 		return view( 'dashboard.clubs.edit', compact( 'club', 'musicTypes' ) );
-
 	}
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request $request
-	 * @param  int $id
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
 	public function update( Request $request, Club $club ) {
 
 		$club->update( [
@@ -162,25 +115,23 @@ class ClubsOwnerController extends Controller {
 		return back();
 	}
 
-	/**
-	 * Remove the club from database.
-	 *
-	 * @param  int $id
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
+
 	public function destroy( Club $club ) {
 
 		$club->delete();
 
-		return back();
+		$clubs = Club::where( 'user_id', Auth::id() )->get();
+		if($clubs == null){
+			if ( Auth::user()->hasRole( 'owner' ) ) {
+				Auth::user()->unsignRole( 'owner' );
+			}
+		}
 
+		return redirect()->route('user-dashboard.index');
 	}
 
 	public function clubEvents( Club $club ) {
-
 		return view( 'dashboard.clubs.events', compact( 'club' ) );
-
 	}
 
 }

@@ -47889,7 +47889,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "col-md-8" },
+    { staticClass: "col-md-6" },
     [
       _vm._m(0),
       _vm._v(" "),
