@@ -56,11 +56,12 @@ Route::namespace('Events')->group(function () {
 
 	/* Rotes for events on owner dashboard panel (role: owner) */
 	Route::prefix('dashboard')->group(function () {
+		Route::get('owner-all-events', 'EventsOwnerController@index')->name('all-owner-events');
 		Route::resource( 'clubs/{club}/events', 'EventsOwnerController', [ 'except' => [ 'index' ] ]);
 	} );
 
 } );
-/* ====== END OF CLUBS ====== */
+/* ====== END OF EVENTS ====== */
 
 /* Routes for administration panel (role: admin) - LARAVEL BACKPACK CRUD */
 Route::group( [ 'prefix' => 'admin', 'middleware' => [ 'admin' ], 'namespace' => 'Admin' ], function () {

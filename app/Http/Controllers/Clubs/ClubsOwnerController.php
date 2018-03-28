@@ -47,7 +47,7 @@ class ClubsOwnerController extends Controller {
 
 		$musicTypes = MusicType::all();
 
-		return view( 'clubs.create', compact( 'musicTypes' ) );
+		return view( 'dashboard.clubs.create', compact( 'musicTypes' ) );
 
 	}
 
@@ -126,7 +126,7 @@ class ClubsOwnerController extends Controller {
 
 		$musicTypes = MusicType::all();
 
-		return view( 'clubs.edit', compact( 'club', 'musicTypes' ) );
+		return view( 'dashboard.clubs.edit', compact( 'club', 'musicTypes' ) );
 
 	}
 

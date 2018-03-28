@@ -16,6 +16,8 @@ class EventsOwnerController extends Controller
 		/* Check if user has owner role*/
 		$this->middleware( 'role:owner' );
 
+		$this->middleware( 'event_permission' , [ 'except' => [ 'index' ] ] );
+
 	}
 
     /**
@@ -36,17 +38,7 @@ class EventsOwnerController extends Controller
      */
     public function create(Club $club)
     {
-	    $clubExists = Club::where([
-		    'id' => $club->id,
-		    'user_id' => Auth::id(),
-	    ])->exists();
-
-	    if(!$clubExists){
-	    	echo 'nie jestes wlasicielem tego klubu...';
-	    } else {
-		    return view('dashboard.events.create', compact('club'));
-	    }
-
+	    return view('dashboard.events.create', compact('club'));
     }
 
     /**
@@ -55,21 +47,10 @@ class EventsOwnerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Club $club)
     {
-
-	    $clubExists = Club::where([
-		    'id' => $request->club_id,
-		    'user_id' => Auth::id(),
-	    ])->exists();
-
-	    if($clubExists){
-		    Event::create($request->all());
-		    return redirect()->route('club-events', ['club_id' => $request->club_id]);
-	    } else {
-	    	echo 'nie jestes wlascicielem tego klubu!';
-	    }
-
+	    Event::create($request->all());
+	    return redirect()->route('club-events', ['club_id' => $request->club_id]);
     }
 
     /**
@@ -89,9 +70,9 @@ class EventsOwnerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Club $club, Event $event)
     {
-	    echo 'owner.edit.event';
+	    return view('dashboard.events.edit', compact( 'event', 'club'));
     }
 
     /**
@@ -101,9 +82,10 @@ class EventsOwnerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update( Club $club, Event $event, Request $request)
     {
-        //
+        $event->update($request);
+        return back();
     }
 
     /**

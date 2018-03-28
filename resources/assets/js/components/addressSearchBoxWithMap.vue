@@ -3,7 +3,7 @@
 </style>
 <template>
 
-            <div class="col-md-8">
+            <div class="col-md-6">
 
                 <label for="country" style="" class="">Wprowadź pełny adres  * <small>(nazwa ulicy/numer
                     lokalu/miasto/kraj)</small> </label>
