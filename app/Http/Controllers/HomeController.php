@@ -26,6 +26,6 @@ class HomeController extends Controller
     {
     	$user = User::find(3);
 
-        return view('home', compact('user'));
+        return view('site.home', compact('user'));
     }
 }
