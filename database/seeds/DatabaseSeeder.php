@@ -25,7 +25,8 @@ class DatabaseSeeder extends Seeder
 	        VoivodeshipsTableSeeder::class,
 	        CitiesTableSeeder::class,
             UsersTableSeeder::class,
-	        ClubsTableSeeder::class
+	        ClubsTableSeeder::class,
+	        EventsTableSeeder::class
         ]);
 
     }
