@@ -2,15 +2,22 @@
 
 namespace App\Http\Controllers\Events;
 
+use App\Models\Event;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class EventsUserController extends Controller
 {
 
+	public function index(){
+
+	}
+
 	public function allEvents()
 	{
-		echo 'all.events';
+		$events = Event::paginate(25);
+
+		return view( 'site.events.index', compact('events') );
 	}
 
     public function clubEvents()

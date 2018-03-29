@@ -8,6 +8,7 @@ use App\Models\MusicType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 
 class ClubsOwnerController extends Controller {
@@ -74,7 +75,9 @@ class ClubsOwnerController extends Controller {
 			Auth::user()->assignRole( 'owner' );
 		}
 
-		return redirect()->route( 'home' );
+		Session::flash( 'message', 'Klub ' . $request->official_name . ' dodany pomyślnie, teraz możesz uzupełnić dodatkowe informacje, lub dodać wydarzenie.' );
+
+		return redirect( 'dashboard/clubs' );
 	}
 
 
@@ -121,13 +124,12 @@ class ClubsOwnerController extends Controller {
 		$club->delete();
 
 		$clubs = Club::where( 'user_id', Auth::id() )->get();
-		if($clubs == null){
-			if ( Auth::user()->hasRole( 'owner' ) ) {
-				Auth::user()->unsignRole( 'owner' );
-			}
+
+		if ( $clubs->count() == 0 && Auth::user()->hasRole( 'owner' ) ) {
+			Auth::user()->removeRole( 'owner' );
 		}
 
-		return redirect()->route('user-dashboard.index');
+		return redirect()->route( 'user-dashboard.index' );
 	}
 
 	public function clubEvents( Club $club ) {

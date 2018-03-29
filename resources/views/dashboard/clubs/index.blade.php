@@ -10,6 +10,9 @@
                         <b>Twoje kluby</b>
                     </div>
                     <div class="card-body">
+                        @if (Session::has('message'))
+                            <div class="alert alert-success">{{ Session::get('message') }}</div>
+                        @endif
                         @foreach($clubs as $club)
                             <div class="row ">
                                 <div class="col-md-2">

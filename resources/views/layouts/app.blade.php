@@ -42,6 +42,9 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
+                    <li><a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a></li>
+                    <li><a class="nav-link" href="{{ url('/events') }}">{{ __('Imprezy') }}</a></li>
+                    <li><a class="nav-link" href="{{ url('/clubs') }}">{{ __('Kluby') }}</a></li>
                     @guest
                         <li><a class="nav-link" href="{{ route('login') }}">{{ __('Logowanie') }}</a></li>
                         <li><a class="nav-link" href="{{ route('register') }}">{{ __('Rejestracja') }}</a></li>

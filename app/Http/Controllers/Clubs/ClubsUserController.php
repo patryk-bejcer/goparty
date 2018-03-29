@@ -2,56 +2,36 @@
 
 namespace App\Http\Controllers\Clubs;
 
+use App\Models\Club;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ClubsUserController extends Controller
-{
+class ClubsUserController extends Controller {
 
 	public function __construct() {
-		$this->middleware('auth', ['except' => ['index','show']]);
+		$this->middleware( 'auth', [ 'except' => [ 'index', 'show' ] ] );
 	}
 
 	/**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-	    echo 'All clubs';
-    }
+	 * Display a listing of the resource.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function index() {
+		$clubs = Club::paginate(25);
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-	    echo 'clubs.user.create';
-    }
+		return view( 'site.clubs.index', compact('clubs') );
+	}
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-	    echo 'clubs.user.show';
-    }
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  int $id
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function show( $id ) {
+		echo 'clubs.user.show';
+	}
 
 }
