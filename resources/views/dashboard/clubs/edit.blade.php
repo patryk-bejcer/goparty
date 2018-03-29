@@ -93,7 +93,7 @@
                                         <div class="form-group row">
 
                                             <div class="col-md-12">
-                                                <h2>Infomacje odnośnie lokalizacji</h2>
+                                                <h2 class="pb-3">Infomacje odnośnie lokalizacji</h2>
                                             </div>
 
                                             <!--  VUE COMPONENT SEARCH BOX ADDRESS -->
@@ -102,7 +102,7 @@
                                             </address-search-box>
                                             <!--  END VUE COMPONENT -->
 
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <label for="additional_address_info" style=""
                                                        class="">{{ __('Dodatkowe informacje adresowe') }}</label>
                                                 <textarea rows="7" id="additional_address_info" type="text"
@@ -223,7 +223,7 @@
                                         @csrf
                                         {{method_field('DELETE')}}
 
-                                        <input type="submit" class="btn btn-danger" value="Usuń klub">
+                                        <input type="submit" class="text-danger pull-right" value="Usuń klub">
 
                                     </form>
 

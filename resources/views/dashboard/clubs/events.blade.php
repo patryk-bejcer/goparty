@@ -15,6 +15,8 @@
                         @foreach($club->events as $event)
                             <p>{{$event->start_date}} - {{$event->title}}</p>
                             <p>Klub: {{$event->club->official_name}}</p>
+                            <a href="{{url('dashboard/clubs/' . $event->club->id . '/events/' . $event->id . '/edit')}}"
+                               class="btn btn-secondary btn-sm mr-2">Edycja</a>
                             <hr>
                         @endforeach
                     </div>

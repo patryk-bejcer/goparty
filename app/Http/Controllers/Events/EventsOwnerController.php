@@ -27,7 +27,7 @@ class EventsOwnerController extends Controller
      */
     public function index()
     {
-	    $events = Event::where('user_id', Auth::id())->get();
+	    $events = Event::with('club')->where('user_id', Auth::id())->get();
 	    return view('dashboard.events.index', compact('events'));
     }
 

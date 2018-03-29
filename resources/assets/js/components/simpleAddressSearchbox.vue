@@ -9,7 +9,7 @@
 
             <div class="col-md-12">
 
-                <label for="country" style="" class="">Wprowadź pełny adres (nazwa ulicy/numer
+                <label for="country" style="" class="">Pełny adres (nazwa ulicy/numer
                     lokalu/miasto/kraj)</label>
 
                 <vue-google-autocomplete
