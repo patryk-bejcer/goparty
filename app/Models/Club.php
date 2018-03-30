@@ -6,8 +6,7 @@ use Backpack\CRUD\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Club extends Model
-{
+class Club extends Model {
 	use CrudTrait;
 	use SoftDeletes;
 	/*
@@ -17,9 +16,9 @@ class Club extends Model
 	*/
 	protected $table = 'clubs';
 	protected $primaryKey = 'id';
-	protected $guarded = ['id'];
+	protected $guarded = [ 'id' ];
 	public $timestamps = true;
-	protected $dates = ['deleted_at'];
+	protected $dates = [ 'deleted_at' ];
 	/*
 	|--------------------------------------------------------------------------
 	| FUNCTIONS
@@ -30,9 +29,9 @@ class Club extends Model
 	protected static function boot() {
 		parent::boot();
 
-		static::deleted(function ($club) {
+		static::deleted( function ( $club ) {
 			$club->events()->delete();
-		});
+		} );
 	}
 
 	/*
@@ -40,14 +39,12 @@ class Club extends Model
 	| RELATIONS
 	|--------------------------------------------------------------------------
 	*/
-	public function user()
-	{
-		return $this->hasOne('App\User','id','user_id');
+	public function user() {
+		return $this->hasOne( 'App\User', 'id', 'user_id' );
 	}
 
-	public function events()
-	{
-		return $this->hasMany('App\Models\Event');
+	public function events() {
+		return $this->hasMany( 'App\Models\Event' );
 	}
 	/*
 	|--------------------------------------------------------------------------

@@ -1,4 +1,3 @@
-
 <template>
     <div>
         <div class="form-group row">
@@ -53,14 +52,14 @@
             return {
                 address: '',
                 checkAddress: false,
-                lat:52.232855,
-                lng:20.9211115
+                lat: 52.232855,
+                lng: 20.9211115
             }
         },
 
         mounted() {
             this.$refs.address.focus();
-            if(this.ismap){
+            if (this.ismap) {
                 this.initMap(11, this.lat, this.lng);
             }
 
@@ -84,7 +83,7 @@
                 }
                 // console.log('check:' + this.checkAddress);
             },
-            initMap: function(zoom, lat, lng) {
+            initMap: function (zoom, lat, lng) {
                 var map = new google.maps.Map(document.getElementById('map'), {
                     zoom: zoom,
                     center: {lat: lat, lng: lng}

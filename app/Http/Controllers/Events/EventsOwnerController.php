@@ -8,94 +8,95 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class EventsOwnerController extends Controller
-{
+class EventsOwnerController extends Controller {
 
 	public function __construct() {
 
 		/* Check if user has owner role*/
 		$this->middleware( 'role:owner' );
 
-		$this->middleware( 'event_permission' , [ 'except' => [ 'index' ] ] );
+		$this->middleware( 'event_permission', [ 'except' => [ 'index' ] ] );
 
 	}
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-	    $events = Event::with('club')->where('user_id', Auth::id())->get();
-	    return view('dashboard.events.index', compact('events'));
-    }
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function index() {
+		$events = Event::with( 'club' )->where( 'user_id', Auth::id() )->get();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create(Club $club)
-    {
-	    return view('dashboard.events.create', compact('club'));
-    }
+		return view( 'dashboard.events.index', compact( 'events' ) );
+	}
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request, Club $club)
-    {
-	    Event::create($request->all());
-	    return redirect()->route('club-events', ['club_id' => $request->club_id]);
-    }
+	/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @param Club $club
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function create( Club $club ) {
+		return view( 'dashboard.events.create', compact( 'club' ) );
+	}
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-	    echo 'owner.show.event';
-    }
+	/**
+	 * Store a newly created resource in storage.
+	 *
+	 * @param  \Illuminate\Http\Request $request
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function store( Request $request ) {
+		Event::create( $request->all() );
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Club $club, Event $event)
-    {
-	    return view('dashboard.events.edit', compact( 'event', 'club'));
-    }
+		return redirect()->route( 'club-events', [ 'club_id' => $request->club_id ] );
+	}
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update( Club $club, Event $event, Request $request)
-    {
-        $event->update($request);
-        return back();
-    }
+	/**
+	 * Display the specified resource.
+	 *
+	 * @return void
+	 */
+	public function show() {
+		echo 'owner.show.event';
+	}
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param Club $club
+	 * @param Event $event
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function edit( Club $club, Event $event ) {
+		return view( 'dashboard.events.edit', compact( 'event', 'club' ) );
+	}
+
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param Event $event
+	 * @param  \Illuminate\Http\Request $request
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function update( Event $event, Request $request ) {
+		$event->update( $request );
+
+		return back();
+	}
+
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int $id
+	 *
+	 * @return void
+	 */
+	public function destroy( $id ) {
+		//
+	}
 }

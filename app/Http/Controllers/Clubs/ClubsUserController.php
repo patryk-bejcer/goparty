@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Clubs;
 
 use App\Models\Club;
-use Illuminate\Http\Request;
+
 use App\Http\Controllers\Controller;
 
 class ClubsUserController extends Controller {
@@ -18,9 +18,9 @@ class ClubsUserController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-		$clubs = Club::paginate(25);
+		$clubs = Club::paginate( 25 );
 
-		return view( 'site.clubs.index', compact('clubs') );
+		return view( 'site.clubs.index', compact( 'clubs' ) );
 	}
 
 	/**
@@ -28,10 +28,10 @@ class ClubsUserController extends Controller {
 	 *
 	 * @param  int $id
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @return void
 	 */
 	public function show( $id ) {
-		echo 'clubs.user.show';
+		echo 'clubs.user.show' . $id;
 	}
 
 }

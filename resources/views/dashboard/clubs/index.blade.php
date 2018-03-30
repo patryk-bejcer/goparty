@@ -34,7 +34,8 @@
                                        class="btn btn-primary btn-sm mb-2 mr-2">Dodaj wydarzenie</a>
                                     <a href="{{url('dashboard/clubs/' . $club->id . '/club-events')}}"
                                        class="btn btn-primary btn-sm mb-2 mr-2">Wydarzenia</a>
-                                    <a href="{{url('dashboard/clubs/' . $club->id . '/edit')}}" class="btn btn-secondary btn-sm mr-2">Edycja</a>
+                                    <a href="{{url('dashboard/clubs/' . $club->id . '/edit')}}"
+                                       class="btn btn-secondary btn-sm mr-2">Edycja</a>
                                 </div>
                             </div>
                             <hr>

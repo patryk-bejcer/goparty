@@ -52,7 +52,7 @@ class ClubsOwnerController extends Controller {
 			'street_number.required' => 'Prosimy o podanie dokładniejszych danych adresowych (number lokalu)',
 		] );
 
-		$club = Club::create( [
+		Club::create( [
 			'user_id'                 => Auth::id(),
 			'official_name'           => $request->official_name,
 			'role'                    => $request->role,
@@ -121,7 +121,10 @@ class ClubsOwnerController extends Controller {
 
 	public function destroy( Club $club ) {
 
-		$club->delete();
+		try {
+			$club->delete();
+		} catch ( \Exception $e ) {
+		}
 
 		$clubs = Club::where( 'user_id', Auth::id() )->get();
 

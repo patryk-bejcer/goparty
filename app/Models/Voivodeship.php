@@ -4,9 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Voivodeship extends Model
-{
+class Voivodeship extends Model {
 	protected $table = 'voivodeships';
-	protected $fillable = ['name'];
+	protected $fillable = [ 'name' ];
 	public $timestamps = false;
 }
