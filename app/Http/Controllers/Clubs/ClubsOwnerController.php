@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Clubs;
 
-use App\Models\City;
 use App\Models\Club;
 use App\Models\MusicType;
 use Illuminate\Http\Request;
@@ -117,6 +116,7 @@ class ClubsOwnerController extends Controller {
 
 		return back();
 	}
+
 
 
 	public function destroy( Club $club ) {

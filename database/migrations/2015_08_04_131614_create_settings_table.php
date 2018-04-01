@@ -1,8 +1,8 @@
 <?php
 
-use Doctrine\DBAL\Schema\Schema;
-use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateSettingsTable extends Migration {
 	/**

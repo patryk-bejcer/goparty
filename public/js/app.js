@@ -48101,7 +48101,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", { attrs: { for: "country" } }, [
-      _vm._v("Wprowadź pełny adres  * "),
+        _vm._v("Pełny adres  * "),
       _c("small", [_vm._v("(nazwa ulicy/numer\n        lokalu/miasto/kraj)")])
     ])
   }
