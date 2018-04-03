@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Clubs;
 
+use App\Events\ClubCreated;
+use App\Events\ClubDestroy;
 use App\Models\Club;
 use App\Models\MusicType;
 use Illuminate\Http\Request;
@@ -70,9 +72,7 @@ class ClubsOwnerController extends Controller {
 			'facebook_url'            => $request->facebook_url,
 		] );
 
-		if ( ! Auth::user()->hasRole( 'owner' ) ) {
-			Auth::user()->assignRole( 'owner' );
-		}
+		event(new ClubCreated());
 
 		Session::flash( 'message', 'Klub ' . $request->official_name . ' dodany pomyślnie, teraz możesz uzupełnić dodatkowe informacje, lub dodać wydarzenie.' );
 
@@ -126,11 +126,7 @@ class ClubsOwnerController extends Controller {
 		} catch ( \Exception $e ) {
 		}
 
-		$clubs = Club::where( 'user_id', Auth::id() )->get();
-
-		if ( $clubs->count() == 0 && Auth::user()->hasRole( 'owner' ) ) {
-			Auth::user()->removeRole( 'owner' );
-		}
+		event(new ClubDestroy());
 
 		return redirect()->route( 'user-dashboard.index' );
 	}

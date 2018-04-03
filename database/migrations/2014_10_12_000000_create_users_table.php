@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration {
 			$table->string( 'password' );
 			$table->integer( 'city_id' )->unsigned()->nullable();
 			$table->rememberToken();
+			$table->timestamp('last_login_at')->nullable();
 			$table->timestamps();
 		} );
 

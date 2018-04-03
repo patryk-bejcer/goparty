@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\UserRegistred;
 use App\Models\City;
 use App\Models\MusicType;
 use App\Models\Voivodeship;
@@ -93,6 +94,9 @@ class RegisterController extends Controller
 	       if($data['music_types']) {
 		       $user->favoriteMusic()->attach( $data['music_types'] );
 	       }
+
+	       //Event instance
+	       event(new UserRegistred($user));
 
 	       return $user;
 
