@@ -8,6 +8,12 @@
 
                 <div class="card-header">Dashboard</div>
 
+                <div class="container">
+                    <div class="main">
+                        <a href="{{url('/send')}}" class="btn btn-default">Send Email</a>
+                    </div>
+                </div>
+
                 {{ $user->city }}
 
                 <div class="card-body">

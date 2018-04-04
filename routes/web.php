@@ -11,6 +11,8 @@
 |
 */
 
+Route::get('/send', 'HomeController@send');
+
 /* ====== HOME PAGE ====== */
 Route::get( '/', 'HomeController@index' )->name( 'home' );
 /* ====== END OF HOME PAGE ====== */
