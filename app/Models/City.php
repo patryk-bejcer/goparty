@@ -14,6 +14,10 @@ class City extends Model {
 	|--------------------------------------------------------------------------
 	*/
 
+	public function checkCity(){
+	    
+    }
+
 	protected $table = 'cities';
 	protected $primaryKey = 'id';
 	public $timestamps = false;
