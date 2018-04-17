@@ -13,8 +13,4 @@ class clubRules extends Model
         return $this->belongsTo('App\Models\Club');
     }
 
-    public function rule(){
-        return $this->belongsTo('App\Models\Rules');
-    }
-    /* BITBUCKET TEST */
 }
