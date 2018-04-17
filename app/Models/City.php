@@ -12,11 +12,19 @@ class City extends Model {
 		
 	}
 
+	public function blabal(){
+		
+	}
+
 	/*
 	|--------------------------------------------------------------------------
 	| GLOBAL VARIABLES
 	|--------------------------------------------------------------------------
 	*/
+
+	public function checkCity(){
+	    
+    }
 
 	protected $table = 'cities';
 	protected $primaryKey = 'id';
