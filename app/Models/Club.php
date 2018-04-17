@@ -98,6 +98,10 @@ class Club extends Model {
 	    return $distance;
     }
 
+	public function rule(){
+		return $this->belongsTo('App\Models\Rules');
+	}
+
 
 
 	/*

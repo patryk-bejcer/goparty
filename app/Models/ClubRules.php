@@ -17,7 +17,4 @@ class clubRules extends Model
         return $this->belongsTo('App\Models\Rules');
     }
     /* BITBUCKET TEST */
-
-    /*TEST TEST TEST */
-    /*TEST TEST TEST */
 }
