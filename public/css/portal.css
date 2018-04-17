@@ -3,7 +3,7 @@
 /* Fonts */
 body {
   background: purple;
-  background-image: url(../img/bg.jpg);
+  background: #000;
   background-position: center; }
   body .no-padding {
     padding: 0px; }
