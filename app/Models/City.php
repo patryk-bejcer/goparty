@@ -8,19 +8,7 @@ use Backpack\CRUD\CrudTrait;
 class City extends Model {
 	use CrudTrait;
 
-	public function test(){
-		
-	}
 
-	/*
-	|--------------------------------------------------------------------------
-	| GLOBAL VARIABLES
-	|--------------------------------------------------------------------------
-	*/
-
-	public function checkCity(){
-	    
-    }
 
 	protected $table = 'cities';
 	protected $primaryKey = 'id';
