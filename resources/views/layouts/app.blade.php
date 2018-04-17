@@ -13,9 +13,16 @@
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
 
     <!-- Styles -->
+
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/portal.css') }}" rel="stylesheet">
+    <link href="{{asset ('css/hover-min.css')}}" rel="stylesheet">
+
+
+
+
+
 
     <!-- Google maps APIs -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNOkBFDkeXJPFHUAxKjwohBeoZKDEZjks&libraries=places"></script>
@@ -92,6 +99,19 @@
 </div>
 
 <!-- Scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="{{asset('js/custom.js')}}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
+
+<script>
+    var main_change_url = '{{route('clubImage.changeMain')}}';
+    var active_change_url = '{{route('clubImage.changeActive')}}';
+    var image_delete_url = '{{route('clubImage.delete')}}';
+    var url = '{{url('public/users')}}';
+    var club_image_create_url = '{{route('clubImage.store')}}'
+    var token = '{{csrf_token()}}'
+</script>
+
+
 </body>
 </html>

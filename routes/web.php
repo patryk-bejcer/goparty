@@ -46,7 +46,12 @@ Route::namespace('Clubs')->group(function () {
 
 } );
 /* ====== END OF CLUBS ====== */
-
+/* ====== Images ======= */
+Route::post('/club/image/', 'ClubImageController@store')->name('clubImage.store');
+Route::post('/clubImage/delete', 'ClubImageController@destroy')->name('clubImage.delete');
+Route::post('/clubImage/active', 'ClubImageController@changeActive')->name('clubImage.changeActive');
+Route::post('/clubImage/main', 'ClubImageController@changeMain')->name('clubImage.changeMain');
+/* ====== End Images ======= */
 /* ====== EVENTS ====== */
 /* Middleware is declarate in controller!!! */
 Route::namespace('Events')->group(function () {

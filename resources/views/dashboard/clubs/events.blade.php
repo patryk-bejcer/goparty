@@ -19,6 +19,7 @@
                                class="btn btn-secondary btn-sm mr-2">Edycja</a>
                             <hr>
                         @endforeach
+
                     </div>
                 </div>
             </div>

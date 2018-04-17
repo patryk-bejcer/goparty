@@ -50,7 +50,7 @@
                                 {{--<label for="official_name" class="col-md-2 col-form-label text-md-right">{{ __('First name') }}</label>--}}
                                 <div class="col-md-6">
                                     <label for="start_date" style="" class="">{{ __('Rozpoczęcie imprezy *') }}</label>
-                                    <input id="start_date" type="date"
+                                    <input id="start_date" type="datetime-local"
                                            class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
                                            name="start_date" value="{{$event->start_date}}"
                                            placeholder="Wprowadź adres start_date" required autofocus>
@@ -64,7 +64,7 @@
 
                                 <div class="col-md-6">
                                     <label for="end_date" style="" class="">{{ __('Koniec imprezy *') }}</label>
-                                    <input id="end_date" type="date"
+                                    <input id="end_date" type="datetime-local"
                                            class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
                                            name="end_date" value="{{$event->end_date}}"
                                            placeholder="Wprowadź adres end_date" required autofocus>

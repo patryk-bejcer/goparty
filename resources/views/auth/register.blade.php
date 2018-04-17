@@ -20,7 +20,7 @@
                     </div>
                 </div>
 
-                <div class="card-body pt-0">
+                <div class="card-body pt-0" style="background-color: transparent">
                     <form method="POST" action="{{ route('register') }}">
 
                         @csrf

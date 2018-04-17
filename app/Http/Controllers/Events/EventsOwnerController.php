@@ -83,8 +83,19 @@ class EventsOwnerController extends Controller {
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update( Event $event, Request $request ) {
-		$event->update( $request );
+	public function update( $event, Request $request ) {
+	    $update_event = Event::findOrFail($event);
+		$update_event->update( [
+		    'club_id' => $request->club_id ,
+		    'user_id' => $request->user_id ,
+		    'title' => $request->title,
+		    'club_id' => $request->club_id ,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+            'description' => $request->description,
+            'website' => $update_event->club->website_url,
+
+        ]);
 
 		return back();
 	}

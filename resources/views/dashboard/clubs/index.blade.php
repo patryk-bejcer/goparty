@@ -6,28 +6,32 @@
             @include('dashboard.includes.sidebar')
             <div class="col-md-9">
                 <div class="card text-white bg-dark mb-3">
-                    <div class="card-header">
-                        <b>Twoje kluby</b>
+                    <div class="card-header text-center">
+                        <b style="font-size: 20px;">Twoje kluby</b>
+                        <hr style="margin-bottom: 0px; margin-top: 10px; height: 3px;">
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" style="padding: 0.90rem; overflow: hidden">
                         @if (Session::has('message'))
                             <div class="alert alert-success">{{ Session::get('message') }}</div>
                         @endif
                         @foreach($clubs as $club)
-                            <div class="row ">
-                                <div class="col-md-2">
-                                    <img class="img-fluid"
-                                         src="http://static.asiawebdirect.com/m/bangkok/portals/bangkok-com/homepage/club-guide/pagePropertiesImage/clubs-bangkok.JPG"
-                                         alt="">
-                                </div>
-                                <div class="col-md-8">
-                                    <h4><a href="{{url('/clubs/' . $club->id)}}">{{$club->official_name}}</a></h4>
+
+                            <div id="club-row" class="row"   >
+                                @if (!empty($club->getMain($club)))
+                                <img src="{{url('/public/users/'. $club->user_id. '/'. $club->getMain($club)->image_path)}}">
+                                @else
+                                <img src="{{url('/img/klub1.jpg')}}">
+                                @endif
+                                <div class="col-md-10"  >
+
+
+                                    <h3><a href="{{url('/clubs/' . $club->id)}}">{{$club->official_name}}</a></h3>
                                     <p class="mb-0">{{$club->route}} {{$club->street_number}}
                                         , {{$club->locality}}   </p>
-                                    <p class="mb-0">Ostania modyfikacja: {{$club->updated_at}}  </p>
-                                    <a href=""><i class="fa fa-comments-o" aria-hidden="true"></i> (35)</a>
-                                    <a href=""><i class="fa fa-heart pl-2" aria-hidden="true"></i> (125)</a>
-                                    <a href=""><i class="fa fa-star pl-2" aria-hidden="true"></i> 4.85</a>
+                                    <p class="mb-2">Ostania modyfikacja: {{$club->updated_at}}  </p>
+                                    <a style="font-size: 12px;" href=""><i class="fa fa-comments-o" aria-hidden="true"></i> (35)</a>
+                                    <a style="font-size: 12px;" href=""><i class="fa fa-heart pl-2" aria-hidden="true"></i> (125)</a>
+                                    <a style="font-size: 12px;" href=""><i class="fa fa-star pl-2" aria-hidden="true"></i> 4.85</a>
                                 </div>
                                 <div class="col-md-2">
                                     <a href="{{route('events.create', ['club_id' => $club->id])}}"
@@ -37,11 +41,18 @@
                                     <a href="{{url('dashboard/clubs/' . $club->id . '/edit')}}"
                                        class="btn btn-secondary btn-sm mr-2">Edycja</a>
                                 </div>
+
+                                    <a id="club-link" href='#' class="btn btn-primary align-self-center hvr-sweep-to-right">Zobacz wiecej</a>
+
                             </div>
-                            <hr>
+
 
                         @endforeach
+                            <div class="text-center justify-content-center">
+                                {!! $clubs->links() !!}
+                            </div>
                     </div>
+
                 </div>
             </div>
         </div>

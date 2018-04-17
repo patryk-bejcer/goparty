@@ -1,13 +1,18 @@
 <div class="col-md-3" id="sidebar">
 
-    <div class="card text-white bg-dark mb-3 user-left-menu">
-        <div class="card-header">
-            <b>Panel użytkownika</b>
-            <img class="img-fluid mt-2" src="https://www.w3schools.com/howto/img_avatar.png" alt="">
-            <h4 class="mt-3 mb-0">{{Auth::user()->first_name}} {{Auth::user()->last_name}}</h4>
+    <div class="card text-white mb-3 user-left-menu">
+
+        <div class="card-header" style="padding-bottom: 0px;">
+            <p class="text-center mb-2 "><b class="text-center">Panel użytkownika</b></p>
+
+            <div class="rotate-square">
+                <img class="img-fluid mt-2" src="https://www.w3schools.com/howto/img_avatar.png" alt="">
+            </div>
+            <h4 class="mt-3 mb-0 text-center">{{Auth::user()->first_name}} {{Auth::user()->last_name}}</h4>
+            <hr >
         </div>
 
-        <div class="list-group panel">
+        <div class="list-group">
 
             @role('owner')
             <a href="#menu1" class="list-group-item collapsed" data-toggle="collapse" data-parent="#sidebar"

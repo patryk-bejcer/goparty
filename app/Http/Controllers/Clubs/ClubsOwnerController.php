@@ -5,11 +5,15 @@ namespace App\Http\Controllers\Clubs;
 use App\Events\ClubCreated;
 use App\Events\ClubDestroy;
 use App\Models\Club;
+use App\models\ClubImage;
 use App\Models\MusicType;
+use App\Models\Rules;
+use App\Models\ClubRules;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Symfony\Component\Routing\Tests\Fixtures\CustomCompiledRoute;
 
 
 class ClubsOwnerController extends Controller {
@@ -27,7 +31,8 @@ class ClubsOwnerController extends Controller {
 
 
 	public function index() {
-		$clubs = Club::where( 'user_id', Auth::id() )->get();
+		$clubs = Club::where( 'user_id', Auth::id() )->paginate(5);
+
 
 		return view( 'dashboard.clubs.index', compact( 'clubs' ) );
 	}
@@ -82,15 +87,18 @@ class ClubsOwnerController extends Controller {
 
 	public function show( $id ) {
 		$club = Club::findOrFail( $id );
-
-		return view( 'dashboard.clubs.single', compact( 'club' ) );
+		die;
+		$rules = ClubRules::where('club_id', $id)->get();
+		return view( 'dashboard.clubs.single', compact( 'club', 'rules' ) );
 	}
 
 
 	public function edit( Club $club ) {
 		$musicTypes = MusicType::all();
+		$images = ClubImage::where('club_id', $club->id)->get();
+        $rules = Rules::all();
 
-		return view( 'dashboard.clubs.edit', compact( 'club', 'musicTypes' ) );
+		return view( 'dashboard.clubs.edit', compact( 'club', 'musicTypes', 'images', 'rules' ) );
 	}
 
 	public function update( Request $request, Club $club ) {
@@ -113,6 +121,16 @@ class ClubsOwnerController extends Controller {
 			'website_url'             => $request->website_url,
 			'facebook_url'            => $request->facebook_url,
 		] );
+		if(!empty(ClubRules::where('club_id', $club->id))){
+		    $club_rules = ClubRules::where('club_id', $club->id)->delete();
+
+        }
+        foreach ($request->rules as $rule){
+            ClubRules::create([
+                'club_id' => $club->id,
+                'rule_id' => $rule,
+            ]);
+        }
 
 		return back();
 	}

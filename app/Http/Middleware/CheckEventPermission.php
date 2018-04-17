@@ -19,7 +19,7 @@ class CheckEventPermission
     {
     	// Check if club exist //
 	    $eventExists = Club::where([
-		    'id' => $request->club->id,
+		    'id' => $request->club_id,
 		    'user_id' => Auth::id(),
 	    ])->exists();
 

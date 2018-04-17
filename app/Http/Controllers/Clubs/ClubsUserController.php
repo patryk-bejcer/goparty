@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Clubs;
 use App\Models\Club;
 
 use App\Http\Controllers\Controller;
+use App\Models\clubRules;
 
 class ClubsUserController extends Controller {
 
@@ -31,7 +32,9 @@ class ClubsUserController extends Controller {
 	 * @return void
 	 */
 	public function show( $id ) {
-		echo 'clubs.user.show' . $id;
+		$club = Club::findOrFail($id);
+		$rules = clubRules::where('club_id', $id)->get();
+		return view('dashboard/clubs/single', compact('club', 'rules'));
 	}
 
 }
