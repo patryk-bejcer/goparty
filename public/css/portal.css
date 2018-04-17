@@ -3,8 +3,10 @@
 /* Fonts */
 body {
   background: purple;
+  color: rgba(54, 41, 115, 0.36);
   background-image: url(../img/bg.jpg);
   background: #000;
+  color: red;
   background-position: center; }
   body .no-padding {
     padding: 0px; }
