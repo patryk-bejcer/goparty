@@ -12,5 +12,8 @@ class clubRules extends Model
     public function club(){
         return $this->belongsTo('App\Models\Club');
     }
+    public function rule(){
+        return $this->belongsTo('App\Models\Rules');
+    }
 
 }

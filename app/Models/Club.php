@@ -55,7 +55,8 @@ class Club extends Model {
     public function rules(){
 	    return $this->hasMany('App\Models\ClubRules');
     }
-    static function getMain(Club $club){
+    static function getMain($id){
+	    $club = Club::findOrFail($id);
 	    $image = ClubImage::where('club_id', $club->id)->where('main', 1)->where('active', 1)->first();
 	    if(empty($image)){
 	        return null;
@@ -73,9 +74,10 @@ class Club extends Model {
     static function getClosestClubs($club){
 	    $count =0;
 	    $clubs = Club::all();
+	    $closest_clubs=[];
 	    foreach ($clubs as $search_club){
 	        if($club->id != $search_club->id){
-            $closest_clubs[$count] = (['id' => $search_club->id, 'distance' => round($club->getDistanceBetween($club, $search_club), 2)]);
+            $closest_clubs[$count] = ([$search_club->toArray(), 'distance' => round($club->getDistanceBetween($club, $search_club), 2)]);
             $count++;
 
             }
@@ -84,12 +86,15 @@ class Club extends Model {
             return $item1['distance'] <=> $item2['distance'];
         });
         $counter = 0;
-       $to_return = [];
+       $to_return= [];
         foreach ($closest_clubs as $club_to_delete){
-            if($counter <= 3)
-          array_push($to_return,$club_to_delete);
+            if($counter < 3){
+                array_push($to_return, $club_to_delete);
+            }
+                $counter++;
         }
-        $counter++;
+
+
         return $to_return;
     }
     static function getDistanceBetween($first_club, $second_club){

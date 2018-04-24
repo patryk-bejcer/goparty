@@ -1,3 +1,5 @@
+
+
 function change_active(div) {
     var image_id = div.getAttribute('data-image_id');
     console.log(image_id);
@@ -61,6 +63,24 @@ function loadGallery (img) {
     var my_modal = document.getElementById('photos');
     var modal_photo = document.getElementById('modal-photo');
     modal_photo.setAttribute('src', img.getAttribute('src'));
+}
+function next_slide() {
+    var cen_slide = document.getElementById('club-slide-center');
+    var prev_slide = document.getElementById('club-slide-left');
+    var next_slide = document.getElementById('club-slide-right');
+    cen_slide.setAttribute('id', 'club-slide-right');
+    prev_slide.setAttribute('id', 'club-slide-center');
+    next_slide.setAttribute('id', 'club-slide-left');
+
+}
+function prev_slide() {
+    var cen_slide = document.getElementById('club-slide-center');
+    var prev_slide = document.getElementById('club-slide-left');
+    var next_slide = document.getElementById('club-slide-right');
+    cen_slide.setAttribute('id', 'club-slide-left');
+    prev_slide.setAttribute('id', 'club-slide-right');
+    next_slide.setAttribute('id', 'club-slide-center');
+
 }
 $(function () {
 

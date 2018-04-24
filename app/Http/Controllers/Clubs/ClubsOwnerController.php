@@ -87,7 +87,7 @@ class ClubsOwnerController extends Controller {
 
 	public function show( $id ) {
 		$club = Club::findOrFail( $id );
-		die;
+
 		$rules = ClubRules::where('club_id', $id)->get();
 		return view( 'dashboard.clubs.single', compact( 'club', 'rules' ) );
 	}

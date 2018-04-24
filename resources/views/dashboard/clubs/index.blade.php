@@ -17,8 +17,8 @@
                         @foreach($clubs as $club)
 
                             <div id="club-row" class="row"   >
-                                @if (!empty($club->getMain($club)))
-                                <img src="{{url('/public/users/'. $club->user_id. '/'. $club->getMain($club)->image_path)}}">
+                                @if (!empty($club->getMain($club->id)))
+                                <img src="{{url('/public/users/'. $club->user_id. '/'. $club->getMain($club->id)->image_path)}}">
                                 @else
                                 <img src="{{url('/img/klub1.jpg')}}">
                                 @endif
@@ -42,7 +42,7 @@
                                        class="btn btn-secondary btn-sm mr-2">Edycja</a>
                                 </div>
 
-                                    <a id="club-link" href='#' class="btn btn-primary align-self-center hvr-sweep-to-right">Zobacz wiecej</a>
+                                    <a id="club-link" href="{{url('/clubs/' . $club->id)}}" class="btn btn-primary align-self-center hvr-sweep-to-right">Zobacz wiecej</a>
 
                             </div>
 
@@ -55,6 +55,8 @@
 
                 </div>
             </div>
+
         </div>
+
     </div>
 @endsection
