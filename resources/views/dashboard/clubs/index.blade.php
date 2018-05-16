@@ -30,7 +30,7 @@
                                         , {{$club->locality}}   </p>
                                     <p class="mb-2">Ostania modyfikacja: {{$club->updated_at}}  </p>
                                     <a style="font-size: 12px;" href=""><i class="fa fa-comments-o" aria-hidden="true"></i> (35)</a>
-                                    <a style="font-size: 12px;" href=""><i class="fa fa-heart pl-2" aria-hidden="true"></i> (125)</a>
+                                    <a style="font-size: 12px;" href=""><i class="fa fa-heart pl-2" aria-hidden="true"></i> (125)</`a>
                                     <a style="font-size: 12px;" href=""><i class="fa fa-star pl-2" aria-hidden="true"></i> 4.85</a>
                                 </div>
                                 <div class="col-md-2">

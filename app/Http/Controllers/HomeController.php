@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\SendWelcomeEmail;
+use App\Models\Club;
+use App\Models\Event;
 use App\User;
+use Faker\Provider\DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
-
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 class HomeController extends Controller
 {
     /**
@@ -28,8 +32,15 @@ class HomeController extends Controller
     public function index()
     {
     	$user = User::find(3);
+    	$clubs = Club::all();
+    	$events = Event::where('start_date', '>=', Carbon::today())->get();
 
-        return view('site.home', compact('user'));
+
+
+
+
+
+        return view('new_home', compact('user', 'clubs', 'events'));
     }
 
 	public function send()

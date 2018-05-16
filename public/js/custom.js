@@ -1,4 +1,6 @@
-
+function show_post() {
+    $('#user-photo').addClass('.animate-to-left');
+}
 
 function change_active(div) {
     var image_id = div.getAttribute('data-image_id');
@@ -82,11 +84,145 @@ function prev_slide() {
     next_slide.setAttribute('id', 'club-slide-center');
 
 }
+function showDiv(element) {
+
+    $div = element.parentNode.childNodes[4];
+    if($div.style.display.valueOf() == ''){
+        $div.style.display = 'none';
+        return
+    }
+
+
+    $div.style.display= '';
+}
+
+function next() {
+    var current_slide = document.getElementsByClassName('club-center')[0];
+    var next_slide = document.getElementsByClassName('club-next')[0];
+    var prev_slide = document.getElementsByClassName('club-prev')[0];
+    var prev_prev_slide = document.getElementById(prev_slide.getAttribute('prev-slide'));
+    var next_next_slide = document.getElementById(next_slide.getAttribute('next-slide'));
+    if(current_slide.classList.contains('club-prev-disable')) current_slide.classList.remove('club-prev-disable');
+    if(current_slide.classList.contains('club-next-disable')) current_slide.classList.remove('club-next-disable');
+    if(next_slide.classList.contains('club-prev-disable')) next_slide.classList.remove('club-prev-disable');
+    if(next_slide.classList.contains('club-next-disable')) next_slide.classList.remove('club-next-disable');
+    if(prev_slide.classList.contains('club-prev-disable')) prev_slide.classList.remove('club-prev-disable');
+    if(prev_slide.classList.contains('club-next-disable')) prev_slide.classList.remove('club-next-disable');
+    if(prev_prev_slide.classList.contains('club-prev-disable')) prev_prev_slide.classList.remove('club-prev-disable');
+    if(prev_prev_slide.classList.contains('club-next-disable')) prev_prev_slide.classList.remove('club-next-disable');
+    if(prev_prev_slide.classList.contains('club-disable')) prev_prev_slide.classList.remove('club-disable');
+
+
+
+
+        prev_prev_slide.classList.add('club-prev-disable');
+    console.log(prev_prev_slide);
+
+
+    setTimeout(function(){
+        current_slide.classList.remove('club-center');
+        current_slide.classList.add('club-next');
+
+        prev_slide.classList.remove('club-prev');
+        prev_slide.classList.add('club-center');
+
+        next_slide.classList.remove('club-next');
+        next_slide.classList.add('club-next-disable');
+
+        prev_prev_slide.classList.remove('club-prev-disable');
+        prev_prev_slide.classList.add('club-prev');
+    }, 100);
+
+
+
+
+
+
+
+
+}
+function prev() {
+    var current_slide = document.getElementsByClassName('club-center')[0];
+    var next_slide = document.getElementsByClassName('club-next')[0];
+    var prev_slide = document.getElementsByClassName('club-prev')[0];
+    var prev_prev_slide = document.getElementById(prev_slide.getAttribute('prev-slide'));
+    var next_next_slide = document.getElementById(next_slide.getAttribute('next-slide'));
+
+    if(current_slide.classList.contains('club-prev-disable')) current_slide.classList.remove('club-prev-disable');
+    if(current_slide.classList.contains('club-next-disable')) current_slide.classList.remove('club-next-disable');
+    if(next_slide.classList.contains('club-prev-disable')) next_slide.classList.remove('club-prev-disable');
+    if(next_slide.classList.contains('club-next-disable')) next_slide.classList.remove('club-next-disable');
+    if(prev_slide.classList.contains('club-prev-disable')) prev_slide.classList.remove('club-prev-disable');
+    if(prev_slide.classList.contains('club-next-disable')) prev_slide.classList.remove('club-next-disable');
+    if(next_next_slide.classList.contains('club-prev-disable')) next_next_slide.classList.remove('club-prev-disable');
+    if(next_next_slide.classList.contains('club-next-disable')) next_next_slide.classList.remove('club-next-disable');
+    if(next_next_slide.classList.contains('club-disable')) next_next_slide.classList.remove('club-disable');
+
+
+    next_next_slide.classList.add('club-next-disable');
+
+
+
+    setTimeout(function(){
+        current_slide.classList.remove('club-center');
+        current_slide.classList.add('club-prev');
+
+        prev_slide.classList.remove('club-prev');
+        prev_slide.classList.add('club-prev-disable');
+
+        next_slide.classList.remove('club-next');
+        next_slide.classList.add('club-center');
+
+        next_next_slide.classList.remove('club-next-disable');
+        next_next_slide.classList.remove('club-disable');
+        next_next_slide.classList.add('club-next');
+    }, 50);
+}
+$('.card-slider').onload = init_slider();
+
+function init_slider() {
+
+    var count = 1;
+    var next = 0;
+    var prev = 0;
+    $('.card-slider').children('.card-slide').each(function () {
+
+
+
+
+        next = count +1;
+        prev = count - 1;
+            this.setAttribute('prev-slide', prev.toString())
+            this.setAttribute('next-slide', next.toString() );
+        console.log(this);
+        if(this.getAttribute('id') == $('.card-slider')[0].childElementCount){
+            this.setAttribute('next-slide', '1');
+
+        }
+        if(this.getAttribute('id') == '1'){
+            this.setAttribute('prev-slide', $('.card-slider')[0].childElementCount.toString());
+
+        }
+        count = count + 1;
+    })
+
+}
+
 $(function () {
 
+    $(window).scroll(function () {
+       if(window.scrollY == 0){
+           $('.navbar').css('background-color', 'transparent');
 
+       } else {
+           $('.navbar').css('background-color', 'rgba(0,0,0,0.8)');
+       }
+    })
+    
+    $('[data-toggle="tooltip"]').tooltip();
 
    $('#image').on('change', function () {
+       console.log('AMIRNWFW');
        var image_place = $('#image-place');
 
         var club_id = this.dataset.clubid;
@@ -152,3 +288,4 @@ $(function () {
 
 
 });
+

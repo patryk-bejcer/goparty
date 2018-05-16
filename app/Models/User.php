@@ -2,7 +2,7 @@
 
 namespace App;
 
-use Backpack\CRUD\CrudTrait; 
+use Backpack\CRUD\CrudTrait;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -72,5 +72,15 @@ class User extends Authenticatable
 	}
 
 	/* End of Relationships */
+
+	public function club_percent($club){
+        /*
+        Do skończenia, funkcja ma zwracac wartosc od 0 do 100
+        jak bardzo klub może się podobać użytkownikowi.
+        Na podstawie upodobań muzycznych klienta, a muzyce którą proponuje klub.
+        */
+
+	    return rand(0, 100);
+    }
 
 }

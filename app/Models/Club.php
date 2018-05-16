@@ -85,17 +85,17 @@ class Club extends Model {
         usort($closest_clubs, function ($item1, $item2) {
             return $item1['distance'] <=> $item2['distance'];
         });
-        $counter = 0;
-       $to_return= [];
+       /* Ponizsza czesc zwroci 3 najblizsze kluby $counter = 0;
+        $to_return= [];
         foreach ($closest_clubs as $club_to_delete){
             if($counter < 3){
                 array_push($to_return, $club_to_delete);
             }
                 $counter++;
         }
+        */
 
-
-        return $to_return;
+        return $closest_clubs;
     }
     static function getDistanceBetween($first_club, $second_club){
 	    $distance = sqrt(pow($second_club->latitude-$first_club->latitude, 2)

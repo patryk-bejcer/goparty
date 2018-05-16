@@ -1,9 +1,9 @@
 
 
-<nav class="navbar navbar-expand-md navbar-light navbar-laravel fixed-top" id="navigation">
+<nav class="navbar navbar-expand-md navbar-light fixed-top" id="navigation">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            <img class="navbar-img" src="img/logo.png" alt="GoParty.pl">
+            <img class="navbar-img" src="{{asset('img/logo.png')}}"alt="GoParty.pl">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,7 +38,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
                             <!-- Tabs for users -->
-                            <a class="dropdown-item" href="{{url('/dashbord')}}">{{ __('Panel użytkownika') }}</a>
+                            <a class="dropdown-item" href="{{route('user-dashboard.index')}}">{{ __('Panel użytkownika') }}</a>
                             <!-- End tabs for owner -->
 
                             <!-- Tabs for owner -->

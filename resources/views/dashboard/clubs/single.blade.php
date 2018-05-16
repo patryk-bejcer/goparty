@@ -68,7 +68,7 @@
         @endphp
         <h3 class="text-center mt-5 mb-5">Kluby w pobliżu</h3>
     </div>
-        <div class="row justify-content-center" style="padding:0px; max-width: 90%; margin: auto;  position: relative; margin-top: 80px; position: relative">
+        <div class="row justify-content-center" style="padding:0px; max-width: 90%; margin: auto;  position: relative; margin-top: 80px; position: relative; height: 550px">
             <a class="btn-prev text-left align-left"> Poprzedni </a>
             @php $count = 0; @endphp
             @foreach($club->getClosestClubs($club) as $key => $my_club)
@@ -115,6 +115,9 @@
                 </div>
             </div>
                 @php $count++; @endphp
+                @if($count == 3)
+                    @break
+                @endif
                 @endforeach
             <a  id="left" class="navigator" onclick="prev_slide()" ><i class="fa fa-angle-left"></i> </a>
             <a  id="right" class="navigator" onclick="next_slide()" >  <i class="fa fa-angle-right"></i></a>

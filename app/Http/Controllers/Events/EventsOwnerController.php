@@ -49,7 +49,16 @@ class EventsOwnerController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function store( Request $request ) {
-		Event::create( $request->all() );
+		Event::create( [
+            'club_id' => $request->club_id ,
+            'user_id' => $request->user_id ,
+            'title' => $request->title,
+            'club_id' => $request->club_id ,
+            'start_date' => strtotime($request->start_date),
+            'end_date' => strtotime($request->end_date),
+            'description' => $request->description,
+            'website' => 'www.gro.pl',
+        ]);
 
 		return redirect()->route( 'club-events', [ 'club_id' => $request->club_id ] );
 	}
@@ -90,8 +99,8 @@ class EventsOwnerController extends Controller {
 		    'user_id' => $request->user_id ,
 		    'title' => $request->title,
 		    'club_id' => $request->club_id ,
-            'start_date' => $request->start_date,
-            'end_date' => $request->end_date,
+            'start_date' => strtotime($request->start_date),
+            'end_date' => strtotime($request->end_date),
             'description' => $request->description,
             'website' => $update_event->club->website_url,
 
