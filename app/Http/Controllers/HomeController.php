@@ -21,7 +21,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+//        $this->middleware('auth');
     }
 
     /**
@@ -34,11 +34,6 @@ class HomeController extends Controller
     	$user = User::find(3);
     	$clubs = Club::all();
     	$events = Event::where('start_date', '>=', Carbon::today())->get();
-
-
-
-
-
 
         return view('new_home', compact('user', 'clubs', 'events'));
     }
