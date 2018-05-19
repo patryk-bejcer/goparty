@@ -6,6 +6,7 @@ use App\Events\ClubCreated;
 use App\Events\ClubDestroy;
 use App\Models\Club;
 use App\models\ClubImage;
+use App\Models\Event;
 use App\Models\MusicType;
 use App\Models\Rules;
 use App\Models\ClubRules;
@@ -89,7 +90,8 @@ class ClubsOwnerController extends Controller {
 		$club = Club::findOrFail( $id );
 
 		$rules = ClubRules::where('club_id', $id)->get();
-		return view( 'dashboard.clubs.single', compact( 'club', 'rules' ) );
+		$events = Event::where('club_id', $id)->get();
+		return view( 'dashboard.clubs.single', compact( 'club', 'rules', 'events' ) );
 	}
 
 

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container" data-scroll = 'scroll'>
         <div class="row justify-content-center">
             @include('dashboard.includes.sidebar')
             <div class="col-md-9">
@@ -10,7 +10,7 @@
                         <b style="font-size: 20px;">Twoje kluby</b>
                         <hr style="margin-bottom: 0px; margin-top: 10px; height: 3px;">
                     </div>
-                    <div class="card-body" style="padding: 0.90rem; overflow: hidden">
+                    <div  class="card-body" style="padding: 0.90rem; overflow: hidden">
                         @if (Session::has('message'))
                             <div class="alert alert-success">{{ Session::get('message') }}</div>
                         @endif

@@ -1,3 +1,5 @@
+var tab = ['cos tam', 'dwa'];
+
 function show_post() {
     $('#user-photo').addClass('.animate-to-left');
 }
@@ -194,7 +196,7 @@ function init_slider() {
         prev = count - 1;
             this.setAttribute('prev-slide', prev.toString())
             this.setAttribute('next-slide', next.toString() );
-        console.log(this);
+
         if(this.getAttribute('id') == $('.card-slider')[0].childElementCount){
             this.setAttribute('next-slide', '1');
 
@@ -208,6 +210,17 @@ function init_slider() {
 
 }
 
+$(window).ready(function () {
+    $("div").each(function () {
+        if(this.hasAttribute('data-scroll')){
+            $('html, body').animate({
+                scrollTop: this.offsetTop-150
+            },200);
+            console.log(this.offsetTop)
+        }
+    })
+
+})
 $(function () {
 
     $(window).scroll(function () {
@@ -218,7 +231,34 @@ $(function () {
            $('.navbar').css('background-color', 'rgba(0,0,0,0.8)');
        }
     })
-    
+    $('#search-club').keyup( function () {
+        $('#demo').carousel('cycle');
+        if(this.value != ''){
+            $('#demo').carousel('pause');
+            return;
+        }
+
+    })
+    $('#search-club').autocomplete({
+        source: '/goparty/public/search/autocomplete',
+        minLength: 1,
+        select: function( event, ui ) {
+            window.location.href = '/goparty/public/clubs/'+ ui.item.id;
+        },
+
+
+    })
+
+        .data('ui-autocomplete')._renderItem = function (ul, item) {
+
+        return $("<li class='ui-menu-item'>")
+
+            .attr("data-value", item.id)
+
+            .append(item.label)
+            .append('<span class="pull-right">'+ item.voivodeship + '</span>')
+            .appendTo(ul);
+    };
     $('[data-toggle="tooltip"]').tooltip();
 
    $('#image').on('change', function () {

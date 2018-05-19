@@ -1,8 +1,8 @@
 <div class="col-md-3" id="sidebar">
 
-    <div class="card text-white mb-3 user-left-menu">
+    <div class="card text-white mb-3 user-left-menu" >
 
-        <div class="card-header" style="padding-bottom: 0px;">
+        <div  class="card-header" style="padding-bottom: 0px;">
             <p class="text-center mb-2 "><b class="text-center">Panel użytkownika</b></p>
 
             <div class="rotate-square">
@@ -12,7 +12,7 @@
             <hr >
         </div>
 
-        <div class="list-group">
+        <div  class="list-group">
 
             @role('owner')
             <a href="#menu1" class="list-group-item collapsed" data-toggle="collapse" data-parent="#sidebar"

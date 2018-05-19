@@ -92,43 +92,71 @@ body {
 }
 .carousel-control-prev, .carousel-control-next{
   top: -100px !important;
+  width: 11%;
 }
 .carousel-control{
   font-size: 34px;
 
 }
 .carousel{
-  max-height: 900px;
-  .carousel-item{
-  font-family: Muli;
-    img{
+  .carousel-inner{
+    height: 800px;
+  }
+  .carousel-item {
+    font-family: Muli;
+    img {
 
       max-width: 100%;
     }
-    .carousel-content-left{
+    .carousel-content-left {
       position: absolute;
       top: 35%;
       left: 11%;
       color: black;
-      h3{
+      h3 {
         font-size: 35px;
         margin-left: 40px;
 
       }
 
-      h2{
+      h2 {
         margin-left: -3px;
         letter-spacing: -2px;
         font-size: 80px;
         font-weight: 900;
 
       }
-      a{
+      a {
         font-size: 30px;
       }
-    }
-  }
 
+    }
+    .carousel-content-right{
+      position: absolute;
+      top: 35%;
+      right: 11%;
+      color: black;
+      width: 30%;
+      h3 {
+        font-size: 35px;
+        margin-left: 40px;
+
+      }
+
+      h2 {
+        margin-left: -3px;
+        letter-spacing: -2px;
+        font-size: 80px;
+        font-weight: 900;
+
+      }
+      a {
+        font-size: 30px;
+      }
+
+    }
+
+  }
 
 }
 
@@ -258,6 +286,17 @@ body {
   }
 
 #events{
+  .event-image{
+    position: absolute;
+    height:100%;
+    width: 100%;
+    background-color: black;
+    img{
+      object-fit: cover;
+      opacity: 0.4;
+      width: 100%;
+    }
+  }
   h3{
     font-weight: 900;
     color: white;
@@ -924,8 +963,8 @@ body {
       background-color: rgba(239, 58, 177,0.8);
       position: absolute;
       bottom: 0px;
-      transform: translateY(50px);
-      transition-duration: 600ms;
+      transform: translateY(100px);
+      transition-duration: 300ms;
       transition-delay: 300ms;
       a{
         text-decoration: none;
@@ -993,10 +1032,7 @@ body {
 }
 
 .navigator{
-  -webkit-animation: mymove 3s;  /* Safari 4.0 - 8.0 */
-  -webkit-animation-iteration-count: 2; /* Safari 4.0 - 8.0 */
-  animation: scale 1s;
-  animation-iteration-count: infinite;
+
   border-radius: 200px;
   padding-left: 13px;
   padding-right: 13px;
@@ -1004,9 +1040,7 @@ body {
   padding-bottom: 5px;
   border: 1px solid rgba(255,255,255,0.3);
   transition: 400ms;
-  position: absolute;
   color: white !important;
-  margin-top: 200px;
   &:hover{
     cursor: pointer;
     color: $pink-color !important;
@@ -1051,12 +1085,29 @@ body {
   box-shadow: 0px 0px 18px 1px rgba(0,0,0,0.49);
   .input-group-text{
     border-radius: 0px !important;
+    padding: 0px;
     &:hover{
       opacity: 0.7 !important;
     }
+    button{
+      width: 100%;
+      height: 100%;
+      border: none;
+      padding: 0px;
+      margin: 0px;
+      background-color: transparent;
+      &:hover{
+        cursor: pointer;
+      }
+    }
 
     span{
+      font-size: 30px;
       color: white !important;
+      background-color: transparent;
+      border: none;
+      padding: 0px;
+      margin: 0px;
 
     }
   }
@@ -1106,5 +1157,56 @@ body {
 
   #event-carousel-item{
     display: flex !important;
+    height: 330px;
   }
+}
+.ui-menu{
+  border: none !important;
+}
+.ui-menu-item{
+  border: none !important;
+
+  transition: all 200ms !important;
+  padding: 5px 12px;
+  background-color: $pink-color !important;
+  color:white;
+  &:hover{
+    background-color: $purple-color !important;
+  }
+}
+.ui-menu-item-wrapper{
+  transition: all 200ms !important;
+  background-color: $pink-color !important;
+  color:white;
+  &:hover{
+  border: none !important;
+  }
+}
+
+.dropdown-menu{
+  background-color: $pink-color;
+
+  .dropdown-item{
+    transition: 200ms;
+    color: white;
+    font-weight: 900;
+    &:hover{
+      background-color: $purple-color;
+    }
+  }
+
+}
+
+#shadow-inside{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-box-shadow: inset 0px 0px 21px 0px rgba(239,58,177,0.84);
+  -moz-box-shadow: inset 0px 0px 21px 0px rgba(239,58,177,0.84);
+  box-shadow: inset 0px 0px 21px 0px rgba(239,58,177,0.84);
+}
+
+#shadow-outside{
+  border: 2px solid #ef3ab1;
+
 }

@@ -19,6 +19,7 @@
     <link href="{{ asset('css/portal.css') }}" rel="stylesheet">
     <link href="{{asset ('css/hover-min.css')}}" rel="stylesheet">
     <link href="{{asset ('css/rating.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 
 
 
@@ -34,7 +35,7 @@
 
     @include('layouts.header')
      @include('layouts.slider')
-    <main style="overflow-y: hidden">
+    <main style="overflow-y: hidden" class="mt-5 mb-5">
         @yield('content')
     </main>
       @include('layouts.footer')
@@ -43,10 +44,12 @@
 
 
 <!-- Scripts -->
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <script src="{{asset('js/custom.js')}}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script>
     var main_change_url = '{{route('clubImage.changeMain')}}';
     var active_change_url = '{{route('clubImage.changeActive')}}';

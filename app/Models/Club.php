@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\User;
 use Backpack\CRUD\CrudTrait;
 use Faker\Provider\Image;
 use Illuminate\Database\Eloquent\Model;
@@ -42,8 +43,14 @@ class Club extends Model {
 	|--------------------------------------------------------------------------
 	*/
 	public function user() {
+
 		return $this->hasOne( 'App\User', 'id', 'user_id' );
 	}
+
+    public function getUser() {
+
+        return Event::findOrFail($this->user_id);
+    }
 
 	public function events() {
 		return $this->hasMany( 'App\Models\Event' );

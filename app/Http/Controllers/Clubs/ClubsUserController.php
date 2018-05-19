@@ -6,7 +6,7 @@ use App\Models\Club;
 
 use App\Http\Controllers\Controller;
 use App\Models\clubRules;
-
+use App\Models\Event;
 class ClubsUserController extends Controller {
 
 	public function __construct() {
@@ -34,7 +34,8 @@ class ClubsUserController extends Controller {
 	public function show( $id ) {
 		$club = Club::findOrFail($id);
 		$rules = clubRules::where('club_id', $id)->get();
-		return view('dashboard/clubs/single', compact('club', 'rules'));
+        $events = Event::where('club_id', $id)->get();
+		return view('dashboard/clubs/single', compact('club', 'rules', 'events'));
 	}
 
 }
