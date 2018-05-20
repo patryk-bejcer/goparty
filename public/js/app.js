@@ -14312,6 +14312,7 @@ window.Vue = __webpack_require__(39);
 
 Vue.component('address-search-box', __webpack_require__(42));
 Vue.component('nearest-clubs', __webpack_require__(51));
+// Vue.component('slider', require('./components/slider'));
 
 var app = new Vue({
   el: '#app'
@@ -48647,7 +48648,7 @@ exports = module.exports = __webpack_require__(12)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48658,6 +48659,17 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -48694,10 +48706,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 axios.get('/api/nearest-clubs?lat=' + lat + '&long=' + long).then(function (response) {
                     self.clubs = response;
                     console.log(self.clubs);
+                    console.log('distance:' + self.getDistanceFromLatLonInKm(lat, long, 50.667263, 17.935603899999933));
                 }).catch(function (error) {
                     console.log(error);
                 });
             });
+        }
+    },
+    methods: {
+        getDistanceFromLatLonInKm: function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+            var R = 6371; // Radius of the earth in km
+            var dLat = this.deg2rad(lat2 - lat1); // deg2rad below
+            var dLon = this.deg2rad(lon2 - lon1);
+            var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            var d = R * c; // Distance in km
+            return d.toFixed(1);
+        },
+        deg2rad: function deg2rad(deg) {
+            return deg * (Math.PI / 180);
         }
     }
 });
@@ -48711,22 +48738,55 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h3", { staticClass: "text-center" }, [
-      _vm._v("Nearest Clubs Component")
-    ]),
+    _vm._m(0),
     _vm._v(" "),
     _c(
       "div",
       { staticClass: "row" },
       _vm._l(_vm.clubs.data, function(club) {
-        return _c("div", { staticClass: "col-12" }, [
-          _c("h3", [_vm._v(" " + _vm._s(club.official_name) + " ")])
+        return _c("div", { staticClass: "col-3 mb-2" }, [
+          _c("div", [
+            _c("img", {
+              staticClass: "img-fluid",
+              attrs: { src: "http://localhost:8000/img/klub1.jpg", alt: "" }
+            }),
+            _vm._v(" "),
+            _c("a", { attrs: { href: "/clubs/" + club.id } }, [
+              _c("h4", { staticClass: "text-white" }, [
+                _vm._v(
+                  " " +
+                    _vm._s(club.official_name) +
+                    " (\n                        " +
+                    _vm._s(
+                      _vm.getDistanceFromLatLonInKm(
+                        _vm.position.latitude,
+                        _vm.position.longitude,
+                        club.latitude,
+                        club.longitude
+                      )
+                    ) +
+                    "\n                         km)"
+                )
+              ])
+            ])
+          ])
         ])
       })
     )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-auto mt-3 mb-5" }, [
+      _c("h3", { staticClass: "text-center" }, [
+        _vm._v("KLUBY W TWOJEJ OKOLICY")
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

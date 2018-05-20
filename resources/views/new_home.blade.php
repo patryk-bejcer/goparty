@@ -6,96 +6,98 @@
 
     @endphp
 
-    <div class="container" id="clubs-container">
+    <div class="container-fluid" id="clubs-container">
 
         <nearest-clubs></nearest-clubs>
 
-        <h3 class="text-center">Kluby w twojej okolicy</h3>
+        {{--<slider></slider>--}}
 
-        <div class="card-slider row justify-content-center">
-            @foreach($clubs as $club)
+        {{--<h3 class="text-center">Kluby w twojej okolicy</h3>--}}
 
-                <div data-background='@if(!empty($club->getMain($club->id))) {{url('public/users/'.$club->user_id.'/'.$club->getMain($club->id)->image_path)}} @endif'
-                     id="{{$counter}}"
-                     class="card-slide @if($counter == 1) club-prev @elseif($counter == 2) club-center @elseif($counter == 3) club-next @else club-disable @endif "
-                     style="background-image: url('@if(!empty($club->getMain($club->id))) {{url('public/users/'.$club->user_id.'/'.$club->getMain($club->id)->image_path)}} @else {{url('img/klub1.jpg')}} @endif() ') ">
-                <!-- <img class="club-border" src="{{url('img/clubs_border.png')}}"> -->
+        {{--<div class="card-slider row justify-content-center">--}}
+            {{--@foreach($clubs as $club)--}}
 
-                    <div class="slide-content">
-                        <div class="pull-right">
-                            <form id="Like_form" action="#" method="post">
+                {{--<div data-background='@if(!empty($club->getMain($club->id))) {{url('public/users/'.$club->user_id.'/'.$club->getMain($club->id)->image_path)}} @endif'--}}
+                     {{--id="{{$counter}}"--}}
+                     {{--class="card-slide @if($counter == 1) club-prev @elseif($counter == 2) club-center @elseif($counter == 3) club-next @else club-disable @endif "--}}
+                     {{--style="background-image: url('@if(!empty($club->getMain($club->id))) {{url('public/users/'.$club->user_id.'/'.$club->getMain($club->id)->image_path)}} @else {{url('img/klub1.jpg')}} @endif() ') ">--}}
+                {{--<!-- <img class="club-border" src="{{url('img/clubs_border.png')}}"> -->--}}
 
-                                <fieldset class="rating">
-                                    <input onclick="document.getElementById('Like_form').submit()" type="radio"
-                                           id="star5" name="rating" value="5"/><label class="full" for="star5"
-                                                                                      title="Awesome - 5 stars"></label>
+                    {{--<div class="slide-content">--}}
+                        {{--<div class="pull-right">--}}
+                            {{--<form id="Like_form" action="#" method="post">--}}
 
-                                    <input checked onclick="document.getElementById('Like_form').submit()" type="radio"
-                                           id="star4" name="rating" value="4"/><label class="full" for="star4"
-                                                                                      title="Pretty good - 4 stars"></label>
+                                {{--<fieldset class="rating">--}}
+                                    {{--<input onclick="document.getElementById('Like_form').submit()" type="radio"--}}
+                                           {{--id="star5" name="rating" value="5"/><label class="full" for="star5"--}}
+                                                                                      {{--title="Awesome - 5 stars"></label>--}}
 
-                                    <input onclick="document.getElementById('Like_form').submit()" type="radio"
-                                           id="star3" name="rating" value="3"/><label class="full" for="star3"
-                                                                                      title="Meh - 3 stars"></label>
+                                    {{--<input checked onclick="document.getElementById('Like_form').submit()" type="radio"--}}
+                                           {{--id="star4" name="rating" value="4"/><label class="full" for="star4"--}}
+                                                                                      {{--title="Pretty good - 4 stars"></label>--}}
 
-                                    <input onclick="document.getElementById('Like_form').submit()" type="radio"
-                                           id="star2" name="rating" value="2"/><label class="full" for="star2"
-                                                                                      title="Kinda bad - 2 stars"></label>
+                                    {{--<input onclick="document.getElementById('Like_form').submit()" type="radio"--}}
+                                           {{--id="star3" name="rating" value="3"/><label class="full" for="star3"--}}
+                                                                                      {{--title="Meh - 3 stars"></label>--}}
 
-                                    <input onclick="document.getElementById('Like_form').submit()" type="radio"
-                                           id="star1" name="rating" value="1"/><label class="full" for="star1"
-                                                                                      title="Sucks big time - 1 star"></label>
+                                    {{--<input onclick="document.getElementById('Like_form').submit()" type="radio"--}}
+                                           {{--id="star2" name="rating" value="2"/><label class="full" for="star2"--}}
+                                                                                      {{--title="Kinda bad - 2 stars"></label>--}}
 
-                                </fieldset>
+                                    {{--<input onclick="document.getElementById('Like_form').submit()" type="radio"--}}
+                                           {{--id="star1" name="rating" value="1"/><label class="full" for="star1"--}}
+                                                                                      {{--title="Sucks big time - 1 star"></label>--}}
 
-                            </form>
-                        </div>
-                        <br>
-                        <h3 style="margin-top: 50px"> {{$club->official_name}}</h3>
-                        <h3 id="value" style="font-size: 70px !important;">{{$user->club_percent($club)}}<span
-                                    style="font-size: 20px; font-weight: 200;">% Dla Ciebie</span></h3>
-                        <!-- <div class="col-lg-12" style="padding: 0px!important; margin-top: 10px;">
-                            <a style=" font-size: 19px;" onclick="showDiv(this)"> Muzyka <span class="fa fa-angle-down"> </span></a> <br>
-                            <div id="music" style="display: none;">
-                                <p style="color: white; font-size: 14px; font-family: Muli; font-weight: 200"> Lorem Ipsum Lorem Ipsum Lorem Ipsum </p>
-                                <p style="color: white; font-size: 14px; font-family: Muli; font-weight: 200"> Lorem Ipsum Lorem Ipsum Lorem Ipsum </p>
-                                <p style="color: white; font-size: 14px; font-family: Muli; font-weight: 200"> Lorem Ipsum Lorem Ipsum Lorem Ipsum </p>
-                            </div>
-                        </div>
+                                {{--</fieldset>--}}
 
-                        <div class="col-lg-12" style="padding: 0px!important; margin-top: 10px;">
-                            <a  style=" font-size: 19px;" onclick="showDiv(this)"> Rozrywka <span class="fa fa-angle-down"></span></a> <br>
-                            <div id="Entertainment" style="display: none;">
-                                <p style="color: white; font-size: 14px; font-family: Muli; font-weight: 200"> Lorem Ipsum Lorem Ipsum Lorem Ipsum </p>
-                            </div>
-                        </div>
-                        <div class="col-lg-12" style="padding: 0px!important;margin-top: 10px;">
-                            <a style=" font-size: 19px;" onclick="showDiv(this)"> Jedznie i napoje <span class="fa fa-angle-down"> </span></a> <br>
-                            <div id="food" style="display: none;">
-                                <p style="color: white; font-size: 14px; font-family: Muli; font-weight: 200"> Lorem Ipsum Lorem Ipsum Lorem Ipsum </p>
-                            </div>
-                        </div> -->
+                            {{--</form>--}}
+                        {{--</div>--}}
+                        {{--<br>--}}
+                        {{--<h3 style="margin-top: 50px"> {{$club->official_name}}</h3>--}}
+                        {{--<h3 id="value" style="font-size: 70px !important;">{{$user->club_percent($club)}}<span--}}
+                                    {{--style="font-size: 20px; font-weight: 200;">% Dla Ciebie</span></h3>--}}
+                        {{--<!-- <div class="col-lg-12" style="padding: 0px!important; margin-top: 10px;">--}}
+                            {{--<a style=" font-size: 19px;" onclick="showDiv(this)"> Muzyka <span class="fa fa-angle-down"> </span></a> <br>--}}
+                            {{--<div id="music" style="display: none;">--}}
+                                {{--<p style="color: white; font-size: 14px; font-family: Muli; font-weight: 200"> Lorem Ipsum Lorem Ipsum Lorem Ipsum </p>--}}
+                                {{--<p style="color: white; font-size: 14px; font-family: Muli; font-weight: 200"> Lorem Ipsum Lorem Ipsum Lorem Ipsum </p>--}}
+                                {{--<p style="color: white; font-size: 14px; font-family: Muli; font-weight: 200"> Lorem Ipsum Lorem Ipsum Lorem Ipsum </p>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
 
-                    </div>
+                        {{--<div class="col-lg-12" style="padding: 0px!important; margin-top: 10px;">--}}
+                            {{--<a  style=" font-size: 19px;" onclick="showDiv(this)"> Rozrywka <span class="fa fa-angle-down"></span></a> <br>--}}
+                            {{--<div id="Entertainment" style="display: none;">--}}
+                                {{--<p style="color: white; font-size: 14px; font-family: Muli; font-weight: 200"> Lorem Ipsum Lorem Ipsum Lorem Ipsum </p>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<div class="col-lg-12" style="padding: 0px!important;margin-top: 10px;">--}}
+                            {{--<a style=" font-size: 19px;" onclick="showDiv(this)"> Jedznie i napoje <span class="fa fa-angle-down"> </span></a> <br>--}}
+                            {{--<div id="food" style="display: none;">--}}
+                                {{--<p style="color: white; font-size: 14px; font-family: Muli; font-weight: 200"> Lorem Ipsum Lorem Ipsum Lorem Ipsum </p>--}}
+                            {{--</div>--}}
+                        {{--</div> -->--}}
 
-
-                </div>
-                @php
-                    $counter++;
-                @endphp
-            @endforeach
+                    {{--</div>--}}
 
 
-        </div>
+                {{--</div>--}}
+                {{--@php--}}
+                    {{--$counter++;--}}
+                {{--@endphp--}}
+            {{--@endforeach--}}
 
 
-        <div class="nav-button">
-            <div onclick="prev()" class="prev-button"><a><i class="fa fa-caret-left"></i></a></div>
-            <div onclick="next()" class="next-button"><a><i class="fa fa-caret-right"></i></a></div>
-        </div>
+        {{--</div>--}}
 
 
-    </div>
+        {{--<div class="nav-button">--}}
+            {{--<div onclick="prev()" class="prev-button"><a><i class="fa fa-caret-left"></i></a></div>--}}
+            {{--<div onclick="next()" class="next-button"><a><i class="fa fa-caret-right"></i></a></div>--}}
+        {{--</div>--}}
+
+
+    {{--</div>--}}
 
 
 

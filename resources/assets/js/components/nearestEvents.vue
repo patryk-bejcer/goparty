@@ -1,3 +1,4 @@
+
 <template>
     <div>
         <div class="col-lg-auto mt-3 mb-5">
@@ -10,7 +11,7 @@
                 <div>
                     <img class="img-fluid" src="http://localhost:8000/img/klub1.jpg" alt="">
                     <a :href="'/clubs/' + club.id">
-                        <h4 class="text-white"> {{ club.official_name}} (
+                        <h4 class="text-white mt-2"> {{ club.official_name}} (
                             {{ getDistanceFromLatLonInKm(position.latitude, position.longitude, club.latitude, club.longitude) }}
                              km)</h4>
                     </a>
@@ -22,6 +23,9 @@
 </template>
 
 <script>
+    /*
+     * @TODO create nearest events api controller and vue componnt
+     */
     export default {
         name: "nearestClubs",
         data: function () {
@@ -42,7 +46,7 @@
                     console.log(self.position.latitude);
                     console.log(self.position.longitude);
 
-                    axios.get('/api/nearest-clubs?lat=' + lat + '&long=' + long)
+                    axios.get('/api/nearest-events?lat=' + lat + '&long=' + long)
                         .then(function (response) {
                             self.clubs = response;
                             console.log(self.clubs);

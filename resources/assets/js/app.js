@@ -17,6 +17,7 @@ window.Vue = require('vue');
 
 Vue.component('address-search-box', require('./components/addressSearchBoxWithMap'));
 Vue.component('nearest-clubs', require('./components/nearestClubs'));
+// Vue.component('slider', require('./components/slider'));
 
 const app = new Vue({
     el: '#app'

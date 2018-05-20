@@ -240,10 +240,10 @@ $(function () {
 
     })
     $('#search-club').autocomplete({
-        source: '/goparty/public/search/autocomplete',
+        source: 'http://localhost:8000/search/autocomplete',
         minLength: 1,
         select: function( event, ui ) {
-            window.location.href = '/goparty/public/clubs/'+ ui.item.id;
+            window.location.href = 'http://localhost:8000/clubs/'+ ui.item.id;
         },
 
 
