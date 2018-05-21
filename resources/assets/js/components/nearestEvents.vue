@@ -2,18 +2,18 @@
 <template>
     <div>
         <div class="col-lg-auto mt-3 mb-5">
-            <h3 class="text-center">KLUBY W TWOJEJ OKOLICY</h3>
+            <h3 class="text-center">NAJBLIŻSZE IMPREZY W TWOJEJ OKOLICY</h3>
         </div>
 
         <div class="row">
 
-            <div v-for="club in clubs.data" class="col-3 mb-2">
+            <div v-for="event in events.data" class="col-12 col-md-3 mb-2">
                 <div>
                     <img class="img-fluid" src="http://localhost:8000/img/klub1.jpg" alt="">
-                    <a :href="'/clubs/' + club.id">
-                        <h4 class="text-white mt-2"> {{ club.official_name}} (
-                            {{ getDistanceFromLatLonInKm(position.latitude, position.longitude, club.latitude, club.longitude) }}
-                             km)</h4>
+                    <a :href="'/events/' + event.id">
+                        <h4 class="text-white mt-2"> {{ event.title }} </h4>
+                        <h4 class="text-white mt-2"> {{ event.start_date }} </h4>
+                        <h4 class="text-white mt-2"> {{ event.official_name }} </h4>
                     </a>
                 </div>
             </div>
@@ -31,7 +31,7 @@
         data: function () {
             return {
                 position: null,
-                clubs: {}
+                events: {}
             }
         },
         mounted: function () {
@@ -48,8 +48,8 @@
 
                     axios.get('/api/nearest-events?lat=' + lat + '&long=' + long)
                         .then(function (response) {
-                            self.clubs = response;
-                            console.log(self.clubs);
+                            self.events = response;
+                            console.log(self.events);
                             console.log('distance:' + self.getDistanceFromLatLonInKm(lat,long,50.667263, 17.935603899999933))
                         })
                         .catch(function (error) {

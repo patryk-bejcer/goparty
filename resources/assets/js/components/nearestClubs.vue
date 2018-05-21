@@ -6,7 +6,7 @@
 
         <div class="row">
 
-            <div v-for="club in clubs.data" class="col-3 mb-2">
+            <div v-for="club in clubs.data" class="col-12 col-md-3 mb-2">
                 <div>
                     <img class="img-fluid" src="http://localhost:8000/img/klub1.jpg" alt="">
                     <a :href="'/clubs/' + club.id">

@@ -3,12 +3,17 @@
 @section('content')
     @php
         $counter = 1
-
     @endphp
 
     <div class="container-fluid" id="clubs-container">
 
-        <nearest-clubs></nearest-clubs>
+        {{--Vue Component generate nearest events from DB--}}
+        <nearest-events>
+        </nearest-events>
+
+        {{--Vue Component generate nearest clubs from DB--}}
+        <nearest-clubs>
+        </nearest-clubs>
 
         {{--<slider></slider>--}}
 
