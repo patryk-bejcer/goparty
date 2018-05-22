@@ -61,6 +61,8 @@ Route::namespace('Events')->group(function () {
 //	Route::get('clubs/{club}/events', 'EventsUserController@clubEvents')->name('club-events');
 	Route::get('events/{event}', 'EventsUserController@singleEvent')->name('single-event');
 
+	Route::get('search-events', 'EventsUserController@searchEvents');
+
 	/* Rotes for events on owner dashboard panel (role: owner) */
 	Route::prefix('dashboard')->group(function () {
 		Route::get('owner-all-events', 'EventsOwnerController@index')->name('all-owner-events');

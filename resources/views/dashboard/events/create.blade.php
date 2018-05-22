@@ -4,7 +4,6 @@
     <div class="container">
 
 
-
         <div class="row justify-content-center">
             @include('dashboard.includes.sidebar')
             <div class="col-md-9">
@@ -102,6 +101,70 @@
                                     @endif
                                 </div>
 
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="description" style="" class="">{{ __('Wstęp od:') }}</label>
+                                            <input class="form-control" type="number">
+
+                                            @if ($errors->has('description'))
+                                                <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('description') }}</strong>
+                                    </span>
+                                            @endif
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="description" style="" class="">{{ __('Cena biletów:') }}</label>
+                                            <input class="form-control" type="number">
+
+                                            @if ($errors->has('description'))
+                                                <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('description') }}</strong>
+                                    </span>
+                                            @endif
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="description" style="" class="">{{ __('Selekcja:') }}</label>
+                                            <select class="form-control">
+                                                <option value="1">Tak</option>
+                                                <option value="0">Nie</option>
+                                            </select>
+
+                                            @if ($errors->has('description'))
+                                                <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('description') }}</strong>
+                                    </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group{{ $errors->has('avatar') ? ' has-error' : '' }}">
+                                        <label for="">Plakat lub zdjęcie imprezy</label>
+                                        <input name="primary_image" type="file" class="form-control upload-input mb-1"
+                                               placeholder="Wybierz zdjęcie główne" accept=".jpg,.jpeg"
+                                               onchange="loadFile(event)" multiple>
+
+                                        @if ($errors->has('primary_image'))
+                                            <span class="help-block">
+                            <small class="text-danger">{{ $errors->first('primary_image') }}</small>
+                        </span>
+                                        @endif
+
+                                    </div>
+                                    <img class="img-fluid" id="output"/>
+                                    <script>
+                                        var loadFile = function (event) {
+                                            var output = document.getElementById('output');
+                                            output.src = URL.createObjectURL(event.target.files[0]);
+                                        };
+                                    </script>
+                                </div>
                             </div>
 
                             <hr>

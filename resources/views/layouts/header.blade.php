@@ -15,8 +15,8 @@
             <ul class="navbar-nav mr-auto">
                 <li> <a class="nav-link" href="#" >Start</a> </li>
 
-                <li> <a class="nav-link" href="#">Kluby</a> </li>
-                <li> <a class="nav-link" href="#">Wydarzenia</a> </li>
+                <li> <a class="nav-link" href="{{ route('all-events') }}">Imprezy</a> </li>
+                <li> <a class="nav-link" href="{{ route('clubs.index') }}">Kluby</a> </li>
                 <li> <a class="nav-link" href="#" >Muzyka</a> </li>
                 <li> <a class="nav-link" href="#">O nas</a> </li>
 

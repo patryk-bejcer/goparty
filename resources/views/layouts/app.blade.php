@@ -17,13 +17,10 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/portal.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/events.css') }}" rel="stylesheet">
     <link href="{{asset ('css/hover-min.css')}}" rel="stylesheet">
     <link href="{{asset ('css/rating.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-
-
-
-
 
 
     <!-- Google maps APIs -->
@@ -34,8 +31,8 @@
 <div id="app">
 
     @include('layouts.header')
-     @include('layouts.slider')
-    <main style="overflow-y: hidden" class="mt-5 mb-5">
+
+    <main style="overflow-y: hidden; margin-top: 6em;" class=" mb-5">
         @yield('content')
     </main>
       @include('layouts.footer')
