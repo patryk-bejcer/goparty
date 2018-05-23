@@ -43,7 +43,7 @@ class EventsUserController extends Controller
     {
 
         /*
-         * @TODO Finish search events form
+         * @TODO Finish search events form 
          */
 
         $city = $request->get('city');

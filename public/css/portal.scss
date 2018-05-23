@@ -11,6 +11,7 @@ $secondary-font: 'Muli', sans-serif;
 a {
   cursor: pointer;
   text-decoration: none !important;
+  color: $pink-color;
 }
 
 body {
@@ -30,7 +31,7 @@ body {
     border: 0px solid #FFF !important;
   }
   a {
-    color: $pink-color;
+    //color: $pink-color;
   }
   .user-left-menu {
     .list-group-flush:last-child .list-group-item:last-child {
@@ -318,7 +319,7 @@ main{
     }
     a {
       background-color: rgba($purple-color, 0.6);
-      color: $pink-color;
+      //color: $pink-color;
     }
     h1 {
       color: white;
@@ -394,6 +395,7 @@ main{
   }
 
   .invalid-feedback {
+    display: block !important;
     strong {
       text-shadow: 1px 1px 1px #000;
     }
@@ -1191,7 +1193,7 @@ main{
 }
 
 .dropdown-menu {
-  background-color: $pink-color;
+  //background-color: $pink-color;
 
   .dropdown-item {
     transition: 200ms;
@@ -1218,7 +1220,9 @@ main{
 
 }
 
-
+#output{
+  max-height: 150px !important;
+}
 
 //STYLES FOR NOTEBOOKS
 @media (max-width: 1360px) {

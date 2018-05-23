@@ -14358,7 +14358,7 @@ window.Vue = __webpack_require__(40);
  */
 
 Vue.component('address-search-box', __webpack_require__(43));
-Vue.component('city-search-box', __webpack_require__(68));
+Vue.component('city-search-box', __webpack_require__(51));
 Vue.component('nearest-clubs', __webpack_require__(54));
 Vue.component('nearest-events', __webpack_require__(59));
 // Vue.component('slider', require('./components/slider'));
@@ -48565,9 +48565,147 @@ if (false) {
 }
 
 /***/ }),
-/* 51 */,
-/* 52 */,
-/* 53 */,
+/* 51 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(52)
+/* template */
+var __vue_template__ = __webpack_require__(53)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/citySearchFieldAutoComplete.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-575d3cb0", Component.options)
+  } else {
+    hotAPI.reload("data-v-575d3cb0", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 52 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_google_autocomplete__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_google_autocomplete___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_google_autocomplete__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: { VueGoogleAutocomplete: __WEBPACK_IMPORTED_MODULE_0_vue_google_autocomplete___default.a },
+
+    data: function data() {
+        return {
+            address: ''
+        };
+    },
+
+    mounted: function mounted() {
+        // To demonstrate functionality of exposed component functions
+        // Here we make focus on the user input
+        this.$refs.address.focus();
+    },
+
+
+    methods: {
+        /**
+         * When the location found
+         * @param {Object} addressData Data of the found location
+         * @param {Object} placeResultData PlaceResult object
+         * @param {String} id Input container ID
+         */
+        getCityData: function getCityData(addressData, placeResultData, id) {
+            this.address = addressData.locality;
+            console.log(this.address);
+        }
+    }
+});
+
+/***/ }),
+/* 53 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("vue-google-autocomplete", {
+        ref: "this.address",
+        attrs: {
+          name: "city",
+          id: "map",
+          classname: "form-control",
+          placeholder: "Miejscowość",
+          types: "(regions)",
+          country: "pl"
+        },
+        on: { placechanged: _vm.getCityData }
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-575d3cb0", module.exports)
+  }
+}
+
+/***/ }),
 /* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -49039,151 +49177,6 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 65 */,
-/* 66 */,
-/* 67 */,
-/* 68 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(2)
-/* script */
-var __vue_script__ = __webpack_require__(69)
-/* template */
-var __vue_template__ = __webpack_require__(70)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/citySearchFieldAutoComplete.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-575d3cb0", Component.options)
-  } else {
-    hotAPI.reload("data-v-575d3cb0", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 69 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_google_autocomplete__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_google_autocomplete___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_google_autocomplete__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    components: { VueGoogleAutocomplete: __WEBPACK_IMPORTED_MODULE_0_vue_google_autocomplete___default.a },
-
-    data: function data() {
-        return {
-            address: ''
-        };
-    },
-
-    mounted: function mounted() {
-        // To demonstrate functionality of exposed component functions
-        // Here we make focus on the user input
-        this.$refs.address.focus();
-    },
-
-
-    methods: {
-        /**
-         * When the location found
-         * @param {Object} addressData Data of the found location
-         * @param {Object} placeResultData PlaceResult object
-         * @param {String} id Input container ID
-         */
-        getCityData: function getCityData(addressData, placeResultData, id) {
-            this.address = addressData.locality;
-            console.log(this.address);
-        }
-    }
-});
-
-/***/ }),
-/* 70 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "mt-3" },
-    [
-      _c("vue-google-autocomplete", {
-        ref: "this.address",
-        attrs: {
-          name: "city",
-          id: "map",
-          classname: "form-control",
-          placeholder: "Miejscowość",
-          types: "(regions)",
-          country: "pl"
-        },
-        on: { placechanged: _vm.getCityData }
-      })
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-575d3cb0", module.exports)
-  }
-}
 
 /***/ })
 /******/ ]);

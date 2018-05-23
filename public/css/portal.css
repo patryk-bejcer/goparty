@@ -3,7 +3,8 @@
 /* Fonts */
 a {
   cursor: pointer;
-  text-decoration: none !important; }
+  text-decoration: none !important;
+  color: #ef3ab1; }
 
 body {
   font-family: Muli;
@@ -18,8 +19,6 @@ body {
     background-color: rgba(255, 255, 255, 0.85) !important;
     border-radius: 0 !important;
     border: 0px solid #FFF !important; }
-  body a {
-    color: #ef3ab1; }
   body .user-left-menu .list-group-flush:last-child .list-group-item:last-child {
     border-bottom: 1px solid #333;
     border-radius: 0 !important; }
@@ -223,8 +222,7 @@ main {
       position: absolute;
       max-width: 45%; }
     #events .event a {
-      background-color: rgba(4, 25, 98, 0.6);
-      color: #ef3ab1; }
+      background-color: rgba(4, 25, 98, 0.6); }
     #events .event h1 {
       color: white;
       bottom: 0px;
@@ -281,8 +279,10 @@ main {
         font-weight: 600;
         font-size: 2rem;
         font-family: "Muli", sans-serif; }
-  .auth-form .invalid-feedback strong {
-    text-shadow: 1px 1px 1px #000; }
+  .auth-form .invalid-feedback {
+    display: block !important; }
+    .auth-form .invalid-feedback strong {
+      text-shadow: 1px 1px 1px #000; }
   .auth-form .btn-link {
     color: #FFF; }
   .auth-form .btn {
@@ -867,14 +867,12 @@ main {
   .ui-menu-item-wrapper:hover {
     border: none !important; }
 
-.dropdown-menu {
-  background-color: #ef3ab1; }
-  .dropdown-menu .dropdown-item {
-    transition: 200ms;
-    color: white;
-    font-weight: 900; }
-    .dropdown-menu .dropdown-item:hover {
-      background-color: #041962; }
+.dropdown-menu .dropdown-item {
+  transition: 200ms;
+  color: white;
+  font-weight: 900; }
+  .dropdown-menu .dropdown-item:hover {
+    background-color: #041962; }
 
 #shadow-inside {
   position: absolute;
@@ -886,6 +884,9 @@ main {
 
 #shadow-outside {
   border: 2px solid #ef3ab1; }
+
+#output {
+  max-height: 150px !important; }
 
 @media (max-width: 1360px) {
   .carousel .carousel-inner {

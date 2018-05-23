@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-3">
+    <div>
         <vue-google-autocomplete
                 ref="this.address"
                 name="city"

@@ -1,5 +1,44 @@
 //Styles for events page
+
+/* Colors */
+$primary-color: purple;
+$pink-color: rgb(239, 58, 177);
+$purple-color: #041962;
+$white-color: #FFF;
+
 #events-search-form {
-  background: #0c051e;
+  background: transparent;
   min-height: 100px;
+  width: 100%;
+  h2{
+    color:#FFF;
+    text-align: center;
+    letter-spacing: 2px;
+  }
+  .search-form-body{
+    background: rgba(255, 255, 255, 0.7);
+    padding-bottom: 0 !important;
+    margin-bottom: 2em;
+    margin-top: .5em;
+    border-radius: 50px;
+  }
+  .form-control{
+    background: transparent;
+    background-color: transparent !important;
+    font-size: 18px;
+    color: #333;
+  }
+  .form-group{
+    margin-bottom: 0;
+  }
+  .btn{
+    background: #ef3ab1 !important;
+    height: 100%;
+    font-size: 18px;
+    border-top-right-radius: 18px !important;
+    border-bottom-right-radius: 18px !important;
+    width: 100%;
+    float: right;
+    text-align: center;
+  }
 }

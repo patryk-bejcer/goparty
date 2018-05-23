@@ -1,5 +1,33 @@
+/* Colors */
 #events-search-form {
-  background: #0c051e;
-  min-height: 100px; }
+  background: transparent;
+  min-height: 100px;
+  width: 100%; }
+  #events-search-form h2 {
+    color: #FFF;
+    text-align: center;
+    letter-spacing: 2px; }
+  #events-search-form .search-form-body {
+    background: rgba(255, 255, 255, 0.7);
+    padding-bottom: 0 !important;
+    margin-bottom: 2em;
+    margin-top: .5em;
+    border-radius: 50px; }
+  #events-search-form .form-control {
+    background: transparent;
+    background-color: transparent !important;
+    font-size: 18px;
+    color: #333; }
+  #events-search-form .form-group {
+    margin-bottom: 0; }
+  #events-search-form .btn {
+    background: #ef3ab1 !important;
+    height: 100%;
+    font-size: 18px;
+    border-top-right-radius: 18px !important;
+    border-bottom-right-radius: 18px !important;
+    width: 100%;
+    float: right;
+    text-align: center; }
 
 /*# sourceMappingURL=events.css.map */
