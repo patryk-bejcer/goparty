@@ -20,7 +20,6 @@ class CreateEventsTable extends Migration {
 			$table->string('admission')->nullable();
 			$table->boolean('selection');
 			$table->string('ticket_price')->nullable();
-//			$table->dateTime( 'end_date' );
 			$table->text( 'description' )->nullable();
 			$table->string( 'website' )->nullable();
 			$table->string( 'event_img' )->nullable();
