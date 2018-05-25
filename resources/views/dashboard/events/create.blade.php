@@ -7,6 +7,8 @@
 @section('content')
     <div class="container">
 
+        {{--{{var_dump($errors)}}--}}
+
         <div class="row justify-content-center">
             @include('dashboard.includes.sidebar')
             <div class="col-md-9">

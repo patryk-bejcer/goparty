@@ -1,16 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
-
     <div class="container">
 
         @include('site.events.includes.search')
 
         <div class="row justify-content-center">
 
-            <div class="col-md-12">
+            <div class="col-md-3 p-4 text-white" id="sidebar" style="background:#343a40;">
+
+                @include('site.events.includes.sidebar')
+
+            </div>
+
+
+            <div class="col-md-9">
                 <div class="card text-white bg-dark mb-3 pt-3 pb-3 pl-3 pr-3 user-left-menu">
-                    <h1>Najbliższe imprezy</h1>
+                    <h1>Wyniki wyszukiwania:</h1>
                     @foreach($events as $event)
                         <div class="row">
                             <div class="col-md-3">
@@ -31,17 +37,16 @@
                                     Selekcja: @if($event->selection) Tak @else Nie @endif</p>
                                 <p>{{$event->description}}</p>
 
+
                             </div>
                         </div>
                         <hr>
                     @endforeach
                 </div>
-
-                {{ $events->links() }}
+                {{--{{ $events->links() }}--}}
 
             </div>
 
         </div>
     </div>
 @endsection
-

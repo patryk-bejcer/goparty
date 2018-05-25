@@ -57,7 +57,6 @@ class EventsOwnerController extends Controller {
             'description' => 'required'
         ]);
 
-
 		Event::create( [
             'club_id' => $request->club_id ,
             'user_id' => $request->user_id ,
@@ -70,6 +69,8 @@ class EventsOwnerController extends Controller {
             'website' => $request->website,
             'event_img' => $request->event_img
         ]);
+
+//		dd($request);
 
 		return redirect()->route( 'club-events', [ 'club_id' => $request->club_id ] );
 	}

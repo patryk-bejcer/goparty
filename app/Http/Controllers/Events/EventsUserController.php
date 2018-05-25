@@ -30,9 +30,13 @@ class EventsUserController extends Controller
         echo 'single.club.events';
     }
 
-    public function singleEvent($id)
+    /**
+     * @param Event $event
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function singleEvent(Event $event)
     {
-        echo $id;
+        return view('site.events.single', compact('event'));
     }
 
     /**
@@ -66,7 +70,7 @@ class EventsUserController extends Controller
         }
 
 //	    return response()->json($events);
-        return view('site.events.search', compact('events'));
+        return view('site.events.search-result', compact('events'));
     }
 
 }
