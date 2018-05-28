@@ -1,3 +1,8 @@
+<style>
+    .pac-item > span:last-child {
+        display: none;
+    }
+</style>
 <template>
     <div>
         <vue-google-autocomplete
@@ -7,7 +12,7 @@
                 classname="form-control"
                 placeholder="Miejscowość"
                 v-on:placechanged="getCityData"
-                types="(regions)"
+                types="(cities)"
                 country="pl"
         >
         </vue-google-autocomplete>

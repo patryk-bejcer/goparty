@@ -9,15 +9,17 @@
             <h2>Wyszukiwarka imprez</h2>
             <div class="row">
                 <div class="col-10 offset-1">
-                    <div class="row p-0 search-form-body">
+                    <div class="row p-0 pb-0 search-form-body">
                         <div class="col-md-4">
                             <city-search-box></city-search-box>
                         </div>
-                        <div class='col-md-3'>
+                        <div class='col-md-3' style="border-right: 1px solid #AAA !important;">
                             <div class="form-group">
                                 <div class="input-group date" id="datetimepickerstart" data-target-input="nearest">
+                                    <span class="text-after-date">od</span>
                                     <input name="start_date" type="text" class="form-control datetimepicker-input"
                                            data-target="#datetimepickerstart" data-toggle="datetimepicker"/>
+
                                     <div class="input-group-append" data-target="#datetimepickerstart"
                                          data-toggle="datetimepicker">
                                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -28,6 +30,7 @@
                         <div class='col-md-3'>
                             <div class="form-group">
                                 <div class="input-group date" id="datetimepickerend" data-target-input="nearest">
+                                    <span class="text-after-date">do</span>
                                     <input name="end_date" type="text" class="form-control datetimepicker-input"
                                            data-target="#datetimepickerend" data-toggle="datetimepicker"/>
                                     <div class="input-group-append" data-target="#datetimepickerend"
@@ -37,7 +40,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class='col-md-2 pr-0'>
+                        <div class='col-md-2 pr-0 pl-0'>
                             <input type="submit" class="btn btn-success" value="Szukaj imprez">
                         </div>
                     </div>
@@ -56,12 +59,12 @@
         $(function () {
             $('#datetimepickerstart').datetimepicker({
                 format: 'YYYY-MM-DD',
-                defaultDate: "2018-05-24",
+                useCurrent: true,
             });
             $('#datetimepickerend').datetimepicker({
                 format: 'YYYY-MM-DD',
-                useCurrent: false,
-                defaultDate: "2018-06-23"
+                useCurrent: true,
+                // defaultDate: "2018-06-23"
             });
             $("#datetimepickerstart").on("change.datetimepicker", function (e) {
                 $('#datetimepickerend').datetimepicker('minDate', e.date);

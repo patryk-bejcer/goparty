@@ -18,9 +18,10 @@ class EventsUserController extends Controller
 
     public function allEvents()
     {
-        $events = Event::where('start_date', '>=', date('Y-m-d H:i:s'))
+        $events = Event::with('club')
+            ->where('start_date', '>=', date('Y-m-d H:i:s'))
             ->orderBy('start_date')
-            ->paginate(15);
+            ->paginate(10);
 
         return view('site.events.index', compact('events'));
     }
@@ -45,29 +46,63 @@ class EventsUserController extends Controller
      */
     public function searchEvents(Request $request)
     {
-
         /*
-         * @TODO Finish search events form
+         * @TODO
+         * Dorobic tutaj ze jak nie podal zadnej daty to jest startowa dzisiejsza a koncowa dzisiejsza + 7 dni 
          */
 
         $city = $request->get('city');
         $startDate = $request->get('start_date');
         $endDate = $request->get('end_date');
 
-        if ($city) {
-            $events = Event::where([
+        $city = strstr($city, ',', true);
+
+        $events = Event::with('club');
+
+//        var_dump($city);
+
+        if ($startDate && $endDate) {
+
+            $events = $events->where([
                 ['start_date', '>=', $startDate],
                 ['start_date', '<=', $endDate],
-            ])->
-            whereHas('club', function ($query) use ($city) {
-                $query->where('locality', 'like', $city);
-            })->get();
+            ]);
+
+            if ($city) {
+                $events = $events
+                    ->whereHas('club', function ($query) use ($city) {
+                        $query->where('locality', 'like', $city);
+                    });
+            }
+
+        } else if ($startDate && !$endDate) {
+            $events = $events->where('start_date', '>=', $startDate);
+            if ($city) {
+                $events = $events
+                    ->whereHas('club', function ($query) use ($city) {
+                        $query->where('locality', 'like', $city);
+                    });
+            }
+        } else if ($endDate && !$startDate) {
+            $events = $events->where('start_date', '<=', $endDate);
+            if ($city) {
+                $events = $events
+                    ->whereHas('club', function ($query) use ($city) {
+                        $query->where('locality', 'like', $city);
+                    });
+            }
+        } else if (!$endDate && !$startDate) {
+            $events = $events
+                ->whereHas('club', function ($query) use ($city) {
+                    $query->where('locality', 'like', $city);
+                });
         } else {
-            $events = Event::where([
-                ['start_date', '>=', $startDate],
-                ['start_date', '<=', $endDate],
-            ])->get();
+
         }
+
+
+        $events = $events->paginate(10);
+        $events->withPath('search-events?city=' . $city . '&start_date=' . $startDate . '&end_date=' . $endDate);
 
 //	    return response()->json($events);
         return view('site.events.search-result', compact('events'));

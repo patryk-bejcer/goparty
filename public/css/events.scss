@@ -10,36 +10,60 @@ $white-color: #FFF;
   background: transparent;
   min-height: 100px;
   width: 100%;
-  h2{
-    color:#FFF;
+  h2 {
+    color: #FFF;
     text-align: center;
     letter-spacing: 2px;
   }
-  .search-form-body{
-    background: rgba(255, 255, 255, 0.7);
+  .search-form-body {
+    background: rgba(255, 255, 255, 0.8);
     padding-bottom: 0 !important;
-    margin-bottom: 2em;
+    margin-bottom: 0em;
     margin-top: .5em;
     border-radius: 50px;
+    .input-group-text{
+      border:none;
+      background: transparent;
+    }
+    .text-after-date{
+      margin-top: .65em;
+      font-size: 18px;
+      padding-left: 1.2em;
+    }
+    .datetimepicker-input{
+      padding-left: 15px;
+      padding-right: 3px;
+    }
+    .datetimepickerstart{
+      border-right:1px solid #aaa;
+    }
+    input {
+      height: 50px;
+    }
+    #map {
+      border-right: 1px solid #AAA !important;
+    }
   }
-  .form-control{
-    background: transparent;
+  .form-control {
     background-color: transparent !important;
     font-size: 18px;
     color: #333;
   }
-  .form-group{
+  .form-group {
     margin-bottom: 0;
   }
-  .btn{
+  .btn {
     background: #ef3ab1 !important;
-    height: 100%;
-    font-size: 18px;
-    border-top-right-radius: 18px !important;
-    border-bottom-right-radius: 18px !important;
+    font-weight: bold;
+    font-size: 19px;
+    border-top-right-radius: 30px !important;
+    border-bottom-right-radius: 30px !important;
     width: 100%;
     float: right;
     text-align: center;
+    &:hover {
+      background: #de29a0 !important;
+    }
   }
 }
 
@@ -49,4 +73,45 @@ $white-color: #FFF;
   margin-top: 0.25rem;
   font-size: 80%;
   color: #dc3545;
+}
+
+#events-list{
+  h1{
+    font-size: 42px;
+    margin-bottom: .5em;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: bold;
+    text-align: center;
+  }
+  .single-event{
+    background: rgba(0,0,0,0.5);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    .badge{
+      float: right;
+      background: #ef3ab1;
+      padding: 10px;
+      font-size: 26px;
+    }
+  }
+  .pagination{
+    float: none;
+    display: inline-block;
+    overflow: hidden;
+    width: 100% !important;
+    li {
+      display: inline-block;
+      text-align: center;
+      float: none;
+    }
+  }
+}
+
+#events-list-sidebar{
+  background: rgba(0,0,0,0.5);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
 }
