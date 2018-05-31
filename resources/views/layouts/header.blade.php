@@ -43,7 +43,7 @@
 
                             <!-- Tabs for owner -->
                             @role('owner')
-                            <a class="dropdown-item" href="#">{{ __('Zarządzaj klubem') }}</a>
+                            <a class="dropdown-item" href="{{url('/dashboard/clubs')}}">{{ __('Zarządzaj klubem') }}</a>
                             @endrole
                             <!-- End tabs for owner -->
 

@@ -6,7 +6,7 @@
         $counter = 1
     @endphp
 
-    <div class="container-fluid" id="clubs-container">
+    <div class="container" id="clubs-container">
 
         {{--Vue Component generate nearest events from DB--}}
         <nearest-events>

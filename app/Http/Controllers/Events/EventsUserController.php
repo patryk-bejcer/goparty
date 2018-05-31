@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Events;
 use App\Models\Event;
 
 use App\Http\Controllers\Controller;
+use App\Models\MusicType;
 use http\Env\Response;
 use Illuminate\Http\Request;
 
@@ -51,11 +52,20 @@ class EventsUserController extends Controller
          * Dorobic tutaj ze jak nie podal zadnej daty to jest startowa dzisiejsza a koncowa dzisiejsza + 7 dni 
          */
 
+	    $request->validate([
+		    'start_date' => 'required',
+		    'end_date' => 'required',
+	    ]);
+
         $city = $request->get('city');
         $startDate = $request->get('start_date');
         $endDate = $request->get('end_date');
 
-        $city = strstr($city, ',', true);
+	    if (strpos($city, ',')) {
+		    $city = strstr($city, ',', true);
+	    }
+
+
 
         $events = Event::with('club');
 
@@ -101,11 +111,13 @@ class EventsUserController extends Controller
         }
 
 
-        $events = $events->paginate(10);
+        $events = $events->orderBy('start_date')->paginate(10);
         $events->withPath('search-events?city=' . $city . '&start_date=' . $startDate . '&end_date=' . $endDate);
 
+        $musicTypes = MusicType::all();
+
 //	    return response()->json($events);
-        return view('site.events.search-result', compact('events'));
+        return view('site.events.search-result', compact('events', 'musicTypes'));
     }
 
 }

@@ -21,6 +21,9 @@ $white-color: #FFF;
     margin-bottom: 0em;
     margin-top: .5em;
     border-radius: 50px;
+
+
+
     .input-group-text{
       border:none;
       background: transparent;
@@ -114,4 +117,41 @@ $white-color: #FFF;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+}
+
+.date-error{
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  font-size:90%;
+}
+
+#events-list-sidebar{
+  .input{
+    background: rgba(255,255,255,0.7);
+  }
+  .form-control{
+    -webkit-border-radius: 3px !important;
+    -moz-border-radius: 3px !important;
+    border-radius: 3px !important;
+  }
+  .btn{
+    background: #EF3AB1 !important;
+    color: #FFF;
+    -webkit-border-radius: 3px !important;
+    -moz-border-radius: 3px !important;
+    border-radius: 3px !important;
+  }
+  .form-check-label {
+    margin-bottom: 0;
+    font-size: 16px;
+    margin-top: 0px;
+    line-height: 20px;
+    padding-bottom: 7px;
+  }
+  .music-types{
+    .form-check-label {
+      text-transform: capitalize;
+    }
+  }
 }

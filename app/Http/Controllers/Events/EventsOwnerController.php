@@ -50,6 +50,14 @@ class EventsOwnerController extends Controller {
 	 */
 	public function store( Request $request ) {
 
+
+		if($request->file('event_img')){
+			$imageName = time().'.'.$request->file('event_img')->getClientOriginalExtension();
+			$request->file('event_img')->move(public_path('uploads/events'), $imageName);
+		} else {
+			$imageName = null;
+		}
+
         $request->validate([
             'title' => 'required|max:60',
             'start_date' => 'required',
@@ -67,7 +75,7 @@ class EventsOwnerController extends Controller {
             'ticket_price' => $request->ticket_price,
             'description' => $request->description,
             'website' => $request->website,
-            'event_img' => $request->event_img
+            'event_img' => $imageName
         ]);
 
 //		dd($request);

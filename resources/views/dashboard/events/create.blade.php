@@ -18,7 +18,7 @@
                     </div>
                     <div class="card-body">
 
-                        <form method="POST" class="pb-4" action="{{ route('events.store', ['club_id' => $club->id]) }}">
+                        <form method="POST" class="pb-4" action="{{ route('events.store', ['club_id' => $club->id]) }}" enctype="multipart/form-data">
 
                             @csrf
 

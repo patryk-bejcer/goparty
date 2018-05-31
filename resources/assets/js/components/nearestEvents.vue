@@ -9,7 +9,7 @@
 
             <div v-for="event in events.data" class="col-12 col-md-3 mb-2">
                 <div>
-                    <img class="img-fluid" src="http://localhost:8000/img/klub1.jpg" alt="">
+                    <img class="img-fluid" src="http://localhost/goparty/public/img/klub1.jpg" alt="">
                     <a :href="'/events/' + event.id">
                         <h4 class="text-white mt-2"> {{ event.title }} </h4>
                         <h4 class="text-white mt-2"> {{ event.start_date }} </h4>
@@ -43,14 +43,14 @@
                     let lat = self.position.latitude;
                     let long = self.position.longitude;
 
-                    console.log(self.position.latitude);
-                    console.log(self.position.longitude);
+                    // console.log(self.position.latitude);
+                    // console.log(self.position.longitude);
 
                     axios.get('/api/nearest-events?lat=' + lat + '&long=' + long)
                         .then(function (response) {
                             self.events = response;
-                            console.log(self.events);
-                            console.log('distance:' + self.getDistanceFromLatLonInKm(lat,long,50.667263, 17.935603899999933))
+                            // console.log(self.events);
+                            // console.log('distance:' + self.getDistanceFromLatLonInKm(lat,long,50.667263, 17.935603899999933))
                         })
                         .catch(function (error) {
                             console.log(error);

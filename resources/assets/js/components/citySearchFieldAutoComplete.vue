@@ -14,6 +14,7 @@
                 v-on:placechanged="getCityData"
                 types="(cities)"
                 country="pl"
+                :value=surveyData
         >
         </vue-google-autocomplete>
     </div>
@@ -25,6 +26,8 @@
     export default {
         components: { VueGoogleAutocomplete },
 
+        props: ['surveyData'],
+
         data: function () {
             return {
                 address: ''
@@ -32,9 +35,14 @@
         },
 
         mounted() {
+
+            this.address = surveyData;
+            // Do something useful with the data in the template
+            console.dir(this.surveyData)
+
             // To demonstrate functionality of exposed component functions
             // Here we make focus on the user input
-            this.$refs.address.focus();
+            // this.$refs.address.focus();
         },
 
         methods: {

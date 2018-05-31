@@ -21,6 +21,8 @@ Vue.component('nearest-clubs', require('./components/nearestClubs'));
 Vue.component('nearest-events', require('./components/nearestEvents'));
 // Vue.component('slider', require('./components/slider'));
 
+axios.defaults.baseURL = 'http://localhost/goparty/public/';
+
 const app = new Vue({
     el: '#app'
 });

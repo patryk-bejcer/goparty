@@ -87,4 +87,31 @@
   -moz-border-radius: 5px;
   border-radius: 5px; }
 
+.date-error {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  font-size: 90%; }
+
+#events-list-sidebar .input {
+  background: rgba(255, 255, 255, 0.7); }
+#events-list-sidebar .form-control {
+  -webkit-border-radius: 3px !important;
+  -moz-border-radius: 3px !important;
+  border-radius: 3px !important; }
+#events-list-sidebar .btn {
+  background: #EF3AB1 !important;
+  color: #FFF;
+  -webkit-border-radius: 3px !important;
+  -moz-border-radius: 3px !important;
+  border-radius: 3px !important; }
+#events-list-sidebar .form-check-label {
+  margin-bottom: 0;
+  font-size: 16px;
+  margin-top: 0px;
+  line-height: 20px;
+  padding-bottom: 7px; }
+#events-list-sidebar .music-types .form-check-label {
+  text-transform: capitalize; }
+
 /*# sourceMappingURL=events.css.map */
