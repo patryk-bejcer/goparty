@@ -16,7 +16,7 @@
 
                 @foreach($events as $event)
                     <div class="">
-                    <div class="card mb-4">
+                    <div class="card mb-4 pb-4">
                         {{--<div class="card-header">--}}
                         {{--Card Header--}}
                         {{--</div>--}}
@@ -44,15 +44,16 @@
                                     <form method="POST" action="{{url('/take-part')}}">
                                         @csrf
                                         <input name="event_id" type="hidden" value="{{$event->id}}">
-                                        <input style="background: #EF3AB1 !important; border-radius: 3px !important;" class="btn btn-success pull-right mb-3" type="submit" value="Weź udział">
+                                        <input style="background: #EF3AB1 !important" class="btn btn-success pull-right" type="submit" value="Weź udział">
                                     </form>
 
                                 @else
 
                                     <form method="POST" action="{{url('/take-part')}}">
-                                        @csrf
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
                                         <input name="event_id" type="hidden" value="{{$event->id}}">
-                                        <input style="background: #EF3AB1 !important; border-radius: 3px !important;" class="btn btn-success pull-right mb-3" type="submit" value="Zrezygnuj z imprezy">
+                                        <input style="background: #EF3AB1 !important" class="btn btn-success pull-right" type="submit" value="Zrezygnuj z imprezy">
                                     </form>
 
                                 @endif

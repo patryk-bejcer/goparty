@@ -109,7 +109,6 @@ class EventsUserController extends Controller
 
         }
 
-
         $events = $events->orderBy('start_date')->paginate(10);
         $events->withPath('search-events?city=' . $city . '&start_date=' . $startDate . '&end_date=' . $endDate);
 
@@ -133,6 +132,31 @@ class EventsUserController extends Controller
 		    $events = EventAttendance::where('user_id', Auth::id())->get();
 		    return view('dashboard.events.attendance', compact('events'));
 	    }
+
+
+	}
+
+	public function cancelEvent( Request $request ) {
+
+		if(!Auth::check()){
+			return view('auth.login');
+		} else {
+//			$eventAttendance = EventAttendance::where( [
+//				'user_id' => Auth::id(),
+//				'event_id' => $request->event_id,
+//				'status' => 1
+//			] );
+
+			$event = EventAttendance::where([
+				['user_id', '=', Auth::id()],
+				['event_id', '=', $request->event_id]
+			])->delete();
+
+//			var_dump($event);
+
+			$events = EventAttendance::where('user_id', Auth::id())->get();
+			return view('dashboard.events.attendance', compact('events'));
+		}
 
 
 	}

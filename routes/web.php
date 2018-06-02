@@ -89,6 +89,10 @@ Route::get('search/autocomplete', 'SearchController@autocomplete');
 Route::get('search/clubs', 'SearchController@search_clubs');
 
 Route::post('take-part', 'Events\EventsUserController@takePart');
+Route::delete('take-part', 'Events\EventsUserController@cancelEvent');
+
+
+
 Route::get('take-part', 'API\EventsController@checkIfExistAttendance');
 
 

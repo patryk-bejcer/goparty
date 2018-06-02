@@ -60,7 +60,8 @@
                                             @else
 
                                                 <form method="POST" action="{{url('/take-part')}}">
-                                                    @csrf
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('DELETE') }}
                                                     <input name="event_id" type="hidden" value="{{$event->event->id}}">
                                                     <input style="background: #EF3AB1 !important" class="btn btn-success pull-right" type="submit" value="Zrezygnuj z imprezy">
                                                 </form>
