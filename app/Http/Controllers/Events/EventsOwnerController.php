@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Events;
 
+use App\EventAttendance;
 use App\Models\Club;
 use App\Models\Event;
 use Illuminate\Http\Request;
@@ -149,4 +150,6 @@ class EventsOwnerController extends Controller {
 	public function destroy( $id ) {
 		//
 	}
+
+
 }

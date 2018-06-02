@@ -28,7 +28,10 @@ Route::group( [ 'namespace' => 'User', 'middleware' => [ 'auth' ] ], function ()
 	/* Rotes for auth users (show other users and manage your account) */
 	Route::resource( '/users', 'UsersController', [ 'except' => [ 'create', 'store' ] ] );
 	/* Rotes for auth user showing dashboard panel */
-	Route::get( '/dashboard', 'UserDashboardController@index' )->name( 'user-dashboard.index' );;
+	Route::get( '/dashboard', 'UserDashboardController@index' )->name( 'user-dashboard.index' );
+
+
+
 } );
 /* ====== END OF USERS ====== */
 
@@ -56,6 +59,8 @@ Route::post('/clubImage/main', 'ClubImageController@changeMain')->name('clubImag
 /* ====== EVENTS ====== */
 /* Middleware is declarate in controller!!! */
 Route::namespace('Events')->group(function () {
+
+	Route::get( '/dashboard/attendance', 'EventsUserController@eventsAttendanceIndex');
 
 	/* Rotes for events on guest/user front end portal (for all visitors) */
 	Route::get('events', 'EventsUserController@allEvents')->name('all-events');

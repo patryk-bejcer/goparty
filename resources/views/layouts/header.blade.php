@@ -39,6 +39,7 @@
 
                             <!-- Tabs for users -->
                             <a class="dropdown-item" href="{{route('user-dashboard.index')}}">{{ __('Panel użytkownika') }}</a>
+                            <a class="dropdown-item" href="{{url('dashboard/attendance')}}">{{ __('Moje imprezy') }}</a>
                             <!-- End tabs for owner -->
 
                             <!-- Tabs for owner -->
@@ -50,7 +51,7 @@
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                                {{ __('Wyloguj się') }}
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST"

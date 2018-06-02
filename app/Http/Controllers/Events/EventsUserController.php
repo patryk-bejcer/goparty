@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Events;
 
 use App\EventAttendance;
+use App\Models\Club;
 use App\Models\Event;
 
 use App\Http\Controllers\Controller;
@@ -129,10 +130,19 @@ class EventsUserController extends Controller
 			    'status' => 1
 		    ] );
 
-		    return back();
+		    $events = EventAttendance::where('user_id', Auth::id())->get();
+		    return view('dashboard.events.attendance', compact('events'));
 	    }
 
 
+	}
+
+	public function eventsAttendanceIndex(){
+
+    	$user = Auth::id();
+
+		$events = EventAttendance::where('user_id', Auth::id())->get();
+		return view('dashboard.events.attendance', compact('events'));
 	}
 
 }
