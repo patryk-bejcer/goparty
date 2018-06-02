@@ -48644,7 +48644,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48688,7 +48688,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             position: null,
-            events: {}
+            events: {},
+            url: 'http://localhost/goparty/public/uploads/events/'
         };
     },
     mounted: function mounted() {
@@ -48748,11 +48749,7 @@ var render = function() {
           _c("div", [
             _c("img", {
               staticClass: "img-fluid",
-              attrs: {
-                src:
-                  "http://localhost/goparty/public/img/default-event-img.jpg",
-                alt: ""
-              }
+              attrs: { src: _vm.url + event.event_img, alt: "" }
             }),
             _vm._v(" "),
             _c("a", { attrs: { href: "/events/" + event.id } }, [
@@ -48765,7 +48762,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("h6", { staticClass: "text-white mt-2" }, [
-                _vm._v(" " + _vm._s(event.official_name) + " ")
+                _vm._v(" Klub: " + _vm._s(event.official_name) + " ")
               ])
             ])
           ])

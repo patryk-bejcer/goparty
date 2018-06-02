@@ -41,7 +41,7 @@ class ClubsController extends Controller
 //            ->orderByRaw(((latitude-'$lat')*(latitude-'$lat')) + ((longitude - '$long')*(longitude - '$long')))
 //            ->get();
 
-        $events = DB::select("SELECT events.id, title, start_date, country, official_name FROM `events`
+        $events = DB::select("SELECT events.id, title, start_date, country, official_name, event_img FROM `events`
         LEFT JOIN clubs
         ON events.club_id = clubs.id WHERE start_date > '$currentTime'
         ORDER BY ((latitude-'$lat')*(latitude-'$lat')) + ((longitude - '$long')*(longitude - '$long'))

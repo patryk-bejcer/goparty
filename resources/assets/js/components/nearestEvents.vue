@@ -9,11 +9,11 @@
 
             <div v-for="event in events.data" class="col-12 col-md mb-2">
                 <div>
-                    <img class="img-fluid" src="http://localhost/goparty/public/img/default-event-img.jpg" alt="">
+                    <img class="img-fluid" :src="url + event.event_img" alt="">
                     <a :href="'/events/' + event.id">
                         <h5 class="text-white mt-2"> {{ event.title }} </h5>
                         <h6 class="text-white mt-2"> {{ event.start_date }} </h6>
-                        <h6 class="text-white mt-2"> {{ event.official_name }} </h6>
+                        <h6 class="text-white mt-2"> Klub: {{ event.official_name }} </h6>
                     </a>
                 </div>
             </div>
@@ -31,7 +31,8 @@
         data: function () {
             return {
                 position: null,
-                events: {}
+                events: {},
+                url: 'http://localhost/goparty/public/uploads/events/'
             }
         },
         mounted: function () {
