@@ -11,6 +11,11 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+
+	    $faker = Faker\Factory::create();
+	    $number_of_users = 40;
+
+
         $admin = \App\User::create([
 	        'first_name' => 'Admin',
 	        'last_name' => '',
@@ -40,5 +45,26 @@ class UsersTableSeeder extends Seeder
 		    'city_id' => 3
 	    ]);
 	    $user->assignRole('user');
+
+	    /* ========================== **/
+
+
+	    for ($user_id = 1; $user_id <= $number_of_users; $user_id++) {
+
+
+		    DB::table('users')->insert([
+			    'first_name' => $faker->name,
+			    'last_name' =>  $faker->name,
+			    'email' => str_replace('-', '', str_slug($faker->name)) . '@' . $faker->safeEmailDomain,
+			    'password' => Hash::make('pass'),
+			    'city_id' => 3
+
+		    ]);
+
+	    }
+
+
     }
+
+
 }

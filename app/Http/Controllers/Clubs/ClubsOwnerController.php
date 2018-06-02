@@ -46,8 +46,16 @@ class ClubsOwnerController extends Controller {
 
 
 	public function store( Request $request ) {
+
 		$addressErrorMessage = 'Wprowadzony przez ciebie adres jest niepoprawny. Wprowadź pełny adres (nazwa ulicy/numer
                     lokalu/miasto/kraj)';
+
+		if($request->file('club_img')){
+			$imageName = time().'.'.$request->file('club_img')->getClientOriginalExtension();
+			$request->file('club_img')->move(public_path('uploads/clubs'), $imageName);
+		} else {
+			$imageName = null;
+		}
 
 		$this->validate( $request, [
 			'latitude'      => 'required',
@@ -58,6 +66,7 @@ class ClubsOwnerController extends Controller {
 			'longitude.required'     => $addressErrorMessage,
 			'street_number.required' => 'Prosimy o podanie dokładniejszych danych adresowych (number lokalu)',
 		] );
+
 
 		Club::create( [
 			'user_id'                 => Auth::id(),
@@ -76,6 +85,7 @@ class ClubsOwnerController extends Controller {
 			'phone'                   => $request->phone,
 			'website_url'             => $request->website_url,
 			'facebook_url'            => $request->facebook_url,
+			'club_img'                => $imageName
 		] );
 
 		event(new ClubCreated());

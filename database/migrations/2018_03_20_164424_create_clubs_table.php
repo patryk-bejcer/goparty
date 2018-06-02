@@ -37,6 +37,7 @@ class CreateClubsTable extends Migration {
 			$table->string( 'facebook_url' )->nullable();
 			/* End of Contact and social media fields */
 
+			$table->string( 'club_img' )->nullable();
 			$table->softDeletes();
 			$table->timestamps();
 

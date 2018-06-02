@@ -15,7 +15,7 @@
                             <div class="pb-5 pt-1">
 
                                 <div class="card-body pt-0 text-white">
-                                    <form method="POST" action="{{ route('clubs.store') }}">
+                                    <form method="POST" action="{{ route('clubs.store') }}" enctype="multipart/form-data">
 
                                         @csrf
 
@@ -100,6 +100,24 @@
                                             <!--  END VUE COMPONENT -->
 
                                             <div class="col-md-6">
+                                                <div class="mb-2 form-group{{ $errors->has('club_img') ? ' has-error' : '' }}">
+                                                    <label for="">Główne zdjęcie klubu</label>
+                                                    <input name="club_img" type="file"
+                                                           class="form-control upload-input mb-1"
+                                                           placeholder="Wybierz zdjęcie główne" accept=".jpg,.jpeg"
+                                                           onchange="loadFile(event)" multiple>
+
+                                                    @if ($errors->has('club_img'))
+                                                        <span class="help-block">
+                                                             <small class="text-danger">{{ $errors->first('club_img') }}</small>
+                                                        </span>
+                                                    @endif
+
+                                                </div>
+                                                <img class="img-fluid mb-1" id="output" src=""/>
+                                                
+                                                <div class="clearfix mt-1"></div>
+                                                
                                                 <label for="additional_address_info" style=""
                                                        class="">{{ __('Dodatkowe informacje adresowe') }}</label>
                                                 <textarea rows="7" id="additional_address_info" type="text"
@@ -181,7 +199,6 @@
                                         </div>
 
 
-
                                         <div class="form-group row">
 
                                             <div class="col-md-6">
@@ -224,4 +241,13 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script type="text/javascript">
+        let loadFile = function (event) {
+            let output = document.getElementById('output');
+            output.src = URL.createObjectURL(event.target.files[0]);
+        };
+    </script>
 @endsection

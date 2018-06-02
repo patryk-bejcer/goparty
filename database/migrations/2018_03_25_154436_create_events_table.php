@@ -23,6 +23,8 @@ class CreateEventsTable extends Migration {
 			$table->text( 'description' )->nullable();
 			$table->string( 'website' )->nullable();
 			$table->string( 'event_img' )->nullable();
+
+			$table->softDeletes();
 			$table->timestamps();
 
 			/* Foreign keys */

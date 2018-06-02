@@ -114,4 +114,34 @@
 #events-list-sidebar .music-types .form-check-label {
   text-transform: capitalize; }
 
+.search-top-bg {
+  background: url(../img/search-form-bg.jpeg);
+  background-position: center 50%;
+  padding: 4em 0;
+  background-size: 100%; }
+
+#event-list .card {
+  transition: .3s;
+  color: #FFF;
+  background: rgba(0, 0, 0, 0.5); }
+  #event-list .card:hover {
+    transform: scale(1.03);
+    cursor: pointer; }
+  #event-list .card .card-body {
+    background: transparent; }
+    #event-list .card .card-body h6 {
+      line-height: 24px; }
+
+.pagination {
+  text-align: center;
+  align-items: center;
+  display: inline-flex;
+  width: 100% !important;
+  text-align: center;
+  display: inline-block; }
+  .pagination li {
+    text-align: left;
+    text-align: center;
+    display: inline-block; }
+
 /*# sourceMappingURL=events.css.map */

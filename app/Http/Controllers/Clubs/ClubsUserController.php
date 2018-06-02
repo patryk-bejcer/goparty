@@ -35,7 +35,7 @@ class ClubsUserController extends Controller {
 		$club = Club::findOrFail($id);
 		$rules = clubRules::where('club_id', $id)->get();
         $events = Event::where('club_id', $id)->get();
-		return view('dashboard/clubs/single', compact('club', 'rules', 'events'));
+		return view('site.clubs.single', compact('club', 'rules', 'events'));
 	}
 
 }

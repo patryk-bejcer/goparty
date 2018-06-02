@@ -61,7 +61,7 @@
                     <div class="mt-1">od</div>
                 </div>
                 <div class="col-3 pr-0">
-                    <input type="number" min="0" max="50" step="1" id="input-number1" class="form-control p-0 pt-1 pb-1 mt-0 pl-3">
+                    <input name="price-from" type="number" min="0" max="50" step="1" id="input-number1" class="form-control p-0 pt-1 pb-1 mt-0 pl-3">
                 </div>
                 <div class="col-1 pl-2 mt-1">zł</div>
 
@@ -69,7 +69,7 @@
                     <div class="mt-1">do</div>
                 </div>
                 <div class="col-3 pr-0">
-                    <input type="number" min="0" max="50" step="1" id="input-number2" class="form-control p-0 pt-1 pb-1 mt-0 pl-3" >
+                    <input name="price-to" type="number" min="0" max="50" step="1" id="input-number2" class="form-control p-0 pt-1 pb-1 mt-0 pl-3" >
                 </div>
                 <div class="col pl-2 mt-1">zł</div>
             </div>
@@ -95,7 +95,7 @@
 
 
         <div class="col-12 ">
-            <h5>Ocena</h5>
+            <h5>Ocena klubu</h5>
             <div class="form-check">
                 <label class="form-check-label">
                     <input name="music_types[]" class="form-check-input" type="radio" value="">

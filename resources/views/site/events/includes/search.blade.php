@@ -4,6 +4,14 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css"/>
 @stop
 
+</div>
+
+<div class="mask">
+
+<div class="search-top-bg">
+
+<div class="container">
+
 <form method="GET" action="{{ url('/search-events')  }}">
     <div class="row">
         <div id="events-search-form">
@@ -75,7 +83,13 @@
     </div>
 </form>
 
+</div>
 
+</div>
+
+</div>
+
+    <div class="container">
 
 
 @section('scripts')

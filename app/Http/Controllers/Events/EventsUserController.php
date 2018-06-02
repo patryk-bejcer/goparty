@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Events;
 
+use App\EventAttendance;
 use App\Models\Event;
 
 use App\Http\Controllers\Controller;
 use App\Models\MusicType;
 use http\Env\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EventsUserController extends Controller
 {
@@ -22,7 +24,7 @@ class EventsUserController extends Controller
         $events = Event::with('club')
             ->where('start_date', '>=', date('Y-m-d H:i:s'))
             ->orderBy('start_date')
-            ->paginate(10);
+            ->paginate(12);
 
         return view('site.events.index', compact('events'));
     }
@@ -47,10 +49,6 @@ class EventsUserController extends Controller
      */
     public function searchEvents(Request $request)
     {
-        /*
-         * @TODO
-         * Dorobic tutaj ze jak nie podal zadnej daty to jest startowa dzisiejsza a koncowa dzisiejsza + 7 dni 
-         */
 
 	    $request->validate([
 		    'start_date' => 'required',
@@ -119,5 +117,22 @@ class EventsUserController extends Controller
 //	    return response()->json($events);
         return view('site.events.search-result', compact('events', 'musicTypes'));
     }
+
+	public function takePart( Request $request ) {
+
+    	if(!Auth::check()){
+    		return view('auth.login');
+	    } else {
+		    $eventAttendance = EventAttendance::create( [
+			    'user_id' => Auth::id(),
+			    'event_id' => $request->event_id,
+			    'status' => 1
+		    ] );
+
+		    return back();
+	    }
+
+
+	}
 
 }

@@ -45,7 +45,7 @@ class ClubsController extends Controller
         LEFT JOIN clubs
         ON events.club_id = clubs.id WHERE start_date > '$currentTime'
         ORDER BY ((latitude-'$lat')*(latitude-'$lat')) + ((longitude - '$long')*(longitude - '$long'))
-        ASC LIMIT 4");
+        ASC LIMIT 6");
 
         return response()
             ->json($events);

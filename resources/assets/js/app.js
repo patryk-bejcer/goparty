@@ -19,6 +19,7 @@ Vue.component('address-search-box', require('./components/addressSearchBoxWithMa
 Vue.component('city-search-box', require('./components/citySearchFieldAutoComplete'));
 Vue.component('nearest-clubs', require('./components/nearestClubs'));
 Vue.component('nearest-events', require('./components/nearestEvents'));
+Vue.component('take-part', require('./components/takePartComponent'));
 // Vue.component('slider', require('./components/slider'));
 
 axios.defaults.baseURL = 'http://localhost/goparty/public/';

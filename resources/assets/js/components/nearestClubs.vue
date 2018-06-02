@@ -39,8 +39,8 @@
                     let lat = self.position.latitude;
                     let long = self.position.longitude;
 
-                    // console.log(self.position.latitude);
-                    // console.log(self.position.longitude);
+                    console.log(self.position.latitude);
+                    console.log(self.position.longitude);
 
 
 

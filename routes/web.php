@@ -15,6 +15,7 @@ Route::get('/send', 'HomeController@send');
 
 /* ====== HOME PAGE ====== */
 Route::get( '/', 'HomeController@index' )->name( 'home' );
+Route::get( '/home', 'HomeController@index' )->name( 'home' );
 /* ====== END OF HOME PAGE ====== */
 
 /* ====== AUTH ====== */
@@ -81,6 +82,10 @@ Route::group( [ 'prefix' => 'admin', 'middleware' => [ 'isAdmin' ], 'namespace' 
 
 Route::get('search/autocomplete', 'SearchController@autocomplete');
 Route::get('search/clubs', 'SearchController@search_clubs');
+
+Route::post('take-part', 'Events\EventsUserController@takePart');
+Route::get('take-part', 'API\EventsController@checkIfExistAttendance');
+
 
 
 

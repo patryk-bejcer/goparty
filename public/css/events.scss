@@ -155,3 +155,41 @@ $white-color: #FFF;
     }
   }
 }
+
+.search-top-bg {
+  background: url(../img/search-form-bg.jpeg);
+  background-position: center 50%;
+  padding: 4em 0;
+  background-size: 100%;
+}
+
+#event-list .card{
+  transition: .3s;
+  &:hover{
+    transform: scale(1.03);
+    cursor: pointer;
+
+  }
+  color: #FFF;
+  background: rgba(0,0,0,0.5);
+  .card-body{
+    background: transparent;
+    h6{
+      line-height: 24px;
+    }
+  }
+}
+
+.pagination {
+  text-align: center;
+  align-items: center;
+  display: inline-flex;
+  width: 100% !important;
+  text-align: center;
+  display: inline-block;
+   li {
+    text-align: left;
+    text-align: center;
+    display: inline-block;
+  }
+}
