@@ -48,7 +48,7 @@ class ClubImageController extends Controller
 
 
         $file = $request->file('image');
-        $path = 'public/users/'. '1';
+        $path = 'public/users/'. $request->user_id;
         $filename = $request->file('image')->getClientOriginalName();
         $image = $filename;
         $file->move($path,$image);
@@ -146,8 +146,6 @@ class ClubImageController extends Controller
 
        $image = ClubImage::findOrFail($request->ClubImage_id);
 
-
-       unlink(public_path().'/public/users/'.$image->user_id.'/'.$image->image_path);
 
        $image->delete();
 

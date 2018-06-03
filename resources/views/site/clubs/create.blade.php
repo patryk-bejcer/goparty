@@ -172,7 +172,7 @@
 
                                 <div class="form-group row">
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-9">
                                         <label for="music_types" style="" class="">{{ __('Jaka muzyka jest w Twoim klubie często grana?') }}</label>
                                         <br>
 
@@ -185,7 +185,7 @@
 
                                         @if ($errors->has('music_types'))
                                             <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('music_types') }}</strong>
+                                        <strong>{{ $errors->first('music_types') }} lfbwalkgawgblka</strong>
                                     </span>
                                         @endif
                                     </div>

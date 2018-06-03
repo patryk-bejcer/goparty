@@ -24,6 +24,9 @@ Route::get( '/register', 'Auth\RegisterController@getRegister' )->name( 'registe
 
 /* ====== USERS ====== */
 Route::group( [ 'namespace' => 'User', 'middleware' => [ 'auth' ] ], function () {
+    Route::post('update_user_image', 'UsersController@update_image');
+    Route::post('remove_user_image', 'UsersController@remove_image');
+    Route::post('user-update/{user}', 'UsersController@update')->name('user_update');
 	/* Rotes for auth users (show other users and manage your account) */
 	Route::resource( '/users', 'UsersController', [ 'except' => [ 'create', 'store' ] ] );
 	/* Rotes for auth user showing dashboard panel */
@@ -41,6 +44,7 @@ Route::namespace('Clubs')->group(function () {
 	/* Rotes for clubs on owner dashboard panel (role: owner) */
 	Route::prefix('dashboard')->group(function () {
 		Route::resource( 'clubs', 'ClubsOwnerController');
+		Route::get('clubs/{club}/edit/photo', 'ClubsOwnerController@edit');
 		Route::get('clubs/{club}/club-events', 'ClubsOwnerController@clubEvents')->name('club-events');
 	} );
 
@@ -52,6 +56,11 @@ Route::post('/clubImage/delete', 'ClubImageController@destroy')->name('clubImage
 Route::post('/clubImage/active', 'ClubImageController@changeActive')->name('clubImage.changeActive');
 Route::post('/clubImage/main', 'ClubImageController@changeMain')->name('clubImage.changeMain');
 /* ====== End Images ======= */
+
+/* ====== Rate Club  ======= */
+Route::post('/club/rate', 'RatingController@store')->name('club.rate');
+Route::post('/club/rate/delete', 'RatingController@delete')->name('club.rate.delete');
+/* ====== END Rate Club  ======= */
 /* ====== EVENTS ====== */
 /* Middleware is declarate in controller!!! */
 Route::namespace('Events')->group(function () {
@@ -60,6 +69,9 @@ Route::namespace('Events')->group(function () {
 	Route::get('events', 'EventsUserController@allEvents')->name('all-events');
 //	Route::get('clubs/{club}/events', 'EventsUserController@clubEvents')->name('club-events');
 	Route::get('events/{event}', 'EventsUserController@singleEvent')->name('single-event');
+	Route::post('events/attend', 'EventsUserController@attendEvent')->name('attendEvent');
+    Route::post('events/notattend', 'EventsUserController@notAttendEvent')->name('notAttendEvent');
+
 
 	/* Rotes for events on owner dashboard panel (role: owner) */
 	Route::prefix('dashboard')->group(function () {

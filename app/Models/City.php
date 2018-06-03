@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
+use App\Models\Voivodeship;
 
 class City extends Model {
 	use CrudTrait;
@@ -46,7 +47,8 @@ class City extends Model {
 	|--------------------------------------------------------------------------
 	*/
 	public function voivodeship() {
-		return $this->hasOne( 'App\Models\Voivodeship', 'id', 'voivodeship_id' );
+	    $voivodeship = Voivodeship::findOrFail($this->voivodeship_id);
+		return $voivodeship->name;
 	}
 	/*
 	|--------------------------------------------------------------------------

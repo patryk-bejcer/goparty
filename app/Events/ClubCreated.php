@@ -17,15 +17,17 @@ class ClubCreated
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
 	public $user;
+	public $club;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($club)
     {
         $this->user = Auth::user();
+        $this->club = $club;
     }
 
 }

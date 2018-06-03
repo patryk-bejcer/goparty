@@ -6,7 +6,7 @@
             <p class="text-center mb-2 "><b class="text-center">Panel użytkownika</b></p>
 
             <div class="rotate-square">
-                <img class="img-fluid mt-2" src="https://www.w3schools.com/howto/img_avatar.png" alt="">
+                <img class="img-fluid mt-2" src="{{\Illuminate\Support\Facades\Auth::user()->getUserImage()}}" alt="">
             </div>
             <h4 class="mt-3 mb-0 text-center">{{Auth::user()->first_name}} {{Auth::user()->last_name}}</h4>
             <hr >
@@ -31,7 +31,7 @@
             </div>
             @endrole
 
-            <a href="#" class="list-group-item collapsed" data-parent="#sidebar"><i class="fa fa-gear"></i> <span
+            <a href="{{route('user-dashboard.index')}}" class="list-group-item collapsed" data-parent="#sidebar"><i class="fa fa-gear"></i> <span
                         class="hidden-sm-down">Ustawienia konta</span></a>
 
         </div>

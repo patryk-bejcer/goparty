@@ -8,7 +8,9 @@ use Faker\Provider\Image;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use PHPUnit\Framework\Constraint\IsEmpty;
+use Illuminate\Support\Facades\DB;
 
+use App\Models\Rules;
 class Club extends Model {
 	use CrudTrait;
 	use SoftDeletes;
@@ -21,6 +23,7 @@ class Club extends Model {
 	protected $primaryKey = 'id';
 	protected $guarded = [ 'id' ];
 	public $timestamps = true;
+	public $music_types = [];
 	protected $dates = [ 'deleted_at' ];
 	/*
 	|--------------------------------------------------------------------------
@@ -49,7 +52,7 @@ class Club extends Model {
 
     public function getUser() {
 
-        return Event::findOrFail($this->user_id);
+        return User::findOrFail($this->user_id);
     }
 
 	public function events() {
@@ -78,6 +81,14 @@ class Club extends Model {
 
 	    return $images;
     }
+
+    public function setMusicTypes(){
+        $m = DB::table('club_music_type')->where('club_id', $this->id)->get();
+       foreach ($m as $music_type){
+           array_push($this->music_types, MusicType::findOrFail($music_type->music_type_id));
+       }
+    }
+
     static function getClosestClubs($club){
 	    $count =0;
 	    $clubs = Club::all();
@@ -111,11 +122,43 @@ class Club extends Model {
     }
 
 	public function rule(){
-		return $this->belongsTo('App\Models\Rules');
+        $to_return = [];
+	    $rules = DB::table('clubrules')->where('club_id', $this->id)->get();
+
+	    foreach ($rules as $rule){
+            $ru = Rules::findOrFail($rule->rule_id);
+
+            array_push($to_return, $ru);
+
+        }
+
+        return $to_return;
 	}
 
+	public function getRate(User $user){
+	    return Rating::where('user_id', $user->id)->where('club_id', $this->id)->first();
+    }
 
+    public function getUserPrefere($user){
+	    if($this->music_types == null){
+            $this->setMusicTypes();
+        }
+        $user_music_types = $user->getMusicTypes();
+        $check = count($user_music_types);
+	    foreach ($user_music_types as $u_music_type){
+	        foreach ($this->music_types as $c_music_type){
+	            if($u_music_type == $c_music_type ){
+	                $check = $check - 1;
+                }
+            }
+        }
 
+        if($check == 0){
+	        return true;
+        } else {
+	        return false;
+        }
+    }
 	/*
 	|--------------------------------------------------------------------------
 	| SCOPES

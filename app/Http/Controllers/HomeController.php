@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Jobs\SendWelcomeEmail;
 use App\Models\Club;
 use App\Models\Event;
+use App\Models\Rating;
 use App\User;
 use Faker\Provider\DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
@@ -34,8 +36,6 @@ class HomeController extends Controller
     	$user = User::find(3);
     	$clubs = Club::all();
     	$events = Event::where('start_date', '>=', Carbon::today())->get();
-
-
 
 
 

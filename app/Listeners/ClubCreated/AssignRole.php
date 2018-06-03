@@ -29,5 +29,7 @@ class AssignRole
 	    if ( ! $event->user->hasRole( 'owner' ) ) {
 		    $event->user->assignRole( 'owner' );
 	    }
+
+
     }
 }

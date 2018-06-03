@@ -17,22 +17,25 @@ class CheckEventPermission
      */
     public function handle($request, Closure $next)
     {
+
+
     	// Check if club exist //
-	    $eventExists = Club::where([
-		    'id' => $request->club_id,
-		    'user_id' => Auth::id(),
-	    ])->exists();
+
 
 //	    var_dump($request->club->id);
 //	    var_dump(Auth::id());
 //	    var_dump($eventExists);
 //	    exit;
 
-	    if ( ! Auth::check() || ! $eventExists && ! Auth::user()->hasRole('admin')) {
+	    if ( ! Auth::check()) {
 		    abort(403, 'Brak dostępu');
 	    }
-
-
+        if( Auth::user()->hasRole('admin')){
+	        return $next($request);
+        }
+        if( ! Auth::user()->hasRole('owner')){
+	        abort(403, 'brak dostepu');
+        }
 	    return $next($request);
     }
 }

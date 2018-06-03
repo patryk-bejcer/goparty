@@ -15,6 +15,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Symfony\Component\Routing\Tests\Fixtures\CustomCompiledRoute;
+use Illuminate\Support\Facades\DB;
 
 
 class ClubsOwnerController extends Controller {
@@ -40,8 +41,8 @@ class ClubsOwnerController extends Controller {
 
 	public function create() {
 		$musicTypes = MusicType::all();
-
-		return view( 'dashboard.clubs.create', compact( 'musicTypes' ) );
+        $rules = Rules::all();
+		return view( 'dashboard.clubs.create', compact( 'musicTypes', 'rules' ) );
 	}
 
 
@@ -59,7 +60,7 @@ class ClubsOwnerController extends Controller {
 			'street_number.required' => 'Prosimy o podanie dokładniejszych danych adresowych (number lokalu)',
 		] );
 
-		Club::create( [
+		$club = Club::create( [
 			'user_id'                 => Auth::id(),
 			'official_name'           => $request->official_name,
 			'role'                    => $request->role,
@@ -77,8 +78,24 @@ class ClubsOwnerController extends Controller {
 			'website_url'             => $request->website_url,
 			'facebook_url'            => $request->facebook_url,
 		] );
+		if(!empty($request->rules)){
+            foreach($request->rules as $rule){
+                ClubRules::create([
+                    'club_id' => $club->id,
+                    'rule_id' => $rule,
+                ]);
+            }
+        }
 
-		event(new ClubCreated());
+		foreach ($request->music_types as $music_type){
+		    DB::table('club_music_type')->insert([
+		       'club_id' => $club->id,
+               'music_type_id' => $music_type,
+            ]);
+        }
+
+
+		event(new ClubCreated($club));
 
 		Session::flash( 'message', 'Klub ' . $request->official_name . ' dodany pomyślnie, teraz możesz uzupełnić dodatkowe informacje, lub dodać wydarzenie.' );
 
@@ -99,6 +116,8 @@ class ClubsOwnerController extends Controller {
 		$musicTypes = MusicType::all();
 		$images = ClubImage::where('club_id', $club->id)->get();
         $rules = Rules::all();
+
+        $club->setMusicTypes();
 
 		return view( 'dashboard.clubs.edit', compact( 'club', 'musicTypes', 'images', 'rules' ) );
 	}
@@ -127,14 +146,27 @@ class ClubsOwnerController extends Controller {
 		    $club_rules = ClubRules::where('club_id', $club->id)->delete();
 
         }
-        foreach ($request->rules as $rule){
-            ClubRules::create([
-                'club_id' => $club->id,
-                'rule_id' => $rule,
-            ]);
+        if(!empty($request->rules)){
+            foreach ($request->rules as $rule){
+                ClubRules::create([
+                    'club_id' => $club->id,
+                    'rule_id' => $rule,
+                ]);
+            }
+        }
+        DB::table('club_music_type')->where('club_id', $club->id)->delete();
+        if(!empty($request->music_types)){
+            foreach ($request->music_types as $music_type){
+
+                DB::table('club_music_type')->insert([
+                    'club_id' => $club->id,
+                    'music_type_id' => $music_type,
+                ]);
+            }
+
         }
 
-		return back();
+		return back()->with(['message' => 'klub został edytowany poprawnie']);
 	}
 
 

@@ -20,6 +20,7 @@ body {
   }
   background: $primary-color;
   background-image: url(../img/bg.jpg);
+  background-attachment: fixed;
 
 
 
@@ -28,6 +29,12 @@ body {
     background-color: rgba(255, 255, 255, 0.85) !important;
     border-radius: 0 !important;
     border: 0px solid #FFF !important;
+
+    &:focus{
+      -webkit-box-shadow: 0px 0px 12px 0px rgba(222,39,146,1) !important;
+      -moz-box-shadow: 0px 0px 12px 0px rgba(222,39,146,1) !important;
+      box-shadow: 0px 0px 12px 0px rgba(222,39,146,1) !important;
+    }
   }
   a {
     color: $pink-color;
@@ -89,6 +96,11 @@ body {
   color: $pink-color;
   font-weight: 900;
   text-decoration: none !important;
+
+
+}
+.disabled {
+  opacity: 0.5 !important;
 }
 .carousel-control-prev, .carousel-control-next{
   top: -100px !important;
@@ -557,7 +569,7 @@ body {
     background-color: white;
 
     img{
-      left: -32px;
+      left:-32px;
       top:-42px;
       max-width: 214px;
       position: absolute;
@@ -575,7 +587,7 @@ body {
 }
 
 .card-body{
-  padding-bottom: 0px !important;
+
   background-color: #0c051e;
 }
 .card-header{
@@ -852,7 +864,7 @@ body {
   max-width: 70%;
   max-height: 700px;
   padding-left: 50px;
-
+  text-align: center;
   .modal-content{
     border: none;
     position: relative;
@@ -1209,4 +1221,124 @@ body {
 #shadow-outside{
   border: 2px solid #ef3ab1;
 
+}
+
+.banner{
+
+  width: 100%;
+  position: relative;
+  background-position: top !important;
+  background-attachment: scroll;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 300px;
+  padding-top: 8rem;
+  .banner-content{
+    width: 43%;
+  }
+}
+
+#validate-errors{
+  position: fixed;
+  top: 79px;
+  width: 100%;
+  text-align: center;
+  display: none;
+  background-color: $pink-color;
+  color: white;
+
+  #error-content{
+
+  }
+
+}
+.music_types_tags{
+
+  .music-type-tag{
+    padding: 5px 8px 5px 8px;
+    background-color: $pink-color;
+    color: white;
+    text-align: center;
+    margin-right: 10px;
+    transition:all 200ms ;
+    border-radius: 10% !important;
+    &:hover{
+      opacity: 0.7;
+    }
+  }
+}
+.file-input-prepend{
+  &:hover{
+    cursor: pointer;
+    opacity: 0.7;
+  }
+  span{
+    background-color: $pink-color !important;
+    color: white;
+    border: none;
+  }
+
+}
+.user-setting-body{
+  .custom-file{
+    background-color: rgba(255,255,255,0.9) !important;
+    border: 1px solid $pink-color;
+    border-radius: 0px 5px 5px 0px;
+    color: black;
+    input{
+      color: black;
+      width: 10%;
+    }
+  }
+
+  img{
+    width: 100%;
+    object-fit: cover;
+  }
+  input, textarea, select{
+    color: white;
+    background-color: transparent !important;
+    border: 1px solid rgba(255,255,255,0.4) !important;
+    border-radius: 2px !important;
+
+  }
+
+
+}
+.option-item{
+  background-color: #0C051E !important;
+}
+
+.distance{
+  #distance-min-output, #distance-max-output{
+    padding: 5px ;
+    background-color: $pink-color !important;
+    color: white;
+    border: none !important;
+    text-align: center;
+    border-radius: 2px;
+    border-color: transparent !important;
+    width: 100%;
+  }
+
+}
+
+.slider{
+  background-color: rgba($purple-color, 0.5);
+}
+
+.slider{
+  background: none !important;
+  background-color: $pink-color !important;
+}
+
+#custom-handle {
+  color: $pink-color;
+  font-weight: 900;
+  width: 2em;
+  height: 1.6em;
+  top: 50%;
+  margin-top: -.8em;
+  text-align: center;
+  line-height: 1.6em;
 }

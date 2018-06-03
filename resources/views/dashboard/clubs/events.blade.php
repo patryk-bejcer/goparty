@@ -7,7 +7,7 @@
             <div class="col">
                 <div class="card text-white bg-dark mb-3">
                     <div class="card-header">
-                        <b>Twoje wydarzenia w klubie {{$club->official_name}}}}</b>
+                        <b>Twoje wydarzenia w klubie <a href="{{url('clubs/'. $club->id)}}">{{$club->official_name}}</a></b>
                         <a href="{{route('events.create', ['club_id' => $club->id])}}"
                            class="btn btn-primary btn-sm mb-2 pull-right">Dodaj wydarzenie</a>
                     </div>

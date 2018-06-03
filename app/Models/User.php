@@ -2,11 +2,14 @@
 
 namespace App;
 
+use App\Models\MusicType;
 use Backpack\CRUD\CrudTrait;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Backpack\Base\app\Notifications\ResetPasswordNotification as ResetPasswordNotification;
+use Illuminate\Support\Facades\DB;
+use Symfony\Component\Console\Helper\Table;
 
 class User extends Authenticatable
 {
@@ -20,7 +23,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'city_id', 'password',
+        'first_name', 'last_name', 'email', 'city_id', 'password','image_path'
     ];
 
     /**
@@ -31,7 +34,6 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
 
      /**
      * Send the password reset notification.
@@ -83,4 +85,42 @@ class User extends Authenticatable
 	    return rand(0, 100);
     }
 
+    public function getUserImage(){
+	    if(($image = $this->image_path) == null){
+	        return asset('img/avatar.png');
+        } else   return asset('public/users/'.$this->id.'/'.$this->image_path);
+
+
+    }
+    public function getMusicTypes(){
+	    $user_music_types = [];
+	    if(($all = DB::table('user_music_type')->where('user_id', $this->id)->get()) != null);
+	    foreach ($all as $music_type){
+	        $music_types = MusicType::findOrFail($music_type->music_type_id);
+	        array_push($user_music_types, $music_types);
+        }
+
+        return $user_music_types;
+    }
+
+    public function getUserSettings(){
+	    $settings = DB::table('user_settings')->where('user_id', $this->id)->first();
+	    return $settings;
+
+    }
+
+
+    /* Do zrobienia
+    filtrowanie klubow przez preferencje użytkownika.
+    */
+    public function filtrClubByUserSettings($clubs){
+
+    }
+
+    /* Do zrobienia
+       filtrowanie wydarzeń przez preferencje użytkownika.
+       */
+    public function filtrEventsByUserSettings($events){
+
+    }
 }

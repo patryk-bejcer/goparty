@@ -10,7 +10,9 @@
                         <b>Formularz edycji klubu</b>
                     </div>
                     <div class="card-body">
-
+                        @if (Session::has('message'))
+                            <div class="alert alert-success">{{ Session::get('message') }}</div>
+                        @endif
                         <div id="register-club" class="">
                             <div class="pb-5 pt-1">
 
@@ -231,8 +233,9 @@
                                             <div class="col-lg-10">
                                                 <label for="rules"> Zasady i możliwośći w twoim klubie </label> <br>
                                                 @foreach($rules as $rule)
+
                                                     <div class="form-check form-check-inline">
-                                                        <input type="checkbox" name="rules[]" class="form-check-input" value="{{$rule->id}}">
+                                                        <input @if(in_array($rule, $club->rule())) checked  @endif type="checkbox" name="rules[]" class="form-check-input" value="{{$rule->id}}">
                                                         <label class="form-check-label"> {{$rule->name}}</label>
                                                     </div>
 
@@ -248,13 +251,15 @@
                                                        class="">{{ __('Jaka muzyka jest w Twoim klubie często grana?') }}</label>
                                                 <br>
 
+
                                                 @foreach($musicTypes as $musicType)
+
                                                     <div class="form-check form-check-inline">
-                                                        <input name="music_types[]" class="form-check-input"
-                                                               type="checkbox" id="musicTypeCheck_{{$musicType->id}}"
+                                                        <input @if(in_array($musicType, $club->music_types)) checked @endif name="music_types[]" class="form-check-input musicTypeCheckbox"
+                                                               type="checkbox" id="musicTypeCheckbox"
                                                                value="{{$musicType->id}}">
                                                         <label class="form-check-label"
-                                                               for="musicTypeCheck_{{$musicType->id}}">{{$musicType->name}}</label>
+                                                               for="musicTypeCheckbox">{{$musicType->name}}</label>
                                                     </div>
                                                 @endforeach
 
@@ -268,10 +273,11 @@
 
 
                                         <div class="form-group row mb-0">
-                                            <div class="col-md-6">
+                                            <div class="col-md-6" style="display: inline-flex">
                                                 <button type="submit" class="btn btn-primary">
                                                     {{ __('Dalej >>') }}
                                                 </button>
+                                                <a href="{{url('clubs/'. $club->id)}}" class="ml-4 btn btn-primary">Zobacz ten klub</a>
                                             </div>
                                         </div>
                                     </form>

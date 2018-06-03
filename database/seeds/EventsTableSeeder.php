@@ -25,8 +25,8 @@ class EventsTableSeeder extends Seeder {
 				'club_id'     => $club->id,
 				'user_id'     => $club->user->id,
 				'title'       => $faker->name,
-				'start_date'  => $faker->dateTimeBetween($startDate = '-1 years', $endDate = 'now', $timezone = null),
-				'end_date'    => $faker->dateTimeBetween($startDate = '-1 years', $endDate = 'now', $timezone = null),
+				'start_date'  => $faker->dateTimeBetween($startDate = 'now', $endDate = '+1 year', $timezone = null),
+				'end_date'    => $faker->dateTimeBetween($startDate = '+1 year', $endDate = '+2 year', $timezone = null),
 				'description' => $faker->realText( rand( 10, 20 ) ),
 				'website'     => $faker->domainName,
 			];

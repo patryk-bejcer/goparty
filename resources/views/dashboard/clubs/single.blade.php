@@ -9,8 +9,11 @@
             <div class="club-border"> </div>
             <div class="col-lg-5">
                 @if(empty($club->getMain($club->id)))
-                    <p>Ten klub nie ma jeszcze dodanych zdjęć</p>
-                    @else
+                    <p class="text-white">Ten klub nie ma jeszcze dodanych zdjęć</p>
+                    @if(\Illuminate\Support\Facades\Auth::id() == $club->user_id)
+                    <a href="{{url('dashboard/clubs/' . $club->id . '/edit/photo')}}" style="color: white; " class="myBtn-link myBtn hvr-sweep-to-right"> dodaj zdjęcie </a>
+                        @endif
+                @else
                 <img onclick="loadGallery(this)" data-toogle = 'modal' data-target="#photos" id="img-gallery" src="{{url('public/users/'.$club->user_id.'/'.$club->getMain($club->id)->image_path)}}">
                 @endif
                 @if (empty($club->getPhotos($club, 3)))
@@ -30,23 +33,69 @@
             </div>
 
             <div class="col-lg-7" style="padding-top: 0px;">
+
                 <h2 style="margin-top: 0px;" class="text-center">{{$club->official_name}}</h2>
                 <hr>
                 <p id="description">
                     Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle elektronicznym, pozostając praktycznie niezmienionym. Spopularyzował się w latach 60. XX w. wraz z publikacją arkuszy Letrasetu, zawierających fragmenty Lorem Ipsum, a ostatnio z zawierającym różne wersje Lorem Ipsum oprogramowaniem przeznaczonym do realizacji druków na komputerach osobistych, jak Aldus PageMaker
                 </p>
                 <div class="description-footer" >
-                    <a href="#" ><i class="fa fa-globe" style="margin-right: 5px"> </i> <span style="color: white; ">wojewodztwo: </span>{{$club->voivodeship}} </a>
-                    <a href="#" ><i class="fa fa-globe" style="margin-right: 5px"> </i> <span style="color: white; ">Ulica: </span>{{$club->route}}{{$club->street_number}} </a>
+                @auth
+                    <fieldset style="width: 100%;" @if(!empty($club->getRate(\Illuminate\Support\Facades\Auth::user()))) data-rate = "{{$club->getRate(\Illuminate\Support\Facades\Auth::user())->rate}}" @endif class="rating">
+
+
+                        <input id="star5" data-club = "{{$club->id}}" data-user = "{{\Illuminate\Support\Facades\Auth::id()}}"  type="radio" name="rating" value="5" ><label for="star5"  class = "full" title="Awesome - 5 stars"></label>
+
+                        <input id="star4" data-club = "{{$club->id}}" data-user = "{{\Illuminate\Support\Facades\Auth::id()}}"  type="radio" name="rating" value="4" ><label  for="star4" class = "full" title="Pretty good - 4 stars"></label>
+
+                        <input id="star3" data-club = "{{$club->id}}" data-user = "{{\Illuminate\Support\Facades\Auth::id()}}"  type="radio" name="rating" value="3" ><label  for="star3" class = "full"  title="Meh - 3 stars"></label>
+
+                        <input id="star2" data-club = "{{$club->id}}" data-user = "{{\Illuminate\Support\Facades\Auth::id()}}"  type="radio" name="rating" value="2" ><label  for="star2" class = "full"  title="Kinda bad - 2 stars"></label>
+
+                        <input id="star1" data-club = "{{$club->id}}" data-user = "{{\Illuminate\Support\Facades\Auth::id()}}"  type="radio" name="rating" value="1" ><label  for="star1" class = "full"  title="Sucks big time - 1 star"></label>
+
+                    </fieldset>
+
+                    @if(!empty($club->getRate(\Illuminate\Support\Facades\Auth::user())))
+
+                        <button style="float: right" data-user = "{{\Illuminate\Support\Facades\Auth::id()}}" data-club = "{{$club->id}}" id="remove_rate" class="btn btn-sm btn-primary p-1">usun ocene</button>
+
+                    @endif
+                    @endauth
+                    @if(\Illuminate\Support\Facades\Auth::id() == $club->user_id)
+                        <div class="d-inline-flex">
+                            <a style="display:inline-block; margin: 0px" href="{{route('clubs.edit', ['club' => $club])}}" class="btn btn-sm btn-primary" ><i class="fa fa-edit"></i> Edytuj Klub</a>
+                            <form onsubmit="return confirm('czy na pewno chcesz usunac ten klub?')" style="margin-left: 10px; margin-right: 10px" action="{{route('clubs.destroy', ['club'=> $club])}}" method="POST">
+                                <input type="hidden" name="_method" value="DELETE">
+                                @CSRF
+                                <button type="submit" class="btn btn-sm btn-primary" ><i class="fa fa-trash"></i> Usuń Klub</button>
+                            </form>
+                            <a style="display:inline-block; margin: 0px" href="{{url('dashboard/clubs/'. $club->id.'/events/create')}}" class="btn btn-sm btn-primary" ><i class="fa fa-edit"></i> Utwórz wydarzenie</a>
+                        </div>
+                    @endif
+
+                    <a href="#" ><i class="fa fa-globe mt-2" style="margin-right: 5px"> </i> <span style="color: white; ">wojewodztwo: </span>{{$club->voivodeship}} </a>
+                    <a href="#" ><i class="fa fa-globe b-2" style="margin-right: 5px"> </i> <span style="color: white; ">Ulica: </span>{{$club->route}}{{$club->street_number}} </a>
+                    <div style="padding-left: 0px" class="col-md-8">
+
+                        <ul style="display: inline-flex; flex-direction: row" class=" mt-1 list-group music_types_tags">
+                            @foreach($club->music_types as $music_type)
+                            <li class="list-group-item music-type-tag"><a style="color: white" href="{{url('search/clubs?music_type='.$music_type->id)}}">#{{$music_type->name}} </a></li>
+                            @endforeach
+
+                        </ul>
+                    </div>
                 </div>
 
             </div>
         </div>
-        @if(empty($rules) AND \Illuminate\Support\Facades\Auth::user()->id == $club->user_id)
-            <p class="text-center mt-3 mb-3" style="color: white"> Nie masz jeszcze żadnych zasad ani możliwości w tym klubie.</p>
-            @php var_dump($rules) @endphp
-            @elseif(!empty($rules))
 
+
+        @if(empty($club->rule()) AND \Illuminate\Support\Facades\Auth::id() == $club->user_id)
+
+            <p class="text-center mt-3 mb-3" style="color: white"> Nie masz jeszcze żadnych zasad ani możliwości w tym klubie.</p>
+
+        @else
 
         <h3 class="text-center mb-2 mt-2">Zasady: </h3>
         <div class="row justify-content-center" style="margin-top: 30px; padding: 0px;">
@@ -97,17 +146,11 @@
                         <p style="font-size: 14px; margin: 0px; font-weight: 100"><i style="font-size: 12px;"class="fa fa-phone"></i> {{$my_club[0]['phone']}}</p>
                     </div>
                     <div class="club-slide-footer" >
-                        <p class="pull-left"> Dla Ciebie: {{rand(0,100)}} %</p>
+
 
                             <a href="{{url('/clubs/'. $my_club[0]['id'])}}" style="position: sticky; font-size: 14px; font-weight: 100; " class="navigator">Zobacz więcej</a>
 
-                        <div class="pull-right" style="display: inline-block; font-size: 16px">
-                            <i  style="color:white;" class="fa fa-star  mr-1"></i>
-                            <i  style="color:white;" class="fa fa-star  mr-1"></i>
-                            <i  style="color:white;" class="fa fa-star  mr-1"></i>
-                            <i  style="color:white;" class="fa fa-star mr-1"></i>
-                            <i  style="color:white;" class="fa fa-star  mr-1"></i>
-                        </div>
+
                     </div>
 
                 </div>
@@ -123,6 +166,7 @@
 
 
         </div>
+        @if($events->isEmpty() == false)
         <div class="container" id="events">
             <div class="row justify-content-center">
                 <div class="col-lg-12 text-center">
@@ -149,11 +193,35 @@
 
                                             <div class="row" >
                                                 <div class="col-lg-1" >
-                                                    <h1 style=" margin: 0px; @if($counter>9) font-size: 50px !important; margin-top: 35% !important; @endif"> {{$club->id}}. </h1>
+                                                    <h1 style=" margin: 0px; @if($counter>9) font-size: 50px !important; margin-top: 35% !important; @endif"> {{$counter}}. </h1>
                                                 </div>
                                                 <div class="col-lg-11" >
-                                                    <p style="margin-top: 5px;" id="event-name" >{{$event->title}}</p>
-                                                    <p id="event-date" >{{substr($event->start_date,0,10)}} <span class="pull-right">{{rand(200,9000)}} osób</span> </p>
+                                                    <div class="row">
+                                                        <div class="col-lg-8">
+                                                            <p style="margin-top: 5px;" id="event-name" >{{$event->title}}</p>
+                                                            <p id="event-date" >{{substr($event->start_date,0,10)}} </p>
+                                                        </div>
+                                                        <div class="col-lg-4 text-right">
+                                                            <div style="position: absolute; right: 15px; bottom: 0px;">
+                                                            <p style="color: white; font-weight: 900;" class="text-right"> Ilość osób które wezmą udział: <span class="attendendNumber" style="color: rgb(239, 58, 177)">{{$event->getAttendendList()}}</span></p>
+
+                                                                @auth
+                                                                    <form class="attendEvent" action="    @if(!$event->checkAttendandUser(\Illuminate\Support\Facades\Auth::user())) {{route('attendEvent')}} @else {{route('notAttendEvent')}} @endif">
+                                                                        <input type="hidden" name="user_id" value="{{\Illuminate\Support\Facades\Auth::id()}}">
+                                                                        <input type="hidden" name="event_id" value="{{$event->id}}">
+                                                                        @if(!$event->checkAttendandUser(\Illuminate\Support\Facades\Auth::user()))
+                                                                         <button data-attend = 'attende' type="submit" style="border: none; margin-bottom: 3px;" class=" myBtn-link myBtn hvr-sweep-to-right">weź udział </button>
+                                                                            @else
+                                                                            <button data-attend = 'notattende' type="submit" style="border: none; margin-bottom: 3px;" class=" myBtn-link myBtn hvr-sweep-to-right">nie bierz udziału </button>
+                                                                        @endif
+
+                                                                    </form>
+                                                                @endauth
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
 
                                                 </div>
                                             </div>
@@ -185,11 +253,12 @@
 
                 </div>
 
-            </div>
-        </div>
+                     </div>
+                </div>
+
 
             </div>
-
+            @endif
         </div>
 
 

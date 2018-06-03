@@ -3,7 +3,9 @@
 namespace App\Services;
 
 use App\Models\Club;
+use Faker\Provider\File;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class Helper {
 
@@ -14,5 +16,15 @@ class Helper {
 			return true;
 		}
 	}
+	/* function return random banner url from img/banner */
+	public static function getRandomBanner(){
+	    $dir = public_path().'\img\banner';
+
+        $files = glob($dir.'\*.*');
+        $random_file = asset('img/banner/'.rand(1,count($files)).'.jpg');
+
+
+        return $random_file;
+    }
 
 }

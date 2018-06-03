@@ -33,8 +33,14 @@ class ClubsUserController extends Controller {
 	 */
 	public function show( $id ) {
 		$club = Club::findOrFail($id);
+		$club->setMusicTypes();
 		$rules = clubRules::where('club_id', $id)->get();
         $events = Event::where('club_id', $id)->get();
+        foreach ($events as $event) {
+            $event->setAttendandList();
+        }
+
+
 		return view('dashboard/clubs/single', compact('club', 'rules', 'events'));
 	}
 

@@ -68,6 +68,10 @@ return [
             'driver' => 'local',
             'root' => public_path('uploads'),
         ],
+        'banners' => [
+            'driver' => 'local',
+            'root' => public_path('img\banner'),
+        ],
 
     ],
 

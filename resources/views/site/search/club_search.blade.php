@@ -5,10 +5,10 @@
     <div class="container" id="clubs-container" style="max-width: 90%;" data-scroll = 'scroll'>
 
         <h3 class="text-center">Wyszukane kluby:</h3>
-
+        <h4 class="text-center text-white"> w kategori: {{$search_category}}</h4>
         <div class="row justify-content-center ">
 
-
+        @if(!empty($clubs))
         @foreach($clubs as $club)
             <div class="club-slide col-md-3" style="position: relative; margin: 20px; height: 320px; padding: 0px">
                 @if(empty(\App\Models\Club::getMain($club['id'])))
@@ -20,7 +20,7 @@
 
                     <a  href="{{url('clubs/'.$club->id)}}"> <h2 style="transform: none">{{$club->official_name}}</h2></a>
 
-                    @if($club->getUser()->id == \Illuminate\Support\Facades\Auth::user()->id)
+                    @if($club->getUser()->id == \Illuminate\Support\Facades\Auth::id())
                         <div class="col-md-12 text-center">
 
 
@@ -56,6 +56,7 @@
 
 
             @endforeach
+            @endif
         </div>
 
     </div>

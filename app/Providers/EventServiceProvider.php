@@ -18,7 +18,8 @@ class EventServiceProvider extends ServiceProvider
 	        'App\Listeners\UserRegistred\AssignRole',
         ],
         'App\Events\ClubCreated' => [
-	        'App\Listeners\ClubCreated\AssignRole'
+	        'App\Listeners\ClubCreated\AssignRole',
+            'App\Listeners\ClubCreated\ClubCreateEmail',
         ],
         'App\Events\ClubDestroy' => [
 	        'App\Listeners\ClubDestroy\RemoveRole'

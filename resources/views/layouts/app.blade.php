@@ -34,13 +34,24 @@
 <div id="app">
 
     @include('layouts.header')
+    @if(Route::getCurrentRoute()->uri() == '/')
      @include('layouts.slider')
+
+    @else
+    @include ('layouts.banner')
+        @endif
     <main style="overflow-y: hidden" class="mt-5 mb-5">
         @yield('content')
     </main>
       @include('layouts.footer')
 </div>
 
+<div id="validate-errors">
+
+        <div id="validate-error-content" class="content">
+
+        </div>
+</div>
 
 
 <!-- Scripts -->
@@ -55,8 +66,10 @@
     var active_change_url = '{{route('clubImage.changeActive')}}';
     var image_delete_url = '{{route('clubImage.delete')}}';
     var url = '{{url('public/users')}}';
-    var club_image_create_url = '{{route('clubImage.store')}}'
-    var token = '{{csrf_token()}}'
+    var club_image_create_url = '{{route('clubImage.store')}}';
+    var token = '{{csrf_token()}}';
+    var club_rate = '{{route('club.rate')}}';
+    var club_rate_delete = '{{route('club.rate.delete')}}';
 </script>
 
 
