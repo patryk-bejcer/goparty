@@ -9,10 +9,10 @@ Error: File to import not found or unreadable: ~bootstrap/scss/bootstrap.
 8: // Bootstrap
 9: @import '~bootstrap/scss/bootstrap';
 10: 
-11: .navbar-laravel {
-12:   background-color: #fff;
-13:   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-14: }
+11: @import '~jquery-ui/themes/base/all.css';
+12: 
+13: .navbar-laravel {
+14:   background-color: #fff;
 
 Backtrace:
 app.scss:9
@@ -58,4 +58,4 @@ C:/Ruby24-x64/bin/scss:23:in `<main>'
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: ~bootstrap/scss/bootstrap.\A         on line 9 of app.scss\A \A 4: \A 5: // Variables\A 6: @import \"variables\";\A 7: \A 8: // Bootstrap\A 9: @import '~bootstrap/scss/bootstrap';\A 10: \A 11: .navbar-laravel {\A 12:   background-color: #fff;\A 13:   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);\A 14: }"; }
+  content: "Error: File to import not found or unreadable: ~bootstrap/scss/bootstrap.\A         on line 9 of app.scss\A \A 4: \A 5: // Variables\A 6: @import \"variables\";\A 7: \A 8: // Bootstrap\A 9: @import '~bootstrap/scss/bootstrap';\A 10: \A 11: @import '~jquery-ui/themes/base/all.css';\A 12: \A 13: .navbar-laravel {\A 14:   background-color: #fff;"; }

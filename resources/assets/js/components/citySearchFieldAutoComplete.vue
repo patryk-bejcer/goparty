@@ -30,15 +30,15 @@
 
         data: function () {
             return {
-                address: ''
+                address: '',
             }
         },
 
         mounted() {
 
-            this.address = surveyData;
+            this.address = this.surveyData;
             // Do something useful with the data in the template
-            console.dir(this.surveyData)
+            // console.dir(this.surveyData)
 
             // To demonstrate functionality of exposed component functions
             // Here we make focus on the user input
@@ -54,7 +54,7 @@
              */
             getCityData: function (addressData, placeResultData, id) {
                 this.address = addressData.locality;
-                console.log(this.address);
+                // console.log(this.address);
             }
         }
     }

@@ -11,6 +11,9 @@ function change_active(div) {
         method: 'post',
         url: active_change_url,
         data: {image_id: image_id, _token:token},
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
 
     }) .done(function (msg) {
 
@@ -24,6 +27,9 @@ function change_main(div) {
         method: 'post',
         url: main_change_url,
         data: {image_id: image_id, _token:token},
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
 
     }) .done(function (msg) {
 
@@ -48,7 +54,10 @@ function delete_club_image(link){
     $.ajax({
         method: 'post',
         url: image_delete_url,
-        data: {'ClubImage_id': image_id, _token:token}
+        data: {'ClubImage_id': image_id, _token:token},
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
     })
         .done(function (msg) {
             console.log('usunieto pomyslnie');
@@ -240,10 +249,10 @@ $(function () {
 
     })
     $('#search-club').autocomplete({
-        source: 'http://localhost:8000/search/autocomplete',
+        source: 'http://localhost/goparty/public/search/autocomplete',
         minLength: 1,
         select: function( event, ui ) {
-            window.location.href = 'http://localhost:8000/clubs/'+ ui.item.id;
+            window.location.href = 'http://localhost/goparty/public/clubs/'+ ui.item.id;
         },
 
 
@@ -282,6 +291,10 @@ $(function () {
            data: myformData,
            processData: false,
            contentType: false,
+           headers: {
+               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+           }
+
 
        })
            .done(function (msg) {
