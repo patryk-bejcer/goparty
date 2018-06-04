@@ -26,12 +26,10 @@
 
                                     </form>
                                 </div>
-                                <script>
 
-                                </script>
                                 <br>
-                                <h3 style="margin-top: 50px"> {{$club->official_name}}</h3>
-                                <h3 id="value" style="font-size: 70px !important;">{{$user->club_percent($club)}}<span style="font-size: 20px; font-weight: 200;">% Dla Ciebie</span> </h3>
+                                {{--<h3 style="margin-top: 50px"> {{$club->official_name}}</h3>--}}
+                                {{--<h3 id="value" style="font-size: 70px !important;">{{$user->club_percent($club)}}<span style="font-size: 20px; font-weight: 200;">% Dla Ciebie</span> </h3>--}}
                                 <!-- <div class="col-lg-12" style="padding: 0px!important; margin-top: 10px;">
                                     <a style=" font-size: 19px;" onclick="showDiv(this)"> Muzyka <span class="fa fa-angle-down"> </span></a> <br>
                                     <div id="music" style="display: none;">
@@ -59,10 +57,7 @@
 
 
                         </div>
-                        @php
-                            $counter++;
-                        @endphp
-                        @endforeach
+
 
 
                         </div>

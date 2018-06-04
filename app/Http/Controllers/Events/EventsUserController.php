@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\MusicType;
 use http\Env\Response;
-use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Auth;
 
 class EventsUserController extends Controller

@@ -109,6 +109,7 @@ class UsersController extends Controller {
 
         ]);
        DB::table('user_music_type')->where('user_id', $user->id)->delete();
+       if(!empty($music_types))
 		foreach ($request->music_types as $music_type){
 		    DB::table('user_music_type')->insert([
 		       'user_id' => $user->id,

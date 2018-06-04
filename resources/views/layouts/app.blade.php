@@ -36,7 +36,7 @@
 
     @include('layouts.header')
 
-    <main style="overflow-y: hidden; margin-top: 6em;" class=" mb-5">
+    <main style="overflow-y: hidden; ">
     @if(Route::getCurrentRoute()->uri() == '/')
      @include('layouts.slider')
 

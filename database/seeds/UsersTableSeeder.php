@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
 
         $admin = \App\User::create([
 	        'first_name' => 'Admin',
-	        'last_name' => '',
+	        'last_name' => 'admin',
 	        'email' => 'admin@gmail.com',
 	        'password' => Hash::make('pass'),
 	        'city_id' => 1

@@ -45,7 +45,7 @@ body {
 }
 
 main{
-  overflow-y: hidden; margin-top: 6em;
+  overflow-y: hidden;
 }
 
 .content {
@@ -1224,6 +1224,130 @@ main{
   max-height: 150px !important;
 }
 
+
+.banner{
+
+  width: 100%;
+  position: relative;
+  background-position: top !important;
+  background-attachment: scroll;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 300px;
+  padding-top: 8rem;
+  .banner-content{
+    width: 43%;
+  }
+}
+
+#validate-errors{
+  position: fixed;
+  top: 79px;
+  width: 100%;
+  text-align: center;
+  display: none;
+  background-color: $pink-color;
+  color: white;
+
+  #error-content{
+
+  }
+
+}
+.music_types_tags{
+
+  .music-type-tag{
+    padding: 5px 8px 5px 8px;
+    background-color: $pink-color;
+    color: white;
+    text-align: center;
+    margin-right: 10px;
+    transition:all 200ms ;
+    border-radius: 10% !important;
+    &:hover{
+      opacity: 0.7;
+    }
+  }
+}
+.file-input-prepend{
+  &:hover{
+    cursor: pointer;
+    opacity: 0.7;
+  }
+  span{
+    background-color: $pink-color !important;
+    color: white;
+    border: none;
+  }
+
+}
+.user-setting-body{
+  .custom-file{
+    background-color: rgba(255,255,255,0.9) !important;
+    border: 1px solid $pink-color;
+    border-radius: 0px 5px 5px 0px;
+    color: black;
+    input{
+      color: black;
+      width: 10%;
+    }
+  }
+
+  img{
+    width: 100%;
+    object-fit: cover;
+  }
+  input, textarea, select{
+    color: white;
+    background-color: transparent !important;
+    border: 1px solid rgba(255,255,255,0.4) !important;
+    border-radius: 2px !important;
+
+  }
+
+
+}
+.option-item{
+  background-color: #0C051E !important;
+}
+
+.distance{
+  #distance-min-output, #distance-max-output{
+    padding: 5px ;
+    background-color: $pink-color !important;
+    color: white;
+    border: none !important;
+    text-align: center;
+    border-radius: 2px;
+    border-color: transparent !important;
+    width: 100%;
+  }
+
+  #distance-slider{
+    background-color: rgba($purple-color, 0.5);
+  }
+
+  .ui-widget-header{
+    background: none !important;
+    background-color: $pink-color !important;
+  }
+
+
+}
+#custom-handle{
+  width: 2em;
+  height: 1.6em;
+  top: 50%;
+  margin-top: -.8em;
+  text-align: center;
+  line-height: 1.6em;
+}
+.ui-slider-range-min{
+  background-color: $pink-color !important;
+}
+.ui-state-active{
+  background-color: $purple-color !important;
+}
 //STYLES FOR NOTEBOOKS
 @media (max-width: 1360px) {
   .carousel .carousel-inner {

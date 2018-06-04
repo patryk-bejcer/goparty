@@ -8,10 +8,16 @@
 require('./bootstrap');
 
 import 'jquery-ui';
+
+import 'jquery-ui/ui/effect.js';
+import 'jquery-ui/ui/effects/effect-fade.js';
+import 'jquery-ui/ui/effects/effect-blind.js';
+import 'jquery-ui/ui/widgets/slider.js';
 import 'jquery-ui/ui/widgets/autocomplete.js';
+import 'jquery-ui/ui/widgets/resizable.js';
 
 window.jquery_ui = require('jquery-ui');
-
+11
 window.Vue = require('vue');
 
 /**

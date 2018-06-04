@@ -278,10 +278,12 @@ $(function () {
         }
     })
     $('#min_club_rate_slider').slider({
-      max: 5,
+      min: 1,
+        max:5,
+        animate:true,
+        range:'min',
         slide: function( event, ui ) {
-            $('#custom-handle').text($(this).slider('value'));
-            console.log($(this).slider('value'));
+          $('#custom-handle').text(ui.value);
         }
 
 
