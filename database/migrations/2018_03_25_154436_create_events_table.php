@@ -17,10 +17,14 @@ class CreateEventsTable extends Migration {
 			$table->integer( 'user_id' )->unsigned();
 			$table->string( 'title' );
 			$table->dateTime( 'start_date' );
-			$table->dateTime( 'end_date' );
+			$table->string('admission')->nullable();
+			$table->boolean('selection');
+			$table->string('ticket_price')->nullable();
 			$table->text( 'description' )->nullable();
 			$table->string( 'website' )->nullable();
 			$table->string( 'event_img' )->nullable();
+
+			$table->softDeletes();
 			$table->timestamps();
 
 			/* Foreign keys */

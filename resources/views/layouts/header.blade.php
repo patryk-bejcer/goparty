@@ -15,8 +15,8 @@
             <ul class="navbar-nav mr-auto">
                 <li> <a class="nav-link" href="#" >Start</a> </li>
 
-                <li> <a class="nav-link" href="#">Kluby</a> </li>
-                <li> <a class="nav-link" href="#">Wydarzenia</a> </li>
+                <li> <a class="nav-link" href="{{ route('all-events') }}">Imprezy</a> </li>
+                <li> <a class="nav-link" href="{{ route('clubs.index') }}">Kluby</a> </li>
                 <li> <a class="nav-link" href="#" >Muzyka</a> </li>
                 <li> <a class="nav-link" href="#">O nas</a> </li>
 
@@ -39,18 +39,19 @@
 
                             <!-- Tabs for users -->
                             <a class="dropdown-item" href="{{route('user-dashboard.index')}}">{{ __('Panel użytkownika') }}</a>
+                            <a class="dropdown-item" href="{{url('dashboard/attendance')}}">{{ __('Moje imprezy') }}</a>
                             <!-- End tabs for owner -->
 
                             <!-- Tabs for owner -->
                             @role('owner')
-                            <a class="dropdown-item" href="#">{{ __('Zarządzaj klubem') }}</a>
+                            <a class="dropdown-item" href="{{url('/dashboard/clubs')}}">{{ __('Zarządzaj klubem') }}</a>
                             @endrole
                             <!-- End tabs for owner -->
 
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                                {{ __('Wyloguj się') }}
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST"

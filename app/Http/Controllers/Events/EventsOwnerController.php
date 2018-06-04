@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Events;
 
+use App\EventAttendance;
 use App\Models\Club;
 use App\Models\Event;
 use Illuminate\Http\Request;
@@ -50,16 +51,36 @@ class EventsOwnerController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function store( Request $request ) {
+
+
+		if($request->file('event_img')){
+			$imageName = time().'.'.$request->file('event_img')->getClientOriginalExtension();
+			$request->file('event_img')->move(public_path('uploads/events'), $imageName);
+		} else {
+			$imageName = null;
+		}
+
+        $request->validate([
+            'title' => 'required|max:60',
+            'start_date' => 'required',
+            'selection' => 'required',
+            'description' => 'required'
+        ]);
+
 		Event::create( [
             'club_id' => $request->club_id ,
             'user_id' => $request->user_id ,
             'title' => $request->title,
-            'club_id' => $request->club_id ,
             'start_date' => strtotime($request->start_date),
-            'end_date' => strtotime($request->end_date),
+            'admission' => $request->admission,
+            'selection' => $request->selection,
+            'ticket_price' => $request->ticket_price,
             'description' => $request->description,
-            'website' => 'www.gro.pl',
+            'website' => $request->website,
+            'event_img' => $imageName
         ]);
+
+//		dd($request);
 
 		return redirect()->route( 'club-events', [ 'club_id' => $request->club_id ] );
 	}
@@ -93,18 +114,28 @@ class EventsOwnerController extends Controller {
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update( $event, Request $request ) {
-	    $update_event = Event::findOrFail($event);
-		$update_event->update( [
-		    'club_id' => $request->club_id ,
-		    'user_id' => $request->user_id ,
-		    'title' => $request->title,
-		    'club_id' => $request->club_id ,
-            'start_date' => strtotime($request->start_date),
-            'end_date' => strtotime($request->end_date),
-            'description' => $request->description,
-            'website' => $update_event->club->website_url,
+	public function update( $eventId, Request $request ) {
 
+        $request->validate([
+            'title' => 'required|max:60',
+            'start_date' => 'required',
+            'selection' => 'required',
+            'description' => 'required'
+        ]);
+
+	    $event = Event::findOrFail($eventId);
+
+		$event->update( [
+            'club_id' => $request->club_id ,
+            'user_id' => $request->user_id ,
+            'title' => $request->title,
+            'start_date' => strtotime($request->start_date),
+            'admission' => $request->admission,
+            'selection' => $request->selection,
+            'ticket_price' => $request->ticket_price,
+            'description' => $request->description,
+            'website' => $request->website,
+            'event_img' => $request->event_img
         ]);
 
 		return back();
@@ -120,4 +151,6 @@ class EventsOwnerController extends Controller {
 	public function destroy( $id ) {
 		//
 	}
+
+
 }

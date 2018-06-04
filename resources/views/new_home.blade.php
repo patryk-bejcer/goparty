@@ -8,57 +8,31 @@
 
     <div class="container" id="clubs-container">
 
-            <h3 class="text-center">Kluby w twojej okolicy</h3>
+        {{--Vue Component generate nearest events from DB--}}
+        <nearest-events>
+        </nearest-events>
 
+        {{--Vue Component generate nearest clubs from DB--}}
+        <nearest-clubs>
+        </nearest-clubs>
 
+                                            <input onclick="document.getElementById('Like_form').submit()" type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
 
+                                            <input onclick="document.getElementById('Like_form').submit()" type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
 
-                    <div class="card-slider row justify-content-center">
-                        @foreach($clubs as $club)
-                        {{$club->rate}}
-                        <div  data-background = '@if(!empty($club->getMain($club->id))) {{url('public/users/'.$club->user_id.'/'.$club->getMain($club->id)->image_path)}} @endif'   id="{{$counter}}"  class="card-slide @if($counter == 1) club-prev @elseif($counter == 2) club-center @elseif($counter == 3) club-next @else club-disable @endif "
-                        style="background-image: url('@if(!empty($club->getMain($club->id))) {{url('public/users/'.$club->user_id.'/'.$club->getMain($club->id)->image_path)}} @else {{url('img/klub1.jpg')}} @endif() ') ">
-                           <!-- <img class="club-border" src="{{url('img/clubs_border.png')}}"> -->
-
-                            <div class="slide-content">
-                                <div class="pull-right">
-
-
-                                        <fieldset @if(!empty($club->getRate(\Illuminate\Support\Facades\Auth::user()))) data-rate = "{{$club->getRate(\Illuminate\Support\Facades\Auth::user())->rate}}" @endif class="rating">
-                                            <input id="star5" data-club = "{{$club->id}}" data-user = "{{\Illuminate\Support\Facades\Auth::id()}}"  type="radio" name="rating" value="5" ><label for="star5"  class = "full" title="Awesome - 5 stars"></label>
-
-                                            <input id="star4" data-club = "{{$club->id}}" data-user = "{{\Illuminate\Support\Facades\Auth::id()}}"  type="radio" name="rating" value="4" ><label  for="star4" class = "full" title="Pretty good - 4 stars"></label>
-
-                                            <input id="star3" data-club = "{{$club->id}}" data-user = "{{\Illuminate\Support\Facades\Auth::id()}}"  type="radio" name="rating" value="3" ><label  for="star3" class = "full"  title="Meh - 3 stars"></label>
-
-                                            <input id="star2" data-club = "{{$club->id}}" data-user = "{{\Illuminate\Support\Facades\Auth::id()}}"  type="radio" name="rating" value="2" ><label  for="star2" class = "full"  title="Kinda bad - 2 stars"></label>
-
-                                            <input id="star1" data-club = "{{$club->id}}" data-user = "{{\Illuminate\Support\Facades\Auth::id()}}"  type="radio" name="rating" value="1" ><label  for="star1" class = "full"  title="Sucks big time - 1 star"></label>
+                                            <input onclick="document.getElementById('Like_form').submit()" type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
 
                                         </fieldset>
 
-                                    @if(!empty($club->getRate(\Illuminate\Support\Facades\Auth::user())))
-
-                                        <button data-user = "{{\Illuminate\Support\Facades\Auth::id()}}" data-club = "{{$club->id}}" class="btn btn-sm btn-primary p-1 remove_rate">usun ocene</button>
-
-                                    @endif
-
-
+                                    </form>
                                 </div>
                                 <script>
 
                                 </script>
                                 <br>
-                                <a href="{{url('clubs/'.$club->id)}}"><h3 style="margin-top: 50px"> {{$club->official_name}}</h3></a>
-                                @auth
-                                    @if($club->getUserPrefere(\Illuminate\Support\Facades\Auth::user()))
-
-                                        <h3 id="value" style="font-size: 15px !important; padding: 5px; background-color: rgb(239, 58, 177); color: white; text-align: center">tam grają muzykę jaką lubisz </h3>
-                                    @endif
-                                @endauth
-
-
-                                    <!-- <div class="col-lg-12" style="padding: 0px!important; margin-top: 10px;">
+                                <h3 style="margin-top: 50px"> {{$club->official_name}}</h3>
+                                <h3 id="value" style="font-size: 70px !important;">{{$user->club_percent($club)}}<span style="font-size: 20px; font-weight: 200;">% Dla Ciebie</span> </h3>
+                                <!-- <div class="col-lg-12" style="padding: 0px!important; margin-top: 10px;">
                                     <a style=" font-size: 19px;" onclick="showDiv(this)"> Muzyka <span class="fa fa-angle-down"> </span></a> <br>
                                     <div id="music" style="display: none;">
                                         <p style="color: white; font-size: 14px; font-family: Muli; font-weight: 200"> Lorem Ipsum Lorem Ipsum Lorem Ipsum </p>

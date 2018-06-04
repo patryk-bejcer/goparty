@@ -1,3 +1,7 @@
+@section('css')
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+@endsection
+
 <div id="demo" class="carousel slide carousel-fade" data-ride="carousel"  >
 
     <!-- The slideshow -->
@@ -55,3 +59,7 @@
 </div>
 
 <!-- End slideshow -->
+
+@section('scripts')
+
+@endsection

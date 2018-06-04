@@ -13,6 +13,14 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('nearest-clubs', 'API\ClubsController@getNearestClubs');
+
+Route::get('nearest-events', 'API\ClubsController@getNearestEvents');
+
+Route::post('take-part', 'API\EventsController@takePart');
+Route::get('take-part', 'API\EventsController@checkIfExistAttendance');
+
+
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//    return $request->user();
+//});

@@ -2,24 +2,22 @@
 
 namespace App\Models;
 use App\User;
+
+use App\EventAttendance;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use PhpParser\Node\Expr\Array_;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 
 class Event extends Model {
+	use SoftDeletes;
 	protected $guarded = [ 'id' ];
 	protected $attendendList;
 	protected $dates = [
 	  'start_date',
         'end_date',
     ];
-    /*
-	public function __construct(array $attributes = array()){
-        parent::__construct($attributes);
-        $id = $this->id;
-        $this->attendendList = count(DB::table('attendences')->where('event_id', $id)->get());
-	}
-    */
 	public function club() {
 		return $this->belongsTo( 'App\Models\Club' );
 	}
@@ -40,5 +38,14 @@ class Event extends Model {
     public function getAttendendList(){
 	    return $this->attendendList;
     }
+
+	public function attendance() {
+		return $this->hasMany('App\EventAttendance');
+	}
+
+	public function checkIfAttendance() {
+		return EventAttendance::where('user_id', Auth::id())
+		               ->where('event_id', $this->id)->exists();
+	}
 
 }

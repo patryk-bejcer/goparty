@@ -15,6 +15,7 @@ Route::get('/send', 'HomeController@send');
 
 /* ====== HOME PAGE ====== */
 Route::get( '/', 'HomeController@index' )->name( 'home' );
+Route::get( '/home', 'HomeController@index' )->name( 'home' );
 /* ====== END OF HOME PAGE ====== */
 
 /* ====== AUTH ====== */
@@ -30,7 +31,10 @@ Route::group( [ 'namespace' => 'User', 'middleware' => [ 'auth' ] ], function ()
 	/* Rotes for auth users (show other users and manage your account) */
 	Route::resource( '/users', 'UsersController', [ 'except' => [ 'create', 'store' ] ] );
 	/* Rotes for auth user showing dashboard panel */
-	Route::get( '/dashboard', 'UserDashboardController@index' )->name( 'user-dashboard.index' );;
+	Route::get( '/dashboard', 'UserDashboardController@index' )->name( 'user-dashboard.index' );
+
+
+
 } );
 /* ====== END OF USERS ====== */
 
@@ -65,6 +69,8 @@ Route::post('/club/rate/delete', 'RatingController@delete')->name('club.rate.del
 /* Middleware is declarate in controller!!! */
 Route::namespace('Events')->group(function () {
 
+	Route::get( '/dashboard/attendance', 'EventsUserController@eventsAttendanceIndex');
+
 	/* Rotes for events on guest/user front end portal (for all visitors) */
 	Route::get('events', 'EventsUserController@allEvents')->name('all-events');
 //	Route::get('clubs/{club}/events', 'EventsUserController@clubEvents')->name('club-events');
@@ -72,6 +78,8 @@ Route::namespace('Events')->group(function () {
 	Route::post('events/attend', 'EventsUserController@attendEvent')->name('attendEvent');
     Route::post('events/notattend', 'EventsUserController@notAttendEvent')->name('notAttendEvent');
 
+
+	Route::get('search-events', 'EventsUserController@searchEvents');
 
 	/* Rotes for events on owner dashboard panel (role: owner) */
 	Route::prefix('dashboard')->group(function () {
@@ -91,6 +99,14 @@ Route::group( [ 'prefix' => 'admin', 'middleware' => [ 'isAdmin' ], 'namespace' 
 
 Route::get('search/autocomplete', 'SearchController@autocomplete');
 Route::get('search/clubs', 'SearchController@search_clubs');
+
+Route::post('take-part', 'Events\EventsUserController@takePart');
+Route::delete('take-part', 'Events\EventsUserController@cancelEvent');
+
+
+
+Route::get('take-part', 'API\EventsController@checkIfExistAttendance');
+
 
 
 

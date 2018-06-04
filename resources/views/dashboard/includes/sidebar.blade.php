@@ -25,11 +25,12 @@
 
             <a href="#menu2" class="list-group-item collapsed" data-toggle="collapse" data-parent="#sidebar"
                aria-expanded="false"><i class="fa fa-music"></i> <span class="hidden-sm-down"> Wydarzenia</span> </a>
-            @role('owner')
+
+
             <div class="collapse" id="menu2">
-                <a href="{{url('dashboard/owner-all-events')}}" class="list-group-item" data-parent="#menu1">Moje wydarzenia</a>
+                <a href="{{url('dashboard/attendance')}}" class="list-group-item" data-parent="#menu1">Moje wydarzenia</a>
             </div>
-            @endrole
+
 
             <a href="{{route('user-dashboard.index')}}" class="list-group-item collapsed" data-parent="#sidebar"><i class="fa fa-gear"></i> <span
                         class="hidden-sm-down">Ustawienia konta</span></a>

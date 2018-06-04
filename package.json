@@ -11,14 +11,14 @@
   },
   "devDependencies": {
     "axios": "^0.18",
-    "bootstrap": "^4.1.1",
-    "cross-env": "^5.1.6",
+    "bootstrap": "^4.0.0",
+    "cross-env": "^5.1",
     "jquery": "^3.3.1",
-    "laravel-mix": "^2.1.11",
-    "croppie": "^2.6.2",
-    "lodash": "^4.17.10",
-    "popper.js": "^1.14.3",
-    "vue": "^2.5.16"
+    "jquery-ui": "^1.12.1",
+    "laravel-mix": "^2.0",
+    "lodash": "^4.17.4",
+    "popper.js": "^1.12",
+    "vue": "^2.5.7"
   },
   "name": "goparty",
   "description": "If you find event near your city - use GoParty :)",
@@ -35,8 +35,8 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/patryk94/goparty#readme",
   "dependencies": {
-    "croppie": "^2.6.2",
-    "vue-google-autocomplete": "^1.1.0",
-    "vue-notification": "^1.3.10"
+    "bootstrap-slider": "^10.0.2",
+    "vue-google-autocomplete": "^1.0.15",
+    "vue-notification": "^1.3.7"
   }
 }

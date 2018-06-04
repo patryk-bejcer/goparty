@@ -6,10 +6,13 @@
  */
 
 require('./bootstrap');
-require('./croppie');
+
+import 'jquery-ui';
+import 'jquery-ui/ui/widgets/autocomplete.js';
+
+window.jquery_ui = require('jquery-ui');
+
 window.Vue = require('vue');
-
-
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -18,6 +21,13 @@ window.Vue = require('vue');
  */
 
 Vue.component('address-search-box', require('./components/addressSearchBoxWithMap'));
+Vue.component('city-search-box', require('./components/citySearchFieldAutoComplete'));
+Vue.component('nearest-clubs', require('./components/nearestClubs'));
+Vue.component('nearest-events', require('./components/nearestEvents'));
+Vue.component('take-part', require('./components/takePartComponent'));
+// Vue.component('slider', require('./components/slider'));
+
+axios.defaults.baseURL = 'http://localhost/goparty/public/';
 
 const app = new Vue({
     el: '#app'
