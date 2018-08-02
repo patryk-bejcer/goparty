@@ -2,7 +2,9 @@
 
 @section('content')
 
-    <div class="container" style="max-width: 85%; padding: 0px; margin-top: 120px;" id="single_club" data-scroll = 'scroll'>
+        @include('layouts.includes.subpages-banner')
+
+    <div class="container" style="max-width: 85%; padding: 0px; margin-top: 80px;" id="single_club" data-scroll = 'scroll'>
 
         <div class="row justify-content-center">
 

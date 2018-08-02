@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => 'ggoparty60@gmail.com',
-        'name' => 'goparty',
+	    'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
+	    'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 
     /*
@@ -71,7 +71,7 @@ return [
     |
     */
 
-    'encryption' => env('MAIL_ENCRYPTION', 'ssl'),
+    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
 
     /*
     |--------------------------------------------------------------------------
@@ -84,9 +84,10 @@ return [
     |
     */
 
-    'username' => 'ggoparty60@gmail.com',
 
-    'password' => 'gopartysecret11@',
+    'username' => env('MAIL_USERNAME'),
+
+    'password' => env('MAIL_PASSWORD'),
 
     /*
     |--------------------------------------------------------------------------

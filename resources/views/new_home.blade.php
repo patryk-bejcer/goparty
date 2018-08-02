@@ -16,18 +16,18 @@
         <nearest-clubs>
         </nearest-clubs>
 
-                                            <input onclick="document.getElementById('Like_form').submit()" type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+                                            {{--<input onclick="document.getElementById('Like_form').submit()" type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>--}}
 
-                                            <input onclick="document.getElementById('Like_form').submit()" type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                                            {{--<input onclick="document.getElementById('Like_form').submit()" type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>--}}
 
-                                            <input onclick="document.getElementById('Like_form').submit()" type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                                            {{--<input onclick="document.getElementById('Like_form').submit()" type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>--}}
 
-                                        </fieldset>
+                                        {{--</fieldset>--}}
 
-                                    </form>
-                                </div>
+                                    {{--</form>--}}
+                                {{--</div>--}}
 
-                                <br>
+                                {{--<br>--}}
                                 {{--<h3 style="margin-top: 50px"> {{$club->official_name}}</h3>--}}
                                 {{--<h3 id="value" style="font-size: 70px !important;">{{$user->club_percent($club)}}<span style="font-size: 20px; font-weight: 200;">% Dla Ciebie</span> </h3>--}}
                                 <!-- <div class="col-lg-12" style="padding: 0px!important; margin-top: 10px;">
@@ -52,29 +52,29 @@
                                     </div>
                                 </div> -->
 
-                            </div>
+                            {{--</div>--}}
 
 
 
-                        </div>
+                        {{--</div>--}}
 
 
 
-                        </div>
+                        {{--</div>--}}
 
 
 
 
 
 
-        <div class="nav-button">
-            <div  onclick="prev()" class="prev-button"> <a ><i class="fa fa-caret-left"></i></a></div>
-            <div onclick="next()" class="next-button"> <a><i class="fa fa-caret-right"></i></a></div>
-        </div>
+        {{--<div class="nav-button">--}}
+            {{--<div  onclick="prev()" class="prev-button"> <a ><i class="fa fa-caret-left"></i></a></div>--}}
+            {{--<div onclick="next()" class="next-button"> <a><i class="fa fa-caret-right"></i></a></div>--}}
+        {{--</div>--}}
 
 
 
-    </div>
+    {{--</div>--}}
 
 
 

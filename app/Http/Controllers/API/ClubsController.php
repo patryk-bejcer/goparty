@@ -15,7 +15,7 @@ class ClubsController extends Controller
         $long = $request->get('long');
 
         $clubs = DB::select("SELECT *
-        FROM clubs
+        FROM clubs WHERE deleted_at IS NULL
         ORDER BY ((latitude-'$lat')*(latitude-'$lat')) + ((longitude - '$long')*(longitude - '$long')) 
         ASC LIMIT 4");
 

@@ -1,0 +1,51 @@
+/* Stylesheets for Clubs */
+
+#clubs-list {
+  h1 {
+    font-size: 42px;
+    margin-bottom: .5em;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: bold;
+    text-align: center;
+  }
+  .single-event {
+    background: rgba(0, 0, 0, 0.5);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    .badge {
+      float: right;
+      background: #ef3ab1;
+      padding: 10px;
+      font-size: 26px;
+    }
+  }
+  .pagination {
+    float: none;
+    display: inline-block;
+    overflow: hidden;
+    width: 100% !important;
+    li {
+      display: inline-block;
+      text-align: center;
+      float: none;
+    }
+  }
+  .card {
+    transition: .3s;
+    &:hover {
+      transform: scale(1.03);
+      cursor: pointer;
+
+    }
+    color: #FFF;
+    background: rgba(0, 0, 0, 0.5);
+    .card-body {
+      background: transparent;
+      h6 {
+        line-height: 24px;
+      }
+    }
+  }
+}

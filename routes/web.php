@@ -45,6 +45,8 @@ Route::namespace('Clubs')->group(function () {
 	/* Rotes for clubs on guest/user front end portal (for all visitors) */
 	Route::resource( 'clubs', 'ClubsUserController', [ 'except' => [ 'edit', 'update', 'destroy' ] ] );
 
+	Route::get('search-clubs', 'ClubsUserController@searchClubs');
+
 	/* Rotes for clubs on owner dashboard panel (role: owner) */
 	Route::prefix('dashboard')->group(function () {
 		Route::resource( 'clubs', 'ClubsOwnerController');

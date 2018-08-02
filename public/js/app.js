@@ -55360,7 +55360,7 @@ exports = module.exports = __webpack_require__(6)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.single-club[data-v-70687fd4] {\n    -webkit-transition: .3s;\n    transition: .3s;\n    text-align: center;\n}\n.single-club[data-v-70687fd4]:hover {\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n", ""]);
 
 // exports
 
@@ -55371,6 +55371,8 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
 //
 //
 //
@@ -55457,33 +55459,47 @@ var render = function() {
       { staticClass: "row" },
       _vm._l(_vm.clubs.data, function(club) {
         return _c("div", { staticClass: "col-12 col-md-3 mb-2" }, [
-          _c("div", [
-            _c("img", {
-              staticClass: "img-fluid",
-              attrs: {
-                src: "http://localhost/goparty/public/img/klub1.jpg",
-                alt: ""
-              }
-            }),
-            _vm._v(" "),
-            _c("a", { attrs: { href: "/clubs/" + club.id } }, [
-              _c("h4", { staticClass: "text-white" }, [
-                _vm._v(
-                  " " +
-                    _vm._s(club.official_name) +
-                    " (\n                        " +
-                    _vm._s(
-                      _vm.getDistanceFromLatLonInKm(
-                        _vm.position.latitude,
-                        _vm.position.longitude,
-                        club.latitude,
-                        club.longitude
-                      )
-                    ) +
-                    "\n                         km)"
-                )
-              ])
-            ])
+          _c("div", { staticClass: "single-club" }, [
+            _c(
+              "a",
+              {
+                attrs: {
+                  href: "http://localhost/goparty/public/clubs/" + club.id
+                }
+              },
+              [
+                _c("img", {
+                  staticClass: "img-fluid",
+                  attrs: {
+                    src:
+                      "http://localhost/goparty/public/uploads/clubs/" +
+                      club.club_img,
+                    alt: ""
+                  }
+                }),
+                _vm._v(" "),
+                _c("b", [
+                  _c("h4", { staticClass: "text-white mt-2" }, [
+                    _vm._v(" " + _vm._s(club.official_name))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("h5", [
+                  _vm._v(
+                    "Odległość: " +
+                      _vm._s(
+                        _vm.getDistanceFromLatLonInKm(
+                          _vm.position.latitude,
+                          _vm.position.longitude,
+                          club.latitude,
+                          club.longitude
+                        )
+                      ) +
+                      "\n                        km"
+                  )
+                ])
+              ]
+            )
           ])
         ])
       })
@@ -55597,7 +55613,7 @@ exports = module.exports = __webpack_require__(6)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.single-event[data-v-31f82460]{\n    -webkit-transition:.3s;\n    transition:.3s;\n}\n.single-event[data-v-31f82460]:hover{\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n", ""]);
 
 // exports
 
@@ -55699,25 +55715,33 @@ var render = function() {
       { staticClass: "row" },
       _vm._l(_vm.events.data, function(event) {
         return _c("div", { staticClass: "col-12 col-md mb-2" }, [
-          _c("div", [
-            _c("img", {
-              staticClass: "img-fluid",
-              attrs: { src: _vm.url + event.event_img, alt: "" }
-            }),
-            _vm._v(" "),
-            _c("a", { attrs: { href: "/events/" + event.id } }, [
-              _c("h5", { staticClass: "text-white mt-2" }, [
-                _vm._v(" " + _vm._s(event.title) + " ")
-              ]),
-              _vm._v(" "),
-              _c("h6", { staticClass: "text-white mt-2" }, [
-                _vm._v(" " + _vm._s(event.start_date) + " ")
-              ]),
-              _vm._v(" "),
-              _c("h6", { staticClass: "text-white mt-2" }, [
-                _vm._v(" Klub: " + _vm._s(event.official_name) + " ")
-              ])
-            ])
+          _c("div", { staticClass: "single-event" }, [
+            _c(
+              "a",
+              {
+                attrs: {
+                  href: "http://localhost/goparty/public/events/" + event.id
+                }
+              },
+              [
+                _c("img", {
+                  staticClass: "img-fluid",
+                  attrs: { src: _vm.url + event.event_img, alt: "" }
+                }),
+                _vm._v(" "),
+                _c("h5", { staticClass: "text-white mt-2" }, [
+                  _vm._v(" " + _vm._s(event.title) + " ")
+                ]),
+                _vm._v(" "),
+                _c("h6", { staticClass: "text-white mt-2" }, [
+                  _vm._v(" " + _vm._s(event.start_date) + " ")
+                ]),
+                _vm._v(" "),
+                _c("h6", { staticClass: "text-white mt-2" }, [
+                  _vm._v(" Klub: " + _vm._s(event.official_name) + " ")
+                ])
+              ]
+            )
           ])
         ])
       })

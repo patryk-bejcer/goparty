@@ -1115,7 +1115,8 @@ main {
   background: url(../img/search-form-bg.jpeg);
   background-position: center 50%;
   padding: 4em 0;
-  background-size: 100%; }
+  background-size: 100%;
+  margin-top: 1.5em; }
 
 #event-list .card {
   transition: .3s;

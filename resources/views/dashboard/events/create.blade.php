@@ -5,7 +5,11 @@
 @endsection
 
 @section('content')
+
     <div class="container">
+
+
+        @include('layouts.includes.subpages-banner')
 
         {{--{{var_dump($errors)}}--}}
 

@@ -30,7 +30,6 @@ class ClubCreateEmail
      */
     public function handle(ClubCreated $event)
     {
-
         Mail::to($event->user->email)->sendNow(new ClubCreate($event->club));
     }
 }

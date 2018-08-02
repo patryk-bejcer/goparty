@@ -1,7 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container" data-scroll = 'scroll'>
+
+    <div class="container">
+
+
+        @include('layouts.includes.subpages-banner')
+
+
         <div class="row justify-content-center">
             @include('dashboard.includes.sidebar')
             <div class="col-md-9">

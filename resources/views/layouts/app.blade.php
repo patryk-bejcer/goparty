@@ -15,13 +15,15 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{asset ('css/all.css')}}" rel="stylesheet">
+    {{--<link href="{{asset ('css/all.css')}}" rel="stylesheet">--}}
 
-{{--<link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">--}}
-{{--<link href="{{ asset('css/portal.css') }}" rel="stylesheet">--}}
-{{--<link href="{{ asset('css/events.css') }}" rel="stylesheet">--}}
-{{--<link href="{{asset ('css/hover-min.css')}}" rel="stylesheet">--}}
-{{--<link href="{{asset ('css/rating.css')}}" rel="stylesheet">--}}
+<link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
+<link href="{{ asset('css/portal.css') }}" rel="stylesheet">
+<link href="{{ asset('css/events.css') }}" rel="stylesheet">
+<link href="{{ asset('css/clubs.css') }}" rel="stylesheet">
+<link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
+<link href="{{asset ('css/hover-min.css')}}" rel="stylesheet">
+<link href="{{asset ('css/rating.css')}}" rel="stylesheet">
 
 
 @yield('css')
@@ -36,16 +38,15 @@
 
     @include('layouts.header')
 
-    <main style="overflow-y: hidden; ">
-        @if(Route::getCurrentRoute()->uri() == '/')
+   @if(Route::getCurrentRoute()->uri() == '/')
             @include('layouts.slider')
 
         @elseif(Route::getCurrentRoute()->uri() == '/events')
             test
         @else
-            @include ('layouts.banner')
+            {{--@include ('layouts.banner')--}}
         @endif
-        <main style="overflow-y: hidden" class="mt-5 mb-5">
+        <main style="" class="mb-5">
             @yield('content')
         </main>
 

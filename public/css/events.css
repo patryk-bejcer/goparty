@@ -17,8 +17,8 @@
       border: none;
       background: transparent; }
     #events-search-form .search-form-body .text-after-date {
-      margin-top: .65em;
-      font-size: 18px;
+      margin-top: .85em;
+      font-size: 15px;
       padding-left: 1.2em; }
     #events-search-form .search-form-body .datetimepicker-input {
       padding-left: 15px;
@@ -31,7 +31,7 @@
       border-right: 1px solid #AAA !important; }
   #events-search-form .form-control {
     background-color: transparent !important;
-    font-size: 18px;
+    font-size: 15px;
     color: #333; }
   #events-search-form .form-group {
     margin-bottom: 0; }
@@ -115,10 +115,12 @@
   text-transform: capitalize; }
 
 .search-top-bg {
-  background: url(../img/search-form-bg.jpeg);
-  background-position: center 50%;
+  background: url(../img/banner/subpages-banner-top.jpg);
+  background-position: center 45%;
   padding: 4em 0;
-  background-size: 100%; }
+  background-size: 100%;
+  margin-top: 0;
+  padding-top: 6em; }
 
 #event-list .card {
   transition: .3s;

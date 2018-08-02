@@ -7,12 +7,14 @@
         <div class="row">
 
             <div v-for="club in clubs.data" class="col-12 col-md-3 mb-2">
-                <div>
-                    <img class="img-fluid" src="http://localhost/goparty/public/img/klub1.jpg" alt="">
-                    <a :href="'/clubs/' + club.id">
-                        <h4 class="text-white"> {{ club.official_name}} (
-                            {{ getDistanceFromLatLonInKm(position.latitude, position.longitude, club.latitude, club.longitude) }}
-                             km)</h4>
+                <div class="single-club">
+
+                    <a :href="'http://localhost/goparty/public/clubs/' + club.id">
+                        <img class="img-fluid" :src="'http://localhost/goparty/public/uploads/clubs/' + club.club_img" alt="">
+                        <b><h4 class="text-white mt-2"> {{ club.official_name}}</h4></b>
+                        <h5>Odległość: {{ getDistanceFromLatLonInKm(position.latitude, position.longitude, club.latitude,
+                            club.longitude) }}
+                            km</h5>
                     </a>
                 </div>
             </div>
@@ -43,7 +45,6 @@
                     console.log(self.position.longitude);
 
 
-
                     axios.get('/api/nearest-clubs?lat=' + lat + '&long=' + long)
                         .then(function (response) {
                             self.clubs = response;
@@ -58,21 +59,21 @@
             }
         },
         methods: {
-            getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
+            getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
                 let R = 6371; // Radius of the earth in km
-                let dLat = this.deg2rad(lat2-lat1);  // deg2rad below
-                let dLon = this.deg2rad(lon2-lon1);
+                let dLat = this.deg2rad(lat2 - lat1);  // deg2rad below
+                let dLon = this.deg2rad(lon2 - lon1);
                 let a =
-                    Math.sin(dLat/2) * Math.sin(dLat/2) +
+                    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
                     Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) *
-                    Math.sin(dLon/2) * Math.sin(dLon/2)
+                    Math.sin(dLon / 2) * Math.sin(dLon / 2)
                 ;
-                let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+                let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
                 let d = R * c; // Distance in km
                 return d.toFixed(1);
             },
             deg2rad(deg) {
-                return deg * (Math.PI/180)
+                return deg * (Math.PI / 180)
             }
         }
     }
@@ -80,5 +81,16 @@
 </script>
 
 <style scoped>
+    .single-club {
+        transition: .3s;
+        text-align: center;
+    }
 
+    .single-club:hover {
+        -webkit-transform: scale(1.1);
+        -moz-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        -o-transform: scale(1.1);
+        transform: scale(1.1);
+    }
 </style>

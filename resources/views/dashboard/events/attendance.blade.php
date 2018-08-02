@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+
     <div class="container">
+
+
+        @include('layouts.includes.subpages-banner')
         <div class="row justify-content-center pb-4">
             @include('dashboard.includes.sidebar')
             <div class="col-md-9">

@@ -3,6 +3,9 @@
 @section('content')
 
     <div class="container">
+
+
+        @include('layouts.includes.subpages-banner')
         <div class="row justify-content-center pt-5 pb-5">
 
             <div class="col-md-12">
