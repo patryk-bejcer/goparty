@@ -22,8 +22,6 @@ class DatabaseSeeder extends Seeder
         //Start other seeders.
         $this->call([
             MusicTypesTableSeeder::class,
-	        VoivodeshipsTableSeeder::class,
-	        CitiesTableSeeder::class,
             UsersTableSeeder::class,
 	        ClubsTableSeeder::class,
 	        EventsTableSeeder::class,

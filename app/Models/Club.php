@@ -58,13 +58,13 @@ class Club extends Model {
 	public function events() {
 		return $this->hasMany( 'App\Models\Event' );
 	}
-	public function image(){
-	    return $this->HasMany('App\Models\ClubImage');
-    }
-
-    public function rules(){
-	    return $this->hasMany('App\Models\ClubRules');
-    }
+//	public function image(){
+//	    return $this->HasMany('App\Models\ClubImage');
+//    }
+//
+//    public function rules(){
+//	    return $this->hasMany('App\Models\ClubRules');
+//    }
     static function getMain($id){
 	    $club = Club::findOrFail($id);
 	    $image = ClubImage::where('club_id', $club->id)->where('main', 1)->where('active', 1)->first();

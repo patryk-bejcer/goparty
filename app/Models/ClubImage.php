@@ -19,5 +19,5 @@ class ClubImage extends Model
     public function user(){
         return $this->HasOne('User', 'id', 'club_id');
     }
-    /*TEST TEST TEST */
+
 }

@@ -95,7 +95,6 @@ Route::namespace('Events')->group(function () {
 /* Routes for administration panel (role: admin) - LARAVEL BACKPACK CRUD */
 Route::group( [ 'prefix' => 'admin', 'middleware' => [ 'isAdmin' ], 'namespace' => 'Admin' ], function () {
 	CRUD::resource( 'music-types', 'MusicTypesCrudController' );
-	CRUD::resource( 'cities', 'CitiesCrudController' );
 	CRUD::resource( 'clubs', 'ClubsCrudController' );
 } );
 
