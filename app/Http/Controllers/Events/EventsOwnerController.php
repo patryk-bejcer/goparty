@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Image;
+
 
 class EventsOwnerController extends Controller {
 
@@ -52,33 +54,40 @@ class EventsOwnerController extends Controller {
 	 */
 	public function store( Request $request ) {
 
-
-		if($request->file('event_img')){
-			$imageName = time().'.'.$request->file('event_img')->getClientOriginalExtension();
-			$request->file('event_img')->move(public_path('uploads/events'), $imageName);
+		if ( $request->file( 'event_img' ) ) {
+			$imageName = time() . '.' . $request->file( 'event_img' )->getClientOriginalExtension();
+//			$request->file( 'event_img' )->move( public_path( 'uploads/events' ), $imageName );
 		} else {
 			$imageName = null;
 		}
 
-        $request->validate([
-            'title' => 'required|max:60',
-            'start_date' => 'required',
-            'selection' => 'required',
-            'description' => 'required'
-        ]);
+		$originalImage= $request->file('event_img');
+		$thumbnailImage = Image::make($originalImage);
+		$thumbnailPath = public_path().'/uploads/events/thumbnails/';
+		$originalPath = public_path().'/uploads/events/';
+		$thumbnailImage->save($originalPath.$imageName);
+		$thumbnailImage->resize(300,400);
+		$thumbnailImage->save($thumbnailPath.'300x180-'.$imageName);
+
+		$request->validate( [
+			'title'       => 'required|max:60',
+			'start_date'  => 'required',
+			'selection'   => 'required',
+			'description' => 'required'
+		] );
 
 		Event::create( [
-            'club_id' => $request->club_id ,
-            'user_id' => $request->user_id ,
-            'title' => $request->title,
-            'start_date' => strtotime($request->start_date),
-            'admission' => $request->admission,
-            'selection' => $request->selection,
-            'ticket_price' => $request->ticket_price,
-            'description' => $request->description,
-            'website' => $request->website,
-            'event_img' => $imageName
-        ]);
+			'club_id'      => $request->club_id,
+			'user_id'      => $request->user_id,
+			'title'        => $request->title,
+			'start_date'   => strtotime( $request->start_date ),
+			'admission'    => $request->admission,
+			'selection'    => $request->selection,
+			'ticket_price' => $request->ticket_price,
+			'description'  => $request->description,
+			'website'      => $request->website,
+			'event_img'    => $imageName
+		] );
 
 //		dd($request);
 
@@ -116,27 +125,27 @@ class EventsOwnerController extends Controller {
 	 */
 	public function update( $eventId, Request $request ) {
 
-        $request->validate([
-            'title' => 'required|max:60',
-            'start_date' => 'required',
-            'selection' => 'required',
-            'description' => 'required'
-        ]);
+		$request->validate( [
+			'title'       => 'required|max:60',
+			'start_date'  => 'required',
+			'selection'   => 'required',
+			'description' => 'required'
+		] );
 
-	    $event = Event::findOrFail($eventId);
+		$event = Event::findOrFail( $eventId );
 
 		$event->update( [
-            'club_id' => $request->club_id ,
-            'user_id' => $request->user_id ,
-            'title' => $request->title,
-            'start_date' => strtotime($request->start_date),
-            'admission' => $request->admission,
-            'selection' => $request->selection,
-            'ticket_price' => $request->ticket_price,
-            'description' => $request->description,
-            'website' => $request->website,
-            'event_img' => $request->event_img
-        ]);
+			'club_id'      => $request->club_id,
+			'user_id'      => $request->user_id,
+			'title'        => $request->title,
+			'start_date'   => strtotime( $request->start_date ),
+			'admission'    => $request->admission,
+			'selection'    => $request->selection,
+			'ticket_price' => $request->ticket_price,
+			'description'  => $request->description,
+			'website'      => $request->website,
+			'event_img'    => $request->event_img
+		] );
 
 		return back();
 	}

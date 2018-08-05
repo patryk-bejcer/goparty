@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container" data-scroll = 'scroll'>
+
+    <div class="container">
+
+
+        @include('layouts.includes.subpages-banner')
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div id="register-form" class="auth-form">
@@ -97,23 +101,23 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        {{--<div class="form-group row">--}}
 
-                            <label for="city" style="display: none" class="col-md-2 col-form-label text-md-right">{{ __('Miasto') }}</label>
-                            <div class="col-md-6 offset-md-1">
-                                <select name="city" class="form-control" id="city">
-                                    @foreach($cities as $city)
-                                        <option value="{{$city->id}}">{{ ucfirst($city->name) }}</option>
-                                    @endforeach
-                                </select>
+                            {{--<label for="city" style="display: none" class="col-md-2 col-form-label text-md-right">{{ __('Miasto') }}</label>--}}
+                            {{--<div class="col-md-6 offset-md-1">--}}
+                                {{--<select name="city" class="form-control" id="city">--}}
+                                    {{--@foreach($cities as $city)--}}
+                                        {{--<option value="{{$city->id}}">{{ ucfirst($city->name) }}</option>--}}
+                                    {{--@endforeach--}}
+                                {{--</select>--}}
 
-                                @if ($errors->has('city'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('city') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                                {{--@if ($errors->has('city'))--}}
+                                    {{--<span class="invalid-feedback">--}}
+                                        {{--<strong>{{ $errors->first('city') }}</strong>--}}
+                                    {{--</span>--}}
+                                {{--@endif--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
 
 
                         <div class="form-group row">

@@ -1,16 +1,60 @@
-<template>
-    <div>
-        <div class="col-lg-auto mt-3 mb-5">
-            <h3 class="text-center">NAJBLIŻSZE IMPREZY W TWOJEJ OKOLICY</h3>
-        </div>
+<style>
+    #nearest-events{
+        margin-top: 4em;
+    }
+    #nearest-events h3{
+        font-size: 2rem;
+    }
+    #nearest-events .show-more{
+        margin-top: .75em;
+    }
+    #nearest-events .show-more:hover{
+        text-decoration: underline;
+    }
 
-        <div class="row">
+    #nearest-events .single-event{
+        background: rgba(0,0,0,0.4);
+        padding-bottom: .75em;
+
+        font-size: 1.1rem;
+    }
+
+    #nearest-events .single-event h5{
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding-left: .5em;
+        padding-right: .5em;
+    }
+
+    #nearest-events  .single-event img{
+        padding-bottom: .5em;
+    }
+
+    #nearest-events .single-event:hover{
+        transform:scale(1.075);
+    }
+
+</style>
+
+<template>
+    <div id="nearest-events">
+        <div class="col-lg-auto mt-3 pl-0">
+            <h3 class="text-left pull-left">NAJBLIŻSZE IMPREZY W TWOJEJ OKOLICY</h3>
+            <h5 class="pull-right show-more">
+                <a class="text-white" href="">Zobacz wszystkie</a>
+            </h5>
+        </div>
+        
+        <div class="clearfix"></div>
+
+        <div class="row mt-3">
 
             <div v-for="event in events.data" class="col-12 col-md mb-2">
-                <div class="single-event">
+                <div class="single-event text-center">
 
                     <a :href="'http://localhost/goparty/public/events/' + event.id">
-                        <img class="img-fluid" :src="url + event.event_img" alt="">
+                        <img class="img-fluid" :src="url + '/thumbnails/300x180-' + event.event_img" alt="">
                         <h5 class="text-white mt-2"> {{ event.title }} </h5>
                         <h6 class="text-white mt-2"> {{ event.start_date }} </h6>
                         <h6 class="text-white mt-2"> Klub: {{ event.official_name }} </h6>

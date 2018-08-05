@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Clubs;
 
+use Image;
 use App\Events\ClubCreated;
 use App\Events\ClubDestroy;
 use App\Models\Club;
@@ -9,7 +10,7 @@ use App\models\ClubImage;
 use App\Models\Event;
 use App\Models\MusicType;
 use App\Models\Rules;
-use App\Models\ClubRules;
+//use App\Models\ClubRules;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -41,8 +42,8 @@ class ClubsOwnerController extends Controller {
 
 	public function create() {
 		$musicTypes = MusicType::all();
-        $rules = Rules::all();
-		return view( 'dashboard.clubs.create', compact( 'musicTypes', 'rules' ) );
+//        $rules = Rules::all();
+		return view( 'dashboard.clubs.create', compact( 'musicTypes' ) );
 	}
 
 
@@ -51,12 +52,20 @@ class ClubsOwnerController extends Controller {
 		$addressErrorMessage = 'Wprowadzony przez ciebie adres jest niepoprawny. Wprowadź pełny adres (nazwa ulicy/numer
                     lokalu/miasto/kraj)';
 
-		if($request->file('club_img')){
-			$imageName = time().'.'.$request->file('club_img')->getClientOriginalExtension();
-			$request->file('club_img')->move(public_path('uploads/clubs'), $imageName);
+		if ( $request->file( 'club_img' ) ) {
+			$imageName = time() . '.' . $request->file( 'club_img' )->getClientOriginalExtension();
+//			$request->file( 'club_img' )->move( public_path( 'uploads/clubs' ), $imageName );
 		} else {
 			$imageName = null;
 		}
+
+		$originalImage= $request->file('club_img');
+		$thumbnailImage = Image::make($originalImage);
+		$thumbnailPath = public_path().'/uploads/clubs/thumbnails/';
+		$originalPath = public_path().'/uploads/clubs/';
+		$thumbnailImage->save($originalPath.$imageName);
+		$thumbnailImage->resize(400,350);
+		$thumbnailImage->save($thumbnailPath.'300x180-'.$imageName);
 
 		$this->validate( $request, [
 			'latitude'      => 'required',
@@ -87,14 +96,14 @@ class ClubsOwnerController extends Controller {
 			'facebook_url'            => $request->facebook_url,
 			'club_img'                => $imageName
 		] );
-		if(!empty($request->rules)){
-            foreach($request->rules as $rule){
-                ClubRules::create([
-                    'club_id' => $club->id,
-                    'rule_id' => $rule,
-                ]);
-            }
-        }
+//		if(!empty($request->rules)){
+//            foreach($request->rules as $rule){
+//                ClubRules::create([
+//                    'club_id' => $club->id,
+//                    'rule_id' => $rule,
+//                ]);
+//            }
+//        }
 
 		foreach ($request->music_types as $music_type){
 		    DB::table('club_music_type')->insert([
@@ -115,7 +124,7 @@ class ClubsOwnerController extends Controller {
 	public function show( $id ) {
 		$club = Club::findOrFail( $id );
 
-		$rules = ClubRules::where('club_id', $id)->get();
+//		$rules = ClubRules::where('club_id', $id)->get();
 		$events = Event::where('club_id', $id)->get();
 		return view( 'dashboard.clubs.single', compact( 'club', 'rules', 'events' ) );
 	}
@@ -124,7 +133,7 @@ class ClubsOwnerController extends Controller {
 	public function edit( Club $club ) {
 		$musicTypes = MusicType::all();
 		$images = ClubImage::where('club_id', $club->id)->get();
-        $rules = Rules::all();
+//        $rules = Rules::all();
 
         $club->setMusicTypes();
 
@@ -151,18 +160,18 @@ class ClubsOwnerController extends Controller {
 			'website_url'             => $request->website_url,
 			'facebook_url'            => $request->facebook_url,
 		] );
-		if(!empty(ClubRules::where('club_id', $club->id))){
-		    $club_rules = ClubRules::where('club_id', $club->id)->delete();
-
-        }
-        if(!empty($request->rules)){
-            foreach ($request->rules as $rule){
-                ClubRules::create([
-                    'club_id' => $club->id,
-                    'rule_id' => $rule,
-                ]);
-            }
-        }
+//		if(!empty(ClubRules::where('club_id', $club->id))){
+//		    $club_rules = ClubRules::where('club_id', $club->id)->delete();
+//
+//        }
+//        if(!empty($request->rules)){
+//            foreach ($request->rules as $rule){
+//                ClubRules::create([
+//                    'club_id' => $club->id,
+//                    'rule_id' => $rule,
+//                ]);
+//            }
+//        }
         DB::table('club_music_type')->where('club_id', $club->id)->delete();
         if(!empty($request->music_types)){
             foreach ($request->music_types as $music_type){

@@ -46,27 +46,27 @@
 
             </div>
         </div>
-        @if(empty($rules) AND \Illuminate\Support\Facades\Auth::user()->id == $club->user_id)
-            <p class="text-center mt-3 mb-3" style="color: white"> Nie masz jeszcze żadnych zasad ani możliwości w tym klubie.</p>
-            @php var_dump($rules) @endphp
-            @elseif(!empty($rules))
+        {{--@if(empty($rules) AND \Illuminate\Support\Facades\Auth::user()->id == $club->user_id)--}}
+            {{--<p class="text-center mt-3 mb-3" style="color: white"> Nie masz jeszcze żadnych zasad ani możliwości w tym klubie.</p>--}}
+            {{--@php var_dump($rules) @endphp--}}
+            {{--@elseif(!empty($rules))--}}
 
 
-        <h3 class="text-center mb-2 mt-2">Zasady: </h3>
-        <div class="row justify-content-center" style="margin-top: 30px; padding: 0px;">
-            @foreach($rules as $rule)
-            <div class="col-md-2 ml-5 mr-5" id="club-rules">
-                <div class="rules-addnotations align-middle">
-                    <p>{{$rule->rule->name}}</p>
-                </div>
-                <img src="{{asset('img/icons/'.$rule->rule->image_path)}}">
+        {{--<h3 class="text-center mb-2 mt-2">Zasady: </h3>--}}
+        {{--<div class="row justify-content-center" style="margin-top: 30px; padding: 0px;">--}}
+            {{--@foreach($rules as $rule)--}}
+            {{--<div class="col-md-2 ml-5 mr-5" id="club-rules">--}}
+                {{--<div class="rules-addnotations align-middle">--}}
+                    {{--<p>{{$rule->rule->name}}</p>--}}
+                {{--</div>--}}
+                {{--<img src="{{asset('img/icons/'.$rule->rule->image_path)}}">--}}
 
-            </div>
+            {{--</div>--}}
 
-        @endforeach
+        {{--@endforeach--}}
 
-        </div>
-        @endif
+        {{--</div>--}}
+        {{--@endif--}}
 
         <h3 class="text-center mt-5 mb-5">Kluby w pobliżu</h3>
     </div>

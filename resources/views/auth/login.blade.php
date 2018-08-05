@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container" data-scroll="scroll">
+
+    <div class="container">
+
+
+        @include('layouts.includes.subpages-banner')
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div id="login-form" class="auth-form" >

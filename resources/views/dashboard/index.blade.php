@@ -66,13 +66,13 @@
                                 <div class="form-group mt-4">
                                     <textarea name="description" rows="6" class="form-control" type="text" placeholder="Krótki opis Ciebie"> </textarea>
                                 </div>
-                                <div class="form-group mt-4">
-                                    <select name="city" class="custom-select">
-                                        @foreach($cities as $city)
-                                            <option @if(\Illuminate\Support\Facades\Auth::user()->city_id == $city->id) selected @endif class="option-item" value="{{$city->id}}"> {{$city->name}}</option>
-                                            @endforeach
-                                    </select>
-                                </div>
+                                {{--<div class="form-group mt-4">--}}
+                                    {{--<select name="city" class="custom-select">--}}
+                                        {{--@foreach($cities as $city)--}}
+                                            {{--<option @if(\Illuminate\Support\Facades\Auth::user()->city_id == $city->id) selected @endif class="option-item" value="{{$city->id}}"> {{$city->name}}</option>--}}
+                                            {{--@endforeach--}}
+                                    {{--</select>--}}
+                                {{--</div>--}}
                             </div>
 
                             <div class="col-md-12 mt-3">

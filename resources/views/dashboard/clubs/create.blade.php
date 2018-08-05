@@ -202,20 +202,20 @@
 
                                         </div>
 
-                                        <div class="form-group row">
-                                            <div class="col-lg-10">
-                                                <label for="rules"> Zasady i możliwośći w twoim klubie </label> <br>
-                                                @foreach($rules as $rule)
+                                        {{--<div class="form-group row">--}}
+                                            {{--<div class="col-lg-10">--}}
+                                                {{--<label for="rules"> Zasady i możliwośći w twoim klubie </label> <br>--}}
+                                                {{--@foreach($rules as $rule)--}}
 
-                                                    <div class="form-check form-check-inline">
-                                                        <input type="checkbox" name="rules[]" class="form-check-input" value="{{$rule->id}}">
-                                                        <label class="form-check-label"> {{$rule->name}}</label>
-                                                    </div>
+                                                    {{--<div class="form-check form-check-inline">--}}
+                                                        {{--<input type="checkbox" name="rules[]" class="form-check-input" value="{{$rule->id}}">--}}
+                                                        {{--<label class="form-check-label"> {{$rule->name}}</label>--}}
+                                                    {{--</div>--}}
 
 
-                                                @endforeach
-                                            </div>
-                                        </div>
+                                                {{--@endforeach--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
 
                                         <div class="form-group row">
 

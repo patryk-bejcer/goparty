@@ -1,16 +1,49 @@
-<template>
-    <div>
-        <div class="col-lg-auto mt-3 mb-5">
-            <h3 class="text-center">KLUBY W TWOJEJ OKOLICY</h3>
-        </div>
+<style>
+    #nearest-clubs{
+        margin-top: 4em;
+    }
+    #nearest-clubs h3{
+        font-size: 2rem;
+    }
+    #nearest-clubs .show-more{
+        margin-top: .75em;
+    }
+    #nearest-clubs .show-more:hover{
+        text-decoration: underline;
+    }
 
-        <div class="row">
+    #nearest-clubs .single-club{
+        background: rgba(0,0,0,0.4);
+        padding-bottom: .75em;
+    }
+
+    #nearest-clubs  .single-club img{
+        padding-bottom: .5em;
+    }
+
+    #nearest-clubs .single-club:hover{
+        transform:scale(1.075);
+    }
+</style>
+
+<template>
+    <div id="nearest-clubs">
+        <div class="col-lg-auto mt-3 pl-0">
+            <h3 class="text-left pull-left">NAJBLIŻSZE KLUBY W TWOJEJ OKOLICY</h3>
+            <h5 class="pull-right show-more">
+                <a class="text-white" href="">Zobacz wszystkie</a>
+            </h5>
+        </div>
+        
+        <div class="clearfix"></div>
+
+        <div class="row mt-3">
 
             <div v-for="club in clubs.data" class="col-12 col-md-3 mb-2">
                 <div class="single-club">
 
                     <a :href="'http://localhost/goparty/public/clubs/' + club.id">
-                        <img class="img-fluid" :src="'http://localhost/goparty/public/uploads/clubs/' + club.club_img" alt="">
+                        <img class="img-fluid" :src="'http://localhost/goparty/public/uploads/clubs/thumbnails/300x180-' + club.club_img" alt="">
                         <b><h4 class="text-white mt-2"> {{ club.official_name}}</h4></b>
                         <h5>Odległość: {{ getDistanceFromLatLonInKm(position.latitude, position.longitude, club.latitude,
                             club.longitude) }}

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Events\UserRegistred;
-use App\Models\City;
+//use App\Models\City;
 use App\Models\MusicType;
 use App\Models\Voivodeship;
 use App\User;
@@ -54,7 +54,7 @@ class RegisterController extends Controller
 	{
 		// Add your stuff there
 		$musicTypes = MusicType::all();
-		$cities = City::all();
+//		$cities = City::all();
 		return view('auth.register', compact('musicTypes', 'cities'));
 	}
 
