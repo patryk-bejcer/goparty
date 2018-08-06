@@ -27,6 +27,7 @@
 </style>
 
 <template>
+
     <div id="nearest-clubs">
         <div class="col-lg-auto mt-3 pl-0">
             <h3 class="text-left pull-left">NAJBLIŻSZE KLUBY W TWOJEJ OKOLICY</h3>
@@ -36,6 +37,20 @@
         </div>
         
         <div class="clearfix"></div>
+
+        <slick ref="carousel">
+            <div v-for="club in clubs">
+                {{ club.id }}
+            </div>
+        </slick>
+
+        <!--<slick ref="slick" :options="slickOptions">-->
+            <!--<a href="http://placehold.it/2000x1000"><img src="http://localhost/goparty/public/uploads/clubs/thumbnails/300x180-1533504291.png" alt=""></a>-->
+            <!--<a href="http://placehold.it/2000x1000"><img src="http://localhost/goparty/public/uploads/clubs/thumbnails/300x180-1533504291.png" alt=""></a>-->
+            <!--<a href="http://placehold.it/2000x1000"><img src="http://localhost/goparty/public/uploads/clubs/thumbnails/300x180-1533504291.png" alt=""></a>-->
+            <!--<a href="http://placehold.it/2000x1000"><img src="http://localhost/goparty/public/uploads/clubs/thumbnails/300x180-1533504291.png" alt=""></a>-->
+            <!--<a href="http://placehold.it/2000x1000"><img src="http://localhost/goparty/public/uploads/clubs/thumbnails/300x180-1533504291.png" alt=""></a>-->
+        <!--</slick>-->
 
         <div class="row mt-3">
 
@@ -57,15 +72,39 @@
 </template>
 
 <script>
+
+    import 'slick-carousel/slick/slick.css'
+    import Slick from 'vue-slick';
+
     export default {
         name: "nearestClubs",
+
+        components: { Slick },
+
         data: function () {
             return {
+                words: [
+                    "a",
+                    "b",
+                    "c",
+                    "d"
+                ],
                 position: null,
-                clubs: {}
+                clubs: {},
+                slickOptions: {
+                    slidesToShow: 3,
+                    // Any other options that can be got from plugin documentation
+                },
             }
         },
         mounted: function () {
+
+                setInterval(() => {
+                    this.clubs.push('club')
+                }, 2000)
+
+
+
             if (navigator.geolocation) {
                 let self = this;
 
@@ -92,6 +131,14 @@
             }
         },
         methods: {
+
+            next() {
+                this.$refs.slick.next()
+            },
+            prev() {
+                this.$refs.slick.prev()
+            },
+
             getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
                 let R = 6371; // Radius of the earth in km
                 let dLat = this.deg2rad(lat2 - lat1);  // deg2rad below
@@ -107,6 +154,17 @@
             },
             deg2rad(deg) {
                 return deg * (Math.PI / 180)
+            }
+        },
+        watch: {
+            clubs: function (club) {
+                let currIndex = this.$refs.carousel.currentSlide()
+
+                this.$refs.carousel.destroy()
+                this.$nextTick(() => {
+                    this.$refs.carousel.create()
+                    this.$refs.carousel.goTo(currIndex, true)
+                })
             }
         }
     }

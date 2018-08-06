@@ -7,18 +7,25 @@
 
 require('./bootstrap');
 
-import 'jquery-ui';
 
+import 'jquery-ui';
 import 'jquery-ui/ui/effect.js';
 import 'jquery-ui/ui/effects/effect-fade.js';
 import 'jquery-ui/ui/effects/effect-blind.js';
 import 'jquery-ui/ui/widgets/slider.js';
 import 'jquery-ui/ui/widgets/autocomplete.js';
 import 'jquery-ui/ui/widgets/resizable.js';
+// import 'slick-carousel/slick/slick.js'
 
 window.jquery_ui = require('jquery-ui');
-11
+
+require("slick-carousel/slick/slick.min");
+require("slick-carousel/slick/slick.css");
+require("slick-carousel/slick/slick-theme.css");
+
 window.Vue = require('vue');
+
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
