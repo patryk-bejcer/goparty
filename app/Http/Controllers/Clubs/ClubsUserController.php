@@ -13,7 +13,37 @@ use Illuminate\Http\Request;
 class ClubsUserController extends Controller {
 
 	public function __construct() {
-		$this->middleware( 'auth', [ 'except' => [ 'index', 'show' ] ] );
+		$this->middleware( 'auth', [ 'except' => [ 'index', 'show', 'getClubsMainPage', 'archived', 'search' ] ] );
+	}
+
+	public function getClubsMainPage(){
+		return view('site.clubs.main');
+	}
+
+	public function archived(){
+		$clubs = Club::orderBy('id', 'desc')->paginate(9);
+		return response()->json($clubs);
+	}
+
+	public function search(Request $request)
+	{
+
+		$city = $request->get('city');
+
+		if (strpos($city, ',')) {
+			$city = strstr($city, ',', true);
+		}
+
+		if ($city ) {
+			$clubs = Club::where('locality', $city)->paginate(200);
+
+		} else if($city == '' || $city == 'undefined' || $city == null){
+			$clubs = Club::paginate(200);
+		}
+
+
+//	    return response()->json($events);
+		return response()->json($clubs);
 	}
 
 	/**
@@ -25,6 +55,7 @@ class ClubsUserController extends Controller {
 		$clubs = Club::orderBy('created_at','desc')->paginate( 15 );
 
 		return view( 'site.clubs.index', compact( 'clubs' ) );
+//		return Club::orderBy('id', 'desc')->get();
 	}
 
 	/**
@@ -52,14 +83,11 @@ class ClubsUserController extends Controller {
 	public function searchClubs(Request $request)
 	{
 
-
 		$city = $request->get('city');
 
 		if (strpos($city, ',')) {
 			$city = strstr($city, ',', true);
 		}
-
-
 
 		$clubs = Club::all();
 

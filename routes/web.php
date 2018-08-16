@@ -109,6 +109,14 @@ Route::delete('take-part', 'Events\EventsUserController@cancelEvent');
 Route::get('take-part', 'API\EventsController@checkIfExistAttendance');
 
 
+/* TEST FOR VUE */
+
+Route::get('clubs-list', 'Clubs\ClubsUserController@getClubsMainPage');
+
+Route::get('clubs-archived', 'Clubs\ClubsUserController@archived');
+Route::post('clubs-search', 'Clubs\ClubsUserController@search');
+
+
 
 
 

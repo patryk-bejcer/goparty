@@ -16,7 +16,7 @@
                 <li> <a class="nav-link" href="#" >Start</a> </li>
 
                 <li> <a class="nav-link" href="{{ route('all-events') }}">Imprezy</a> </li>
-                <li> <a class="nav-link" href="{{ url('clubs') }}">Kluby</a> </li>
+                <li> <a class="nav-link" href="{{ url('clubs-list/#clubs') }}">Kluby</a> </li>
                 <li> <a class="nav-link" href="#" >Artyści</a> </li>
                 <li> <a class="nav-link" href="#">Społeczność</a> </li>
 

@@ -21,10 +21,23 @@
   display: inline-block;
   overflow: hidden;
   width: 100% !important; }
+  #clubs-list .pagination .active {
+    background-color: #de29a0; }
+    #clubs-list .pagination .active:hover {
+      background: #de29a0;
+      cursor: none; }
   #clubs-list .pagination li {
     display: inline-block;
     text-align: center;
-    float: none; }
+    float: none;
+    background: rgba(4, 25, 98, 0.6);
+    margin: 1px 3px;
+    color: #FFF !important;
+    padding: 0px 0px 7px; }
+    #clubs-list .pagination li:hover {
+      background: #041962; }
+    #clubs-list .pagination li a {
+      color: #FFF; }
 #clubs-list .card {
   transition: .3s;
   color: #FFF;

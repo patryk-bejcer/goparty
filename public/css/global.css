@@ -1,3 +1,17 @@
+.data-loading {
+  color: #FFF;
+  margin-top: 1.5em;
+  font-size: 3.5rem;
+  z-index: 10000; }
+  .data-loading i {
+    text-align: center;
+    margin: auto;
+    display: block;
+    margin-bottom: 15px; }
+  .data-loading p {
+    font-size: 18px;
+    text-align: center; }
+
 @media (min-width: 1200px) {
   .container {
     max-width: 1300px; } }

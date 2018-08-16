@@ -1,3 +1,4 @@
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -6,6 +7,7 @@
 
 require('./bootstrap');
 
+
 import 'jquery-ui';
 import 'jquery-ui/ui/effect.js';
 import 'jquery-ui/ui/effects/effect-fade.js';
@@ -13,6 +15,8 @@ import 'jquery-ui/ui/effects/effect-blind.js';
 import 'jquery-ui/ui/widgets/slider.js';
 import 'jquery-ui/ui/widgets/autocomplete.js';
 import 'jquery-ui/ui/widgets/resizable.js';
+// import 'slick-carousel/slick/slick.js'
+
 import VueRouter from 'vue-router';
 
 window.jquery_ui = require('jquery-ui');
@@ -32,23 +36,29 @@ Vue.use(VueRouter);
  */
 
 Vue.component('pagination', require('laravel-vue-pagination'));
+
 Vue.component('address-search-box', require('./components/addressSearchBoxWithMap'));
 Vue.component('city-search-box', require('./components/citySearchFieldAutoComplete'));
 Vue.component('nearest-clubs', require('./components/nearestClubs'));
 Vue.component('nearest-events', require('./components/nearestEvents'));
 Vue.component('take-part', require('./components/takePartComponent'));
-
-/* CLUBS COMPONENTS */
+Vue.component('clubs', require('./components/Clubs'));
 Vue.component('clubs-main', require('./components/Clubs/Main'));
 Vue.component('search-clubs', require('./components/Clubs/Search'));
 Vue.component('clubs-header', require('./components/Clubs/Header'));
+Vue.component('loader', require('./components/Clubs/Loader'));
+
 
 const ClubsMain = Vue.component('clubs-main', require('./components/Clubs/Main.vue'));
+const Clubs = Vue.component('Clubs', require('./components/Clubs.vue'));
+const Home = Vue.component('Home', require('./components/Home.vue'));
 const Search = Vue.component('Search', require('./components/Clubs/SearchResults'));
 
-/* END OF CLUBS COMPONENTS */
+// Vue.component('slider', require('./components/slider'));
 
 axios.defaults.baseURL = 'http://localhost/goparty/public/';
+
+
 
 const routes = [
     {
@@ -63,11 +73,19 @@ const routes = [
         component: Search,
         name: 'search'
     },
+
+
 ]
 
-const router = new VueRouter({routes});
+const router = new VueRouter({ routes });
 
 const appURL = 'http://localhost/goparty/public/';
 
-const app = new Vue({router}).$mount('#app');
+const app = new Vue({ router }).$mount('#app');
 
+var vm1 = new Vue({
+    el: '#vm1',
+    data: {
+        name: 'Vue Instance #1'
+    }
+});

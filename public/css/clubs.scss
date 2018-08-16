@@ -26,10 +26,27 @@
     display: inline-block;
     overflow: hidden;
     width: 100% !important;
+    .active{
+      background-color: #de29a0;
+      &:hover{
+        background: #de29a0;
+        cursor: none;
+      }
+    }
     li {
       display: inline-block;
       text-align: center;
       float: none;
+      background: rgba(4, 25, 98, 0.6);
+      margin: 1px 3px;
+      color: #FFF !important;
+      padding: 0px 0px 7px;
+      &:hover{
+        background: rgba(4, 25, 98, 1);
+      }
+      a{
+        color:#FFF;
+      }
     }
   }
   .card {

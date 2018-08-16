@@ -29,6 +29,7 @@
 <template>
 
     <div id="nearest-clubs">
+        <i v-show="loading" class="fa fa-spinner fa-spin data-loading"></i>
         <div class="col-lg-auto mt-3 pl-0">
             <h3 class="text-left pull-left">NAJBLIŻSZE KLUBY W TWOJEJ OKOLICY</h3>
             <h5 class="pull-right show-more">
@@ -83,6 +84,7 @@
 
         data: function () {
             return {
+                loading: false,
                 words: [
                     "a",
                     "b",
@@ -98,7 +100,7 @@
             }
         },
         mounted: function () {
-
+            this.loading = true;
                 setInterval(() => {
                     this.clubs.push('club')
                 }, 2000)
@@ -120,15 +122,19 @@
                     axios.get('/api/nearest-clubs?lat=' + lat + '&long=' + long)
                         .then(function (response) {
                             self.clubs = response;
+
                             // console.log(self.clubs);
                             // console.log('distance:' + self.getDistanceFromLatLonInKm(lat,long,50.667263, 17.935603899999933))
                         })
+
                         .catch(function (error) {
                             console.log(error);
                         });
+
                 });
 
             }
+            this.loading = false;
         },
         methods: {
 

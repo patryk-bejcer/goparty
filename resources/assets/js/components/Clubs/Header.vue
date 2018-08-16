@@ -1,0 +1,14 @@
+<template>
+    <div>
+        <search-clubs></search-clubs>
+        <div class="container">
+            <router-view></router-view>
+        </div>
+    </div>
+</template>
+
+<style>
+    #clubs-list {
+        min-height: 300px;
+    }
+</style>
