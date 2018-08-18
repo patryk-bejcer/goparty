@@ -2,11 +2,10 @@
     <div>
         <clubs-header></clubs-header>
         <div class="container">
+
             <div id="clubs-list" class="mt-4 pt-2">
                 <div class="search-heading">
                     <h1 class="text-white mb-4">Lista wszystkich klubów</h1>
-                    <!--<button v-on:click="reset" class="btn btn-primary">Reset</button>-->
-                    <!--<p>Miejscowość: {{address}}</p>-->
                 </div>
                 <div v-show="loading" class="data-loading">
                     <i v-show="loading" class="fa fa-spinner fa-spin"></i>
@@ -14,16 +13,9 @@
                 </div>
                 <div v-if="!loading">
                     <div class="card-columns">
-                        <a v-for="club in clubsList.data" :href="renderUrl(club.id)">
-                            <div class="card mb-4 pb-4">
-                                <img :src="renderImg(club.club_img)" class="card-img-top" alt="Card image top">
-                                <div class="card-body">
-                                    <a>
-                                        <h4 class="text-white">{{club.official_name}}</h4>
-                                    </a>
-                                </div>
-                            </div>
-                        </a>
+                        <div v-for="club in clubsList.data">
+                            <single-club-loop :club="club"></single-club-loop>
+                        </div>
                     </div>
                     <pagination :data="clubsList" @pagination-change-page="getResults">
                         <span slot="prev-nav">&lt; Poprzednie</span>
@@ -56,8 +48,6 @@
         mounted() {
             this.getResults();
         },
-
-
         methods: {
             getResults(page = 1) {
                 this.loading = true;
@@ -66,14 +56,8 @@
                         this.clubsList = response.data;
                         this.loading = false;
                     });
-            },
-            renderImg(img) {
-                let imgDirectoryPath = 'http://localhost/goparty/public/uploads/clubs/';
-                if (img === null) return imgDirectoryPath + '1533504291.png';
-                return imgDirectoryPath + img;
-            },
-            renderUrl(id) {
-                return 'clubs/' + id;
+                let top = document.getElementById("app");
+                window.scrollTo(0, top);
             },
             reset() {
                 this.address = '';

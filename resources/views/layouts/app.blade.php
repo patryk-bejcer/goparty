@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'GoParty') }}</title>
+    <title>{{ config('app.name', 'GoParty') }} - @yield('title')</title>
 
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
 
@@ -26,6 +26,8 @@
     <link href="{{ asset('css/global.css') }}" rel="stylesheet">
     <link href="{{asset ('css/hover-min.css')}}" rel="stylesheet">
     <link href="{{asset ('css/rating.css')}}" rel="stylesheet">
+
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('img/logo.png')}}"/>
 
 
 @yield('css')
@@ -66,7 +68,7 @@
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
-{{--<script src="{{asset('js/custom.js')}}"></script>--}}
+<script src="{{asset('js/custom.js')}}"></script>
 
 
 @yield('scripts')

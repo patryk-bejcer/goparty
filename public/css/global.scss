@@ -2,7 +2,8 @@
   color: #FFF;
   //position: absolute;
   //right: 55%;
-  margin-top:1.5em;
+  margin-top:2em;
+  margin-bottom: 1em;
   font-size:3.5rem;
   z-index: 10000;
   i{
@@ -17,8 +18,24 @@
   }
 }
 
+.breadcrumb{
+  background: transparent;
+  a{
+    &:hover{
+      color: #de29a0;
+      text-decoration: underline;
+    }
+  }
+}
+
+.breadcrumb-item.active {
+  color: #FFF;
+}
+
 @media (min-width: 1200px){
   .container {
     max-width: 1300px;
   }
 }
+
+

@@ -6,8 +6,6 @@
 
                 <div v-if="address" class="search-heading">
                     <h1 class="text-white mb-4">Kluby w miejscowości {{address}}</h1>
-                    <!--<button v-on:click="reset" class="btn btn-primary">Reset</button>-->
-                    <!--<p>Miejscowość: {{address}}</p>-->
                 </div>
 
                 <div v-show="loading" class="data-loading">
@@ -19,23 +17,15 @@
                     <h2 v-if="clubsList.data.length === 0" class="text-white text-center">Brak wyników wyszukiwania
                         dla miasta {{address}} <br>
                         <router-link title="Wszystkie kluby" :to="{name: 'clubs'}">
-                            <a style="margin-top:10px; font-size:20px;" href="">Wszystkie kluby</a>
+                            <a class="all-clubs-link">Wszystkie kluby</a>
                         </router-link>
                     </h2>
                     <div class="card-columns">
-                        <a v-for="club in clubsList.data" :href="renderUrl(club.id)">
-                            <div class="card mb-4 pb-4">
-                                <img :src="renderImg(club.club_img)" class="card-img-top" alt="Card image top">
-                                <div class="card-body">
-                                    <a>
-                                        <h4 class="text-white">{{club.official_name}}</h4>
-                                    </a>
-                                </div>
-                            </div>
-                        </a>
+                        <div v-for="club in clubsList.data">
+                            <single-club-loop :club="club"></single-club-loop>
+                        </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -53,6 +43,7 @@
                 loading: false,
                 clubsList: {},
                 address: null,
+                length: ''
             }
         },
 
@@ -66,6 +57,7 @@
         mounted() {
             this.address = this.$route.params.city;
             this.getSearchResults();
+            this.length = '';
         },
 
         methods: {
@@ -77,14 +69,6 @@
                         this.loading = false;
                     });
             },
-            renderImg(img) {
-                let imgDirectoryPath = 'http://localhost/goparty/public/uploads/clubs/';
-                if (img === null) return imgDirectoryPath + '1533504291.png';
-                return imgDirectoryPath + img;
-            },
-            renderUrl(id) {
-                return 'clubs/' + id;
-            },
             reset() {
                 this.address = '';
                 this.getResults();
@@ -92,3 +76,10 @@
         }
     }
 </script>
+
+<style>
+    .all-clubs-link {
+        margin-top: 10px;
+        font-size: 20px;
+    }
+</style>

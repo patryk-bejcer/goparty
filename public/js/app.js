@@ -28999,7 +28999,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(28);
-module.exports = __webpack_require__(126);
+module.exports = __webpack_require__(129);
 
 
 /***/ }),
@@ -29067,9 +29067,11 @@ Vue.component('take-part', __webpack_require__(107));
 Vue.component('clubs-main', __webpack_require__(26));
 Vue.component('search-clubs', __webpack_require__(114));
 Vue.component('clubs-header', __webpack_require__(117));
+Vue.component('single-club-loop', __webpack_require__(121));
 
 var ClubsMain = Vue.component('clubs-main', __webpack_require__(26));
-var Search = Vue.component('Search', __webpack_require__(123));
+var Search = Vue.component('Search', __webpack_require__(124));
+// const SingleClub = Vue.component('SingleClub', require('./components/Clubs/SingleClub'));
 
 /* END OF CLUBS COMPONENTS */
 
@@ -29091,7 +29093,11 @@ var router = new __WEBPACK_IMPORTED_MODULE_7_vue_router__["a" /* default */]({ r
 
 var appURL = 'http://localhost/goparty/public/';
 
-var app = new Vue({ router: router }).$mount('#app');
+var app = new Vue({
+    router: router, scrollBehavior: function scrollBehavior(to, from, savedPosition) {
+        return { x: 0, y: 0 };
+    }
+}).$mount('#app');
 
 /***/ }),
 /* 29 */
@@ -63378,14 +63384,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -63406,7 +63404,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.getResults();
     },
 
-
     methods: {
         getResults: function getResults() {
             var _this = this;
@@ -63418,14 +63415,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.clubsList = response.data;
                 _this.loading = false;
             });
-        },
-        renderImg: function renderImg(img) {
-            var imgDirectoryPath = 'http://localhost/goparty/public/uploads/clubs/';
-            if (img === null) return imgDirectoryPath + '1533504291.png';
-            return imgDirectoryPath + img;
-        },
-        renderUrl: function renderUrl(id) {
-            return 'clubs/' + id;
+            var top = document.getElementById("app");
+            window.scrollTo(0, top);
         },
         reset: function reset() {
             this.address = '';
@@ -63490,27 +63481,9 @@ var render = function() {
                     { staticClass: "card-columns" },
                     _vm._l(_vm.clubsList.data, function(club) {
                       return _c(
-                        "a",
-                        { attrs: { href: _vm.renderUrl(club.id) } },
-                        [
-                          _c("div", { staticClass: "card mb-4 pb-4" }, [
-                            _c("img", {
-                              staticClass: "card-img-top",
-                              attrs: {
-                                src: _vm.renderImg(club.club_img),
-                                alt: "Card image top"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "card-body" }, [
-                              _c("a", [
-                                _c("h4", { staticClass: "text-white" }, [
-                                  _vm._v(_vm._s(club.official_name))
-                                ])
-                              ])
-                            ])
-                          ])
-                        ]
+                        "div",
+                        [_c("single-club-loop", { attrs: { club: club } })],
+                        1
                       )
                     })
                   ),
@@ -63663,6 +63636,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -63671,32 +63645,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
-            // Our data object that holds the Laravel paginator data
             loading: false,
             address: null,
-            cityInput: '',
-            message: '',
             surveyData: ''
         };
     },
     mounted: function mounted() {
         this.surveyData = this.$route.params.city;
+        if (this.$route.params.city) document.getElementById("map").value = this.$route.params.city;
     },
 
 
     methods: {
         getCityData: function getCityData(addressData, placeResultData, id) {
             this.address = addressData.locality;
-            this.$router.push({ name: 'search', params: { city: this.address } });
+            // this.$router.go({path: 'http://localhost/goparty/public/clubs#/clubs/search/', params: {city: this.address}});
+            window.location.href = 'http://' + window.location.host + '/goparty/public/clubs#/clubs/search/' + this.address;
+            console.log(window.location.host);
         },
 
-        // TODO Naprawić tą metode żeby szukać po tekscie w inpucie wyszukiwarki (teraz wyrzuca wszystkie kluby jak ktoś kliknie szukaj)
         runSearch: function runSearch() {
-            this.$router.push({ name: 'search', params: { city: '' } });
-            // this.$router.go(url);
+            var inputValue = document.getElementById("map").value;
+            window.location.href = 'http://' + window.location.host + '/goparty/public/clubs#/clubs/search/' + inputValue;
         },
         clearInputText: function clearInputText() {
-            alert('test');
+            var inputValue = document.getElementById("map").value;
+            inputValue = '';
         }
     }
 });
@@ -63737,6 +63711,22 @@ var render = function() {
                           value: _vm.surveyData
                         },
                         on: {
+                          "no-results-found": _vm.runSearch,
+                          keyup: function($event) {
+                            if (
+                              !("button" in $event) &&
+                              _vm._k(
+                                $event.keyCode,
+                                "enter",
+                                13,
+                                $event.key,
+                                "Enter"
+                              )
+                            ) {
+                              return null
+                            }
+                            return _vm.runSearch($event)
+                          },
                           placechanged: _vm.getCityData,
                           click: _vm.clearInputText
                         }
@@ -63857,7 +63847,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n#clubs-list {\n    min-height: 300px;\n}\n", ""]);
+exports.push([module.i, "\n#clubs-list {\n    min-height: 250px;\n}\n", ""]);
 
 // exports
 
@@ -63872,11 +63862,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    [
-      _c("search-clubs"),
-      _vm._v(" "),
-      _c("div", { staticClass: "container" }, [_c("router-view")], 1)
-    ],
+    [_c("search-clubs"), _vm._v(" "), _c("div", { staticClass: "container" })],
     1
   )
 }
@@ -63891,21 +63877,176 @@ if (false) {
 }
 
 /***/ }),
-/* 121 */,
-/* 122 */,
-/* 123 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(124)
+var __vue_script__ = __webpack_require__(122)
 /* template */
-var __vue_template__ = __webpack_require__(125)
+var __vue_template__ = __webpack_require__(123)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\Clubs\\SingleClubLoop.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5bae1bb8", Component.options)
+  } else {
+    hotAPI.reload("data-v-5bae1bb8", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 122 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "SingleClubLoop",
+
+    props: {
+        club: {
+            type: Object,
+            required: true
+        }
+    },
+
+    methods: {
+        renderImg: function renderImg(img) {
+            var imgDirectoryPath = 'http://localhost/goparty/public/uploads/clubs/';
+            if (img === null) return imgDirectoryPath + '1533504291.png';
+            return imgDirectoryPath + img;
+        },
+        renderUrl: function renderUrl(id) {
+            return 'clubs/' + id;
+        }
+    }
+});
+
+/***/ }),
+/* 123 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("a", { attrs: { href: _vm.renderUrl(_vm.club.id) } }, [
+      _c("div", { staticClass: "card mb-4 pb-4" }, [
+        _c("span", { staticClass: "rate" }, [_vm._v(_vm._s("9,5"))]),
+        _vm._v(" "),
+        _c("img", {
+          staticClass: "card-img-top",
+          attrs: {
+            src: _vm.renderImg(_vm.club.club_img),
+            alt: "Card image top"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("a", [
+            _c("h4", { staticClass: "text-white" }, [
+              _vm._v(_vm._s(_vm.club.official_name))
+            ]),
+            _vm._v(" "),
+            _c("h6", [
+              _c("i", {
+                staticClass: "fa fa-map-marker pt-1 mr-1",
+                attrs: { "aria-hidden": "true" }
+              }),
+              _vm._v(
+                "\n                        " +
+                  _vm._s(_vm.club.route) +
+                  " " +
+                  _vm._s(_vm.club.street_number) +
+                  ", " +
+                  _vm._s(_vm.club.locality) +
+                  "\n                    "
+              )
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5bae1bb8", module.exports)
+  }
+}
+
+/***/ }),
+/* 124 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(125)
+}
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(127)
+/* template */
+var __vue_template__ = __webpack_require__(128)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
@@ -63940,21 +64081,51 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 124 */
+/* 125 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(126);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(5)("234ac99e", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-444bd070\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SearchResults.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-444bd070\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SearchResults.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 126 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.all-clubs-link {\n    margin-top: 10px;\n    font-size: 20px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 127 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -63999,7 +64170,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             // Our data object that holds the Laravel paginator data
             loading: false,
             clubsList: {},
-            address: null
+            address: null,
+            length: ''
         };
     },
 
@@ -64014,6 +64186,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {
         this.address = this.$route.params.city;
         this.getSearchResults();
+        this.length = '';
     },
 
 
@@ -64027,14 +64200,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.loading = false;
             });
         },
-        renderImg: function renderImg(img) {
-            var imgDirectoryPath = 'http://localhost/goparty/public/uploads/clubs/';
-            if (img === null) return imgDirectoryPath + '1533504291.png';
-            return imgDirectoryPath + img;
-        },
-        renderUrl: function renderUrl(id) {
-            return 'clubs/' + id;
-        },
         reset: function reset() {
             this.address = '';
             this.getResults();
@@ -64043,7 +64208,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 125 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -64118,17 +64283,9 @@ var render = function() {
                             }
                           },
                           [
-                            _c(
-                              "a",
-                              {
-                                staticStyle: {
-                                  "margin-top": "10px",
-                                  "font-size": "20px"
-                                },
-                                attrs: { href: "" }
-                              },
-                              [_vm._v("Wszystkie kluby")]
-                            )
+                            _c("a", { staticClass: "all-clubs-link" }, [
+                              _vm._v("Wszystkie kluby")
+                            ])
                           ]
                         )
                       ],
@@ -64141,27 +64298,9 @@ var render = function() {
                   { staticClass: "card-columns" },
                   _vm._l(_vm.clubsList.data, function(club) {
                     return _c(
-                      "a",
-                      { attrs: { href: _vm.renderUrl(club.id) } },
-                      [
-                        _c("div", { staticClass: "card mb-4 pb-4" }, [
-                          _c("img", {
-                            staticClass: "card-img-top",
-                            attrs: {
-                              src: _vm.renderImg(club.club_img),
-                              alt: "Card image top"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "card-body" }, [
-                            _c("a", [
-                              _c("h4", { staticClass: "text-white" }, [
-                                _vm._v(_vm._s(club.official_name))
-                              ])
-                            ])
-                          ])
-                        ])
-                      ]
+                      "div",
+                      [_c("single-club-loop", { attrs: { club: club } })],
+                      1
                     )
                   })
                 )
@@ -64184,7 +64323,7 @@ if (false) {
 }
 
 /***/ }),
-/* 126 */
+/* 129 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

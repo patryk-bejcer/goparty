@@ -6,7 +6,7 @@
     margin-bottom: .5em;
     text-transform: uppercase;
     letter-spacing: 4px;
-    font-weight: bold;
+    font-weight: 900;
     text-align: center;
   }
   .single-event {
@@ -26,9 +26,9 @@
     display: inline-block;
     overflow: hidden;
     width: 100% !important;
-    .active{
+    .active {
       background-color: #de29a0;
-      &:hover{
+      &:hover {
         background: #de29a0;
         cursor: none;
       }
@@ -41,20 +41,29 @@
       margin: 1px 3px;
       color: #FFF !important;
       padding: 0px 0px 7px;
-      &:hover{
+      &:hover {
         background: rgba(4, 25, 98, 1);
       }
-      a{
-        color:#FFF;
+      a {
+        color: #FFF;
       }
     }
   }
   .card {
     transition: .3s;
+    border: 0 !important;
     &:hover {
       transform: scale(1.03);
       cursor: pointer;
-
+    }
+    .rate {
+      position: absolute;
+      background: #de29a0;
+      padding: 10px;
+      font-size: 1.8rem;
+      font-weight: 900;
+      right: 0px;
+      top: 0px;
     }
     color: #FFF;
     background: rgba(0, 0, 0, 0.5);
@@ -64,5 +73,43 @@
         line-height: 24px;
       }
     }
+  }
+}
+
+#single_club {
+  min-height: 300px;
+}
+
+.prev-club {
+  position: absolute;
+  z-index: 10000;
+  top: 60%;
+  left: 30px;
+  color: #FFF;
+  i {
+    color: #FFF;
+    &:hover {
+      color: #ef3ab1;
+    }
+  }
+}
+
+.next-club {
+  position: absolute;
+  z-index: 10000;
+  top: 60%;
+  right: 30px;
+  color: #FFF;
+  i {
+    color: #FFF;
+    &:hover {
+      color: #ef3ab1; 
+    }
+  }
+}
+
+@media screen and (max-width 768px){
+  .search-top-bg{
+    background-repeat: no-repeat !important;
   }
 }

@@ -43,7 +43,7 @@ Route::group( [ 'namespace' => 'User', 'middleware' => [ 'auth' ] ], function ()
 Route::namespace('Clubs')->group(function () {
 
 	/* Rotes for clubs on guest/user front end portal (for all visitors) */
-	Route::resource( 'clubs', 'ClubsUserController', [ 'except' => [ 'edit', 'update', 'destroy' ] ] );
+	Route::resource( 'clubs', 'ClubsUserController', [ 'except' => [ 'index','edit', 'update', 'destroy' ] ] );
 
 	Route::get('search-clubs', 'ClubsUserController@searchClubs');
 
@@ -111,12 +111,17 @@ Route::get('take-part', 'API\EventsController@checkIfExistAttendance');
 
 /* TEST FOR VUE */
 
-Route::get('clubs-list', 'Clubs\ClubsUserController@getClubsMainPage');
+Route::get('clubs', 'Clubs\ClubsUserController@getClubsMainPage');
 
 Route::get('clubs-archived', 'Clubs\ClubsUserController@archived');
 Route::post('clubs-search', 'Clubs\ClubsUserController@search');
+Route::post('clubs-single', 'Clubs\ClubsUserController@singleClub');
+Route::post('clubs-single-next', 'Clubs\ClubsUserController@nextSingleClub');
+Route::post('clubs-single-previous', 'Clubs\ClubsUserController@previousSingleClub');
 
-
+Route::get('clubs/{{id}}', function () {
+	echo ' test';
+});
 
 
 

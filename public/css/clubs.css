@@ -4,7 +4,7 @@
   margin-bottom: .5em;
   text-transform: uppercase;
   letter-spacing: 4px;
-  font-weight: bold;
+  font-weight: 900;
   text-align: center; }
 #clubs-list .single-event {
   background: rgba(0, 0, 0, 0.5);
@@ -40,14 +40,52 @@
       color: #FFF; }
 #clubs-list .card {
   transition: .3s;
+  border: 0 !important;
   color: #FFF;
   background: rgba(0, 0, 0, 0.5); }
   #clubs-list .card:hover {
     transform: scale(1.03);
     cursor: pointer; }
+  #clubs-list .card .rate {
+    position: absolute;
+    background: #de29a0;
+    padding: 10px;
+    font-size: 1.8rem;
+    font-weight: 900;
+    right: 0px;
+    top: 0px; }
   #clubs-list .card .card-body {
     background: transparent; }
     #clubs-list .card .card-body h6 {
       line-height: 24px; }
+
+#single_club {
+  min-height: 300px; }
+
+.prev-club {
+  position: absolute;
+  z-index: 10000;
+  top: 60%;
+  left: 30px;
+  color: #FFF; }
+  .prev-club i {
+    color: #FFF; }
+    .prev-club i:hover {
+      color: #ef3ab1; }
+
+.next-club {
+  position: absolute;
+  z-index: 10000;
+  top: 60%;
+  right: 30px;
+  color: #FFF; }
+  .next-club i {
+    color: #FFF; }
+    .next-club i:hover {
+      color: #ef3ab1; }
+
+@media screen and (max-width 768px) {
+  .search-top-bg {
+    background-repeat: no-repeat !important; } }
 
 /*# sourceMappingURL=clubs.css.map */

@@ -15,6 +15,8 @@
                                                 id="map"
                                                 classname="form-control"
                                                 placeholder="Miejscowość"
+                                                v-on:no-results-found="runSearch"
+                                                v-on:keyup.enter="runSearch"
                                                 v-on:placechanged="getCityData"
                                                 v-on:click="clearInputText"
                                                 types="(cities)"
@@ -23,7 +25,6 @@
                                         >
                                         </vue-google-autocomplete>
                                     </div>
-
 
                                     <div class='col-md-2 pr-0 pl-0'>
                                         <input v-on:click="runSearch" type="submit" class="btn btn-success"
@@ -48,33 +49,33 @@
 
         data() {
             return {
-                // Our data object that holds the Laravel paginator data
                 loading: false,
                 address: null,
-                cityInput: '',
-                message: '',
                 surveyData: '',
             }
         },
 
         mounted() {
             this.surveyData = this.$route.params.city;
+            if (this.$route.params.city)
+                document.getElementById("map").value = this.$route.params.city;
         },
-
 
         methods: {
             getCityData: function (addressData, placeResultData, id) {
                 this.address = addressData.locality;
-                this.$router.push({name: 'search', params: {city: this.address}});
+                // this.$router.go({path: 'http://localhost/goparty/public/clubs#/clubs/search/', params: {city: this.address}});
+                window.location.href = 'http://' + window.location.host + '/goparty/public/clubs#/clubs/search/' + this.address;
+                console.log(window.location.host);
             },
 
-            // TODO Naprawić tą metode żeby szukać po tekscie w inpucie wyszukiwarki (teraz wyrzuca wszystkie kluby jak ktoś kliknie szukaj)
             runSearch() {
-                this.$router.push({name: 'search', params: {city: ''}});
-                // this.$router.go(url);
+                let inputValue = document.getElementById("map").value;
+                window.location.href = 'http://' + window.location.host + '/goparty/public/clubs#/clubs/search/' + inputValue;
             },
             clearInputText() {
-                alert('test');
+                let inputValue = document.getElementById("map").value;
+                inputValue = '';
             }
         },
     }

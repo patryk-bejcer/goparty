@@ -42,9 +42,11 @@ Vue.component('take-part', require('./components/takePartComponent'));
 Vue.component('clubs-main', require('./components/Clubs/Main'));
 Vue.component('search-clubs', require('./components/Clubs/Search'));
 Vue.component('clubs-header', require('./components/Clubs/Header'));
+Vue.component('single-club-loop', require('./components/Clubs/SingleClubLoop'));
 
 const ClubsMain = Vue.component('clubs-main', require('./components/Clubs/Main.vue'));
 const Search = Vue.component('Search', require('./components/Clubs/SearchResults'));
+// const SingleClub = Vue.component('SingleClub', require('./components/Clubs/SingleClub'));
 
 /* END OF CLUBS COMPONENTS */
 
@@ -63,11 +65,20 @@ const routes = [
         component: Search,
         name: 'search'
     },
+    // {
+    //     path: '/clubs/:id',
+    //     component: SingleClub,
+    //     name: 'singleClub'
+    // }
 ]
 
 const router = new VueRouter({routes});
 
 const appURL = 'http://localhost/goparty/public/';
 
-const app = new Vue({router}).$mount('#app');
+const app = new Vue({
+    router, scrollBehavior(to, from, savedPosition) {
+        return {x: 0, y: 0}
+    }
+},).$mount('#app');
 

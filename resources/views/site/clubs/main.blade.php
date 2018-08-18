@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Wyszukiwarka Klubów')
+
 @section('content')
 
     <div class="container">

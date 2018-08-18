@@ -568,7 +568,8 @@ main {
   #single_club #description {
     padding: 20px;
     line-height: 35px;
-    color: white; }
+    color: white;
+    text-align: center; }
   #single_club .description-footer {
     padding: 20px; }
     #single_club .description-footer a {

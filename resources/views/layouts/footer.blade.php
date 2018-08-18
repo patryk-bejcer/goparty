@@ -1,8 +1,8 @@
 <div class="container" style=" background-image: url({{url('img/footer-bg.jpg')}})" id="footer">
     <div class="row justify-content-center" style=' margin: 0 auto; margin-bottom: 30px;'>
-        <div class="col-lg-2" style="margin-right: 330px; left: 90px;">
-                <div class="link" style="margin-bottom: 50px;">
-                    <a > 1 </a>
+        <div class="col-lg-2">
+                <div class="link" style="margin-bottom: 30px;">
+                    <a > Social Media </a>
                 </div>
 
                 <div class="link">
@@ -18,8 +18,8 @@
         </div>
 
         <div class="col-lg-2 ">
-            <div class="link" style="margin-bottom: 50px;">
-                <a > 2 </a>
+            <div class="link" style="margin-bottom: 30px;">
+                <a > Przydatne linki </a>
             </div>
 
             <div class="link">
@@ -34,8 +34,8 @@
 
         </div>
         <div class="col-lg-2 ">
-            <div class="link" style="margin-bottom: 50px;">
-                <a > 3 </a>
+            <div class="link" style="margin-bottom: 30px;">
+                <a > Pomoc </a>
             </div>
 
             <div class="link">
@@ -50,8 +50,8 @@
 
         </div>
         <div class="col-lg-2 ">
-            <div class="link" style="margin-bottom: 50px;">
-                <a > 4 </a>
+            <div class="link" style="margin-bottom: 30px;">
+                <a > Dołącz do nas </a>
             </div>
 
             <div class="link">
@@ -66,7 +66,7 @@
 
     </div>
     <div class="col-lg-11 col-auto align-self-center col-centered mt-5">
-        <p style="color: white; opacity: 0.5" class="text-right"> Mateusz Bielak & Patryk Bejcer</p>
+        <p style="color: white; opacity: 0.5" class="text-right"> Patryk Bejcer 2018</p>
     </div>
 
 
