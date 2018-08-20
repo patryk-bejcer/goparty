@@ -17,10 +17,6 @@ import VueRouter from 'vue-router';
 
 window.jquery_ui = require('jquery-ui');
 
-require("slick-carousel/slick/slick.min");
-require("slick-carousel/slick/slick.css");
-require("slick-carousel/slick/slick-theme.css");
-
 window.Vue = require('vue');
 
 Vue.use(VueRouter);
@@ -43,6 +39,7 @@ Vue.component('clubs-main', require('./components/Clubs/Main'));
 Vue.component('search-clubs', require('./components/Clubs/Search'));
 Vue.component('clubs-header', require('./components/Clubs/Header'));
 Vue.component('single-club-loop', require('./components/Clubs/SingleClubLoop'));
+Vue.component('clubs-nearest', require('./components/Clubs/NearestClubs'));
 
 const ClubsMain = Vue.component('clubs-main', require('./components/Clubs/Main.vue'));
 const Search = Vue.component('Search', require('./components/Clubs/SearchResults'));
@@ -50,7 +47,7 @@ const Search = Vue.component('Search', require('./components/Clubs/SearchResults
 
 /* END OF CLUBS COMPONENTS */
 
-axios.defaults.baseURL = 'http://localhost/goparty/public/';
+
 
 const routes = [
     {
@@ -74,6 +71,7 @@ const routes = [
 
 const router = new VueRouter({routes});
 
+/* This is cons with app URL */
 const appURL = 'http://localhost/goparty/public/';
 
 const app = new Vue({
@@ -81,4 +79,10 @@ const app = new Vue({
         return {x: 0, y: 0}
     }
 },).$mount('#app');
+
+axios.defaults.baseURL = appURL;
+
+Vue.prototype.$hostname = appURL;
+
+
 

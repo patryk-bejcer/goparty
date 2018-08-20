@@ -13,7 +13,24 @@ use Illuminate\Http\Request;
 class ClubsUserController extends Controller {
 
 	public function __construct() {
-		$this->middleware( 'auth', [ 'except' => [ 'index', 'show', 'getClubsMainPage', 'archived', 'search', 'singleClub', 'nextSingleClub', 'previousSingleClub' ] ] );
+		$this->middleware( 'auth', [ 'except' => [ 'index', 'show', 'getClubsMainPage', 'archived', 'search', 'singleClub', 'nextSingleClub', 'previousSingleClub', 'nextImage', 'prevImage' ] ] );
+	}
+
+	public function nextImage($club_id)
+	{
+		if(!$club = Club::where('id', '>', $club_id)->first()){
+			$club = Club::first();
+			$events = Event::where( 'club_id', $club->id )->get();
+		}
+		return view('site.clubs.single', compact('club', 'events'));
+	}
+	public function prevImage($club_id)
+	{
+		if(!$club = Club::where('id', '<', $club_id)->first()){
+			$club = Club::first();
+			$events = Event::where( 'club_id', $club->id )->get();
+		}
+		return view('site.clubs.single', compact('club', 'events'));
 	}
 
 	public function getClubsMainPage() {
@@ -72,12 +89,14 @@ class ClubsUserController extends Controller {
 
 		$club = Club::where('id', '>', $request->get( 'id' ))->orderBy('id','asc')->first();
 
+
 		return response()->json( $club );
 	}
 
 	public function previousSingleClub(Request $request){
 
 		$club = Club::where('id', '<', $request->get( 'id' ))->orderBy('id','asc')->first();
+
 
 		return response()->json( $club );
 	}

@@ -32,6 +32,11 @@
   color: #FFF;
 }
 
+a:hover {
+  color: #de29a0;
+  text-decoration: underline;
+}
+
 @media (min-width: 1200px){
   .container {
     max-width: 1300px;

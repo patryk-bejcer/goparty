@@ -10,6 +10,7 @@
                         <h6><i aria-hidden="true" class="fa fa-map-marker pt-1 mr-1"></i>
                             {{club.route}} {{club.street_number}}, {{club.locality}}
                         </h6>
+                        <h6 v-if="distance"><i class="fa fa-location-arrow mr-1" aria-hidden="true"></i> Odległość <b> {{distance}} km </b></h6>
                     </a>
                 </div>
             </div>
@@ -25,12 +26,15 @@
             club: {
                 type: Object,
                 required: true
+            },
+            distance: {
+                required: false
             }
         },
 
         methods: {
             renderImg(img) {
-                let imgDirectoryPath = 'http://localhost/goparty/public/uploads/clubs/';
+                let imgDirectoryPath = this.$hostname + '/uploads/clubs/';
                 if (img === null) return imgDirectoryPath + '1533504291.png';
                 return imgDirectoryPath + img;
             },

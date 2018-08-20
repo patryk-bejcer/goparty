@@ -119,9 +119,15 @@ Route::post('clubs-single', 'Clubs\ClubsUserController@singleClub');
 Route::post('clubs-single-next', 'Clubs\ClubsUserController@nextSingleClub');
 Route::post('clubs-single-previous', 'Clubs\ClubsUserController@previousSingleClub');
 
+/* Show next image of a given user */
+Route::get('clubs/{club}/next','Clubs\ClubsUserController@nextImage')->where('club', '[0-9]+');
+/* Show previous club of a given user */
+Route::get('clubs/{club}/prev','Clubs\ClubsUserController@prevImage')->where('club', '[0-9]+');
+
 Route::get('clubs/{{id}}', function () {
 	echo ' test';
 });
+
 
 
 

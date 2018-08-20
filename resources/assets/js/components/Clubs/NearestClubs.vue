@@ -1,101 +1,92 @@
 <style>
-    #nearest-events{
+    #nearest-clubs{
         margin-top: 4em;
     }
-    #nearest-events h3{
+    #nearest-clubs h3{
         font-size: 2rem;
     }
-    #nearest-events .show-more{
+    #nearest-clubs .show-more{
         margin-top: .75em;
     }
-    #nearest-events .show-more:hover{
+    #nearest-clubs .show-more:hover{
         text-decoration: underline;
     }
 
-    #nearest-events .single-event{
+    #nearest-clubs .single-club{
         background: rgba(0,0,0,0.4);
         padding-bottom: .75em;
-
-        font-size: 1.1rem;
     }
 
-    #nearest-events .single-event h5{
-        font-weight: bold;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        padding-left: .5em;
-        padding-right: .5em;
-    }
-
-    #nearest-events  .single-event img{
+    #nearest-clubs  .single-club img{
         padding-bottom: .5em;
     }
 
-    #nearest-events .single-event:hover{
+    #nearest-clubs .single-club:hover{
         transform:scale(1.075);
     }
-
 </style>
 
 <template>
-    <div id="nearest-events">
+
+    <div id="nearest-clubs">
         <div class="col-lg-auto mt-3 pl-0">
-            <h3 class="text-left pull-left">NAJBLIŻSZE IMPREZY W TWOJEJ OKOLICY</h3>
+            <h3 class="text-left pull-left">NAJBLIŻSZE KLUBY W TWOJEJ OKOLICY</h3>
             <h5 class="pull-right show-more">
-                <a class="text-white" href="">Zobacz wszystkie</a>
+                <a :href="this.$hostname + '/clubs#/clubs'" class="text-white" >Zobacz wszystkie</a>
             </h5>
         </div>
-        
+
         <div class="clearfix"></div>
 
-        <div class="row mt-3">
-
-            <div v-for="event in events.data" class="col-12 col-md mb-2">
-                <div class="single-event text-center">
-
-                    <a :href="this.$hostname + '/events/' + event.id">
-                        <img class="img-fluid" :src="url + '/thumbnails/300x180-' + event.event_img" alt="">
-                        <h5 class="text-white mt-2"> {{ event.title }} </h5>
-                        <h6 class="text-white mt-2"> {{ event.start_date }} </h6>
-                        <h6 class="text-white mt-2"> Klub: {{ event.official_name }} </h6>
-                    </a>
+        <div id="clubs-list" class="mt-4 pt-2">
+            <div v-show="loading" class="data-loading" style="margin-top:0.5em; margin-bottom:1em;">
+                <i v-show="loading" class="fa fa-spinner fa-spin"></i>
+                <p>Trwa ładowanie klubów</p>
+            </div>
+            <div v-if="!loading">
+                <div class="card-columns">
+                    <div v-for="club in clubs.data">
+                        <single-club-loop
+                                :club="club"
+                                :distance="getDistanceFromLatLonInKm(position.latitude, position.longitude, club.latitude, club.longitude)"
+                        ></single-club-loop>
+                    </div>
                 </div>
             </div>
-
         </div>
     </div>
 </template>
 
 <script>
-    /*
-     * @TODO create nearest events api controller and vue componnt
-     */
+
     export default {
         name: "nearestClubs",
+
         data: function () {
             return {
-                position: null,
-                events: {},
-                url: this.$hostname + '/uploads/events/'
+                loading: false,
+                clubs: {},
+                position: null
             }
         },
         mounted: function () {
             if (navigator.geolocation) {
+
                 let self = this;
 
                 navigator.geolocation.getCurrentPosition(function (position) {
+
+                    self.loading = true;
+
                     self.position = position.coords;
                     let lat = self.position.latitude;
                     let long = self.position.longitude;
 
-                    // console.log(self.position.latitude);
-                    // console.log(self.position.longitude);
-
-                    axios.get('/api/nearest-events?lat=' + lat + '&long=' + long)
+                    axios.get('/api/nearest-clubs?lat=' + lat + '&long=' + long)
                         .then(function (response) {
-                            self.events = response;
-                            // console.log(self.events);
-                            // console.log('distance:' + self.getDistanceFromLatLonInKm(lat,long,50.667263, 17.935603899999933))
+                            self.clubs = response;
+                            self.loading = false;
+                            console.log(response);
                         })
                         .catch(function (error) {
                             console.log(error);
@@ -127,10 +118,12 @@
 </script>
 
 <style scoped>
-    .single-event{
-        transition:.3s;
+    .single-club {
+        transition: .3s;
+        text-align: center;
     }
-    .single-event:hover{
+
+    .single-club:hover {
         -webkit-transform: scale(1.1);
         -moz-transform: scale(1.1);
         -ms-transform: scale(1.1);

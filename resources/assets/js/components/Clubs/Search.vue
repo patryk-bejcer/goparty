@@ -64,14 +64,12 @@
         methods: {
             getCityData: function (addressData, placeResultData, id) {
                 this.address = addressData.locality;
-                // this.$router.go({path: 'http://localhost/goparty/public/clubs#/clubs/search/', params: {city: this.address}});
-                window.location.href = 'http://' + window.location.host + '/goparty/public/clubs#/clubs/search/' + this.address;
+                window.location.href = this.$hostname + 'clubs#/clubs/search/' + this.address;
                 console.log(window.location.host);
             },
-
             runSearch() {
                 let inputValue = document.getElementById("map").value;
-                window.location.href = 'http://' + window.location.host + '/goparty/public/clubs#/clubs/search/' + inputValue;
+                window.location.href = this.$hostname + '/clubs#/clubs/search/' + inputValue;
             },
             clearInputText() {
                 let inputValue = document.getElementById("map").value;

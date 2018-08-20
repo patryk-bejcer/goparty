@@ -11,15 +11,16 @@
     <div id="clubs-container" class="container">
 
 
+        {{--Vue Component generate nearest clubs from DB--}}
+        {{--<nearest-clubs>--}}
+        {{--</nearest-clubs>--}}
+
+
+        <clubs-nearest></clubs-nearest>
 
         {{--Vue Component generate nearest events from DB--}}
         <nearest-events>
         </nearest-events>
-
-        {{--Vue Component generate nearest clubs from DB--}}
-        <nearest-clubs>
-        </nearest-clubs>
-
 
         <div class="container" style="" id="events">
             <div class="row justify-content-center">
