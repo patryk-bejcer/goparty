@@ -12,12 +12,14 @@
                     <p>Trwa ładowanie klubów</p>
                 </div>
                 <div v-if="!loading">
+
                     <div class="card-columns">
                         <div v-for="club in clubsList.data">
                             <single-club-loop :club="club"></single-club-loop>
                         </div>
                     </div>
-                    <pagination :data="clubsList" @pagination-change-page="getResults">
+
+                    <pagination class="mt-4" :data="clubsList" @pagination-change-page="getResults">
                         <span slot="prev-nav">&lt; Poprzednie</span>
                         <span slot="next-nav">Następne &gt;</span>
                     </pagination>
@@ -67,3 +69,11 @@
     }
 </script>
 
+<style>
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s;
+    }
+    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+        opacity: 0;
+    }
+</style>

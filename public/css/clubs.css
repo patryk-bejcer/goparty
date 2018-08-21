@@ -113,8 +113,38 @@
     .next-club i:hover {
       color: #ef3ab1; }
 
+#nearest-clubs .slick-arrow:before {
+  color: rgba(0, 0, 0, 0.5) !important;
+  font-size: 28px !important;
+  top: 45%; }
+  #nearest-clubs .slick-arrow:before:hover {
+    color: #de29a0 !important; }
+#nearest-clubs .slick-prev:before {
+  font-family: FontAwesome !important;
+  content: "\f0d9" !important; }
+#nearest-clubs .slick-next:before {
+  font-family: FontAwesome !important;
+  content: "\f0da" !important; }
+
 @media screen and (max-width 768px) {
   .search-top-bg {
     background-repeat: no-repeat !important; } }
+@media (max-width: 575.98px) {
+  #nearest-clubs .slick-arrow:before {
+    color: rgba(0, 0, 0, 0.5) !important;
+    font-size: 28px !important;
+    top: 45%; }
+    #nearest-clubs .slick-arrow:before:hover {
+      color: #de29a0 !important; }
+  #nearest-clubs .slick-prev {
+    left: -15px !important; }
+    #nearest-clubs .slick-prev:before {
+      font-family: FontAwesome !important;
+      content: "\f0d9" !important; }
+  #nearest-clubs .slick-next {
+    right: -15px !important; }
+    #nearest-clubs .slick-next:before {
+      font-family: FontAwesome !important;
+      content: "\f0da" !important; } }
 
 /*# sourceMappingURL=clubs.css.map */

@@ -148,8 +148,59 @@
   }
 }
 
+#nearest-clubs{
+  .slick-arrow:before{
+    color: rgba(0,0,0,0.5) !important;
+    font-size: 28px !important;
+    top:45%;
+    &:hover{
+      color: #de29a0 !important;
+    }
+  }
+
+  .slick-prev:before {
+    font-family: FontAwesome !important;
+    content: "\f0d9" !important;
+  }
+
+  .slick-next:before {
+    font-family: FontAwesome !important;
+    content: "\f0da" !important;
+  }
+}
+
 @media screen and (max-width 768px){
   .search-top-bg{
     background-repeat: no-repeat !important;
+  }
+}
+
+@media (max-width: 575.98px) {
+  #nearest-clubs{
+
+    .slick-arrow:before{
+      color: rgba(0,0,0,0.5) !important;
+      font-size: 28px !important;
+      top:45%;
+      &:hover{
+        color: #de29a0 !important;
+      }
+    }
+
+    .slick-prev{
+      left:-15px !important;
+      &:before {
+        font-family: FontAwesome !important;
+        content: "\f0d9" !important;
+      }
+    }
+
+    .slick-next {
+      right:-15px !important;
+      &:before{
+        font-family: FontAwesome !important;
+        content: "\f0da" !important;
+      }
+    }
   }
 }

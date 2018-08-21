@@ -1,25 +1,30 @@
 <template>
     <div>
         <div id="nearest-clubs">
-            <div class="col-lg-auto mt-3 pl-0">
-                <h3 class="text-left pull-left">NAJBLIŻSZE KLUBY W TWOJEJ OKOLICY</h3>
-                <h5 class="pull-right show-more">
-                    <a :href="this.$hostname + '/clubs#/clubs'" class="text-white">Zobacz wszystkie</a>
-                </h5>
+            <div class="row">
+                <div class="col-12 mt-3 pl-0">
+                    <h3 class="text-left pull-left ml-3">NAJBLIŻSZE KLUBY W TWOJEJ OKOLICY</h3>
+                    <h5 class="pull-right show-more">
+                        <a :href="this.$hostname + '/clubs#/clubs'" class="text-white">Zobacz wszystkie</a>
+                    </h5>
+                </div>
             </div>
+
             <div v-show="loading" class="data-loading">
                 <i v-show="loading" class="fa fa-spinner fa-spin"></i>
                 <p>Trwa ładowanie klubów</p>
             </div>
-            <div v-if="!loading" id="clubs-list" class="mt-5">
-                <slick ref="slick" :options="slickOptions">
-                    <div v-for="club in clubs.data">
-                        <single-club-loop
-                                :club="club"
-                                :distance="getDistanceFromLatLonInKm(position.latitude, position.longitude, club.latitude, club.longitude)"
-                        ></single-club-loop>
-                    </div>
-                </slick>
+            <div>
+                <div v-if="!loading" id="clubs-list" class="mt-2">
+                    <slick ref="slick" :options="slickOptions">
+                        <div v-for="club in clubs.data">
+                            <single-club-loop
+                                    :club="club"
+                                    :distance="getDistanceFromLatLonInKm(position.latitude, position.longitude, club.latitude, club.longitude)"
+                            ></single-club-loop>
+                        </div>
+                    </slick>
+                </div>
             </div>
         </div>
     </div>
@@ -28,6 +33,7 @@
 
 <script>
     import Slick from 'vue-slick';
+    import SingleClubLoop from '../Clubs/SingleClubLoop';
     import 'slick-carousel/slick/slick.css'
     import 'slick-carousel/slick/slick-theme.css'
 
@@ -38,25 +44,56 @@
             return {
                 loading: false,
                 clubs: {},
+                position: null,
                 slickOptions: {
                     slidesToShow: 4,
+                    autoplay: true,
+                    autoplaySpeed: 5000,
+                    speed: 1000,
                     dots: true,
                     draggable: true,
                     edgeFriction: 0.30,
-                    swipe: true
-                },
-                position: null
+                    swipe: true,
+                    responsive: [
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                                slidesToShow: 3,
+                                slidesToScroll: 3,
+                                infinite: true,
+                                dots: true,
+                                autoplaySpeed: 3500
+                            }
+                        },
+                        {
+                            breakpoint: 700,
+                            settings: {
+                                slidesToShow: 2,
+                                slidesToScroll: 2,
+                                autoplaySpeed: 3000
+                            }
+                        },
+                        {
+                            breakpoint: 575,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                                autoplaySpeed: 2500
+                            }
+                        }
+                    ]
+                }
             }
         },
 
         components: {
-            Slick
+            Slick, SingleClubLoop
         },
 
         mounted: function () {
             this.getResults();
-            setInterval(() => {
-            }, 2000)
+            // setInterval(() => {
+            // }, 4500)
         },
         methods: {
             getResults() {
@@ -103,10 +140,10 @@
         },
         watch: {
             clubs: function () {
-                let currIndex = this.$refs.slick.currentSlide()
-                this.$refs.slick.destroy()
+                let currIndex = this.$refs.slick.currentSlide();
+                this.$refs.slick.destroy();
                 this.$nextTick(() => {
-                    this.$refs.slick.create()
+                    this.$refs.slick.create();
                     this.$refs.slick.goTo(currIndex, true)
                 })
             }
