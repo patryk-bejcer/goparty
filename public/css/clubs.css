@@ -62,6 +62,11 @@
 #single_club {
   min-height: 300px; }
 
+#clubs-list .card {
+  margin: .5em !important; }
+  #clubs-list .card h4 {
+    color: #de29a0 !important; }
+
 .club-info {
   margin-bottom: 5em !important; }
   .club-info h5 {

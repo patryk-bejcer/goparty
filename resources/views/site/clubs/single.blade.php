@@ -314,6 +314,10 @@
         </div>
         @endif
 
+                <div class="container">
+                    <clubs-nearest>
+                    </clubs-nearest>
+                </div>
 
         </div>
 

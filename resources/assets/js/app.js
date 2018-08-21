@@ -13,6 +13,7 @@ import 'jquery-ui/ui/effects/effect-blind.js';
 import 'jquery-ui/ui/widgets/slider.js';
 import 'jquery-ui/ui/widgets/autocomplete.js';
 import 'jquery-ui/ui/widgets/resizable.js';
+
 import VueRouter from 'vue-router';
 
 window.jquery_ui = require('jquery-ui');
@@ -30,9 +31,10 @@ Vue.use(VueRouter);
 Vue.component('pagination', require('laravel-vue-pagination'));
 Vue.component('address-search-box', require('./components/addressSearchBoxWithMap'));
 Vue.component('city-search-box', require('./components/citySearchFieldAutoComplete'));
-Vue.component('nearest-clubs', require('./components/nearestClubs'));
+// Vue.component('nearest-clubs', require('./components/nearestClubs'));
 Vue.component('nearest-events', require('./components/nearestEvents'));
 Vue.component('take-part', require('./components/takePartComponent'));
+Vue.component('slick-slider', require('./components/SlickSlider'));
 
 /* CLUBS COMPONENTS */
 Vue.component('clubs-main', require('./components/Clubs/Main'));
@@ -83,6 +85,7 @@ const app = new Vue({
 axios.defaults.baseURL = appURL;
 
 Vue.prototype.$hostname = appURL;
+
 
 
 
