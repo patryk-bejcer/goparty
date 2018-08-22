@@ -68,7 +68,7 @@
             </div>
 
             <div class="col-lg-7" style="padding-top: 0px;">
-                <h2 style="margin-top: 0px;" class="text-center">{{$club->official_name}}</h2>
+                <h2 style="margin-top: 0px;" class="text-center mt-3 mt-md-0">{{$club->official_name}}</h2>
                 <hr>
                 <p id="description">
                     Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został
@@ -88,8 +88,8 @@
                 </div>
             </div>
             <hr>
-            <div class="d-flex justify-content-between text-white mb-5">
-                <div class="col-4">
+            <div class="d-flex justify-content-between flex-column flex-md-row  text-white mb-5">
+                <div class="col-12 col-md-4 mb-3 mb-md-0 order-2 order-md-0">
                     <div class="rate">
                         <div class="d-flex align-items-center">
                             <div>
@@ -112,10 +112,10 @@
                             voluptatem? Possimus, quis.</p>
                     </div>
                 </div>
-                <div class="col-3 col-sm-offset-1 mt-2">
+                <div class="col-12 col-md-3 col-sm-offset-1 mt-2 mb-4 mb-md-0 order-0 order-md-1">
                     <h5>Lokalizacja</h5>
                     <h6><i aria-hidden="true" class="fa fa-map-marker pt-1 mr-1"></i>
-                        Aleja Wilanowska 25, Warszawa
+                        {{$club->route}} {{$club->street_number}}, {{$club->locality}}
                     </h6>
                     <h5 class="mt-4">Telefon kontaktowy</h5>
                     <h6></i>
@@ -125,10 +125,12 @@
                     <h6></i>
                         <a href="mailto:{{$club->email}}">{{$club->email}}</a>
                     </h6>
+                    @if($club->website_url)
                     <h5 class="mt-4">Strona WWW</h5>
                     <h6></i>
                         <a target="_blank" href="{{$club->website_url}}">{{$club->website_url}}</a>
                     </h6>
+                    @endif
                     @if($club->additional_address_info)
                         <h5 class="mt-4">Dotatkowe informacje</h5>
                         <h6></i>
@@ -136,9 +138,12 @@
                         </h6>
                     @endif
                 </div>
-                <div class="col-4">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2538.8838554085805!2d17.336993415694693!3d50.480505893079936!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4711c41a36be8787%3A0x6f4a9951377d38f0!2sNitro+Club!5e0!3m2!1spl!2spl!4v1534788954439"
-                            width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+                <div class="col-12 mb-4 mb-md-2 col-md-4 order-1 order-md-2">
+                    <google-map
+                            name="{{$club->id}}"
+                            lat="{{$club->latitude}}"
+                            long="{{$club->longitude}}"
+                    ></google-map>
                 </div>
             </div>
         </div>
@@ -166,7 +171,8 @@
 
         {{--</div>--}}
         {{--@endif--}}
-
+        <clubs-nearest>
+        </clubs-nearest>
 
         <h3 class="text-center mt-5 mb-0">Kluby w pobliżu</h3>
         <hr>
@@ -314,10 +320,7 @@
         </div>
         @endif
 
-                <div class="container">
-                    <clubs-nearest>
-                    </clubs-nearest>
-                </div>
+
 
         </div>
 

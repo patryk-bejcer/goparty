@@ -35,6 +35,7 @@ Vue.component('city-search-box', require('./components/citySearchFieldAutoComple
 Vue.component('nearest-events', require('./components/nearestEvents'));
 Vue.component('take-part', require('./components/takePartComponent'));
 Vue.component('slick-slider', require('./components/SlickSlider'));
+Vue.component('google-map', require('./components/GoogleMap'));
 
 /* CLUBS COMPONENTS */
 Vue.component('clubs-main', require('./components/Clubs/Main'));

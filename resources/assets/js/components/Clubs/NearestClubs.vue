@@ -8,7 +8,7 @@
                         <a :href="this.$hostname + '/clubs#/clubs'" class="text-white">Zobacz wszystkie</a>
                     </h5>
                 </div>
-            </div> 
+            </div>
 
             <div v-show="loading" class="data-loading">
                 <i v-show="loading" class="fa fa-spinner fa-spin"></i>
@@ -66,7 +66,7 @@
                             }
                         },
                         {
-                            breakpoint: 700,
+                            breakpoint: 768,
                             settings: {
                                 slidesToShow: 2,
                                 slidesToScroll: 2,

@@ -10,6 +10,10 @@
 
     <div id="clubs-container" class="container">
 
+        <google-map
+                name="example"
+        ></google-map>
+
         <clubs-nearest>
         </clubs-nearest>
 

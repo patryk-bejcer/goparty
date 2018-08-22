@@ -114,6 +114,9 @@
     .next-club i:hover {
       color: #ef3ab1; }
 
+#nearest-clubs h3 {
+  color: #FFF !important; }
+
 @media screen and (max-width 768px) {
   .search-top-bg {
     background-repeat: no-repeat !important; } }

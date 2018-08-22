@@ -37,7 +37,7 @@
     import 'slick-carousel/slick/slick-theme.css'
 
     export default {
-        name: "nearestClubs",
+        name: "nearestEvents",
 
         data: function () {
             return {
@@ -65,7 +65,7 @@
                             }
                         },
                         {
-                            breakpoint: 700,
+                            breakpoint: 768,
                             settings: {
                                 slidesToShow: 2,
                                 slidesToScroll: 2,
@@ -86,7 +86,7 @@
         },
 
         components: {
-            Slick, SingleEventLoop
+            Slick
         },
 
         mounted: function () {
