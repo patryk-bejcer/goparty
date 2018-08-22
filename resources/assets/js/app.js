@@ -48,6 +48,11 @@ const Search = Vue.component('Search', require('./components/Clubs/SearchResults
 // const SingleClub = Vue.component('SingleClub', require('./components/Clubs/SingleClub'));
 
 /* END OF CLUBS COMPONENTS */
+Vue.component('single-event-loop', require('./components/Events/SingleEventLoop'));
+Vue.component('events-nearest', require('./components/Events/NearestEvents'));
+/* EVENTS COMPONENTS */
+
+/* END OF EVENTS COMPONENTS */
 
 
 

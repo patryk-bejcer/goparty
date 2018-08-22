@@ -146,4 +146,8 @@
     text-align: center;
     display: inline-block; }
 
+#nearest-events .card {
+  margin-left: .5em;
+  margin-right: .5em; }
+
 /*# sourceMappingURL=events.css.map */

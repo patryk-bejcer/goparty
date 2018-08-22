@@ -13,6 +13,9 @@
         <clubs-nearest>
         </clubs-nearest>
 
+        <events-nearest>
+        </events-nearest>
+
         {{--<slick-slider></slick-slider>--}}
 
 

@@ -29202,6 +29202,11 @@ var Search = Vue.component('Search', __webpack_require__(128));
 // const SingleClub = Vue.component('SingleClub', require('./components/Clubs/SingleClub'));
 
 /* END OF CLUBS COMPONENTS */
+Vue.component('single-event-loop', __webpack_require__(163));
+Vue.component('events-nearest', __webpack_require__(166));
+/* EVENTS COMPONENTS */
+
+/* END OF EVENTS COMPONENTS */
 
 var routes = [{
     path: '/clubs',
@@ -63801,7 +63806,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("a", { attrs: { href: _vm.renderUrl(_vm.club.id) } }, [
-      _c("div", { staticClass: "card mb-4 pb-4" }, [
+      _c("div", { staticClass: "card mb-4 pb-2" }, [
         _c("span", { staticClass: "rate" }, [_vm._v(_vm._s("9,5"))]),
         _vm._v(" "),
         _c("img", {
@@ -64518,6 +64523,537 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 134 */,
+/* 135 */,
+/* 136 */,
+/* 137 */,
+/* 138 */,
+/* 139 */,
+/* 140 */,
+/* 141 */,
+/* 142 */,
+/* 143 */,
+/* 144 */,
+/* 145 */,
+/* 146 */,
+/* 147 */,
+/* 148 */,
+/* 149 */,
+/* 150 */,
+/* 151 */,
+/* 152 */,
+/* 153 */,
+/* 154 */,
+/* 155 */,
+/* 156 */,
+/* 157 */,
+/* 158 */,
+/* 159 */,
+/* 160 */,
+/* 161 */,
+/* 162 */,
+/* 163 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(164)
+/* template */
+var __vue_template__ = __webpack_require__(165)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\Events\\SingleEventLoop.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6864f2ca", Component.options)
+  } else {
+    hotAPI.reload("data-v-6864f2ca", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 164 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "SingleEventLoop",
+
+    props: {
+        event: {
+            type: Object,
+            required: true
+        },
+        distance: {
+            required: false
+        }
+    },
+
+    methods: {
+        renderImg: function renderImg(img) {
+            var imgDirectoryPath = this.$hostname + '/uploads/events/thumbnails/300x180-';
+            if (img === null) return imgDirectoryPath + '1533504291.png';
+            return imgDirectoryPath + img;
+        },
+        renderUrl: function renderUrl(id) {
+            return 'events/' + id;
+        }
+    }
+});
+
+/***/ }),
+/* 165 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("a", { attrs: { href: _vm.renderUrl(_vm.event.id) } }, [
+      _c("div", { staticClass: "card mb-4 pb-2 " }, [
+        _c("img", {
+          staticClass: "card-img-top",
+          attrs: {
+            src: _vm.renderImg(_vm.event.event_img),
+            alt: _vm.event.official_name,
+            title: _vm.event.official_name
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body mt-1 pt-1" }, [
+          _c("a", [
+            _c("h4", { staticClass: "text-white" }, [
+              _vm._v(_vm._s(_vm.event.title))
+            ])
+          ]),
+          _vm._v(" "),
+          _c("h6", { staticClass: "text-white mt-2" }, [
+            _vm._v(" " + _vm._s(_vm.event.start_date) + " ")
+          ]),
+          _vm._v(" "),
+          _c("h6", { staticClass: "text-white mt-2" }, [
+            _vm._v(" Klub: " + _vm._s(_vm.event.official_name) + " ")
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6864f2ca", module.exports)
+  }
+}
+
+/***/ }),
+/* 166 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(167)
+}
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(169)
+/* template */
+var __vue_template__ = __webpack_require__(170)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-4c575b6b"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\Events\\NearestEvents.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4c575b6b", Component.options)
+  } else {
+    hotAPI.reload("data-v-4c575b6b", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 167 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(168);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(5)("1ee8e1a0", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4c575b6b\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./NearestEvents.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4c575b6b\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./NearestEvents.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 168 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n#nearest-events .card[data-v-4c575b6b] {\n    margin: .5em;\n}\n.single-event[data-v-4c575b6b] {\n    -webkit-transition: .3s;\n    transition: .3s;\n    text-align: center;\n}\n.single-event[data-v-4c575b6b]:hover {\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n#nearest-events[data-v-4c575b6b] {\n    margin-top: 4em;\n}\n#nearest-events h3[data-v-4c575b6b] {\n    font-size: 2rem;\n}\n#nearest-events .show-more[data-v-4c575b6b] {\n    margin-top: .75em;\n}\n#nearest-events .show-more[data-v-4c575b6b]:hover {\n    text-decoration: underline;\n}\n#nearest-events .single-event[data-v-4c575b6b] {\n    background: rgba(0, 0, 0, 0.4);\n    padding-bottom: .75em;\n}\n#nearest-events .single-event img[data-v-4c575b6b] {\n    padding-bottom: .5em;\n}\n#nearest-events .single-event[data-v-4c575b6b]:hover {\n    -webkit-transform: scale(1.075);\n            transform: scale(1.075);\n}\n#events-list .card[data-v-4c575b6b] {\n    margin: .5em !important;\n}\n#events-list a h4[data-v-4c575b6b] {\n    color: #de29a0;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 169 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_slick__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_slick___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_slick__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Clubs_SingleClubLoop__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Clubs_SingleClubLoop___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Clubs_SingleClubLoop__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_slick_carousel_slick_slick_css__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_slick_carousel_slick_slick_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_slick_carousel_slick_slick_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_slick_carousel_slick_slick_theme_css__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_slick_carousel_slick_slick_theme_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_slick_carousel_slick_slick_theme_css__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "nearestClubs",
+
+    data: function data() {
+        return {
+            loading: false,
+            events: {},
+            position: null,
+            slickOptions: {
+                slidesToShow: 4,
+                autoplay: true,
+                autoplaySpeed: 5000,
+                speed: 1000,
+                dots: true,
+                draggable: true,
+                edgeFriction: 0.30,
+                swipe: true,
+                responsive: [{
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        infinite: true,
+                        dots: true,
+                        autoplaySpeed: 2500
+                    }
+                }, {
+                    breakpoint: 700,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2,
+                        autoplaySpeed: 3000
+                    }
+                }, {
+                    breakpoint: 575,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        autoplaySpeed: 2500
+                    }
+                }]
+            }
+        };
+    },
+
+    components: {
+        Slick: __WEBPACK_IMPORTED_MODULE_0_vue_slick___default.a, SingleClubLoop: __WEBPACK_IMPORTED_MODULE_1__Clubs_SingleClubLoop___default.a
+    },
+
+    mounted: function mounted() {
+        this.getResults();
+        // setInterval(() => {
+        // }, 4500)
+    },
+    methods: {
+        getResults: function getResults() {
+            if (navigator.geolocation) {
+
+                var self = this;
+
+                navigator.geolocation.getCurrentPosition(function (position) {
+
+                    self.loading = true;
+
+                    self.position = position.coords;
+                    var lat = self.position.latitude;
+                    var long = self.position.longitude;
+
+                    axios.get('/api/nearest-events?lat=' + lat + '&long=' + long).then(function (response) {
+                        self.events = response;
+                        self.loading = false;
+                        console.log(response);
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
+                });
+            }
+        },
+        getDistanceFromLatLonInKm: function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+            var R = 6371; // Radius of the earth in km
+            var dLat = this.deg2rad(lat2 - lat1); // deg2rad below
+            var dLon = this.deg2rad(lon2 - lon1);
+            var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            var d = R * c; // Distance in km
+            return d.toFixed(1);
+        },
+        deg2rad: function deg2rad(deg) {
+            return deg * (Math.PI / 180);
+        }
+    },
+    watch: {
+        events: function events() {
+            var _this = this;
+
+            var currIndex = this.$refs.slick.currentSlide();
+            this.$refs.slick.destroy();
+            this.$nextTick(function () {
+                _this.$refs.slick.create();
+                _this.$refs.slick.goTo(currIndex, true);
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 170 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { attrs: { id: "nearest-events" } }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-12 mt-3 pl-0" }, [
+          _c("h3", { staticClass: "text-left pull-left ml-3" }, [
+            _vm._v("NAJBLIŻSZE IMPREZY W TWOJEJ OKOLICY")
+          ]),
+          _vm._v(" "),
+          _c("h5", { staticClass: "pull-right show-more" }, [
+            _c(
+              "a",
+              {
+                staticClass: "text-white",
+                attrs: { href: this.$hostname + "/events" }
+              },
+              [_vm._v("Zobacz wszystkie")]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.loading,
+              expression: "loading"
+            }
+          ],
+          staticClass: "data-loading"
+        },
+        [
+          _c("i", {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.loading,
+                expression: "loading"
+              }
+            ],
+            staticClass: "fa fa-spinner fa-spin"
+          }),
+          _vm._v(" "),
+          _c("p", [_vm._v("Trwa ładowanie najbliższych imprez")])
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", [
+        !_vm.loading
+          ? _c(
+              "div",
+              { staticClass: "mt-2", attrs: { id: "events-list" } },
+              [
+                _c(
+                  "slick",
+                  { ref: "slick", attrs: { options: _vm.slickOptions } },
+                  _vm._l(_vm.events.data, function(event) {
+                    return _c(
+                      "div",
+                      [
+                        _c("single-event-loop", {
+                          attrs: {
+                            event: event,
+                            distance: _vm.getDistanceFromLatLonInKm(
+                              _vm.position.latitude,
+                              _vm.position.longitude,
+                              event.latitude,
+                              event.longitude
+                            )
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  })
+                )
+              ],
+              1
+            )
+          : _vm._e()
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4c575b6b", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

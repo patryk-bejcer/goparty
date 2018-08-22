@@ -1,7 +1,7 @@
 <template>
     <div>
         <a :href="renderUrl(club.id)">
-            <div class="card mb-4 pb-4">
+            <div class="card mb-4 pb-2">
                 <span class="rate">{{'9,5'}}</span>
                 <img :src="renderImg(club.club_img)" class="card-img-top" :alt="club.official_name"
                      :title="club.official_name">

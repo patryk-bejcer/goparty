@@ -1,27 +1,26 @@
 <template>
     <div>
-        <div id="nearest-clubs">
+        <div id="nearest-events">
             <div class="row">
                 <div class="col-12 mt-3 pl-0">
-                    <h3 class="text-left pull-left ml-3">NAJBLIŻSZE KLUBY W TWOJEJ OKOLICY</h3>
+                    <h3 class="text-left pull-left ml-3">NAJBLIŻSZE IMPREZY W TWOJEJ OKOLICY</h3>
                     <h5 class="pull-right show-more">
-                        <a :href="this.$hostname + '/clubs#/clubs'" class="text-white">Zobacz wszystkie</a>
+                        <a :href="this.$hostname + '/events'" class="text-white">Zobacz wszystkie</a>
                     </h5>
                 </div>
-            </div> 
+            </div>
 
             <div v-show="loading" class="data-loading">
                 <i v-show="loading" class="fa fa-spinner fa-spin"></i>
-                <p>Trwa ładowanie najbliższych klubów</p>
+                <p>Trwa ładowanie najbliższych imprez</p>
             </div>
             <div>
-                <div v-if="!loading" id="clubs-list" class="mt-2">
+                <div v-if="!loading" id="events-list" class="mt-2">
                     <slick ref="slick" :options="slickOptions">
-                        <div v-for="club in clubs.data">
-                            <single-club-loop
-                                    :club="club"
-                                    :distance="getDistanceFromLatLonInKm(position.latitude, position.longitude, club.latitude, club.longitude)"
-                            ></single-club-loop>
+                        <div v-for="event in events.data">
+                            <single-event-loop
+                                    :event="event"
+                            ></single-event-loop>
                         </div>
                     </slick>
                 </div>
@@ -43,7 +42,7 @@
         data: function () {
             return {
                 loading: false,
-                clubs: {},
+                events: {},
                 position: null,
                 slickOptions: {
                     slidesToShow: 4,
@@ -62,7 +61,7 @@
                                 slidesToScroll: 3,
                                 infinite: true,
                                 dots: true,
-                                autoplaySpeed: 3500
+                                autoplaySpeed: 2500
                             }
                         },
                         {
@@ -87,7 +86,7 @@
         },
 
         components: {
-            Slick, SingleClubLoop
+            Slick, SingleEventLoop
         },
 
         mounted: function () {
@@ -109,9 +108,9 @@
                         let lat = self.position.latitude;
                         let long = self.position.longitude;
 
-                        axios.get('/api/nearest-clubs?lat=' + lat + '&long=' + long)
+                        axios.get('/api/nearest-events?lat=' + lat + '&long=' + long)
                             .then(function (response) {
-                                self.clubs = response;
+                                self.events = response;
                                 self.loading = false;
                                 console.log(response);
                             })
@@ -121,25 +120,9 @@
                     });
                 }
             },
-            getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
-                let R = 6371; // Radius of the earth in km
-                let dLat = this.deg2rad(lat2 - lat1);  // deg2rad below
-                let dLon = this.deg2rad(lon2 - lon1);
-                let a =
-                    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                    Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) *
-                    Math.sin(dLon / 2) * Math.sin(dLon / 2)
-                ;
-                let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-                let d = R * c; // Distance in km
-                return d.toFixed(1);
-            },
-            deg2rad(deg) {
-                return deg * (Math.PI / 180)
-            }
         },
         watch: {
-            clubs: function () {
+            events: function () {
                 let currIndex = this.$refs.slick.currentSlide();
                 this.$refs.slick.destroy();
                 this.$nextTick(() => {
@@ -153,16 +136,16 @@
 </script>
 
 <style scoped>
-    #nearest-clubs .card {
+    #nearest-events .card {
         margin: .5em;
     }
 
-    .single-club {
+    .single-event {
         transition: .3s;
         text-align: center;
     }
 
-    .single-club:hover {
+    .single-event:hover {
         -webkit-transform: scale(1.1);
         -moz-transform: scale(1.1);
         -ms-transform: scale(1.1);
@@ -170,40 +153,40 @@
         transform: scale(1.1);
     }
 
-    #nearest-clubs {
+    #nearest-events {
         margin-top: 4em;
     }
 
-    #nearest-clubs h3 {
+    #nearest-events h3 {
         font-size: 2rem;
     }
 
-    #nearest-clubs .show-more {
+    #nearest-events .show-more {
         margin-top: .75em;
     }
 
-    #nearest-clubs .show-more:hover {
+    #nearest-events .show-more:hover {
         text-decoration: underline;
     }
 
-    #nearest-clubs .single-club {
+    #nearest-events .single-event {
         background: rgba(0, 0, 0, 0.4);
         padding-bottom: .75em;
     }
 
-    #nearest-clubs .single-club img {
+    #nearest-events .single-event img {
         padding-bottom: .5em;
     }
 
-    #nearest-clubs .single-club:hover {
+    #nearest-events .single-event:hover {
         transform: scale(1.075);
     }
 
-    #clubs-list .card {
+    #events-list .card {
         margin: .5em !important;
     }
 
-    #clubs-list a h4 {
+    #events-list a h4 {
         color: #de29a0;
     }
 </style>
