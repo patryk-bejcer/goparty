@@ -64533,7 +64533,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n.vue-star-rating-pointer[data-v-5ea2190c]{\n    width: 32px !important;\n}\n", ""]);
+exports.push([module.i, "\n.vue-star-rating-pointer[data-v-5ea2190c] {\n    width: 32px !important;\n}\n", ""]);
 
 // exports
 
@@ -64569,17 +64569,48 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         StarRating: __WEBPACK_IMPORTED_MODULE_0_vue_star_rating___default.a
     },
 
+    props: ['club'],
+
     data: function data() {
         return {
-            rating: 0
+            rating: 0,
+            user: window.Laravel.user
         };
     },
+    created: function created() {},
 
+
+    computed: {
+        logged: function logged() {
+            return this.user != null;
+        }
+    },
 
     methods: {
+        getRating: function getRating(rating) {
+            axios.get('api/rate-club', {
+                rateValue: this.rating,
+                club: this.club,
+                userId: this.user.id
+            }).then(function (response) {
+                console.log(response);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
         setRating: function setRating(rating) {
-            this.rating = rating;
-            console.log(rating);
+            if (this.logged) {
+                this.rating = rating;
+                axios.post('api/rate-club', {
+                    rateValue: this.rating,
+                    club: this.club,
+                    userId: this.user.id
+                }).then(function (response) {
+                    console.log(response);
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            }
         }
     }
 });

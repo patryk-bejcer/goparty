@@ -3,12 +3,42 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Club;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 
 class ClubsController extends Controller
 {
+
+//	public function __construct() {
+//		$this->middleware( 'auth', [ 'only' => [  'addRate' ] ] );
+//	}
+
+	public function getRate(Request $request){
+		$club = Club::findOrFail($request->input('club'));
+		$rate = $club->sumRating;
+
+		return response()
+			->json($rate);
+	}
+
+	public function addRate(Request $request){
+
+		$user = User::findOrFail($request->input('userId'));
+		$club = Club::findOrFail($request->input('club'));
+
+		$rating = $club->rating([
+			'rating' => $request->input('rateValue')
+		], $user);
+
+		return response()
+			->json($user);
+
+	}
+
     public function getNearestClubs(Request $request)
     {
         $lat = $request->get('lat');

@@ -38,7 +38,7 @@
     <div class="container" style=" padding: 0px; margin-top: 0px;" id="single_club"
          data-scroll='scroll'>
 
-        <club-rate></club-rate>
+        <club-rate :club="{{$club->id}}"></club-rate>
 
         <div class="row justify-content-center">
 

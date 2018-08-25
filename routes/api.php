@@ -20,6 +20,8 @@ Route::get('nearest-events', 'API\ClubsController@getNearestEvents');
 Route::post('take-part', 'API\EventsController@takePart');
 Route::get('take-part', 'API\EventsController@checkIfExistAttendance');
 
+Route::post('rate-club', 'API\ClubsController@addRate');
+
 
 //Route::middleware('auth:api')->get('/user', function (Request $request) {
 //    return $request->user();

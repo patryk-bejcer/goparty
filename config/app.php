@@ -152,6 +152,8 @@ return [
          */
 	    Spatie\Permission\PermissionServiceProvider::class,
 	    Intervention\Image\ImageServiceProvider::class,
+	    Ghanem\Rating\RatingServiceProvider::class,
+
 
         /*
          * Application Service Providers...

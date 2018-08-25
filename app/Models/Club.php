@@ -5,15 +5,18 @@ namespace App\Models;
 use App\User;
 use Backpack\CRUD\CrudTrait;
 use Faker\Provider\Image;
+use Ghanem\Rating\Traits\Ratingable as Rating;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use PHPUnit\Framework\Constraint\IsEmpty;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\Rules;
+
 class Club extends Model {
 	use CrudTrait;
 	use SoftDeletes;
+	use Rating;
 	/*
 	|--------------------------------------------------------------------------
 	| GLOBAL VARIABLES

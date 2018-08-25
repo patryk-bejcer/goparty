@@ -68,6 +68,13 @@
 
 
 <!-- Scripts -->
+<script>
+    window.Laravel = {!! json_encode([
+            'csrfToken' => csrf_token(),
+            'user' => Auth::user(),
+            'api_token' => (Auth::user()) ? Auth::user()->api_token : null
+        ]) !!};
+</script>
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{asset('js/custom.js')}}"></script>
 
@@ -76,15 +83,18 @@
 
 
 <script>
-    var main_change_url = '{{route('clubImage.changeMain')}}';
-    var active_change_url = '{{route('clubImage.changeActive')}}';
-    var image_delete_url = '{{route('clubImage.delete')}}';
-    var url = '{{url('public/users')}}';
-    var club_image_create_url = '{{route('clubImage.store')}}';
-    var token = '{{csrf_token()}}';
-    var club_rate = '{{route('club.rate')}}';
-    var club_rate_delete = '{{route('club.rate.delete')}}';
+    const main_change_url = '{{route('clubImage.changeMain')}}';
+    const active_change_url = '{{route('clubImage.changeActive')}}';
+    const image_delete_url = '{{route('clubImage.delete')}}';
+    const url = '{{url('public/users')}}';
+    const club_image_create_url = '{{route('clubImage.store')}}';
+    const token = '{{csrf_token()}}';
+    const club_rate = '{{route('club.rate')}}';
+    const club_rate_delete = '{{route('club.rate.delete')}}';
+
 </script>
+
+
 
 
 </body>

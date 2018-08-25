@@ -21,24 +21,62 @@
             StarRating
         },
 
+        props: ['club'],
+
         data() {
-            return{
-                rating: 0
+            return {
+                rating: 0,
+                user: window.Laravel.user,
             }
 
         },
 
+        created(){
+
+        },
+
+        computed:{
+            logged(){
+                return this.user != null
+            }
+        },
+
         methods: {
-            setRating: function (rating) {
-                this.rating = rating;
-                console.log(rating);
+            getRating(rating){
+                axios.get('api/rate-club', {
+                    rateValue: this.rating,
+                    club: this.club,
+                    userId: this.user.id,
+                })
+                    .then(response => {
+                        console.log(response)
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    });
+            },
+            setRating(rating) {
+                if(this.logged){
+                    this.rating = rating;
+                    axios.post('api/rate-club', {
+                        rateValue: this.rating,
+                        club: this.club,
+                        userId: this.user.id,
+                    })
+                        .then(response => {
+                            console.log(response)
+                        })
+                        .catch(error => {
+                            console.log(error)
+                        });
+                }
             }
         }
     }
 </script>
 
 <style scoped>
-    .vue-star-rating-pointer{
+    .vue-star-rating-pointer {
         width: 32px !important;
     }
 </style>
