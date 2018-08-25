@@ -1,0 +1,13 @@
+#home-page-container h3 {
+  color: #FFF; }
+#home-page-container .first-heading {
+  font-weight: 200;
+  right: 25%;
+  font-size: 40px; }
+  #home-page-container .first-heading a {
+    color: #FFF; }
+#home-page-container .second-heading {
+  font-weight: 900;
+  font-size: 45px; }
+
+/*# sourceMappingURL=home.css.map */

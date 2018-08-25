@@ -43,6 +43,8 @@ Vue.component('search-clubs', require('./components/Clubs/Search'));
 Vue.component('clubs-header', require('./components/Clubs/Header'));
 Vue.component('single-club-loop', require('./components/Clubs/SingleClubLoop'));
 Vue.component('clubs-nearest', require('./components/Clubs/NearestClubs'));
+Vue.component('club-rate', require('./components/Clubs/RateClub'));
+
 
 const ClubsMain = Vue.component('clubs-main', require('./components/Clubs/Main.vue'));
 const Search = Vue.component('Search', require('./components/Clubs/SearchResults'));
@@ -50,7 +52,8 @@ const Search = Vue.component('Search', require('./components/Clubs/SearchResults
 
 /* END OF CLUBS COMPONENTS */
 Vue.component('single-event-loop', require('./components/Events/SingleEventLoop'));
-Vue.component('events-nearest', require('./components/Events/NearestEvents'));
+Vue.component('events-nearest-location', require('./components/Events/NearestEvents'));
+Vue.component('events-nearest-date', require('./components/Events/NearestEventsByDate'));
 /* EVENTS COMPONENTS */
 
 /* END OF EVENTS COMPONENTS */

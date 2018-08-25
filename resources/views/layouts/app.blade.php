@@ -20,6 +20,7 @@
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
 
     <link href="{{ asset('css/portal.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/home.css') }}" rel="stylesheet">
     <link href="{{ asset('css/events.css') }}" rel="stylesheet">
     <link href="{{ asset('css/clubs.css') }}" rel="stylesheet">
     <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">

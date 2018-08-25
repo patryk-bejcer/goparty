@@ -11,8 +11,8 @@
 
             <img src="{{asset('img/slide1.png')}}" alt="Los Angeles"  >
             <div class="carousel-content-left ">
-                <h3 class="animated slideInLeft">Just Now</h3>
-                <h2 class="animated slideInRight">CLUB & BASS</h2>
+                <h3 class="animated slideInLeft">Najlepsze kluby i imprezy</h3>
+                <h2 class="animated slideInRight">GoParty.pl</h2>
                 @guest
                 <a class="myBtn-link myBtn hvr-sweep-to-right animated fadeIn" href="{{route('register')}}">Dołącz za darmo</a>
                 @endguest
@@ -37,9 +37,9 @@
 
             <img src="{{asset('img/slide2.jpg')}}" alt="Los Angeles"  >
             <div class="carousel-content-right">
-                <h3 class="animated slideInLeft">Znajdź swój</h3>
+                <h3 class="animated slideInLeft text-white">Znajdź swój</h3>
                 <h2 class="animated slideInRight"> <span style="color: white;">ULUBIONY KONCERT</span></h2>
-                <a   class="myBtn-link myBtn hvr-sweep-to-right animated fadeIn" href="#"><span style="font-size: 30px;">Zobacz wydarzenia</span></a>
+                <a   class="myBtn-link myBtn hvr-sweep-to-right animated fadeIn" href="events"><span style="font-size: 30px;">Zobacz wydarzenia</span></a>
 
             </div>
 

@@ -15,7 +15,7 @@ Route::get('/send', 'HomeController@send');
 
 /* ====== HOME PAGE ====== */
 Route::get( '/', 'HomeController@index' )->name( 'home' );
-Route::get( '/home', 'HomeController@index' )->name( 'home' );
+Route::get( '/home', 'HomeController@index' );
 /* ====== END OF HOME PAGE ====== */
 
 /* ====== AUTH ====== */

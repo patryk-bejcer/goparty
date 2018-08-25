@@ -17,7 +17,7 @@ class ClubsController extends Controller
         $clubs = DB::select("SELECT *
         FROM clubs WHERE deleted_at IS NULL
         ORDER BY ((latitude-'$lat')*(latitude-'$lat')) + ((longitude - '$long')*(longitude - '$long')) 
-        ASC LIMIT 6");
+        ASC LIMIT 16");
 
         return response()
             ->json($clubs);
@@ -45,7 +45,7 @@ class ClubsController extends Controller
         LEFT JOIN clubs
         ON events.club_id = clubs.id WHERE start_date > '$currentTime'
         ORDER BY ((latitude-'$lat')*(latitude-'$lat')) + ((longitude - '$long')*(longitude - '$long'))
-        ASC LIMIT 5");
+        ASC LIMIT 16");
 
         return response()
             ->json($events);

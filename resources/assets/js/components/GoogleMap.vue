@@ -36,13 +36,13 @@
 <style scoped>
     .google-map {
         width: 100%;
-        height: 100%;
+        height: 350px;
         margin: 0 auto;
         background: gray;
     }
     @media (max-width: 768px) {
         .google-map {
-            height: 350px;
+            height: 300px;
         }
     }
 </style>

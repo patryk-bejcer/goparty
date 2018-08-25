@@ -41,6 +41,16 @@ a:hover {
   font-family: FontAwesome !important;
   content: "\f0da" !important; }
 
+.slick-dots li button {
+  width: 9px !important;
+  height: 9px !important;
+  padding: 5px !important;
+  background: rgba(0, 0, 0, 0.4) !important;
+  border-radius: 50% !important; }
+
+.slick-dots .slick-active button {
+  background: rgba(255, 8, 255, 0.59) !important; }
+
 @media (max-width: 575.98px) {
   .slick-arrow:before {
     color: rgba(0, 0, 0, 0.5) !important;

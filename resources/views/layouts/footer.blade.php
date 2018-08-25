@@ -65,8 +65,8 @@
         </div>
 
     </div>
-    <div class="col-lg-11 col-auto align-self-center col-centered mt-5">
-        <p style="color: white; opacity: 0.5" class="text-right"> Patryk Bejcer 2018</p>
+    <div class="col">
+        <p style="opacity: 0.5" class="text-right text-white">© 2018 GoParty.pl - Patryk Bejcer</p>
     </div>
 
 

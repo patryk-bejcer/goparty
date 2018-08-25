@@ -38,6 +38,8 @@
     <div class="container" style=" padding: 0px; margin-top: 0px;" id="single_club"
          data-scroll='scroll'>
 
+        <club-rate></club-rate>
+
         <div class="row justify-content-center">
 
             {{--<div class="club-border"></div>--}}

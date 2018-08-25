@@ -1,32 +1,18 @@
-@extends('layouts.app')
+@extends('layouts/app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
 
-                <div class="card-header">Dashboard</div>
+    <div id="home-page-container" class="container">
 
-                <div class="container">
-                    <div class="main">
-                        <a href="{{url('/send')}}" class="btn btn-default">Send Email</a>
-                    </div>
-                </div>
+        <clubs-nearest>
+        </clubs-nearest>
 
-                {{ $user->city }}
+        <events-nearest-location>
+        </events-nearest-location>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+        <events-nearest-date>
+        </events-nearest-date>
 
-                    You are logged in!
-                </div>
-            </div>
-        </div>
     </div>
-</div>
+
 @endsection

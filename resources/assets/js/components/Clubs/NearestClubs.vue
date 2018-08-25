@@ -1,21 +1,31 @@
 <template>
     <div>
         <div id="nearest-clubs">
-            <div class="row">
-                <div class="col-12 mt-3 pl-0">
-                    <h3 class="text-left pull-left ml-3">NAJBLIŻSZE KLUBY W TWOJEJ OKOLICY</h3>
-                    <h5 class="pull-right show-more">
-                        <a :href="this.$hostname + '/clubs#/clubs'" class="text-white">Zobacz wszystkie</a>
-                    </h5>
+            <div class="row justify-content-center">
+                <div class="col-lg-auto mt-4 mb-4">
+                    <h3 class="text-right first-heading">
+                        <a href="clubs#/clubs" title="Zobacz wszystkie kluby">
+                            KLUBY
+                        </a>
+                    </h3>
+                    <h3 class="text-center second-heading">NAJBLIŻEJ CIEBIE</h3>
                 </div>
             </div>
+            <!--<div class="row">-->
+                <!--<div class="col-12 mt-3 pl-0">-->
+                    <!--<h3 class="text-left pull-left ml-3">NAJBLIŻSZE KLUBY W TWOJEJ OKOLICY</h3>-->
+                    <!--<h5 class="pull-right show-more">-->
+                        <!--<a :href="`${hostname}/clubs#/clubs`" class="text-white">Zobacz wszystkie</a>-->
+                    <!--</h5>-->
+                <!--</div>-->
+            <!--</div>-->
 
             <div v-show="loading" class="data-loading">
                 <i v-show="loading" class="fa fa-spinner fa-spin"></i>
                 <p>Trwa ładowanie najbliższych klubów</p>
             </div>
             <div>
-                <div v-if="!loading" id="clubs-list" class="mt-2">
+                <div v-if="!loading" id="clubs-list" class="mt-2 mb-2">
                     <slick ref="slick" :options="slickOptions">
                         <div v-for="club in clubs.data">
                             <single-club-loop
@@ -42,11 +52,13 @@
 
         data: function () {
             return {
+                hostname: this.$hostname,
                 loading: false,
                 clubs: {},
                 position: null,
                 slickOptions: {
                     slidesToShow: 4,
+                    slidesToScroll: 4,
                     autoplay: true,
                     autoplaySpeed: 5000,
                     speed: 1000,
@@ -92,8 +104,6 @@
 
         mounted: function () {
             this.getResults();
-            // setInterval(() => {
-            // }, 4500)
         },
         methods: {
             getResults() {
@@ -113,7 +123,7 @@
                             .then(function (response) {
                                 self.clubs = response;
                                 self.loading = false;
-                                console.log(response);
+                                // console.log(response);
                             })
                             .catch(function (error) {
                                 console.log(error);
@@ -138,8 +148,12 @@
                 return deg * (Math.PI / 180)
             }
         },
+        created(){
+          // console.log(this)
+        },
         watch: {
             clubs: function () {
+                if(this.$refs.slick === undefined) return;
                 let currIndex = this.$refs.slick.currentSlide();
                 this.$refs.slick.destroy();
                 this.$nextTick(() => {
@@ -155,6 +169,7 @@
 <style scoped>
     #nearest-clubs .card {
         margin: .5em;
+        margin-bottom: 1em;
     }
 
     .single-club {
@@ -171,12 +186,12 @@
     }
 
     #nearest-clubs {
-        margin-top: 4em;
+        margin-top: 2em;
     }
 
-    #nearest-clubs h3 {
-        font-size: 2rem;
-    }
+    /*#nearest-clubs h3 {*/
+        /*font-size: 2rem;*/
+    /*}*/
 
     #nearest-clubs .show-more {
         margin-top: .75em;

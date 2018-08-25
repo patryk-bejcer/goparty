@@ -12,42 +12,34 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
-class HomeController extends Controller
-{
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
+
+class HomeController extends Controller {
+	/**
+	 * Create a new controller instance.
+	 *
+	 * @return void
+	 */
+	public function __construct() {
 //        $this->middleware('auth');
-    }
+	}
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-    	$user = User::find(3);
-    	$clubs = Club::all();
-    	$events = Event::where('start_date', '>=', Carbon::today())->get();
+	/**
+	 * Show the application dashboard.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function index() {
+		$user   = User::find( 3 );
+		$clubs  = Club::all();
+		$events = Event::where( 'start_date', '>=', Carbon::today() )->get();
 
+		return view( 'site.home', compact( 'user', 'clubs', 'events' ) );
+	}
 
-
-
-
-
-        return view('new_home', compact('user', 'clubs', 'events'));
-    }
-
-	public function send()
-	{
-		Log::info("Request Cycle with Queues Begins");
-		$this->dispatch((new SendWelcomeEmail())->delay(60 * 5));
-		Log::info("Request Cycle with Queues Ends");
+	public function send() {
+		Log::info( "Request Cycle with Queues Begins" );
+		$this->dispatch( ( new SendWelcomeEmail() )->delay( 60 * 5 ) );
+		Log::info( "Request Cycle with Queues Ends" );
 	}
 
 //	public function send()
