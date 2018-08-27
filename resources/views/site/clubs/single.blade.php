@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <clubs-header></clubs-header>
+    {{--<clubs-header></clubs-header>--}}
 
     <div class="images-controls">
         <div class="next-club ">
@@ -21,21 +21,23 @@
 
     <div class="container mt-4 pl-0">
 
-        <nav aria-label="breadcrumb" class="mt-2">
-            <ol class="breadcrumb pl-0">
-                <li class="breadcrumb-item"><a href="{{url('/')}}">Strona główna</a></li>
+        {{--<nav aria-label="breadcrumb" class="mt-2">--}}
+            {{--<ol class="breadcrumb pl-0">--}}
+                {{--<li class="breadcrumb-item"><a href="{{url('/')}}">Strona główna</a></li>--}}
 
-                <li class="breadcrumb-item"><a href="{{url('clubs#clubs')}}">
-                        Wszystkie Kluby
-                    </a></li>
+                {{--<li class="breadcrumb-item"><a href="{{url('clubs#clubs')}}">--}}
+                        {{--Wszystkie Kluby--}}
+                    {{--</a></li>--}}
 
-                <li class="breadcrumb-item active" aria-current="page">{{$club->official_name}}</li>
-            </ol>
-        </nav>
+                {{--<li class="breadcrumb-item active" aria-current="page">{{$club->official_name}}</li>--}}
+            {{--</ol>--}}
+        {{--</nav>--}}
 
     </div>
 
-    <div class="container" style=" padding: 0px; margin-top: 0px;" id="single_club"
+    <club-rate class="mt-5" :club="{{$club->id}}"></club-rate>
+
+    <div class="container" style=" padding: 0px; margin-top: 0px; display:none;" id="single_club"
          data-scroll='scroll'>
 
         <club-rate :club="{{$club->id}}"></club-rate>
@@ -173,14 +175,14 @@
 
         {{--</div>--}}
         {{--@endif--}}
-        <clubs-nearest>
-        </clubs-nearest>
+        {{--<clubs-nearest>--}}
+        {{--</clubs-nearest>--}}
 
         <h3 class="text-center mt-5 mb-0">Kluby w pobliżu</h3>
         <hr>
     </div>
     <div class="row justify-content-center"
-         style="padding:0px; max-width: 90%; margin: auto;  position: relative; margin-top: 80px; position: relative; height: 550px">
+         style="padding:0px; max-width: 90%; margin: auto;  position: relative; margin-top: 80px; position: relative; height: 550px; display:none;">
         <a class="btn-prev text-left align-left"> Poprzedni </a>
         @php $count = 0; @endphp
         @foreach($club->getClosestClubs($club) as $key => $my_club)
@@ -248,7 +250,7 @@
 
     </div>
     @if(isset($events) && ($events->count() !== 0)))
-        <div class="container" id="events">
+        <div class="container" id="events" style="display:none;">
             <div class="row justify-content-center">
                 <div class="col-lg-12 text-center">
                     <h3>Wydarzenia w tym klubie: </h3>

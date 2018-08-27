@@ -21,6 +21,7 @@ Route::post('take-part', 'API\EventsController@takePart');
 Route::get('take-part', 'API\EventsController@checkIfExistAttendance');
 
 Route::post('rate-club', 'API\ClubsController@addRate');
+Route::get('rate-club-get-sum', 'API\ClubsController@getRate');
 
 
 //Route::middleware('auth:api')->get('/user', function (Request $request) {

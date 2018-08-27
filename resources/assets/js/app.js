@@ -83,7 +83,7 @@ const routes = [
 const router = new VueRouter({routes});
 
 /* This is cons with app URL */
-const appURL = 'http://localhost/goparty/public/';
+const appURL = 'http://localhost/anglia/public/';
 
 const app = new Vue({
     router, scrollBehavior(to, from, savedPosition) {

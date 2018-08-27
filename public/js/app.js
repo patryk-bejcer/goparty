@@ -29273,7 +29273,7 @@ var routes = [{
 var router = new __WEBPACK_IMPORTED_MODULE_7_vue_router__["a" /* default */]({ routes: routes });
 
 /* This is cons with app URL */
-var appURL = 'http://localhost/goparty/public/';
+var appURL = 'http://localhost/anglia/public/';
 
 var app = new Vue({
     router: router, scrollBehavior: function scrollBehavior(to, from, savedPosition) {
@@ -64559,7 +64559,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
+/* TODO Finish this component!!! */
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -64573,11 +64580,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
-            rating: 0,
-            user: window.Laravel.user
+            rating: 3,
+            avgRate: 0,
+            countRate: 0,
+            exist: false,
+            user: window.Laravel.user,
+            readOnly: true,
+            userId: null
         };
     },
-    created: function created() {},
+    created: function created() {
+        this.getRate();
+        if (this.logged) {
+            this.userId = this.user.id;
+            this.readOnly = false;
+        }
+    },
 
 
     computed: {
@@ -64587,19 +64605,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        getRating: function getRating(rating) {
-            axios.get('api/rate-club', {
-                rateValue: this.rating,
-                club: this.club,
-                userId: this.user.id
+        getRate: function getRate() {
+            var _this = this;
+
+            axios.get('http://localhost/goparty/public/api/rate-club-get-sum', {
+                params: {
+                    club_id: this.club,
+                    user_id: this.userId
+                }
             }).then(function (response) {
-                console.log(response);
+                console.log(response.data);
+                _this.avgRate = response.data.avg;
+                _this.countRate = response.data.count;
+                _this.exist = response.data.exist;
+                if (_this.exist) {
+                    _this.readOnly = false;
+                }
             }).catch(function (error) {
                 console.log(error);
             });
         },
         setRating: function setRating(rating) {
-            if (this.logged) {
+            var _this2 = this;
+
+            if (this.logged && !this.exist) {
                 this.rating = rating;
                 axios.post('api/rate-club', {
                     rateValue: this.rating,
@@ -64607,9 +64636,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     userId: this.user.id
                 }).then(function (response) {
                     console.log(response);
+                    _this2.getRate();
                 }).catch(function (error) {
                     console.log(error);
                 });
+            } else {
+                console.log('not logged or rate exist');
             }
         }
     }
@@ -64638,11 +64670,24 @@ var render = function() {
         attrs: {
           "inactive-color": "rgba(0, 0, 0, 0.4)",
           "active-color": "#ef3ab1",
+          rating: _vm.avgRate,
           "border-width": 0,
+          "read-only": _vm.readOnly,
           "star-size": 26
         },
-        on: { "rating-selected": _vm.setRating }
-      })
+        on: {
+          "rating-selected": _vm.setRating,
+          click: function($event) {
+            _vm.test()
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("h1", { staticClass: "text-white" }, [
+        _vm._v("Średnia ocen: " + _vm._s(_vm.avgRate))
+      ]),
+      _vm._v(" "),
+      _c("h1", [_vm._v("Liczba ocen: " + _vm._s(_vm.countRate))])
     ],
     1
   )
