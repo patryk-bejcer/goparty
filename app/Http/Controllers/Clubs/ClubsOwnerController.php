@@ -94,7 +94,8 @@ class ClubsOwnerController extends Controller {
 			'phone'                   => $request->phone,
 			'website_url'             => $request->website_url,
 			'facebook_url'            => $request->facebook_url,
-			'club_img'                => $imageName
+			'club_img'                => $imageName,
+			'primary_img_id'          => 4
 		] );
 
 		foreach ($request->music_types as $music_type){
@@ -106,7 +107,7 @@ class ClubsOwnerController extends Controller {
 
 //		event(new ClubCreated($club));
 
-		Images::create([
+		$image = Images::create([
 			'imagesable_id' => $club->id,
 			'imagesable_type' => get_class(new Club()),
 			'title' => $request->official_name,

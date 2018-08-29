@@ -38,6 +38,7 @@ class CreateClubsTable extends Migration {
 			/* End of Contact and social media fields */
 
 			$table->string( 'club_img' )->nullable();
+			$table->integer( 'primary_img_id' )->nullable();
 			$table->softDeletes();
 			$table->timestamps();
 

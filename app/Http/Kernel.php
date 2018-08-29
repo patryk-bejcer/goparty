@@ -62,6 +62,7 @@ class Kernel extends HttpKernel
         'club_permission' => \App\Http\Middleware\CheckClubPermission::class,
         'event_permission' => \App\Http\Middleware\CheckEventPermission::class,
         'role' => \App\Http\Middleware\RoleMiddleware::class,
-        'permission' => \App\Http\Middleware\PermissionMiddleware::class
+        'permission' => \App\Http\Middleware\PermissionMiddleware::class,
+        'user_dashboard_permissions' => \App\Http\Middleware\UserDashboard::class
     ];
 }

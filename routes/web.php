@@ -25,6 +25,11 @@ Route::get( '/register', 'Auth\RegisterController@getRegister' )->name( 'registe
 
 /* ====== USERS ====== */
 Route::group( [ 'namespace' => 'User', 'middleware' => [ 'auth' ] ], function () {
+
+	/* Edit user profile routes*/
+	Route::get('/dashboard/profile/{userId}/edit', 'UserDashboardController@getEditProfile');
+	Route::post('/dashboard/profile/{userId}/edit', 'UserDashboardController@storeEditProfile');
+
     Route::post('update_user_image', 'UsersController@update_image');
     Route::post('remove_user_image', 'UsersController@remove_image');
     Route::post('user-update/{user}', 'UsersController@update')->name('user_update');
