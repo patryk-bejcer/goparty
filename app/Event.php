@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App;
 use App\User;
 
 use App\EventAttendance;
@@ -19,7 +19,7 @@ class Event extends Model {
         'end_date',
     ];
 	public function club() {
-		return $this->belongsTo( 'App\Models\Club' );
+		return $this->belongsTo( 'App\Club' );
 	}
     public function setAttendandList(){
         $this->attendendList = count(DB::table('attendances')->where('event_id', $this->id)->get());

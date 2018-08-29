@@ -2,7 +2,7 @@
 
 namespace App\Mail;
 
-use App\Models\Club;
+use App\Club;
 use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;

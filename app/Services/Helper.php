@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\Club;
+use App\Club;
 use Faker\Provider\File;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;

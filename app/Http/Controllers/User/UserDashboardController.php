@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\City;
-use App\Models\MusicType;
+use App\City;
+use App\MusicType;
 
 class UserDashboardController extends Controller {
 	public function index() {

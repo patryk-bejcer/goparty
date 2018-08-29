@@ -2,34 +2,26 @@
 
 namespace App\Http\Controllers\API;
 
-use App\EventAttendance;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class EventsController extends Controller {
-	public function takePart( Request $request ) {
 
+	public function getNearestEvents( Request $request ) {
 
-		$eventAttendance = EventAttendance::create( $request->all() );
+		$lat         = $request->get( 'lat' );
+		$long        = $request->get( 'long' );
+		$currentTime = date( 'y-m-d' );
 
-		return $eventAttendance;
+		$events = DB::select( "SELECT events.id, title, start_date, country, official_name, event_img FROM `events`
+        LEFT JOIN clubs
+        ON events.club_id = clubs.id WHERE start_date > '$currentTime'
+        ORDER BY ((latitude-'$lat')*(latitude-'$lat')) + ((longitude - '$long')*(longitude - '$long'))
+        ASC LIMIT 16" );
 
+		return response()
+			->json( $events );
 	}
-
-	public function checkIfExistAttendance(Request $request){
-
-		$exist = EventAttendance::where('user_id', $request->user_id)
-		                        ->where('event_id', $request->event_id);
-
-
-		if($exist){
-			return response()->json('ok', 200);
-		} else {
-			return response()->json('no ok', 500);
-		}
-
-	}
-
 
 }

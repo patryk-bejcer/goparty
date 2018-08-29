@@ -7,8 +7,8 @@
         <clubs-nearest>
         </clubs-nearest>
 
-        <events-nearest-location>
-        </events-nearest-location>
+        {{--<events-nearest-location>--}}
+        {{--</events-nearest-location>--}}
 
         <events-nearest-date>
         </events-nearest-date>

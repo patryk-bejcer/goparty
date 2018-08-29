@@ -29273,7 +29273,8 @@ var routes = [{
 var router = new __WEBPACK_IMPORTED_MODULE_7_vue_router__["a" /* default */]({ routes: routes });
 
 /* This is cons with app URL */
-var appURL = 'http://localhost/anglia/public/';
+// const appURL = 'http://localhost/goparty/public/';
+var appURL = "http://localhost/goparty/public/";
 
 var app = new Vue({
     router: router, scrollBehavior: function scrollBehavior(to, from, savedPosition) {
@@ -29281,7 +29282,7 @@ var app = new Vue({
     }
 }).$mount('#app');
 
-axios.defaults.baseURL = appURL;
+axios.defaults.baseURL = "http://localhost/goparty/public/";
 
 Vue.prototype.$hostname = appURL;
 
@@ -63479,7 +63480,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
 
             this.loading = true;
-            axios.get('clubs-archived?page=' + page).then(function (response) {
+            axios.get('http://localhost/goparty/public/api/clubs-archived?page=' + page).then(function (response) {
                 _this.clubsList = response.data;
                 _this.loading = false;
             });
@@ -63975,6 +63976,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "SingleClubLoop",
 
+    data: function data() {
+        return {
+            avgRate: null
+        };
+    },
+
+
     props: {
         club: {
             type: Object,
@@ -64008,7 +64016,7 @@ var render = function() {
   return _c("div", [
     _c("a", { attrs: { href: _vm.renderUrl(_vm.club.id) } }, [
       _c("div", { staticClass: "card mb-4 pb-2" }, [
-        _c("span", { staticClass: "rate" }, [_vm._v(_vm._s("9,5"))]),
+        _c("span", { staticClass: "rate" }, [_vm._v("9.25")]),
         _vm._v(" "),
         _c("img", {
           staticClass: "card-img-top",
@@ -64533,7 +64541,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n.vue-star-rating-pointer[data-v-5ea2190c] {\n    width: 32px !important;\n}\n", ""]);
+exports.push([module.i, "\n.vue-star-rating-star[data-v-34cbeed1][data-v-5ea2190c] {\n    display: inline-block;\n    width: 29px !important\n}\n.vue-star-rating-pointer[data-v-5ea2190c] {\n    width: 32px !important;\n}\n.vue-star-rating-star[data-v-5ea2190c]{\n    width:30px !important;\n}\n", ""]);
 
 // exports
 
@@ -64565,8 +64573,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-/* TODO Finish this component!!! */
+/* TODO Add post methods auth in controller API */
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -64590,11 +64611,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     created: function created() {
-        this.getRate();
         if (this.logged) {
             this.userId = this.user.id;
             this.readOnly = false;
         }
+        this.getRate();
     },
 
 
@@ -64615,11 +64636,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             }).then(function (response) {
                 console.log(response.data);
-                _this.avgRate = response.data.avg;
+                _this.avgRate = parseFloat(response.data.avg).toFixed(1);
                 _this.countRate = response.data.count;
                 _this.exist = response.data.exist;
                 if (_this.exist) {
-                    _this.readOnly = false;
+                    _this.readOnly = true;
                 }
             }).catch(function (error) {
                 console.log(error);
@@ -64630,6 +64651,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             if (this.logged && !this.exist) {
                 this.rating = rating;
+                console.log(this);
                 axios.post('api/rate-club', {
                     rateValue: this.rating,
                     club: this.club,
@@ -64662,35 +64684,71 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("star-rating", {
-        staticClass: "mb-3",
-        attrs: {
-          "inactive-color": "rgba(0, 0, 0, 0.4)",
-          "active-color": "#ef3ab1",
-          rating: _vm.avgRate,
-          "border-width": 0,
-          "read-only": _vm.readOnly,
-          "star-size": 26
-        },
-        on: {
-          "rating-selected": _vm.setRating,
-          click: function($event) {
-            _vm.test()
-          }
-        }
-      }),
-      _vm._v(" "),
-      _c("h1", { staticClass: "text-white" }, [
-        _vm._v("Średnia ocen: " + _vm._s(_vm.avgRate))
-      ]),
-      _vm._v(" "),
-      _c("h1", [_vm._v("Liczba ocen: " + _vm._s(_vm.countRate))])
-    ],
-    1
-  )
+  return _c("div", [
+    _c(
+      "div",
+      { staticClass: "d-flex align-items-center justify-content-between" },
+      [
+        _c(
+          "div",
+          [
+            _vm.avgRate > 0
+              ? _c("span", { staticClass: "number-rate" }, [
+                  _vm._v(_vm._s(_vm.avgRate))
+                ])
+              : _c(
+                  "span",
+                  {
+                    staticClass: "number-rate",
+                    staticStyle: { "font-size": "18px", "font-weight": "300" }
+                  },
+                  [_vm._v("Ten klub nie ma jescze ocen "), _c("br")]
+                ),
+            _vm._v(" "),
+            _c("star-rating", {
+              staticClass: "mb-3",
+              staticStyle: { display: "inline-flex", width: "29px" },
+              attrs: {
+                "inactive-color": "rgba(0, 0, 0, 0.4)",
+                "active-color": "#ef3ab1",
+                increment: 0.5,
+                rating: _vm.avgRate,
+                "border-width": 0,
+                "read-only": _vm.readOnly,
+                "star-size": 24,
+                "show-rating": false,
+                padding: 5,
+                "round-start-rating": true,
+                glow: true
+              },
+              on: {
+                "rating-selected": _vm.setRating,
+                click: function($event) {
+                  _vm.test()
+                }
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("div", {}, [
+          _c(
+            "span",
+            {
+              staticClass: "number-of-rate pull-right text-sm text-right pl-4",
+              staticStyle: { "margin-top": "-8px" }
+            },
+            [
+              _c("a", { attrs: { href: "" } }, [
+                _vm._v("Liczba ocen:  " + _vm._s(_vm.countRate))
+              ])
+            ]
+          )
+        ])
+      ]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -64868,7 +64926,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             this.loading = true;
-            axios.post('clubs-search?city=' + this.address).then(function (response) {
+            axios.post('/api/clubs-search?city=' + this.address).then(function (response) {
                 _this.clubsList = response.data;
                 _this.loading = false;
             });

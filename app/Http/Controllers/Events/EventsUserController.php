@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Events;
 
 use App\EventAttendance;
-use App\Models\Club;
-use App\Models\Event;
+use App\Club;
+use App\Event;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\MusicType;
+use App\MusicType;
 use http\Env\Response;
 
 use Illuminate\Support\Facades\Auth;

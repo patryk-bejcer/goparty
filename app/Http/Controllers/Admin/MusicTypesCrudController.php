@@ -18,7 +18,7 @@ class MusicTypesCrudController extends CrudController
         | BASIC CRUD INFORMATION
         |--------------------------------------------------------------------------
         */
-        $this->crud->setModel( 'App\Models\MusicType' );
+        $this->crud->setModel( 'App\MusicType' );
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/music-types');
         $this->crud->setEntityNameStrings('musictypes', 'music_types');
 

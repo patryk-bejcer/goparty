@@ -89,9 +89,6 @@
     const url = '{{url('public/users')}}';
     const club_image_create_url = '{{route('clubImage.store')}}';
     const token = '{{csrf_token()}}';
-    const club_rate = '{{route('club.rate')}}';
-    const club_rate_delete = '{{route('club.rate.delete')}}';
-
 </script>
 
 

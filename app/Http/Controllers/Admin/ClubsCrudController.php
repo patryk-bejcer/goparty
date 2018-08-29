@@ -18,7 +18,7 @@ class ClubsCrudController extends CrudController
         | BASIC CRUD INFORMATION
         |--------------------------------------------------------------------------
         */
-        $this->crud->setModel('App\Models\Club');
+        $this->crud->setModel('App\Club');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/clubs');
         $this->crud->setEntityNameStrings('club', 'clubs');
 

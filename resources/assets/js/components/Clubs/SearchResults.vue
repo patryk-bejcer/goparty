@@ -63,7 +63,7 @@
         methods: {
             getSearchResults() {
                 this.loading = true;
-                axios.post('clubs-search?city=' + this.address)
+                axios.post('/api/clubs-search?city=' + this.address)
                     .then(response => {
                         this.clubsList = response.data;
                         this.loading = false;

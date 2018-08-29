@@ -83,7 +83,8 @@ const routes = [
 const router = new VueRouter({routes});
 
 /* This is cons with app URL */
-const appURL = 'http://localhost/anglia/public/';
+// const appURL = 'http://localhost/goparty/public/';
+const appURL = process.env.MIX_APP_URL;
 
 const app = new Vue({
     router, scrollBehavior(to, from, savedPosition) {
@@ -91,7 +92,7 @@ const app = new Vue({
     }
 },).$mount('#app');
 
-axios.defaults.baseURL = appURL;
+axios.defaults.baseURL = process.env.MIX_APP_URL;
 
 Vue.prototype.$hostname = appURL;
 

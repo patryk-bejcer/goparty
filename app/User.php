@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\Models\MusicType;
+use App\MusicType;
 use Backpack\CRUD\CrudTrait;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
@@ -62,17 +62,17 @@ class User extends Authenticatable
 
 	public function favoriteMusic()
 	{
-		return $this->belongsToMany('App\Models\MusicType','user_music_type');
+		return $this->belongsToMany('App\MusicType','user_music_type');
 	}
 
 	public function voivodeship()
 	{
-		return $this->hasOne('App\Models\Voivodeship','id','voivodeship_id');
+		return $this->hasOne('App\Voivodeship','id','voivodeship_id');
 	}
 
 	public function city()
 	{
-		return $this->hasOne('App\Models\City','id','city_id');
+		return $this->hasOne('App\City','id','city_id');
 	}
 
 	/* End of Relationships */

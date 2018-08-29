@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\models\ClubImage;
+use App\ClubImage;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
-use App\models\User;
+use App\User;
 use Illuminate\Auth;
 use Illuminate\Support\Facades\Storage;
 

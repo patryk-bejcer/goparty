@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Clubs;
 
+use App\Images;
 use Image;
 use App\Events\ClubCreated;
 use App\Events\ClubDestroy;
-use App\Models\Club;
-use App\models\ClubImage;
-use App\Models\Event;
-use App\Models\MusicType;
-use App\Models\Rules;
-//use App\Models\ClubRules;
+use App\Club;
+use App\ClubImage;
+use App\Event;
+use App\MusicType;
+use App\Rules;
+//use App\ClubRules;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -47,14 +48,13 @@ class ClubsOwnerController extends Controller {
 	}
 
 
-	public function store( Request $request ) {
+	public function store( Request $request, Club $clubModel ) {
 
 		$addressErrorMessage = 'Wprowadzony przez ciebie adres jest niepoprawny. Wprowadź pełny adres (nazwa ulicy/numer
                     lokalu/miasto/kraj)';
 
 		if ( $request->file( 'club_img' ) ) {
 			$imageName = time() . '.' . $request->file( 'club_img' )->getClientOriginalExtension();
-//			$request->file( 'club_img' )->move( public_path( 'uploads/clubs' ), $imageName );
 		} else {
 			$imageName = null;
 		}
@@ -96,14 +96,6 @@ class ClubsOwnerController extends Controller {
 			'facebook_url'            => $request->facebook_url,
 			'club_img'                => $imageName
 		] );
-//		if(!empty($request->rules)){
-//            foreach($request->rules as $rule){
-//                ClubRules::create([
-//                    'club_id' => $club->id,
-//                    'rule_id' => $rule,
-//                ]);
-//            }
-//        }
 
 		foreach ($request->music_types as $music_type){
 		    DB::table('club_music_type')->insert([
@@ -112,12 +104,19 @@ class ClubsOwnerController extends Controller {
             ]);
         }
 
+//		event(new ClubCreated($club));
 
-		event(new ClubCreated($club));
+		Images::create([
+			'imagesable_id' => $club->id,
+			'imagesable_type' => get_class(new Club()),
+			'title' => $request->official_name,
+			'alt_title' => $request->official_name,
+			'src' => $imageName,
+		]);
 
 		Session::flash( 'message', 'Klub ' . $request->official_name . ' dodany pomyślnie, teraz możesz uzupełnić dodatkowe informacje, lub dodać wydarzenie.' );
 
-		return redirect( 'dashboard/clubs' );
+		return redirect( 'dashboard/clubs');
 	}
 
 

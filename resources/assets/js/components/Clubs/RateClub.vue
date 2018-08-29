@@ -1,24 +1,37 @@
 <template>
     <div>
-        <star-rating @rating-selected="setRating"
-                     inactive-color="rgba(0, 0, 0, 0.4)"
-                     active-color="#ef3ab1"
-                     :rating="avgRate"
-                     :border-width="0"
-                     :read-only="readOnly"
-                     :star-size="26"
-                     class="mb-3"
-                     v-on:click="test()"
-        >
-        </star-rating>
+        <div class="d-flex align-items-center justify-content-between">
+            <div>
+                <span v-if="avgRate > 0" class="number-rate">{{avgRate}}</span>
+                <span v-else class="number-rate" style="font-size:18px; font-weight: 300">Ten klub nie ma jescze ocen <br></span>
+                <star-rating @rating-selected="setRating"
+                             inactive-color="rgba(0, 0, 0, 0.4)"
+                             active-color="#ef3ab1"
+                             :increment="0.5"
+                             :rating="avgRate"
+                             :border-width="0"
+                             :read-only="readOnly"
+                             :star-size="24"
+                             class="mb-3"
+                             style="display: inline-flex; width: 29px"
+                             :show-rating="false"
+                             :padding="5"
+                             :round-start-rating="true"
+                             v-on:click="test()"
+                             :glow="true"
+                >
+                </star-rating>
+            </div>
+            <div class="">
+                <span style="margin-top: -8px;" class="number-of-rate pull-right text-sm text-right pl-4"><a href="">Liczba ocen:  {{countRate}}</a></span>
+            </div>
+        </div>
 
-        <h1 class="text-white">Średnia ocen: {{avgRate}}</h1>
-        <h1>Liczba ocen: {{countRate}}</h1>
     </div>
 </template>
 
 <script>
-    /* TODO Finish this component!!! */
+    /* TODO Add post methods auth in controller API */
     import StarRating from 'vue-star-rating';
 
     export default {
@@ -43,25 +56,24 @@
 
         },
 
-        created(){
-            this.getRate();
-            if(this.logged){
+        created() {
+            if (this.logged) {
                 this.userId = this.user.id
                 this.readOnly = false;
             }
+            this.getRate();
         },
 
 
-
-        computed:{
-            logged(){
+        computed: {
+            logged() {
                 return this.user != null
             }
         },
 
         methods: {
-            getRate(){
-                axios.get('http://localhost/goparty/public/api/rate-club-get-sum',{
+            getRate() {
+                axios.get('http://localhost/goparty/public/api/rate-club-get-sum', {
                     params: {
                         club_id: this.club,
                         user_id: this.userId,
@@ -69,11 +81,11 @@
                 })
                     .then(response => {
                         console.log(response.data);
-                        this.avgRate = response.data.avg
+                        this.avgRate = parseFloat(response.data.avg).toFixed(1);
                         this.countRate = response.data.count
                         this.exist = response.data.exist
-                        if(this.exist){
-                            this.readOnly = false;
+                        if (this.exist) {
+                            this.readOnly = true;
                         }
                     })
                     .catch(error => {
@@ -81,8 +93,9 @@
                     });
             },
             setRating(rating) {
-                if(this.logged && !this.exist){
+                if (this.logged && !this.exist) {
                     this.rating = rating;
+                    console.log(this);
                     axios.post('api/rate-club', {
                         rateValue: this.rating,
                         club: this.club,
@@ -104,7 +117,14 @@
 </script>
 
 <style scoped>
+    .vue-star-rating-star[data-v-34cbeed1] {
+        display: inline-block;
+        width: 29px !important
+    }
     .vue-star-rating-pointer {
         width: 32px !important;
+    }
+    .vue-star-rating-star{
+        width:30px !important;
     }
 </style>

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\models;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Club;
-use App\Models\User;
+use App\Club;
+use App\User;
 
 
 class ClubImage extends Model

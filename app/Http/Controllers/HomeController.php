@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\SendWelcomeEmail;
-use App\Models\Club;
-use App\Models\Event;
+use App\Club;
+use App\Event;
 use App\User;
 use Faker\Provider\DateTime;
 use Illuminate\Http\Request;

@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Club;
+use App\Club;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 

@@ -3,7 +3,7 @@
 namespace App\Listeners\ClubDestroy;
 
 use App\Events\ClubDestroy;
-use App\Models\Club;
+use App\Club;
 use Illuminate\Support\Facades\Auth;
 
 class RemoveRole

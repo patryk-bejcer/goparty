@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App;
 
 use App\User;
 use Backpack\CRUD\CrudTrait;
@@ -10,8 +10,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use PHPUnit\Framework\Constraint\IsEmpty;
 use Illuminate\Support\Facades\DB;
-
-use App\Models\Rules;
 
 class Club extends Model {
 	use CrudTrait;
@@ -28,6 +26,7 @@ class Club extends Model {
 	public $timestamps = true;
 	public $music_types = [];
 	protected $dates = [ 'deleted_at' ];
+
 	/*
 	|--------------------------------------------------------------------------
 	| FUNCTIONS
@@ -59,14 +58,14 @@ class Club extends Model {
     }
 
 	public function events() {
-		return $this->hasMany( 'App\Models\Event' );
+		return $this->hasMany( 'App\Event' );
 	}
 //	public function image(){
-//	    return $this->HasMany('App\Models\ClubImage');
+//	    return $this->HasMany('App\ClubImage');
 //    }
 //
 //    public function rules(){
-//	    return $this->hasMany('App\Models\ClubRules');
+//	    return $this->hasMany('App\ClubRules');
 //    }
     static function getMain($id){
 	    $club = Club::findOrFail($id);

@@ -13,15 +13,16 @@ use Illuminate\Http\Request;
 |
 */
 
+/* Clubs API Routing */
 Route::get('nearest-clubs', 'API\ClubsController@getNearestClubs');
-
-Route::get('nearest-events', 'API\ClubsController@getNearestEvents');
-
-Route::post('take-part', 'API\EventsController@takePart');
-Route::get('take-part', 'API\EventsController@checkIfExistAttendance');
-
-Route::post('rate-club', 'API\ClubsController@addRate');
+Route::get('clubs-archived', 'API\ClubsController@archivedClubs');
+Route::post('clubs-search', 'API\ClubsController@searchResults');
 Route::get('rate-club-get-sum', 'API\ClubsController@getRate');
+Route::post('rate-club', 'API\ClubsController@addRate');
+
+/* Events API Routing */
+Route::get('nearest-events', 'API\EventsController@getNearestEvents');
+Route::post('take-part', 'API\Events@takePart');
 
 
 //Route::middleware('auth:api')->get('/user', function (Request $request) {

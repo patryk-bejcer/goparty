@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Events\UserRegistred;
-//use App\Models\City;
-use App\Models\MusicType;
-use App\Models\Voivodeship;
+//use App\City;
+use App\MusicType;
+use App\Voivodeship;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;

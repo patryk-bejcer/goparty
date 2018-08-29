@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Clubs;
 
-use App\Models\Club;
+use App\Club;
 
 use App\Http\Controllers\Controller;
-use App\Models\clubRules;
-use App\Models\Event;
-use App\Models\MusicType;
+use App\clubRules;
+use App\Event;
+use App\MusicType;
 use Illuminate\Http\Request;
 
 class ClubsUserController extends Controller {
@@ -37,35 +37,6 @@ class ClubsUserController extends Controller {
 		return view( 'site.clubs.main' );
 	}
 
-	public function archived() {
-		$clubs = Club::select( 'id', 'official_name', 'club_img', 'route', 'street_number', 'locality' )
-		             ->orderBy( 'id', 'desc' )
-		             ->paginate( 9 );
-
-		return response()->json( $clubs );
-	}
-
-	public function search( Request $request ) {
-
-		$selectedValues = [ 'id', 'official_name', 'club_img', 'route', 'street_number', 'locality' ];
-		$city = $request->get( 'city' );
-
-		if ( strpos( $city, ',' ) ) {
-			$city = strstr( $city, ',', true );
-		}
-
-		if ( $city ) {
-			$clubs = Club::select( $selectedValues )
-			             ->where( 'locality', $city )
-			             ->paginate( 200 );
-
-		} else if ( $city == '' || $city == 'undefined' || $city == null ) {
-			$clubs = Club::select( $selectedValues )
-			             ->paginate( 200 );
-		}
-
-		return response()->json( $clubs );
-	}
 
 	public function singleClub(Request $request){
 

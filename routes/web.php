@@ -63,10 +63,6 @@ Route::post('/clubImage/active', 'ClubImageController@changeActive')->name('club
 Route::post('/clubImage/main', 'ClubImageController@changeMain')->name('clubImage.changeMain');
 /* ====== End Images ======= */
 
-/* ====== Rate Club  ======= */
-Route::post('/club/rate', 'RatingController@store')->name('club.rate');
-Route::post('/club/rate/delete', 'RatingController@delete')->name('club.rate.delete');
-/* ====== END Rate Club  ======= */
 /* ====== EVENTS ====== */
 /* Middleware is declarate in controller!!! */
 Route::namespace('Events')->group(function () {
@@ -104,17 +100,7 @@ Route::get('search/clubs', 'SearchController@search_clubs');
 Route::post('take-part', 'Events\EventsUserController@takePart');
 Route::delete('take-part', 'Events\EventsUserController@cancelEvent');
 
-
-
-Route::get('take-part', 'API\EventsController@checkIfExistAttendance');
-
-
-/* TEST FOR VUE */
-
 Route::get('clubs', 'Clubs\ClubsUserController@getClubsMainPage');
-
-Route::get('clubs-archived', 'Clubs\ClubsUserController@archived');
-Route::post('clubs-search', 'Clubs\ClubsUserController@search');
 Route::post('clubs-single', 'Clubs\ClubsUserController@singleClub');
 Route::post('clubs-single-next', 'Clubs\ClubsUserController@nextSingleClub');
 Route::post('clubs-single-previous', 'Clubs\ClubsUserController@previousSingleClub');
@@ -124,9 +110,6 @@ Route::get('clubs/{club}/next','Clubs\ClubsUserController@nextImage')->where('cl
 /* Show previous club of a given user */
 Route::get('clubs/{club}/prev','Clubs\ClubsUserController@prevImage')->where('club', '[0-9]+');
 
-Route::get('clubs/{{id}}', function () {
-	echo ' test';
-});
 
 
 

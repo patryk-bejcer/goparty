@@ -53,7 +53,7 @@
         methods: {
             getResults(page = 1) {
                 this.loading = true;
-                axios.get('clubs-archived?page=' + page)
+                axios.get('http://localhost/goparty/public/api/clubs-archived?page=' + page)
                     .then(response => {
                         this.clubsList = response.data;
                         this.loading = false;

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MusicType;
+use App\MusicType;
 use Illuminate\Http\Request;
 use Symfony\Component\Console\Input\Input;
-use App\Models\Club;
+use App\Club;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Response;
 

@@ -2,7 +2,7 @@
     <div>
         <a :href="renderUrl(club.id)">
             <div class="card mb-4 pb-2">
-                <span class="rate">{{'9,5'}}</span>
+                <span class="rate">9.25</span>
                 <img :src="renderImg(club.club_img)" class="card-img-top" :alt="club.official_name"
                      :title="club.official_name">
                 <div class="card-body">
@@ -24,6 +24,12 @@
     export default {
         name: "SingleClubLoop",
 
+        data() {
+            return{
+                avgRate: null
+            }
+        },
+
         props: {
             club: {
                 type: Object,
@@ -43,6 +49,22 @@
             renderUrl(id) {
                 return 'clubs/' + id;
             },
+            // getRate(clubId) {
+            //     axios.get('rate-club-get-sum', {
+            //         params: {
+            //             club_id: clubId
+            //         }
+            //     })
+            //         .then(response => {
+            //             console.log(response.data.avg)
+            //             return response.data.avg
+            //         })
+            //         .catch(error => {
+            //             console.log(error)
+            //             return 0
+            //         });
+            //     return '5.0';
+            // }
         }
     }
 </script>

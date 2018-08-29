@@ -4,7 +4,7 @@
 
 @section('content')
 
-    {{--<clubs-header></clubs-header>--}}
+    <clubs-header></clubs-header>
 
     <div class="images-controls">
         <div class="next-club ">
@@ -21,39 +21,32 @@
 
     <div class="container mt-4 pl-0">
 
-        {{--<nav aria-label="breadcrumb" class="mt-2">--}}
-            {{--<ol class="breadcrumb pl-0">--}}
-                {{--<li class="breadcrumb-item"><a href="{{url('/')}}">Strona główna</a></li>--}}
+        <nav aria-label="breadcrumb" class="mt-2">
+            <ol class="breadcrumb pl-0">
+                <li class="breadcrumb-item"><a href="{{url('/')}}">Strona główna</a></li>
 
-                {{--<li class="breadcrumb-item"><a href="{{url('clubs#clubs')}}">--}}
-                        {{--Wszystkie Kluby--}}
-                    {{--</a></li>--}}
+                <li class="breadcrumb-item"><a href="{{url('clubs#clubs')}}">
+                        Wszystkie Kluby
+                    </a></li>
 
-                {{--<li class="breadcrumb-item active" aria-current="page">{{$club->official_name}}</li>--}}
-            {{--</ol>--}}
-        {{--</nav>--}}
+                <li class="breadcrumb-item active" aria-current="page">{{$club->official_name}}</li>
+            </ol>
+        </nav>
 
     </div>
 
-    <club-rate class="mt-5" :club="{{$club->id}}"></club-rate>
-
-    <div class="container" style=" padding: 0px; margin-top: 0px; display:none;" id="single_club"
+    <div class="container" style=" padding: 0px; margin-top: 0px;" id="single_club"
          data-scroll='scroll'>
-
-        <club-rate :club="{{$club->id}}"></club-rate>
 
         <div class="row justify-content-center">
 
-            {{--<div class="club-border"></div>--}}
             <div class="col-lg-5">
                 <img class="img-fluid"
                      src="@if($club->club_img) {{ url('/uploads/clubs/' . $club->club_img )  }} @else {{url('/img/default-event-img.jpg')}} @endif "
                      alt="">
-                {{--@if(empty($club->getMain($club->id)))--}}
-                {{--<p>Ten klub nie ma jeszcze dodanych zdjęć</p>--}}
-                {{--@else--}}
-                {{--<img onclick="loadGallery(this)" data-toogle = 'modal' data-target="#photos" id="img-gallery" src="{{url('public/users/'.$club->user_id.'/'.$club->getMain($club->id)->image_path)}}">--}}
-                {{--@endif--}}
+
+
+
                 @if (empty($club->getPhotos($club, 3)))
 
                 @else
@@ -95,19 +88,7 @@
             <div class="d-flex justify-content-between flex-column flex-md-row  text-white mb-5">
                 <div class="col-12 col-md-4 mb-3 mb-md-0 order-2 order-md-0">
                     <div class="rate">
-                        <div class="d-flex align-items-center">
-                            <div>
-                                <span class="number-rate">4,5</span>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                            </div>
-                            <div class="">
-                                <span class="number-of-rate pull-right text-sm text-right pl-4"><a href="">Liczba opini: 142</a></span>
-                            </div>
-                        </div>
+                        <club-rate :club="{{$club->id}}"></club-rate>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum debitis dolorum et hic illum
                             impedit libero minima minus molestiae, nam, non quia recusandae repellat sed sunt veritatis
                             voluptatem? Possimus, quis.</p>
@@ -178,74 +159,74 @@
         {{--<clubs-nearest>--}}
         {{--</clubs-nearest>--}}
 
-        <h3 class="text-center mt-5 mb-0">Kluby w pobliżu</h3>
-        <hr>
-    </div>
-    <div class="row justify-content-center"
-         style="padding:0px; max-width: 90%; margin: auto;  position: relative; margin-top: 80px; position: relative; height: 550px; display:none;">
-        <a class="btn-prev text-left align-left"> Poprzedni </a>
-        @php $count = 0; @endphp
-        @foreach($club->getClosestClubs($club) as $key => $my_club)
+        {{--<h3 class="text-center mt-5 mb-0">Kluby w pobliżu</h3>--}}
+        {{--<hr>--}}
+    {{--</div>--}}
+    {{--<div class="row justify-content-center"--}}
+         {{--style="padding:0px; max-width: 90%; margin: auto;  position: relative; margin-top: 80px; position: relative; height: 550px;">--}}
+        {{--<a class="btn-prev text-left align-left"> Poprzedni </a>--}}
+        {{--@php $count = 0; @endphp--}}
+        {{--@foreach($club->getClosestClubs($club) as $key => $my_club)--}}
 
-            <div class="club-slide" @if($count == 2) id="club-slide-left" @elseif($count == 1) id="club-slide-right"
-                 @elseif($count == 0) id='club-slide-center' @endif style="margin: auto; margin-bottom: 50px;">
-                <img id="box-shadow" src="{{url('img/box-shadow.png')}}">
-                @if(empty(\App\Models\Club::getMain($my_club[0]['id'])))
-                    <img src="{{url('img/brak-zdjecia.jpg')}}">
-                @else
-                    <img src="{{url('public/users/'. $my_club[0]['user_id'].'/'.\App\Models\Club::getMain($my_club[0]['id'])->image_path)}}">
-                @endif
+            {{--<div class="club-slide" @if($count == 2) id="club-slide-left" @elseif($count == 1) id="club-slide-right"--}}
+                 {{--@elseif($count == 0) id='club-slide-center' @endif style="margin: auto; margin-bottom: 50px;">--}}
+                {{--<img id="box-shadow" src="{{url('img/box-shadow.png')}}">--}}
+                {{--@if(empty(\App\Club::getMain($my_club[0]['id'])))--}}
+                    {{--<img src="{{url('img/brak-zdjecia.jpg')}}">--}}
+                {{--@else--}}
+                    {{--<img src="{{url('public/users/'. $my_club[0]['user_id'].'/'.\App\Club::getMain($my_club[0]['id'])->image_path)}}">--}}
+                {{--@endif--}}
 
-                <div class="club-slide-content">
-                    <a href="{{url('/clubs/'. $my_club[0]['id'])}}" style="text-decoration: none">
-                        <h2>{{$my_club[0]['official_name']}}</h2></a>
+                {{--<div class="club-slide-content">--}}
+                    {{--<a href="{{url('/clubs/'. $my_club[0]['id'])}}" style="text-decoration: none">--}}
+                        {{--<h2>{{$my_club[0]['official_name']}}</h2></a>--}}
 
-                    <div class="distance-box mt-5">
-                        <p><span style="color: rgb(239, 58, 177);">@php
-                                    if($my_club['distance'] < 1){
-                                    $my_club['distance'] = $my_club['distance'] *1000;
-                                    echo round($my_club['distance']).'m';
-                                    } else {
-                                    echo $my_club['distance'].'km';
-                                    }
-                                @endphp  </span>od {{$club->official_name}}</p>
+                    {{--<div class="distance-box mt-5">--}}
+                        {{--<p><span style="color: rgb(239, 58, 177);">@php--}}
+                                    {{--if($my_club['distance'] < 1){--}}
+                                    {{--$my_club['distance'] = $my_club['distance'] *1000;--}}
+                                    {{--echo round($my_club['distance']).'m';--}}
+                                    {{--} else {--}}
+                                    {{--echo $my_club['distance'].'km';--}}
+                                    {{--}--}}
+                                {{--@endphp  </span>od {{$club->official_name}}</p>--}}
 
-                        <p style="font-family: Muli;font-size: 14px; margin: 0px; font-weight: 100"><i
-                                    style="font-size: 12px;"
-                                    class="fa fa-globe"></i> {{$my_club[0]['route'] . ' ' . $my_club[0]['street_number']}}
-                        </p>
+                        {{--<p style="font-family: Muli;font-size: 14px; margin: 0px; font-weight: 100"><i--}}
+                                    {{--style="font-size: 12px;"--}}
+                                    {{--class="fa fa-globe"></i> {{$my_club[0]['route'] . ' ' . $my_club[0]['street_number']}}--}}
+                        {{--</p>--}}
 
-                        <p style="font-size: 14px; margin: 0px; font-weight: 100"><i style="font-size: 12px;"
-                                                                                     class="fa fa-phone"></i> {{$my_club[0]['phone']}}
-                        </p>
-                    </div>
-                    <div class="club-slide-footer">
-                        <p class="pull-left"> Dla Ciebie: {{rand(0,100)}} %</p>
+                        {{--<p style="font-size: 14px; margin: 0px; font-weight: 100"><i style="font-size: 12px;"--}}
+                                                                                     {{--class="fa fa-phone"></i> {{$my_club[0]['phone']}}--}}
+                        {{--</p>--}}
+                    {{--</div>--}}
+                    {{--<div class="club-slide-footer">--}}
+                        {{--<p class="pull-left"> Dla Ciebie: {{rand(0,100)}} %</p>--}}
 
-                        <a href="{{url('/clubs/'. $my_club[0]['id'])}}"
-                           style="position: sticky; font-size: 14px; font-weight: 100; " class="navigator">Zobacz
-                            więcej</a>
+                        {{--<a href="{{url('/clubs/'. $my_club[0]['id'])}}"--}}
+                           {{--style="position: sticky; font-size: 14px; font-weight: 100; " class="navigator">Zobacz--}}
+                            {{--więcej</a>--}}
 
-                        <div class="pull-right" style="display: inline-block; font-size: 16px">
-                            <i style="color:white;" class="fa fa-star  mr-1"></i>
-                            <i style="color:white;" class="fa fa-star  mr-1"></i>
-                            <i style="color:white;" class="fa fa-star  mr-1"></i>
-                            <i style="color:white;" class="fa fa-star mr-1"></i>
-                            <i style="color:white;" class="fa fa-star  mr-1"></i>
-                        </div>
-                    </div>
+                        {{--<div class="pull-right" style="display: inline-block; font-size: 16px">--}}
+                            {{--<i style="color:white;" class="fa fa-star  mr-1"></i>--}}
+                            {{--<i style="color:white;" class="fa fa-star  mr-1"></i>--}}
+                            {{--<i style="color:white;" class="fa fa-star  mr-1"></i>--}}
+                            {{--<i style="color:white;" class="fa fa-star mr-1"></i>--}}
+                            {{--<i style="color:white;" class="fa fa-star  mr-1"></i>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
 
-                </div>
-            </div>
-            @php $count++; @endphp
-            @if($count == 3)
-                @break
-            @endif
-        @endforeach
-        <a style="position: absolute; top: 33%" id="left" class="navigator" onclick="prev_slide()"><i
-                    class="fa fa-angle-left"></i> </a>
-        <a style="position: absolute; top: 33%" id="right" class="navigator" onclick="next_slide()"> <i
-                    class="fa fa-angle-right"></i></a>
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--@php $count++; @endphp--}}
+            {{--@if($count == 3)--}}
+                {{--@break--}}
+            {{--@endif--}}
+        {{--@endforeach--}}
+        {{--<a style="position: absolute; top: 33%" id="left" class="navigator" onclick="prev_slide()"><i--}}
+                    {{--class="fa fa-angle-left"></i> </a>--}}
+        {{--<a style="position: absolute; top: 33%" id="right" class="navigator" onclick="next_slide()"> <i--}}
+                    {{--class="fa fa-angle-right"></i></a>--}}
 
 
     </div>
