@@ -11,6 +11,8 @@ use App\User;
 
 class UserDashboardController extends Controller {
 
+	/*  @todo Finish this methods and app user dashobard component. Finish user information edit form */
+
 	public function __construct() {
 
 		/* This middleware check if user is authenticated */
