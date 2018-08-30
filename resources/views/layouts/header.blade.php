@@ -38,6 +38,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
                             <!-- Tabs for users -->
+                            <a class="dropdown-item" href="{{route('user.edit.profile')}}">{{ __('Panel użytkownika edycja') }}</a>
                             <a class="dropdown-item" href="{{route('user-dashboard.index')}}">{{ __('Panel użytkownika') }}</a>
                             <a class="dropdown-item" href="{{url('dashboard/attendance')}}">{{ __('Moje imprezy') }}</a>
                             <!-- End tabs for owner -->

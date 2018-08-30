@@ -16,19 +16,23 @@ import 'jquery-ui/ui/widgets/resizable.js';
 
 import VueRouter from 'vue-router';
 
+
 window.jquery_ui = require('jquery-ui');
 
 window.Vue = require('vue');
 
 Vue.use(VueRouter);
 
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
+Vue.component('image-component', require('./components/Imageupload.vue'));
 Vue.component('pagination', require('laravel-vue-pagination'));
+Vue.component('flash-message', require('./components/FlashMessage'));
+Vue.component('flash', require('./components/FlashMessage.vue'));
 Vue.component('address-search-box', require('./components/addressSearchBoxWithMap'));
 Vue.component('city-search-box', require('./components/citySearchFieldAutoComplete'));
 // Vue.component('nearest-clubs', require('./components/nearestClubs'));
@@ -96,6 +100,11 @@ axios.defaults.baseURL = process.env.MIX_APP_URL;
 
 Vue.prototype.$hostname = appURL;
 
+window.events = new Vue();
+
+window.flash = function(message) {
+    window.events.$emit('flash',message);
+}
 
 
 

@@ -6,7 +6,12 @@
             <p class="text-center mb-2 "><b class="text-center">Panel użytkownika</b></p>
 
             <div class="rotate-square">
-                <img class="img-fluid mt-2" src="{{\Illuminate\Support\Facades\Auth::user()->getUserImage()}}" alt="">
+                @if (!Auth::user()->getAvatar->isEmpty())
+                    <img class="img-fluid mt-2" src="{{url('/uploads/users/avatars/' . Auth::user()->getAvatar->last()->src)}}" alt="">
+                @else
+                    <img class="img-fluid mt-2" src="{{url('/img/avatar.png')}}" alt="{{Auth::user()->first_name}} {{Auth::user()->last_name}}">
+                @endif
+
             </div>
             <h4 class="mt-3 mb-0 text-center">{{Auth::user()->first_name}} {{Auth::user()->last_name}}</h4>
             <hr >

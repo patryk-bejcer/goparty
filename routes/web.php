@@ -113,7 +113,15 @@ Route::get('clubs/{club}/next','Clubs\ClubsUserController@nextImage')->where('cl
 /* Show previous club of a given user */
 Route::get('clubs/{club}/prev','Clubs\ClubsUserController@prevImage')->where('club', '[0-9]+');
 
+Route::get('flash', function ()
+{
+	return view('flash');
+});
 
+Route::get('flashButton', function ()
+{
+	return back()->with('flash', request()->message);
+});
 
 
 

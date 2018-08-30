@@ -35,6 +35,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function getAvatar(){
+	    return $this->morphMany('App\Images', 'imagesable');
+    }
+
      /**
      * Send the password reset notification.
      *
