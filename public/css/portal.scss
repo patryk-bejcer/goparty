@@ -577,7 +577,6 @@ main{
 }
 
 .card-body {
-  padding-bottom: 0px !important;
   background-color: #0c051e;
 }
 
@@ -1372,4 +1371,10 @@ main{
 
 .navbar-nav .dropdown-menu{
 background: $primary-color;
+}
+
+button{
+  &:hover{
+    cursor: pointer;
+  }
 }

@@ -29274,7 +29274,7 @@ var router = new __WEBPACK_IMPORTED_MODULE_7_vue_router__["a" /* default */]({ r
 
 /* This is cons with app URL */
 // const appURL = 'http://localhost/goparty/public/';
-var appURL = "http://localhost/goparty/public/";
+var appURL = "http://localhost/lawety/public/";
 
 var app = new Vue({
     router: router, scrollBehavior: function scrollBehavior(to, from, savedPosition) {
@@ -29282,7 +29282,7 @@ var app = new Vue({
     }
 }).$mount('#app');
 
-axios.defaults.baseURL = "http://localhost/goparty/public/";
+axios.defaults.baseURL = "http://localhost/lawety/public/";
 
 Vue.prototype.$hostname = appURL;
 

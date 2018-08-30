@@ -17,7 +17,7 @@ class MusicTypesTableSeeder extends Seeder
 	    );
 
 	    foreach ( $musicTypes as $music_type ) {
-		    \App\Models\MusicType::create([
+		    \App\MusicType::create([
 			    'name' => $music_type
 		    ]);
     	}

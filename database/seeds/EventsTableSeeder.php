@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Event;
+use App\Event;
 use Illuminate\Database\Seeder;
 
 class EventsTableSeeder extends Seeder {
@@ -30,11 +30,11 @@ class EventsTableSeeder extends Seeder {
 			'Dub-Arena-plakat.jpg',
 		];
 
-		$clubsCount = \App\Models\Club::all()->count();
+		$clubsCount = \App\Club::all()->count();
 
 		for ( $i = 1; $i <= $clubsCount - 1; $i ++ ) {
 
-			$club = \App\Models\Club::findOrFail( $i );
+			$club = \App\Club::findOrFail( $i );
 
 			$arr = [
 				'club_id'     => $club->id,

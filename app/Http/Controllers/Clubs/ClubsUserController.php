@@ -51,9 +51,6 @@ class ClubsUserController extends Controller {
 			], 404);
 		}
 
-
-
-
 	}
 
 	public function nextSingleClub(Request $request){
@@ -92,6 +89,7 @@ class ClubsUserController extends Controller {
 	 * @return void
 	 */
 	public function show( $id ) {
+
 		$club = Club::findOrFail( $id );
 		$club->setMusicTypes();
 //		$rules = clubRules::where('club_id', $id)->get();
@@ -99,6 +97,8 @@ class ClubsUserController extends Controller {
 		foreach ( $events as $event ) {
 			$event->setAttendandList();
 		}
+
+		var_dump($club->images);
 
 
 		return view( 'site.clubs.single', compact( 'club', 'rules', 'events' ) );

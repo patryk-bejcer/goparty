@@ -11,24 +11,22 @@
 |
 */
 
-Route::get('/send', 'HomeController@send');
 
 /* ====== HOME PAGE ====== */
 Route::get( '/', 'HomeController@index' )->name( 'home' );
-Route::get( '/home', 'HomeController@index' );
-/* ====== END OF HOME PAGE ====== */
+
 
 /* ====== AUTH ====== */
 Auth::routes();
 Route::get( '/register', 'Auth\RegisterController@getRegister' )->name( 'register' );
-/* ====== END OF AUTH ====== */
+
 
 /* ====== USERS ====== */
 Route::group( [ 'namespace' => 'User', 'middleware' => [ 'auth' ] ], function () {
 
-	/* Edit user profile routes*/
-	Route::get('/dashboard/profile/{userId}/edit', 'UserDashboardController@getEditProfile');
-	Route::post('/dashboard/profile/{userId}/edit', 'UserDashboardController@storeEditProfile');
+	/* User profile routes*/
+	Route::get('/dashboard/profile/edit', 'UserProfileController@edit')->name('user.edit.profile');
+	Route::put('/dashboard/profile/edit', 'UserProfileController@update')->name('user.update.profile');
 
     Route::post('update_user_image', 'UsersController@update_image');
     Route::post('remove_user_image', 'UsersController@remove_image');

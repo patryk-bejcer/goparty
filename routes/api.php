@@ -22,7 +22,7 @@ Route::post('rate-club', 'API\ClubsController@addRate');
 
 /* Events API Routing */
 Route::get('nearest-events', 'API\EventsController@getNearestEvents');
-Route::post('take-part', 'API\Events@takePart');
+Route::post('take-part', 'API\EventsController@takePart');
 
 
 //Route::middleware('auth:api')->get('/user', function (Request $request) {

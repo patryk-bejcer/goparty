@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Club;
+use App\Club;
 use Illuminate\Database\Seeder;
 
 
