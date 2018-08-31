@@ -27,14 +27,12 @@
                                 <input data-user_id = "{{\Illuminate\Support\Facades\Auth::id()}}" type="file" class="custom-file-input" id="user-image-input" name="user-image">
 
                             </div>
-                          
+
 
                       </div>
                         <form  action="{{route('user_update', ['user' => \Illuminate\Support\Facades\Auth::user()])}}" method="POST">
                         <div class="row">
                             <div class="col-md-4 text-center">
-                                <img onclick="loadGallery(this)" data-toogle = 'modal' data-target="#photos"  id="user_image" src="{{\Illuminate\Support\Facades\Auth::user()->getUserImage()}}">
-                                <button type="button" data-user_id ="{{\Illuminate\Support\Facades\Auth::id()}}" id="remove_user_image"  style="padding: 4px; border: none" class="myBtn-link myBtn hvr-sweep-to-right mt-2 btn-sm">usuń zdjęcie</button>
 
                             </div>
 
@@ -80,15 +78,7 @@
                                        class="">{{ __('Wybierz muzkę jaką lubisz słuchać?') }}</label>
                                 <br>
 
-                                @foreach($musicTypes as $musicType)
-                                    <div class="form-check form-check-inline">
-                                        <input @if(in_array($musicType, \Illuminate\Support\Facades\Auth::user()->getMusicTypes())) checked  @endif name="music_types[]" class="form-check-input musicTypeCheckbox"
-                                               type="checkbox" id="musicTypeCheckbox"
-                                               value="{{$musicType->id}}">
-                                        <label class="form-check-label"
-                                               for="musicTypeCheckbox">{{$musicType->name}}</label>
-                                    </div>
-                                @endforeach
+
 
                                 @if ($errors->has('music_types'))
                                     <span class="invalid-feedback">
@@ -103,16 +93,16 @@
                                 <div class="row justify-content-md-between mb-2">
                                     <div class="col-1" style="max-width: 11% !important; flex: none">
                                         <label class="text-center m-auto"  for="distance-min-output">min: </label>
-                                         <input class="form-control" id="distance-min-output" name="distance_min" type="text"  @if(($min_dist = \Illuminate\Support\Facades\Auth::user()->getUserSettings()->distance_min)!=null) value = "{{$min_dist}}" @else value="0" @endif>
+                                         {{--<input class="form-control" id="distance-min-output" name="distance_min" type="text"  @if(($min_dist = \Illuminate\Support\Facades\Auth::user()->getUserSettings()->distance_min)!=null) value = "{{$min_dist}}" @else value="0" @endif>--}}
 
                                     </div>
                                     <div class=" text-center" style="padding: 1rem">
                                         <p class="m-0">Preferencje odległości od wyszukiwanych klubów (km) </p>
                                     </div>
-                                    <div class="col-1" style="max-width: 11% !important; flex: none ">
-                                        <label class="text-center m-auto"  for="distance-max-output">max: </label>
-                                          <input id="distance-max-output" name="distance_max" type="text"  @if(($max_dist = \Illuminate\Support\Facades\Auth::user()->getUserSettings()->distance_max)!=null) value = "{{$max_dist}}" @else value="0" @endif>
-                                    </div>
+                                    {{--<div class="col-1" style="max-width: 11% !important; flex: none ">--}}
+                                        {{--<label class="text-center m-auto"  for="distance-max-output">max: </label>--}}
+                                          {{--<input id="distance-max-output" name="distance_max" type="text"  @if(($max_dist = \Illuminate\Support\Facades\Auth::user()->getUserSettings()->distance_max)!=null) value = "{{$max_dist}}" @else value="0" @endif>--}}
+                                    {{--</div>--}}
                                 </div>
 
                                 <div class="slider" id="distance-slider"></div>

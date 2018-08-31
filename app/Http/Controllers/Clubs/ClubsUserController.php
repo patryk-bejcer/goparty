@@ -98,8 +98,8 @@ class ClubsUserController extends Controller {
 			$event->setAttendandList();
 		}
 
-		var_dump($club->images);
-
+//		var_dump($club->images);
+//
 
 		return view( 'site.clubs.single', compact( 'club', 'rules', 'events' ) );
 	}

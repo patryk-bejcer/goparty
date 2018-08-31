@@ -21,7 +21,6 @@ class UsersTableSeeder extends Seeder
 	        'last_name' => 'admin',
 	        'email' => 'admin@gmail.com',
 	        'password' => Hash::make('pass'),
-	        'city_id' => 1
         ]);
 
 	    $admin->assignRole('user');
@@ -33,7 +32,6 @@ class UsersTableSeeder extends Seeder
 		    'last_name' => 'Kowalski',
 		    'email' => 'owner@gmail.com',
 		    'password' => Hash::make('pass'),
-		    'city_id' => 2
 	    ]);
 	    $owner->assignRole('owner');
 
@@ -42,7 +40,6 @@ class UsersTableSeeder extends Seeder
 		    'last_name' => 'Nowak',
 		    'email' => 'user@gmail.com',
 		    'password' => Hash::make('pass'),
-		    'city_id' => 3
 	    ]);
 	    $user->assignRole('user');
 
@@ -57,8 +54,6 @@ class UsersTableSeeder extends Seeder
 			    'last_name' =>  $faker->name,
 			    'email' => str_replace('-', '', str_slug($faker->name)) . '@' . $faker->safeEmailDomain,
 			    'password' => Hash::make('pass'),
-			    'city_id' => 3
-
 		    ]);
 
 	    }

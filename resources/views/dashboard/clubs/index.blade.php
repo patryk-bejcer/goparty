@@ -23,11 +23,8 @@
                         @foreach($clubs as $club)
 
                             <div id="club-row" class="row"   >
-                                @if (!empty($club->getMain($club->id)))
-                                <img src="{{url('/public/users/'. $club->user_id. '/'. $club->getMain($club->id)->image_path)}}">
-                                @else
                                 <img src="{{url('/img/klub1.jpg')}}">
-                                @endif
+
                                 <div class="col-md-10"  >
 
 

@@ -17,11 +17,9 @@ class CreateUsersTable extends Migration {
 			$table->string( 'last_name' )->nullable();
 			$table->string( 'email' )->unique();
 			$table->string( 'password' );
-			$table->integer( 'city_id' )->unsigned()->nullable();
-            $table->string('image_path')->nullable();
-            $table->text('description')->nullable();
+			$table->text( 'description' )->nullable();
 			$table->rememberToken();
-			$table->timestamp('last_login_at')->nullable();
+			$table->timestamp( 'last_login_at' )->nullable();
 			$table->timestamps();
 		} );
 

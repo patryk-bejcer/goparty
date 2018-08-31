@@ -72,6 +72,9 @@ a:hover {
       content: "\f0da" !important; } }
 @media (min-width: 1200px) {
   .container {
-    max-width: 1300px; } }
+    max-width: 1160px; } }
+@media (min-width: 1360px) {
+  .container {
+    max-width: 1280px; } }
 
 /*# sourceMappingURL=global.css.map */

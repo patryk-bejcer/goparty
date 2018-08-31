@@ -27,6 +27,7 @@ Route::group( [ 'namespace' => 'User', 'middleware' => [ 'auth' ] ], function ()
 	/* User profile routes*/
 	Route::get('/dashboard/profile/edit', 'UserProfileController@edit')->name('user.edit.profile');
 	Route::put('/dashboard/profile/edit', 'UserProfileController@update')->name('user.update.profile');
+	Route::delete('/dashboard/profile/remove-avatar', 'UserProfileController@destroyAvatar')->name('user.remove.avatar');
 
     Route::post('update_user_image', 'UsersController@update_image');
     Route::post('remove_user_image', 'UsersController@remove_image');

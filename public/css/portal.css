@@ -984,7 +984,10 @@ main {
     height: 50px; } }
 @media (max-width: 768px) {
   .carousel .carousel-inner {
-    height: 400px; } }
+    height: 400px; }
+
+  .navbar {
+    background: rgba(4, 25, 98, 0.9) !important; } }
 .navbar-nav .dropdown-menu {
   background: purple; }
 

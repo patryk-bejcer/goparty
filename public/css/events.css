@@ -150,4 +150,14 @@
   margin-left: .5em;
   margin-right: .5em; }
 
+@media (max-width: 575.98px) {
+  .search-top-bg {
+    background: url(../img/banner/subpages-banner-top.jpg);
+    background-position: center 45%;
+    background-repeat: no-repeat;
+    padding: 4em 0;
+    background-size: 100%;
+    margin-top: 0;
+    padding-top: 1.5em; } }
+
 /*# sourceMappingURL=events.css.map */

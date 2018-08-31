@@ -189,43 +189,43 @@
                                         </div>
 
                                         <div class="form-group row justify-content-center " id="clubImageDiv">
-                                            <div class="col=md-2 " style=" background-color: #0b2e13; margin-bottom: 10px;" >
+                                            {{--<div class="col=md-2 " style=" background-color: #0b2e13; margin-bottom: 10px;" >--}}
 
-                                                <a  onclick="$('#image').click()" class="btn btn-md btn-primary" style="margin: 0px !important; display: block;  padding: 7px; font-size: 14px; letter-spacing: 1px;"> Dodaj zdjęcie </a>
-                                                <input id="image" name="image" type="file" style="display: none" data-clubid = '{{$club->id}}' data-userid="{{$club->user->id}}">
+                                                {{--<a  onclick="$('#image').click()" class="btn btn-md btn-primary" style="margin: 0px !important; display: block;  padding: 7px; font-size: 14px; letter-spacing: 1px;"> Dodaj zdjęcie </a>--}}
+                                                {{--<input id="image" name="image" type="file" style="display: none" data-clubid = '{{$club->id}}' data-userid="{{$club->user->id}}">--}}
 
-                                            </div>
-
-
-                                            <div class="col-md-10 justify-content-center" style=" border: 1px; border-color: white; border-style: solid; margin: auto;" id="image-place">
-
-                                    @if($images->isEmpty())
-                                                <p class="text-center">Ten Klub nie ma jeszcze żadnych zdjęć</p>
-                                        @endif
-
-                                                    @foreach($images as $image)
+                                            {{--</div>--}}
 
 
-                                                    <div class="image_div">
-                                                             <img src="{{url('public/users/'. $image->user_id . '/'. $image->image_path)}}">
-                                                             <div class="button">
-                                                                 <div class="checkbox">
-                                                                     <label for="active">aktywne</label>
+                                            {{--<div class="col-md-10 justify-content-center" style=" border: 1px; border-color: white; border-style: solid; margin: auto;" id="image-place">--}}
 
-                                                                     <input onclick="change_active(this)" data-image_id = '{{$image->id}}' type="checkbox" name="active" @if($image->active == 1) checked @endif>
+                                    {{--@if($images->isEmpty())--}}
+                                                {{--<p class="text-center">Ten Klub nie ma jeszcze żadnych zdjęć</p>--}}
+                                        {{--@endif--}}
 
-                                                                 </div>
-                                                                 <div class="checkbox">
-                                                                     <label for="active">główne</label>
-                                                                     <input onclick="change_main(this)" data-image_id = '{{$image->id}}' type="checkbox" name="main" @if($image->main == 1)checked @endif>
+                                                    {{--@foreach($images as $image)--}}
 
-                                                                 </div>
 
-                                                                 <a onclick="delete_club_image(this)" data-clubImageId = '{{$image->id}}'>usun</a>
-                                                             </div>
+                                                    {{--<div class="image_div">--}}
+                                                             {{--<img src="{{url('public/users/'. $image->user_id . '/'. $image->image_path)}}">--}}
+                                                             {{--<div class="button">--}}
+                                                                 {{--<div class="checkbox">--}}
+                                                                     {{--<label for="active">aktywne</label>--}}
 
-                                                        </div>
-                                                                @endforeach
+                                                                     {{--<input onclick="change_active(this)" data-image_id = '{{$image->id}}' type="checkbox" name="active" @if($image->active == 1) checked @endif>--}}
+
+                                                                 {{--</div>--}}
+                                                                 {{--<div class="checkbox">--}}
+                                                                     {{--<label for="active">główne</label>--}}
+                                                                     {{--<input onclick="change_main(this)" data-image_id = '{{$image->id}}' type="checkbox" name="main" @if($image->main == 1)checked @endif>--}}
+
+                                                                 {{--</div>--}}
+
+                                                                 {{--<a onclick="delete_club_image(this)" data-clubImageId = '{{$image->id}}'>usun</a>--}}
+                                                             {{--</div>--}}
+
+                                                        {{--</div>--}}
+                                                                {{--@endforeach--}}
 
 
 

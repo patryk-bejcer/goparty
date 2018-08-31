@@ -132,7 +132,7 @@ class ClubsOwnerController extends Controller {
 
 	public function edit( Club $club ) {
 		$musicTypes = MusicType::all();
-		$images = ClubImage::where('club_id', $club->id)->get();
+//		$images = ClubImage::where('club_id', $club->id)->get();
 //        $rules = Rules::all();
 
         $club->setMusicTypes();

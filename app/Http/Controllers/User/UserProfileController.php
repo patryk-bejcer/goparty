@@ -7,8 +7,6 @@ use App\Images;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use function response;
-
 
 /**
  * Class UserProfileController
@@ -19,7 +17,7 @@ class UserProfileController extends Controller {
 	public function __construct() {
 
 		/* This middleware check if user is authenticated */
-		$this->middleware( 'auth' );
+//		$this->middleware( 'auth' );
 
 		/* This middleware check if request user id is compare with current login user id */
 //		$this->middleware( 'user_dashboard_permissions' );
@@ -28,7 +26,6 @@ class UserProfileController extends Controller {
 
 	public function edit() {
 		$user = Auth::user();
-
 		return view( 'dashboard.users.edit', compact( 'user' ) );
 	}
 
@@ -57,20 +54,31 @@ class UserProfileController extends Controller {
 			Images::updateOrCreate(
 				[
 					'imagesable_id'   => Auth::id(),
-					'imagesable_type' => get_class( new User() ),
+					'imagesable_type' => get_class( new User() )
 				],
 				[
 					'imagesable_id'   => Auth::id(),
 					'imagesable_type' => get_class( new User() ),
 					'title'           => $imgTitle,
 					'alt_title'       => $imgTitle,
-					'src'             => $imgName,
+					'src'             => $imgName
 				]
 			);
 		}
 
 		return back()->with( 'flash', 'Twój profil został pomyślnie zaktualizowany.' );
 //		return response()->json( $request );
+
+	}
+
+	public function destroyAvatar() {
+
+		Images::where( [
+			'imagesable_id'   => Auth::id(),
+			'imagesable_type' => get_class( new User() )
+		] )->delete();
+
+		return back()->with( 'flash', 'Twój avatar został usunięty' );
 
 	}
 

@@ -47,21 +47,21 @@
 
 
 
-                @if (empty($club->getPhotos($club, 3)))
+                {{--@if (empty($club->getPhotos($club, 3)))--}}
 
-                @else
+                {{--@else--}}
 
-                    <div class="row" id="other-image">
-                        @foreach($club->getPhotos($club, 3) as $photo)
-                            <div class="col-lg-4">
-                                <img onclick="loadGallery(this)" id="img-gallery"
-                                     src="{{url('public/users/'.$photo->user_id.'/'.$photo->image_path)}}">
-                            </div>
+                    {{--<div class="row" id="other-image">--}}
+                        {{--@foreach($club->getPhotos($club, 3) as $photo)--}}
+                            {{--<div class="col-lg-4">--}}
+                                {{--<img onclick="loadGallery(this)" id="img-gallery"--}}
+                                     {{--src="{{url('public/users/'.$photo->user_id.'/'.$photo->image_path)}}">--}}
+                            {{--</div>--}}
 
-                        @endforeach
+                        {{--@endforeach--}}
 
-                    </div>
-                @endif
+                    {{--</div>--}}
+                {{--@endif--}}
             </div>
 
             <div class="col-lg-7" style="padding-top: 0px;">
