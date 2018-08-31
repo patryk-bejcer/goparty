@@ -1,4 +1,4 @@
-<div class="col-md-3" id="sidebar">
+<div class="col-md-3 pr-md-1" id="sidebar">
 
     <div class="card text-white mb-3 user-left-menu" >
 
@@ -37,7 +37,7 @@
             </div>
 
 
-            <a href="{{route('user-dashboard.index')}}" class="list-group-item collapsed" data-parent="#sidebar"><i class="fa fa-gear"></i> <span
+            <a href="{{route('user.dashboard.index')}}" class="list-group-item collapsed" data-parent="#sidebar"><i class="fa fa-gear"></i> <span
                         class="hidden-sm-down">Ustawienia konta</span></a>
 
         </div>

@@ -70,7 +70,7 @@
 
     .inputfile + label {
         max-width: 80%;
-        font-size: 1.2em;
+        font-size: 1.05em;
         font-weight: 500;
         text-overflow: ellipsis;
         white-space: nowrap;

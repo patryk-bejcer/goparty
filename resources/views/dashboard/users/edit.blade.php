@@ -92,8 +92,8 @@
                                         <div class="row flex-column mb-0">
                                             <div class="col-md-12">
                                                 <p class="mb-2">Zdjęcie profilowe <br>
-                                                    <small>(dozwolone formaty to JPG//PNG/GIF, rozmiar nie powinien
-                                                        przekraczać 5MB)
+                                                    <small>dozwolone formaty to JPG//PNG/GIF, rozmiar nie powinien
+                                                        przekraczać 5MB
                                                     </small>
                                                 </p>
                                             </div>

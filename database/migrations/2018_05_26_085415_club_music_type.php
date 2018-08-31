@@ -21,12 +21,8 @@ class ClubMusicType extends Migration
                 ->references('id')
                 ->on('clubs')
                 ->onDelete('cascade');
-
-
         });
     }
-
-
 
     /**
      * Reverse the migrations.
