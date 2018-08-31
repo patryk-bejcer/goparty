@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\MusicType;
+use App\Music;
 use Illuminate\Http\Request;
 use Symfony\Component\Console\Input\Input;
 use App\Club;
@@ -27,7 +27,7 @@ class SearchController extends Controller
         $clubs = array();
         if(($term = \Illuminate\Support\Facades\Input::get('music_type')) != null){
 
-            $term_to_return = MusicType::findOrFail($term);
+            $term_to_return = Music::findOrFail($term);
             $get_clubs_by_music_type = DB::table('club_music_type')->where('music_type_id', $term)->get();
             $arr = [];
             $zmienna = array();

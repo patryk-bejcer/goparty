@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserMusicTypeTable extends Migration {
+class CreateUserMusicTable extends Migration {
 	/**
 	 * Run the migrations.
 	 *
@@ -20,18 +20,18 @@ class CreateUserMusicTypeTable extends Migration {
 //	    });
 
 		/* This table pivoted users - music types */
-		Schema::create( 'user_music_type', function ( Blueprint $table ) {
+		Schema::create( 'user_music', function ( Blueprint $table ) {
 
 			$table->increments( 'id' );
 			$table->integer( 'user_id' )->unsigned();
-			$table->integer( 'music_type_id' )->unsigned();
+			$table->integer( 'music_id' )->unsigned();
 
 			/* Foreign keys */
 			$table->foreign( 'user_id' )
 			      ->references( 'id' )->on( 'users' )
 			      ->onDelete( 'cascade' );
-			$table->foreign( 'music_type_id' )
-			      ->references( 'id' )->on( 'music_types' )
+			$table->foreign( 'music_id' )
+			      ->references( 'id' )->on( 'music' )
 			      ->onDelete( 'cascade' );
 
 		} );

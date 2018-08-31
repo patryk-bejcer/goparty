@@ -7,7 +7,7 @@ use App\Club;
 use App\Http\Controllers\Controller;
 use App\clubRules;
 use App\Event;
-use App\MusicType;
+use App\Music;
 use Illuminate\Http\Request;
 
 class ClubsUserController extends Controller {
@@ -122,10 +122,10 @@ class ClubsUserController extends Controller {
 			$clubs = Club::where( 'locality', $city )->paginate( 10 );
 
 		} else if ( $city == '' ) {
-			$musicTypes = MusicType::paginate( 10 );
+			$musicTypes = Music::paginate( 10 );
 		}
 
-		$musicTypes = MusicType::paginate( 10 );
+		$musicTypes = Music::paginate( 10 );
 
 //	    return response()->json($events);
 		return view( 'site.clubs.search-result', compact( 'clubs', 'musicTypes' ) );

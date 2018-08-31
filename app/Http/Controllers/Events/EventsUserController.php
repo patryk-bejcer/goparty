@@ -9,7 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\MusicType;
+use App\Music;
 use http\Env\Response;
 
 use Illuminate\Support\Facades\Auth;
@@ -114,7 +114,7 @@ class EventsUserController extends Controller
         $events = $events->orderBy('start_date')->paginate(10);
         $events->withPath('search-events?city=' . $city . '&start_date=' . $startDate . '&end_date=' . $endDate);
 
-        $musicTypes = MusicType::all();
+        $musicTypes = Music::all();
 
 //	    return response()->json($events);
         return view('site.events.search-result', compact('events', 'musicTypes'));

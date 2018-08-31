@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 
-class MusicType extends Model {
+class Music extends Model {
 	use CrudTrait;
 
 	/*
@@ -14,7 +14,7 @@ class MusicType extends Model {
 	|--------------------------------------------------------------------------
 	*/
 
-	protected $table = 'music_types';
+	protected $table = 'music';
 	// protected $primaryKey = 'id';
 	// public $timestamps = false;
 	// protected $guarded = ['id'];

@@ -55,7 +55,7 @@ class User extends Authenticatable {
 	/* Relationships */
 
 	public function favoriteMusic() {
-		return $this->belongsToMany( 'App\MusicType', 'user_music_type' );
+		return $this->belongsToMany( 'App\Music', 'user_music' );
 	}
 
 	/* End of Relationships */

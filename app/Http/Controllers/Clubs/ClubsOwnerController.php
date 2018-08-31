@@ -9,7 +9,7 @@ use App\Events\ClubDestroy;
 use App\Club;
 use App\ClubImage;
 use App\Event;
-use App\MusicType;
+use App\Music;
 use App\Rules;
 //use App\ClubRules;
 use Illuminate\Http\Request;
@@ -42,7 +42,7 @@ class ClubsOwnerController extends Controller {
 	}
 
 	public function create() {
-		$musicTypes = MusicType::all();
+		$musicTypes = Music::all();
 //        $rules = Rules::all();
 		return view( 'dashboard.clubs.create', compact( 'musicTypes' ) );
 	}
@@ -131,7 +131,7 @@ class ClubsOwnerController extends Controller {
 
 
 	public function edit( Club $club ) {
-		$musicTypes = MusicType::all();
+		$musicTypes = Music::all();
 //		$images = ClubImage::where('club_id', $club->id)->get();
 //        $rules = Rules::all();
 
