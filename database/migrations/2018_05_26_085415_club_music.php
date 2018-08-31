@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ClubMusicType extends Migration
+class ClubMusic extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class ClubMusicType extends Migration
      */
     public function up()
     {
-        Schema::create('club_music_type', function (Blueprint $table) {
+        Schema::create('club_music', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('club_id')->unsigned();
-            $table->integer('music_type_id')->unsigned();
+            $table->integer('musics_id')->unsigned();
             $table->foreign('club_id')
                 ->references('id')
                 ->on('clubs')

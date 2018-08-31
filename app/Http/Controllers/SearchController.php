@@ -28,7 +28,7 @@ class SearchController extends Controller
         if(($term = \Illuminate\Support\Facades\Input::get('music_type')) != null){
 
             $term_to_return = Music::findOrFail($term);
-            $get_clubs_by_music_type = DB::table('club_music_type')->where('music_type_id', $term)->get();
+            $get_clubs_by_music_type = DB::table('club_musics')->where('music_type_id', $term)->get();
             $arr = [];
             $zmienna = array();
             foreach ($get_clubs_by_music_type as $club){

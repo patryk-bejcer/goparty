@@ -14,7 +14,7 @@ class Music extends Model {
 	|--------------------------------------------------------------------------
 	*/
 
-	protected $table = 'music';
+	protected $table = 'musics';
 	// protected $primaryKey = 'id';
 	// public $timestamps = false;
 	// protected $guarded = ['id'];
