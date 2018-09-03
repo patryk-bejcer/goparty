@@ -1,7 +1,7 @@
 <template>
         <div class="row" style="width:100%;">
             <div class="col-md-4 pr-0 mb-3 mb-md-0" v-if="image">
-                <img :src="image" class="img-responsive">
+                <img style="max-width: 100%;" :src="image" class="img-responsive">
             </div>
             <div class="col-md-8">
                 <div class="box">

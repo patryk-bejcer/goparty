@@ -103,22 +103,45 @@
                                             <address-search-box :ismap=true></address-search-box>
                                             <!--  END VUE COMPONENT -->
 
-                                            <div class="col-md-6">
-                                                <div class="mb-2 form-group{{ $errors->has('club_img') ? ' has-error' : '' }}">
-                                                    <label for="">Główne zdjęcie klubu</label>
-                                                    <input name="club_img" type="file"
-                                                           class="form-control upload-input mb-1"
-                                                           placeholder="Wybierz zdjęcie główne" accept=".jpg,.jpeg"
-                                                           onchange="loadFile(event)" multiple>
 
-                                                    @if ($errors->has('club_img'))
-                                                        <span class="help-block">
-                                                             <small class="text-danger">{{ $errors->first('club_img') }}</small>
-                                                        </span>
+
+                                            <div class="col-md-6">
+                                                <div class="input-group mb-3 mb-md-4 col-md-12 mr-0 pr-0 p-0">
+
+                                                    <div class="row flex-column mb-0">
+                                                        <div class="col-md-12">
+                                                            <p class="mb-2">Zdjęcie klubu <br>
+                                                                <small>dozwolone formaty to JPG//PNG/GIF, rozmiar nie powinien
+                                                                    przekraczać 5MB
+                                                                </small>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+
+                                                    <image-component></image-component>
+
+                                                    @if ($errors->has('image'))
+                                                        <span class="invalid-feedback">
+                                                        <strong>{{ $errors->first('image') }}</strong>
+                                                    </span>
                                                     @endif
 
                                                 </div>
-                                                <img class="img-fluid mb-1" id="output" src=""/>
+                                                {{--<div class="mb-2 form-group{{ $errors->has('club_img') ? ' has-error' : '' }}">--}}
+                                                    {{--<label for="">Główne zdjęcie klubu</label>--}}
+                                                    {{--<input name="club_img" type="file"--}}
+                                                           {{--class="form-control upload-input mb-1"--}}
+                                                           {{--placeholder="Wybierz zdjęcie główne" accept=".jpg,.jpeg"--}}
+                                                           {{--onchange="loadFile(event)" multiple>--}}
+
+                                                    {{--@if ($errors->has('club_img'))--}}
+                                                        {{--<span class="help-block">--}}
+                                                             {{--<small class="text-danger">{{ $errors->first('club_img') }}</small>--}}
+                                                        {{--</span>--}}
+                                                    {{--@endif--}}
+
+                                                {{--</div>--}}
+                                                {{--<img class="img-fluid mb-1" id="output" src=""/>--}}
 
                                                 <div class="clearfix mt-1"></div>
 

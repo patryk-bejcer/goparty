@@ -53,13 +53,13 @@ class ClubsOwnerController extends Controller {
 		$addressErrorMessage = 'Wprowadzony przez ciebie adres jest niepoprawny. Wprowadź pełny adres (nazwa ulicy/numer
                     lokalu/miasto/kraj)';
 
-		if ( $request->file( 'club_img' ) ) {
-			$imageName = time() . '.' . $request->file( 'club_img' )->getClientOriginalExtension();
+		if ( $request->file( 'image' ) ) {
+			$imageName = time() . '.' . $request->file( 'image' )->getClientOriginalExtension();
 		} else {
 			$imageName = null;
 		}
 
-		$originalImage= $request->file('club_img');
+		$originalImage= $request->file('image');
 		$thumbnailImage = Image::make($originalImage);
 		$thumbnailPath = public_path().'/uploads/clubs/thumbnails/';
 		$originalPath = public_path().'/uploads/clubs/';
