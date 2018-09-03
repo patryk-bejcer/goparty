@@ -84,9 +84,9 @@ class Club extends Model {
 	}
 
 	public function setMusicTypes() {
-		$m = DB::table( 'club_musics' )->where( 'club_id', $this->id )->get();
+		$m = DB::table( 'club_music' )->where( 'club_id', $this->id )->get();
 		foreach ( $m as $music_type ) {
-			array_push( $this->music_types, Music::findOrFail( $music_type->music_type_id ) );
+			array_push( $this->music_types, Music::findOrFail( $music_type->music_id ) );
 		}
 	}
 

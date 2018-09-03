@@ -4,7 +4,6 @@
 
     <div class="container">
 
-
         @include('layouts.includes.subpages-banner')
         <div class="row justify-content-center">
             @include('dashboard.includes.sidebar')
@@ -102,11 +101,11 @@
                                                 <h2 class="pb-3">Infomacje odnośnie lokalizacji</h2>
                                             </div>
 
-                                            <!--  VUE COMPONENT SEARCH BOX ADDRESS -->
-                                            <address-search-box :ismap=true
-                                                                :latform={{$club->latitude}} :lngform={{$club->longitude}} :fulladdress={{$club->route}}>
-                                            </address-search-box>
-                                            <!--  END VUE COMPONENT -->
+                                            {{--<!--  VUE COMPONENT SEARCH BOX ADDRESS -->--}}
+                                            {{--<address-search-box :ismap=true--}}
+                                                                {{--:latform={{$club->latitude}} :lngform={{$club->longitude}} :fulladdress={{$club->route}}>--}}
+                                            {{--</address-search-box>--}}
+                                            {{--<!--  END VUE COMPONENT -->--}}
 
                                             <div class="col-md-6">
                                                 <label for="additional_address_info" style=""

@@ -94,9 +94,9 @@ class ClubsUserController extends Controller {
 		$club->setMusicTypes();
 //		$rules = clubRules::where('club_id', $id)->get();
 		$events = Event::where( 'club_id', $id )->get();
-		foreach ( $events as $event ) {
-			$event->setAttendandList();
-		}
+//		foreach ( $events as $event ) {
+//			$event->setAttendandList();
+//		}
 
 //		var_dump($club->images);
 //

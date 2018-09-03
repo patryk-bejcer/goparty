@@ -99,9 +99,9 @@ class ClubsOwnerController extends Controller {
 		] );
 
 		foreach ($request->music_types as $music_type){
-		    DB::table('club_music_type')->insert([
+		    DB::table('club_music')->insert([
 		       'club_id' => $club->id,
-               'music_type_id' => $music_type,
+               'music_id' => $music_type,
             ]);
         }
 
@@ -172,13 +172,13 @@ class ClubsOwnerController extends Controller {
 //                ]);
 //            }
 //        }
-        DB::table('club_music_type')->where('club_id', $club->id)->delete();
+        DB::table('club_music')->where('club_id', $club->id)->delete();
         if(!empty($request->music_types)){
             foreach ($request->music_types as $music_type){
 
-                DB::table('club_music_type')->insert([
+                DB::table('club_music')->insert([
                     'club_id' => $club->id,
-                    'music_type_id' => $music_type,
+                    'music_id' => $music_type,
                 ]);
             }
 

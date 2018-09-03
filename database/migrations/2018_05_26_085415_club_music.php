@@ -16,7 +16,7 @@ class ClubMusic extends Migration
         Schema::create('club_music', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('club_id')->unsigned();
-            $table->integer('musics_id')->unsigned();
+            $table->integer('music_id')->unsigned();
             $table->foreign('club_id')
                 ->references('id')
                 ->on('clubs')
