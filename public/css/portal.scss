@@ -87,88 +87,6 @@ main{
   }
 }
 
-/* SLIDER */
-.myBtn {
-  padding: 7px 60px 7px 15px;
-  background-color: $purple-color;
-  color: $pink-color;
-  font-weight: 900;
-  text-decoration: none !important;
-}
-
-.carousel-control-prev, .carousel-control-next {
-  top: -100px !important;
-  width: 11%;
-}
-
-.carousel-control {
-  font-size: 34px;
-
-}
-
-.carousel {
-  .carousel-inner {
-    height: 800px;
-  }
-  .carousel-item {
-    font-family: Muli;
-    img {
-
-      max-width: 100%;
-    }
-    .carousel-content-left {
-      position: absolute;
-      top: 35%;
-      left: 11%;
-      color: black;
-      h3 {
-        font-size: 35px;
-        margin-left: 40px;
-
-      }
-
-      h2 {
-        margin-left: -3px;
-        letter-spacing: -2px;
-        font-size: 80px;
-        font-weight: 900;
-
-      }
-      a {
-        font-size: 30px;
-      }
-
-    }
-    .carousel-content-right {
-      position: absolute;
-      top: 35%;
-      right: 11%;
-      color: black;
-      width: 30%;
-      h3 {
-        font-size: 35px;
-        margin-left: 40px;
-
-      }
-
-      h2 {
-        margin-left: -3px;
-        letter-spacing: -2px;
-        font-size: 80px;
-        font-weight: 900;
-
-      }
-      a {
-        font-size: 30px;
-      }
-
-    }
-
-  }
-
-}
-
-/* END SLIDER */
 
 #clubs-container {
   position: relative;
@@ -441,7 +359,9 @@ main{
 }
 
 @media (max-width: 479px) {
-
+  .register-btn{
+    margin-left: 0;
+  }
   #register-form {
     .btn {
       width: 100%;
@@ -463,17 +383,25 @@ main{
   display: none !important;
 }
 
+
 #sidebar .list-group-item {
   border-radius: 0;
   background-color: #0c051e;
   color: #ccc;
   transition: 400ms;
   white-space: nowrap;
+  font-size:16px;
+
+
 
   &:hover {
-    background-color: $pink-color;
+    background-color: $purple-color;
   }
 }
+
+//#sidebar .child{
+//  padding-left: 35px !important;
+//}
 
 #sidebar .list-group .list-group-item i {
   padding-right: 5px;
@@ -1379,5 +1307,93 @@ background: $primary-color;
 button{
   &:hover{
     cursor: pointer;
+  }
+}
+
+.register-btn{
+  border: 2px solid rgb(239, 58, 177);
+  border-radius: 30px;
+  padding-left: 1em !important;
+  padding-right: 1em !important;
+}
+
+
+
+.user-menu{
+
+  .fa{
+    font-size: 1.1rem;
+    padding-right: 5px;
+  }
+
+  .i{
+    font-size: 1.35rem;
+    padding-right: .35em;
+  }
+
+  .dropdown-menu {
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+    margin-top: 1.4em !important;
+    background: rgba(239, 58, 177, 0.8);
+    border:none;
+    .dropdown-item{
+      padding: .55rem 1rem;
+      font-size: 14px;
+      font-weight: 600;
+      &:active{
+        color:#041962;
+      }
+      &:focus{
+        color: #041962;
+      }
+    }
+  }
+
+
+
+}
+
+
+
+.top-bar-bg {
+  padding-top: 5.5em;
+  background: rgba(0,0,0,0.4);
+}
+
+//.search-top-bg {
+//  background: rgba(0,0,0,0.4) !important;
+//  background-position: center 45% !important;
+//  padding: 4em 0 !important;
+//  background-size: 100% !important;
+//  margin-top: 0 !important;
+//  padding-top: 1.5em !important;
+//}
+
+.list-group-item.active {
+  z-index: 2;
+  color: #fff;
+  background-color: #041962 !important;
+  border: none;
+  border-bottom: 1px solid #000;
+  border-top: 1px solid #000;
+  color: #FFF !important;
+}
+
+#sidebar .card{
+  border:0;
+}
+
+.navbar-light .navbar-toggler {
+  color: #FFF !important;
+  border-color: transparent;
+  background: rgba(255,255,255,0.6);
+}
+
+@media (max-width: 479px) {
+  .register-btn {
+    margin-left:5px !important;
+    border:none !important;
   }
 }

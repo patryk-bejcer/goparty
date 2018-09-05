@@ -19,6 +19,8 @@
                 <li> <a class="nav-link" href="{{ url('clubs/#clubs') }}">Kluby</a> </li>
                 <li> <a class="nav-link" href="#" >Artyści</a> </li>
                 <li> <a class="nav-link" href="#">Społeczność</a> </li>
+                <li> <a class="nav-link" href="#">Muzyka</a> </li>
+                <li><a class="nav-link" href="{{ route('clubs.create') }}">{{ __('Dodaj klub') }}</a></li>
 
             </ul>
 
@@ -26,21 +28,25 @@
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
                 @guest
-                    <li><a class="nav-link" href="{{ route('login') }}">{{ __('Logowanie') }}</a></li>
-                    <li><a class="nav-link" href="{{ route('register') }}">{{ __('Rejestracja') }}</a></li>
+                    <li><a class="nav-link" href="{{ route('login') }}">{{ __('Zaloguj się') }}</a></li>
+                    <li><a class="nav-link register-btn" href="{{ route('register') }}">{{ __('Załóż konto') }}</a></li>
                 @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                    <li class="nav-item dropdown user-menu">
+                        <a id="navbarDropdown" class=" nav-link dropdown-toggle" href="#" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->first_name }} {{ Auth::user()->last_name }} <span class="caret"></span>
+                            <i class="fa fa-user" aria-hidden="true"></i> <span class="caret"></span>
                         </a>
 
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
+
                             <!-- Tabs for users -->
-                            <a class="dropdown-item" href="{{route('user.edit.profile')}}">{{ __('Panel użytkownika edycja') }}</a>
-                            <a class="dropdown-item" href="{{route('user.dashboard.index')}}">{{ __('Panel użytkownika') }}</a>
-                            <a class="dropdown-item" href="{{url('dashboard/attendance')}}">{{ __('Moje imprezy') }}</a>
+                            <a class="dropdown-item" href="{{route('user.edit.profile')}}">{{ __('Profil') }}</a>
+                            <a class="dropdown-item" href="{{route('user.edit.profile')}}">{{ __('Powiadomienia') }}</a>
+                            <a class="dropdown-item" href="{{url('dashboard/attendance')}}">{{ __('Twoje imprezy') }}</a>
+                            <a class="dropdown-item" href="{{url('dashboard/attendance')}}">{{ __('Ulubione kluby') }}</a>
+                            <a class="dropdown-item" href="{{url('dashboard/attendance')}}">{{ __('Znajomi') }}</a>
+                            <a class="dropdown-item" href="{{url('dashboard/attendance')}}">{{ __('Zdjęcia') }}</a>
                             <!-- End tabs for owner -->
 
                             <!-- Tabs for owner -->
@@ -62,7 +68,7 @@
                         </div>
                     </li>
                 @endguest
-                <li><a class="nav-link" href="{{ route('clubs.create') }}">{{ __('Dodaj klub') }}</a></li>
+
             </ul>
         </div>
     </div>

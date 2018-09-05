@@ -2,17 +2,18 @@
 
 @section('content')
 
-    <div id="home-page-container" class="container">
+    <section id="home-page">
 
-        <clubs-nearest>
-        </clubs-nearest>
+        <div class="container">
 
-        {{--<events-nearest-location>--}}
-        {{--</events-nearest-location>--}}
+            <clubs-nearest>
+            </clubs-nearest>
 
-        <events-nearest-date>
-        </events-nearest-date>
+            <events-nearest-date>
+            </events-nearest-date>
 
-    </div>
+        </div>
+
+    </section>
 
 @endsection

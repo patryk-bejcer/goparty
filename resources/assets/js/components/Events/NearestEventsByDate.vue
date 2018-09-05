@@ -2,7 +2,7 @@
     <div>
         <div id="nearest-events">
             <div class="row justify-content-center">
-                <div class="col-lg-auto mt-4 mb-4">
+                <div class="col-lg-auto mt-0 mt-md-4 mb-3 mb-md-4">
                     <h3 class="text-right first-heading">
                         <a href="events" title="Zobacz wszystkie wydarzenia">WYDARZENIA</a>
                     </h3>
@@ -54,8 +54,8 @@
                 events: {},
                 position: null,
                 slickOptions: {
-                    slidesToShow: 4,
-                    slidesToScroll: 4,
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
                     autoplay: true,
                     autoplaySpeed: 5000,
                     speed: 1000,
@@ -87,7 +87,8 @@
                             settings: {
                                 slidesToShow: 1,
                                 slidesToScroll: 1,
-                                autoplaySpeed: 2500
+                                autoplaySpeed: 2000,
+                                dots: false,
                             }
                         }
                     ]

@@ -345,9 +345,9 @@ $(function () {
         event.preventDefault();
     })
     $('#search-club').keyup( function () {
-        $('#demo').carousel('cycle');
+        $('#slide').carousel('cycle');
         if(this.value != ''){
-            $('#demo').carousel('pause');
+            $('#slide').carousel('pause');
             return;
         }
 

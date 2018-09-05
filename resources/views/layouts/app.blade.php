@@ -27,6 +27,7 @@
     <link href="{{ asset('css/global.css') }}" rel="stylesheet">
     <link href="{{asset ('css/hover-min.css')}}" rel="stylesheet">
     <link href="{{asset ('css/rating.css')}}" rel="stylesheet">
+    <link href="{{asset ('css/slider.css')}}" rel="stylesheet">
 
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('img/logo.png')}}"/>
 

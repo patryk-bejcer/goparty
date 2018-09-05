@@ -64566,7 +64566,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n#nearest-clubs .card[data-v-477276d6] {\n    margin: .5em;\n    margin-bottom: 1em;\n}\n.single-club[data-v-477276d6] {\n    -webkit-transition: .3s;\n    transition: .3s;\n    text-align: center;\n}\n.single-club[data-v-477276d6]:hover {\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n#nearest-clubs[data-v-477276d6] {\n    margin-top: 2em;\n}\n\n/*#nearest-clubs h3 {*/\n    /*font-size: 2rem;*/\n/*}*/\n#nearest-clubs .show-more[data-v-477276d6] {\n    margin-top: .75em;\n}\n#nearest-clubs .show-more[data-v-477276d6]:hover {\n    text-decoration: underline;\n}\n#nearest-clubs .single-club[data-v-477276d6] {\n    background: rgba(0, 0, 0, 0.4);\n    padding-bottom: .75em;\n}\n#nearest-clubs .single-club img[data-v-477276d6] {\n    padding-bottom: .5em;\n}\n#nearest-clubs .single-club[data-v-477276d6]:hover {\n    -webkit-transform: scale(1.075);\n            transform: scale(1.075);\n}\n#clubs-list .card[data-v-477276d6] {\n    margin: .5em !important;\n}\n#clubs-list a h4[data-v-477276d6] {\n    color: #de29a0;\n}\n", ""]);
+exports.push([module.i, "\n#clubs-list .card[data-v-477276d6] {\n    margin: .5em;\n    margin-bottom: 1em;\n}\n#clubs-list .card .card-body[data-v-477276d6] {\n    background: transparent;\n    padding-top: .65em;\n    padding-bottom: 0;\n    height: 120px !important;\n}\n.slick-list[data-v-477276d6]{\n    padding-bottom: 1em !important;\n    margin-bottom: 2em;\n}\n.single-club[data-v-477276d6] {\n    -webkit-transition: .3s;\n    transition: .3s;\n    text-align: center;\n}\n.single-club[data-v-477276d6]:hover {\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n#nearest-clubs[data-v-477276d6] {\n    margin-top: 2em;\n}\n\n/*#nearest-clubs h3 {*/\n    /*font-size: 2rem;*/\n/*}*/\n#nearest-clubs .show-more[data-v-477276d6] {\n    margin-top: .75em;\n}\n#nearest-clubs .show-more[data-v-477276d6]:hover {\n    text-decoration: underline;\n}\n#nearest-clubs .single-club[data-v-477276d6] {\n    background: rgba(0, 0, 0, 0.4);\n    padding-bottom: .75em;\n}\n#nearest-clubs .single-club img[data-v-477276d6] {\n    padding-bottom: .5em;\n}\n#nearest-clubs .single-club[data-v-477276d6]:hover {\n    -webkit-transform: scale(1.075);\n            transform: scale(1.075);\n}\n#clubs-list .card[data-v-477276d6] {\n    margin: .5em !important;\n}\n#clubs-list a h4[data-v-477276d6] {\n    color: #de29a0;\n}\n", ""]);
 
 // exports
 
@@ -64644,8 +64644,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             clubs: {},
             position: null,
             slickOptions: {
-                slidesToShow: 4,
-                slidesToScroll: 4,
+                slidesToShow: 3,
+                slidesToScroll: 3,
                 autoplay: true,
                 autoplaySpeed: 5000,
                 speed: 1000,
@@ -64674,7 +64674,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     settings: {
                         slidesToShow: 1,
                         slidesToScroll: 1,
-                        autoplaySpeed: 2500
+                        autoplaySpeed: 2000,
+                        dots: false
                     }
                 }]
             }
@@ -65479,6 +65480,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "SingleEventLoop",
@@ -65494,6 +65498,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
+        errorImg: function errorImg(event) {
+            event.target.src = "http://localhost/goparty/public/uploads/events/Klubowa-Noc-w-Bydgoszczy-plakat-obrazek_duzy_4049971.jpg";
+        },
         renderImg: function renderImg(img) {
             var imgDirectoryPath = this.$hostname + '/uploads/events/thumbnails/300x180-';
             if (img === null) return imgDirectoryPath + '1533504291.png';
@@ -65522,7 +65529,8 @@ var render = function() {
             src: _vm.renderImg(_vm.event.event_img),
             alt: _vm.event.official_name,
             title: _vm.event.official_name
-          }
+          },
+          on: { error: _vm.errorImg }
         }),
         _vm._v(" "),
         _c("div", { staticClass: "card-body mt-1 pt-1" }, [
@@ -65715,8 +65723,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             events: {},
             position: null,
             slickOptions: {
-                slidesToShow: 4,
-                slidesToScroll: 4,
+                slidesToShow: 3,
+                slidesToScroll: 3,
                 autoplay: true,
                 autoplaySpeed: 5000,
                 speed: 1000,
@@ -65745,7 +65753,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     settings: {
                         slidesToShow: 1,
                         slidesToScroll: 1,
-                        autoplaySpeed: 2500
+                        autoplaySpeed: 2000,
+                        dots: false
                     }
                 }]
             }
@@ -65874,7 +65883,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-lg-auto mt-4 mb-4" }, [
+      _c("div", { staticClass: "col-lg-auto mt-0 mt-md-4 mb-0 mb-md-4" }, [
         _c("h3", { staticClass: "text-right first-heading" }, [
           _c(
             "a",
@@ -66060,8 +66069,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             events: {},
             position: null,
             slickOptions: {
-                slidesToShow: 4,
-                slidesToScroll: 4,
+                slidesToShow: 3,
+                slidesToScroll: 3,
                 autoplay: true,
                 autoplaySpeed: 5000,
                 speed: 1000,
@@ -66090,7 +66099,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     settings: {
                         slidesToShow: 1,
                         slidesToScroll: 1,
-                        autoplaySpeed: 2500
+                        autoplaySpeed: 2000,
+                        dots: false
                     }
                 }]
             }
@@ -66220,7 +66230,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-lg-auto mt-4 mb-4" }, [
+      _c("div", { staticClass: "col-lg-auto mt-0 mt-md-4 mb-3 mb-md-4" }, [
         _c("h3", { staticClass: "text-right first-heading" }, [
           _c(
             "a",

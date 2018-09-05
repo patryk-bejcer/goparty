@@ -57,8 +57,8 @@
                 clubs: {},
                 position: null,
                 slickOptions: {
-                    slidesToShow: 4,
-                    slidesToScroll: 4,
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
                     autoplay: true,
                     autoplaySpeed: 5000,
                     speed: 1000,
@@ -90,7 +90,8 @@
                             settings: {
                                 slidesToShow: 1,
                                 slidesToScroll: 1,
-                                autoplaySpeed: 2500
+                                autoplaySpeed: 2000,
+                                dots: false,
                             }
                         }
                     ]
@@ -167,9 +168,23 @@
 </script>
 
 <style scoped>
-    #nearest-clubs .card {
+
+
+    #clubs-list .card {
         margin: .5em;
         margin-bottom: 1em;
+    }
+
+    #clubs-list .card .card-body {
+        background: transparent;
+        padding-top: .65em;
+        padding-bottom: 0;
+        height: 120px !important;
+    }
+
+    .slick-list{
+        padding-bottom: 1em !important;
+        margin-bottom: 2em;
     }
 
     .single-club {

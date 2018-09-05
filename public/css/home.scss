@@ -1,17 +1,55 @@
-#home-page-container{
-  h3{
-    color:#FFF;
+// Extra large devices (large desktops)
+#home-page {
+
+  h3 {
+    color: #FFF;
+    font-size: 2rem;
   }
-  .first-heading{
+
+  .first-heading {
     font-weight: 200;
     right: 25%;
-    font-size: 40px;
-    a{
+    font-size: 2rem;
+    a {
       color: #FFF;
     }
   }
-  .second-heading{
+
+  .second-heading {
     font-weight: 900;
-    font-size: 45px;
+    font-size: 3rem;
+  }
+
+}
+
+// Large devices (desktops, less than 1200px)
+@media (max-width: 1199.98px) {
+
+}
+
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991.98px) {
+
+}
+
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) {
+  #home-page {
+    h3 {
+      font-size: 1.5rem;
+      text-align: center !important;
+    }
+    .first-heading {
+      font-size: 2rem;
+    }
+    .second-heading {
+      font-size: 2.5rem;
+    }
   }
 }
+
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) {
+
+}
+

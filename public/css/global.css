@@ -1,3 +1,6 @@
+img {
+  max-width: 100%; }
+
 .data-loading {
   color: #FFF;
   margin-top: 2em;
@@ -51,7 +54,19 @@ a:hover {
 .slick-dots .slick-active button {
   background: rgba(255, 8, 255, 0.59) !important; }
 
+footer .social-media-list a {
+  padding: 2em; }
+  footer .social-media-list a i {
+    font-size: 1.35rem;
+    color: rgba(255, 255, 255, 0.7); }
+    footer .social-media-list a i:hover {
+      color: #ef3ab1; }
+
 @media (max-width: 575.98px) {
+  .navbar {
+    background: rgba(4, 25, 98, 0.9) !important;
+    padding: 7px 10px; }
+
   .slick-arrow:before {
     color: rgba(0, 0, 0, 0.5) !important;
     font-size: 28px !important;
@@ -69,12 +84,20 @@ a:hover {
     right: -15px !important; }
     .slick-next:before {
       font-family: FontAwesome !important;
-      content: "\f0da" !important; } }
+      content: "\f0da" !important; }
+
+  footer .social-media-list a {
+    padding: 2em; }
+    footer .social-media-list a i {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.7); }
+      footer .social-media-list a i:hover {
+        color: #ef3ab1; } }
 @media (min-width: 1200px) {
   .container {
     max-width: 1160px; } }
 @media (min-width: 1360px) {
   .container {
-    max-width: 1280px; } }
+    max-width: 1220px; } }
 
 /*# sourceMappingURL=global.css.map */

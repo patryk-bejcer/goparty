@@ -3,7 +3,7 @@
 
     <div class="mask">
 
-        <div class="search-top-bg mb-4">
+        <div class="top-bar-bg mb-4">
 
             <div class="container">
 
