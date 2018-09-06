@@ -143,6 +143,11 @@ footer{
 
 }
 
+.under_header {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+}
 
 
 @media (min-width: 1200px) {
@@ -156,6 +161,7 @@ footer{
     max-width: 1220px;
   }
 }
+
 
 
 
