@@ -77,6 +77,7 @@ Route::namespace( 'Events' )->group( function () {
 Route::group( [ 'prefix' => 'admin', 'middleware' => [ 'isAdmin' ], 'namespace' => 'Admin' ], function () {
 	CRUD::resource( 'music-types', 'MusicTypesCrudController' );
 	CRUD::resource( 'clubs', 'ClubsCrudController' );
+	CRUD::resource( 'clubs-confirm', 'ClubsConfirmCrudController' );
 } );
 
 Route::get( 'search/autocomplete', 'SearchController@autocomplete' );
