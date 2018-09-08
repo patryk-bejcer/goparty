@@ -65,7 +65,7 @@
             getCityData: function (addressData, placeResultData, id) {
                 this.address = addressData.locality;
                 window.location.href = this.$hostname + 'clubs#/clubs/search/' + this.address;
-                console.log(window.location.host);
+
             },
             runSearch() {
                 let inputValue = document.getElementById("map").value;

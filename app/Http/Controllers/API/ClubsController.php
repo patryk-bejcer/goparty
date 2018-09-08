@@ -25,7 +25,7 @@ class ClubsController extends Controller {
 
 	public function searchResults( Request $request ) {
 
-		$selectedValues = [ 'id', 'official_name', 'club_img', 'route', 'street_number', 'locality' ];
+		$selectedValues = [ 'id', 'official_name', 'img_id', 'route', 'street_number', 'locality' ];
 		$city           = $request->get( 'city' );
 
 		if ( strpos( $city, ',' ) ) {

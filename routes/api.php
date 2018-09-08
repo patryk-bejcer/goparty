@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 /* Clubs API Routing */
 Route::get('nearest-clubs', 'API\ClubsController@getNearestClubs');
 Route::get('clubs-archived', 'API\ClubsController@archivedClubs');
-Route::post('clubs-search', 'API\ClubsController@searchResults');
+Route::get('clubs-search', 'API\ClubsController@searchResults');
 Route::get('rate-club-get-sum', 'API\ClubsController@getRate');
 Route::post('rate-club', 'API\ClubsController@addRate');
 

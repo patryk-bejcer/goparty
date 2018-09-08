@@ -62,11 +62,15 @@
 
         methods: {
             getSearchResults() {
+                console.log(this.address);
                 this.loading = true;
-                axios.post('/api/clubs-search?city=' + this.address)
+                axios.get('api/clubs-search?city=' + this.address)
                     .then(response => {
                         this.clubsList = response.data;
                         this.loading = false;
+                    })
+                    .catch(error => {
+                        console.log(error.response)
                     });
             },
             reset() {
