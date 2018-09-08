@@ -3,7 +3,9 @@
 @section('content')
 
     <div class="container">
-
+        @if(isset($flash))
+            <flash message="{{$flash}}"></flash>
+        @endif
 
         @include('layouts.includes.subpages-banner')
 

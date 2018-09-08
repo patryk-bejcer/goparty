@@ -49,7 +49,7 @@ class UserProfileController extends Controller {
 			$imgTitle = $request->first_name . ' ' . $request->last_name;
 
 			$imgName = $request->image->hashName();
-			\Image::make( $request->image )->fit( 400, 400 )->save( public_path( 'uploads/users/avatars/' ) . $imgName );
+			\Image::make( $request->image )->fit( 700, 500 )->save( public_path( 'uploads/users/avatars/' ) . $imgName );
 
 			Images::updateOrCreate(
 				[

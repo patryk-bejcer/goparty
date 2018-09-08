@@ -79,21 +79,7 @@
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{asset('js/custom.js')}}"></script>
 
-
 @yield('scripts')
-
-
-<script>
-    const main_change_url = '{{route('clubImage.changeMain')}}';
-    const active_change_url = '{{route('clubImage.changeActive')}}';
-    const image_delete_url = '{{route('clubImage.delete')}}';
-    const url = '{{url('public/users')}}';
-    const club_image_create_url = '{{route('clubImage.store')}}';
-    const token = '{{csrf_token()}}';
-</script>
-
-
-
 
 </body>
 </html>

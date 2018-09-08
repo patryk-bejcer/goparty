@@ -11,7 +11,7 @@
 
 
         <div id="event-list" class="mt-4 pt-4">
-
+            <flash message="{{ session('flash') }}"></flash>
             <div class="card-columns">
 
                 @foreach($events as $event)

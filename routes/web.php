@@ -11,56 +11,42 @@
 |
 */
 
-
 /* ====== HOME PAGE ====== */
 Route::get( '/', 'HomeController@index' )->name( 'home' );
-
+/* ====== END HOME PAGE ====== */
 
 /* ====== AUTH ====== */
 Auth::routes();
-
 Route::get( '/register', 'Auth\RegisterController@getRegister' )->name( 'register' );
-
+/* === END AUTH === */
 
 /* ====== USERS ====== */
 Route::group( [ 'namespace' => 'User', 'middleware' => [ 'auth' ] ], function () {
 
 	Route::get( '/dashboard', 'UserProfileController@edit' )->name( 'user.dashboard.index' );
-
-	/* User profile routes*/
 	Route::get( '/dashboard/profile/edit', 'UserProfileController@edit' )->name( 'user.edit.profile' );
 	Route::put( '/dashboard/profile/edit', 'UserProfileController@update' )->name( 'user.update.profile' );
 	Route::delete( '/dashboard/profile/remove-avatar', 'UserProfileController@destroyAvatar' )->name( 'user.remove.avatar' );
 
 } );
-
-
-/* ====== END OF USERS ====== */
+/* ====== END USERS ====== */
 
 /* ====== CLUBS ====== */
 /* Middleware is declarate in controller!!! */
 Route::namespace( 'Clubs' )->group( function () {
 
 	/* Rotes for clubs on guest/user front end portal (for all visitors) */
-	Route::resource( 'clubs', 'ClubsUserController', [ 'except' => [ 'index', 'edit', 'update', 'destroy' ] ] );
-
-	Route::get( 'search-clubs', 'ClubsUserController@searchClubs' );
+	Route::resource( 'clubs', 'ClubsUserController', [ 'only' => [ 'show', 'index' ] ] );
 
 	/* Rotes for clubs on owner dashboard panel (role: owner) */
 	Route::prefix( 'dashboard' )->group( function () {
 		Route::resource( 'clubs', 'ClubsOwnerController' );
-		Route::get( 'clubs/{club}/edit/photo', 'ClubsOwnerController@edit' );
 		Route::get( 'clubs/{club}/club-events', 'ClubsOwnerController@clubEvents' )->name( 'club-events' );
 	} );
 
 } );
-/* ====== END OF CLUBS ====== */
-/* ====== Images ======= */
-Route::post( '/club/image/', 'ClubImageController@store' )->name( 'clubImage.store' );
-Route::post( '/clubImage/delete', 'ClubImageController@destroy' )->name( 'clubImage.delete' );
-Route::post( '/clubImage/active', 'ClubImageController@changeActive' )->name( 'clubImage.changeActive' );
-Route::post( '/clubImage/main', 'ClubImageController@changeMain' )->name( 'clubImage.changeMain' );
-/* ====== End Images ======= */
+/* ====== END CLUBS ====== */
+
 
 /* ====== EVENTS ====== */
 /* Middleware is declarate in controller!!! */
@@ -99,15 +85,11 @@ Route::get( 'search/clubs', 'SearchController@search_clubs' );
 Route::post( 'take-part', 'Events\EventsUserController@takePart' );
 Route::delete( 'take-part', 'Events\EventsUserController@cancelEvent' );
 
-Route::get( 'clubs', 'Clubs\ClubsUserController@getClubsMainPage' );
+Route::get( 'clubs', 'Clubs\ClubsUserController@index' );
 Route::post( 'clubs-single', 'Clubs\ClubsUserController@singleClub' );
 Route::post( 'clubs-single-next', 'Clubs\ClubsUserController@nextSingleClub' );
 Route::post( 'clubs-single-previous', 'Clubs\ClubsUserController@previousSingleClub' );
 
-/* Show next image of a given user */
-Route::get( 'clubs/{club}/next', 'Clubs\ClubsUserController@nextImage' )->where( 'club', '[0-9]+' );
-/* Show previous club of a given user */
-Route::get( 'clubs/{club}/prev', 'Clubs\ClubsUserController@prevImage' )->where( 'club', '[0-9]+' );
 
 Route::get( 'flash', function () {
 	return view( 'flash' );

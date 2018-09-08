@@ -27,6 +27,6 @@ class SendActivationCode implements ShouldQueue
      */
     public function handle(UserRegistred $event)
     {
-    	\Log::info('activation', ['user' => $event->user]);
+//    	\Log::info('activation', ['user' => $event->user]);
     }
 }

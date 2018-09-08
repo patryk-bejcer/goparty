@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\Controller;
 use App\Club;
+use App\Http\Controllers\Controller;
 use App\User;
 use Ghanem\Rating\Models\Rating;
 use Illuminate\Http\Request;
@@ -11,9 +11,13 @@ use Illuminate\Support\Facades\DB;
 
 class ClubsController extends Controller {
 
-	public function archivedClubs() {
-		$clubs = Club::select( 'id', 'official_name', 'club_img', 'route', 'street_number', 'locality' )
-		             ->orderBy( 'id', 'desc' )
+	public function archivedClubs(Request $request) {
+
+		$lat  = $request->get( 'lat' );
+		$long = $request->get( 'long' );
+
+		$clubs = Club::selectRaw('*, ( 6367 * acos( cos( radians( ? ) ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians( ? ) ) + sin( radians( ? ) ) * sin( radians( latitude ) ) ) ) AS distance', [$lat, $long, $lat])
+		             ->orderBy('distance')
 		             ->paginate( 9 );
 
 		return response()->json( $clubs );
@@ -45,10 +49,12 @@ class ClubsController extends Controller {
 		$lat  = $request->get( 'lat' );
 		$long = $request->get( 'long' );
 
-		$clubs = DB::select( "SELECT *
-        FROM clubs WHERE deleted_at IS NULL
-        ORDER BY ((latitude-'$lat')*(latitude-'$lat')) + ((longitude - '$long')*(longitude - '$long')) 
-        ASC LIMIT 16" );
+		
+		$clubs = Club::selectRaw('*, ( 6367 * acos( cos( radians( ? ) ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians( ? ) ) + sin( radians( ? ) ) * sin( radians( latitude ) ) ) ) AS distance', [$lat, $long, $lat])
+		                    ->having('distance', '<', 120)
+		                    ->orderBy('distance')
+		                    ->limit(12)
+		                    ->get();
 
 		return response()
 			->json( $clubs );

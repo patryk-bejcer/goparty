@@ -69,7 +69,7 @@
             },
             runSearch() {
                 let inputValue = document.getElementById("map").value;
-                window.location.href = this.$hostname + '/clubs#/clubs/search/' + inputValue;
+                window.location.href = this.$hostname + 'clubs#/clubs/search/' + inputValue;
             },
             clearInputText() {
                 let inputValue = document.getElementById("map").value;

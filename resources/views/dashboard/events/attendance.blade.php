@@ -7,7 +7,9 @@
 
         @include('layouts.includes.subpages-banner')
         <div class="row justify-content-center pb-4">
+
             @include('dashboard.includes.sidebar')
+
             <div class="col-md-9">
                 <div class="card text-white pb-5 mb-3">
                     <div class="card-header">

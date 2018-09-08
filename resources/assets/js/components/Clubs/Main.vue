@@ -44,6 +44,7 @@
                 loading: false,
                 clubsList: {},
                 address: null,
+                position: null,
             }
         },
 
@@ -51,9 +52,28 @@
             this.getResults();
         },
         methods: {
+
             getResults(page = 1) {
+
+                let self = this;
+
+                let lat = 50;
+                let long = 50;
+
+                if (navigator.geolocation) {
+
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        self.position = position.coords;
+                        let lat = self.position.latitude;
+                        let long = self.position.longitude;
+                    });
+
+                }
+
                 this.loading = true;
-                axios.get('http://localhost/goparty/public/api/clubs-archived?page=' + page)
+
+                // console.log('http://localhost/goparty/public/api/clubs-archived?lat=' + lat + '&long=' + long + '&page=' + page);
+                axios.get('http://localhost/goparty/public/api/clubs-archived?lat=' + lat + '&long=' + long + '&page=' + page)
                     .then(response => {
                         this.clubsList = response.data;
                         this.loading = false;

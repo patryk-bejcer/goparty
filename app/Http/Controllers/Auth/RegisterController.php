@@ -33,7 +33,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/dashboard';
+    protected $redirectTo = '/dashboard/profile/edit';
 
     /**
      * Create a new controller instance.
@@ -89,12 +89,12 @@ class RegisterController extends Controller
 	            'password' => Hash::make($data['password']),
             ]);
 
-	       if($data['music_types']) {
-		       $user->favoriteMusic()->attach( $data['music_types'] );
-	       }
+//	       if($data['music_types']) {
+//		       $user->favoriteMusic()->attach( $data['music_types'] );
+//	       }
 
 	       //Event instance
-//	       event(new UserRegistred($user));
+	       event(new UserRegistred($user));
 
 	       return $user;
 

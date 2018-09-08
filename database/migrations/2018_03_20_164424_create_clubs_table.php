@@ -15,6 +15,7 @@ class CreateClubsTable extends Migration {
 
 			$table->increments( 'id' )->unsigned();
 			$table->integer( 'user_id' )->unsigned();
+			$table->integer( 'img_id' )->nullable();
 			$table->string( 'role' );
 			$table->string( 'official_name' );
 			$table->string( 'email' );
@@ -37,8 +38,8 @@ class CreateClubsTable extends Migration {
 			$table->string( 'facebook_url' )->nullable();
 			/* End of Contact and social media fields */
 
-			$table->string( 'club_img' )->nullable();
-			$table->integer( 'primary_img_id' )->nullable();
+
+			$table->boolean( 'active' );
 			$table->softDeletes();
 			$table->timestamps();
 

@@ -3,7 +3,7 @@ img {
 
 .data-loading {
   color: #FFF;
-  margin-top: 2em;
+  margin-top: .5em;
   margin-bottom: 1em;
   font-size: 3.5rem;
   z-index: 10000; }
@@ -104,5 +104,10 @@ footer .social-media-list a {
 @media (min-width: 1360px) {
   .container {
     max-width: 1220px; } }
+.hvr-sweep-to-right {
+  background: #041962;
+  color: #FFF;
+  border-radius: 0;
+  font-weight: 700; }
 
 /*# sourceMappingURL=global.css.map */

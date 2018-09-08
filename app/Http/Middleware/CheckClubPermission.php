@@ -17,16 +17,14 @@ class CheckClubPermission
      */
     public function handle($request, Closure $next)
     {
-    	// Check if club exist //
-	    $clubExists = Club::where([
-		    'id' => $request->club->id,
-		    'user_id' => Auth::id(),
-	    ])->exists();
 
-//	    var_dump($request->club->id);
-//	    var_dump(Auth::id());
-//	    var_dump($clubExists);
-//	    exit;
+    	// Check if club exist //
+		if( Auth::check()) {
+			$clubExists = Club::where([
+				'id' => $request->club->id,
+				'user_id' => Auth::id(),
+			])->exists();
+		}
 
 	    if ( ! Auth::check() || ! $clubExists && ! Auth::user()->hasRole('admin')) {
 		    abort(403, 'Brak dostępu');

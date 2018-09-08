@@ -6,7 +6,7 @@ img{
   color: #FFF;
   //position: absolute;
   //right: 55%;
-  margin-top: 2em;
+  margin-top: .5em;
   margin-bottom: 1em;
   font-size: 3.5rem;
   z-index: 10000;
@@ -162,6 +162,12 @@ footer{
   }
 }
 
+.hvr-sweep-to-right {
+  background: #041962;
+  color: #FFF;
+  border-radius: 0;
+  font-weight: 700;
+}
 
 
 

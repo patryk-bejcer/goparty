@@ -7,8 +7,8 @@
                 <star-rating @rating-selected="setRating"
                              inactive-color="rgba(0, 0, 0, 0.4)"
                              active-color="#ef3ab1"
-                             :increment="0.5"
-                             :rating="avgRate"
+                             :increment="1"
+                             :rating=avgRate
                              :border-width="0"
                              :read-only="readOnly"
                              :star-size="24"
@@ -18,7 +18,7 @@
                              :padding="5"
                              :round-start-rating="true"
                              v-on:click="test()"
-                             :glow="true"
+
                 >
                 </star-rating>
             </div>
@@ -80,7 +80,7 @@
                     }
                 })
                     .then(response => {
-                        console.log(response.data);
+                        // console.log(response.data);
                         this.avgRate = parseFloat(response.data.avg).toFixed(1);
                         this.countRate = response.data.count
                         this.exist = response.data.exist
@@ -95,7 +95,7 @@
             setRating(rating) {
                 if (this.logged && !this.exist) {
                     this.rating = rating;
-                    console.log(this);
+                    // console.log(this);
                     axios.post('api/rate-club', {
                         rateValue: this.rating,
                         club: this.club,

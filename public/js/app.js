@@ -63867,7 +63867,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             // Our data object that holds the Laravel paginator data
             loading: false,
             clubsList: {},
-            address: null
+            address: null,
+            position: null
         };
     },
     mounted: function mounted() {
@@ -63880,8 +63881,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
 
+
+            var self = this;
+
+            var lat = 50;
+            var long = 50;
+
+            if (navigator.geolocation) {
+
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    self.position = position.coords;
+                    var lat = self.position.latitude;
+                    var long = self.position.longitude;
+                });
+            }
+
             this.loading = true;
-            axios.get('http://localhost/goparty/public/api/clubs-archived?page=' + page).then(function (response) {
+
+            // console.log('http://localhost/goparty/public/api/clubs-archived?lat=' + lat + '&long=' + long + '&page=' + page);
+            axios.get('http://localhost/goparty/public/api/clubs-archived?lat=' + lat + '&long=' + long + '&page=' + page).then(function (response) {
                 _this.clubsList = response.data;
                 _this.loading = false;
             });
@@ -64135,7 +64153,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         runSearch: function runSearch() {
             var inputValue = document.getElementById("map").value;
-            window.location.href = this.$hostname + '/clubs#/clubs/search/' + inputValue;
+            window.location.href = this.$hostname + 'clubs#/clubs/search/' + inputValue;
         },
         clearInputText: function clearInputText() {
             var inputValue = document.getElementById("map").value;
@@ -64396,9 +64414,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         renderImg: function renderImg(img) {
-            var imgDirectoryPath = this.$hostname + '/uploads/clubs/thumbnails/300x180-';
+            var imgDirectoryPath = this.$hostname + '/uploads/clubs/thumbnails/thumb-';
             if (img === null) return imgDirectoryPath + '1533504291.png';
-            return imgDirectoryPath + img;
+            return imgDirectoryPath + img.src;
         },
         renderUrl: function renderUrl(id) {
             return 'clubs/' + id;
@@ -65037,7 +65055,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     user_id: this.userId
                 }
             }).then(function (response) {
-                console.log(response.data);
+                // console.log(response.data);
                 _this.avgRate = parseFloat(response.data.avg).toFixed(1);
                 _this.countRate = response.data.count;
                 _this.exist = response.data.exist;
@@ -65053,7 +65071,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             if (this.logged && !this.exist) {
                 this.rating = rating;
-                console.log(this);
+                // console.log(this);
                 axios.post('api/rate-club', {
                     rateValue: this.rating,
                     club: this.club,
@@ -65113,15 +65131,14 @@ var render = function() {
               attrs: {
                 "inactive-color": "rgba(0, 0, 0, 0.4)",
                 "active-color": "#ef3ab1",
-                increment: 0.5,
+                increment: 1,
                 rating: _vm.avgRate,
                 "border-width": 0,
                 "read-only": _vm.readOnly,
                 "star-size": 24,
                 "show-rating": false,
                 padding: 5,
-                "round-start-rating": true,
-                glow: true
+                "round-start-rating": true
               },
               on: {
                 "rating-selected": _vm.setRating,

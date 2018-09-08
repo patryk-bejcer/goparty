@@ -1,6 +1,7 @@
 <?php
 
 use App\Club;
+use App\Images;
 use Illuminate\Database\Seeder;
 
 
@@ -35,6 +36,7 @@ class ClubsTableSeeder extends Seeder {
 				'phone'                   => $faker->tollFreePhoneNumber,
 				'website_url'             => $faker->domainName,
 				'facebook_url'            => 'facebook.com',
+				'active'                  => true,
 			];
 
 			array_push($clubs, $arr);
@@ -43,7 +45,19 @@ class ClubsTableSeeder extends Seeder {
 
 		foreach ($clubs as $club)
 		{
-			Club::create( $club );
+			$club = Club::create( $club );
+
+			$image = Images::create( [
+				'imagesable_id'   => $club->id,
+				'imagesable_type' => get_class( new Club() ),
+				'title'           => $club->official_name,
+				'alt_title'       => $club->official_name,
+				'src'             => '1528997603.jpg',
+			] );
+
+			$club->update( [
+				'img_id' => $image->id,
+			] );
 		}
 
 //		exit;

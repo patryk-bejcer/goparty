@@ -126,10 +126,10 @@
 
             <div class="club-slide"  @if($count == 2) id="club-slide-left" @elseif($count == 1) id="club-slide-right" @elseif($count == 0) id = 'club-slide-center' @endif style="margin: auto; margin-bottom: 50px;">
                 <img id="box-shadow" src="{{url('img/box-shadow.png')}}">
-                @if(empty(\App\Models\Club::getMain($my_club[0]['id'])))
+                @if(empty(\App\Club::getMain($my_club[0]['id'])))
                     <img src="{{url('img/brak-zdjecia.jpg')}}">
                     @else
-                    <img src="{{url('public/users/'. $my_club[0]['user_id'].'/'.\App\Models\Club::getMain($my_club[0]['id'])->image_path)}}">
+                    <img src="{{url('public/users/'. $my_club[0]['user_id'].'/'.\App\Club::getMain($my_club[0]['id'])->image_path)}}">
                     @endif
 
                 <div class="club-slide-content">

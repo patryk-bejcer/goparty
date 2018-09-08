@@ -113,7 +113,7 @@
 
                                 <div class="col-md-12 mt-0 mt-md-4 ">
                                     <button style="border: none" type="submit"
-                                            class="myBtn-link myBtn hvr-sweep-to-right">Zapisz zmiany
+                                            class="p-3 myBtn-link myBtn hvr-sweep-to-right">Zapisz zmiany
                                     </button>
                                 </div>
 

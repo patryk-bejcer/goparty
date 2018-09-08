@@ -42,9 +42,9 @@
 
         methods: {
             renderImg(img) {
-                let imgDirectoryPath = this.$hostname + '/uploads/clubs/thumbnails/300x180-';
+                let imgDirectoryPath = this.$hostname + '/uploads/clubs/thumbnails/thumb-';
                 if (img === null) return imgDirectoryPath + '1533504291.png';
-                return imgDirectoryPath + img;
+                return imgDirectoryPath + img.src;
             },
             renderUrl(id) {
                 return 'clubs/' + id;
