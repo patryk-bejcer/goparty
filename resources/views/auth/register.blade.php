@@ -25,6 +25,11 @@
                 </div>
 
                 <div class="card-body pt-0" style="background-color: transparent">
+                    @if(session()->has('message'))
+                        <div class="alert alert-success">
+                            {{ session()->get('message') }}
+                        </div>
+                    @endif
                     <form id="register-form" method="POST" action="{{ route('register') }}">
 
                         @csrf

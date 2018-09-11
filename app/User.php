@@ -2,11 +2,11 @@
 
 namespace App;
 
-use Backpack\CRUD\CrudTrait;
-use Spatie\Permission\Traits\HasRoles;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Backpack\Base\app\Notifications\ResetPasswordNotification as ResetPasswordNotification;
+use Backpack\CRUD\CrudTrait;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable {
 	use Notifiable;
@@ -23,6 +23,8 @@ class User extends Authenticatable {
 		'last_name',
 		'email',
 		'password',
+		'status',
+		'activation_code',
 		'description'
 	];
 
@@ -53,6 +55,11 @@ class User extends Authenticatable {
 
 
 	/* Relationships */
+
+
+	public function verifyUser() {
+		return $this->hasOne( 'App\VerifyUser' );
+	}
 
 	public function favoriteMusic() {
 		return $this->belongsToMany( 'App\Music', 'user_music' );

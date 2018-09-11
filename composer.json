@@ -10,6 +10,7 @@
         "backpack/crud": "^3.3",
         "backpack/permissionmanager": "^2.1",
         "backpack/settings": "^2.0",
+        "barryvdh/laravel-ide-helper": "^2.5",
         "fideloper/proxy": "^4.0",
         "fzaninotto/faker": "^1.7",
         "ghanem/rating": "^1.4",

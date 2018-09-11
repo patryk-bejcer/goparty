@@ -26,6 +26,7 @@ class UserProfileController extends Controller {
 
 	public function edit() {
 		$user = Auth::user();
+
 		return view( 'dashboard.users.edit', compact( 'user' ) );
 	}
 

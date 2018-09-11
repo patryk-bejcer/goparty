@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
 use App\City;
+use App\Http\Controllers\Controller;
 use App\Music;
-use App\User;
 
 
 class UserDashboardController extends Controller {
-
-	/*  @todo Finish this methods and app user dashobard component. Finish user information edit form */
 
 	public function __construct() {
 
@@ -21,10 +18,9 @@ class UserDashboardController extends Controller {
 
 	public function index() {
 		$musicTypes = Music::all();
+
 		return view( 'dashboard.index', compact( 'musicTypes' ) );
 	}
-
-
 
 
 }

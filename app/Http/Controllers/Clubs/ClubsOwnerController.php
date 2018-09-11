@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Clubs;
 
 use App\Club;
-use App\ClubImage;
 use App\Events\ClubCreated;
 use App\Events\ClubDestroy;
 use App\Http\Controllers\Controller;
@@ -12,7 +11,6 @@ use App\Music;
 use App\Services\ImageUpload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Image;
 
 
 class ClubsOwnerController extends Controller {
@@ -32,7 +30,7 @@ class ClubsOwnerController extends Controller {
 
 	public function index() {
 		$clubs = Club::where( 'user_id', Auth::id() )
-					 ->where('active', true)
+		             ->where( 'active', true )
 		             ->paginate( 10 );
 
 		return view( 'dashboard.clubs.index', compact( 'clubs' ) );
@@ -86,9 +84,8 @@ class ClubsOwnerController extends Controller {
 			'phone'                   => $request->phone,
 			'website_url'             => $request->website_url,
 			'facebook_url'            => $request->facebook_url,
-			'active' => $active
+			'active'                  => $active
 		] );
-
 
 
 		$image = Images::create( [
@@ -164,7 +161,8 @@ class ClubsOwnerController extends Controller {
 	}
 
 	public function clubEvents( Club $club ) {
-		$club->where('active', true);
+		$club->where( 'active', true );
+
 		return view( 'dashboard.clubs.events', compact( 'club' ) );
 	}
 

@@ -2,16 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\SendWelcomeEmail;
 use App\Club;
 use App\Event;
+use App\Jobs\SendWelcomeEmail;
 use App\User;
-use Faker\Provider\DateTime;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller {
 	/**

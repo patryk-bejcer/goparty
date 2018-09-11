@@ -10,6 +10,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 /**
  * @property mixed user_id
+ * @property mixed primaryImage
  */
 class Club extends Model {
 	use CrudTrait;
@@ -17,13 +18,13 @@ class Club extends Model {
 	use Rating;
 	use HasRoles;
 
+	public $timestamps = true;
+	public $music_types = [];
 	protected $table = 'clubs';
 	protected $primaryKey = 'id';
 	protected $guarded = [ 'id' ];
-	public $timestamps = true;
-	public $music_types = [];
 	protected $dates = [ 'deleted_at' ];
-	protected $appends = ['club_img'];
+	protected $appends = [ 'club_img' ];
 	protected $hidden = [
 		'role',
 		'user_id',
@@ -41,8 +42,7 @@ class Club extends Model {
 	}
 
 	/* Getters and Setters */
-	public function getClubImgAttribute()
-	{
+	public function getClubImgAttribute() {
 		return $this->primaryImage[0];
 	}
 

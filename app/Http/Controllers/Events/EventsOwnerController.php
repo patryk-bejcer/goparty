@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\Events;
 
-use App\EventAttendance;
 use App\Club;
 use App\Event;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Image;
 
 
@@ -61,13 +59,13 @@ class EventsOwnerController extends Controller {
 			$imageName = null;
 		}
 
-		$originalImage= $request->file('event_img');
-		$thumbnailImage = Image::make($originalImage);
-		$thumbnailPath = public_path().'/uploads/events/thumbnails/';
-		$originalPath = public_path().'/uploads/events/';
-		$thumbnailImage->save($originalPath.$imageName);
-		$thumbnailImage->resize(300,400);
-		$thumbnailImage->save($thumbnailPath.'300x180-'.$imageName);
+		$originalImage  = $request->file( 'event_img' );
+		$thumbnailImage = Image::make( $originalImage );
+		$thumbnailPath  = public_path() . '/uploads/events/thumbnails/';
+		$originalPath   = public_path() . '/uploads/events/';
+		$thumbnailImage->save( $originalPath . $imageName );
+		$thumbnailImage->resize( 300, 400 );
+		$thumbnailImage->save( $thumbnailPath . '300x180-' . $imageName );
 
 		$request->validate( [
 			'title'       => 'required|max:60',
