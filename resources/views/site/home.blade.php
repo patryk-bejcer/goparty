@@ -9,8 +9,8 @@
             <clubs-nearest>
             </clubs-nearest>
 
-            <events-nearest-date>
-            </events-nearest-date>
+            <events-nearest-location>
+            </events-nearest-location>
 
         </div>
 

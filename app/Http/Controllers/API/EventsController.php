@@ -32,7 +32,7 @@ class EventsController extends Controller {
 			               $long,
 			               $lat
 		               ] )
-		               ->having( 'distance', '<', 120 )
+		               ->having( 'distance', '<', 10000 )
 		               ->orderBy( 'distance' )
 		               ->limit(12)
 		               ->get();

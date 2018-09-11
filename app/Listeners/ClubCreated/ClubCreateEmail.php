@@ -3,7 +3,8 @@
 namespace App\Listeners\ClubCreated;
 
 use App\Events\ClubCreated;
-use App\Mail\ClubCreate;
+use App\Mail\ClubCreate as ClubCreateUser;
+use App\Mail\Admin\ClubCreate as ClubCreateAdmin;
 use Illuminate\Mail\Mailer;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -30,6 +31,7 @@ class ClubCreateEmail
      */
     public function handle(ClubCreated $event)
     {
-        Mail::to($event->user->email)->sendNow(new ClubCreate($event->club));
+        Mail::to($event->user->email)->sendNow(new ClubCreateUser($event->club));
+        Mail::to(env('MAIL_ADMIN'))->sendNow(new ClubCreateAdmin($event->club));
     }
 }

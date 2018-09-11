@@ -12,12 +12,12 @@
                 </div>
             </div>
             <!--<div class="row">-->
-                <!--<div class="col-12 mt-3 pl-0">-->
-                    <!--<h3 class="text-left pull-left ml-3">NAJBLIŻSZE KLUBY W TWOJEJ OKOLICY</h3>-->
-                    <!--<h5 class="pull-right show-more">-->
-                        <!--<a :href="`${hostname}/clubs#/clubs`" class="text-white">Zobacz wszystkie</a>-->
-                    <!--</h5>-->
-                <!--</div>-->
+            <!--<div class="col-12 mt-3 pl-0">-->
+            <!--<h3 class="text-left pull-left ml-3">NAJBLIŻSZE KLUBY W TWOJEJ OKOLICY</h3>-->
+            <!--<h5 class="pull-right show-more">-->
+            <!--<a :href="`${hostname}/clubs#/clubs`" class="text-white">Zobacz wszystkie</a>-->
+            <!--</h5>-->
+            <!--</div>-->
             <!--</div>-->
 
             <div v-show="loading" class="data-loading">
@@ -29,8 +29,13 @@
                     <slick ref="slick" :options="slickOptions">
                         <div v-for="club in clubs.data">
                             <single-club-loop
+                                    v-if="permissions"
                                     :club="club"
                                     :distance="getDistanceFromLatLonInKm(position.latitude, position.longitude, club.latitude, club.longitude)"
+                            ></single-club-loop>
+                            <single-club-loop
+                                    v-else
+                                    :club="club"
                             ></single-club-loop>
                         </div>
                     </slick>
@@ -57,6 +62,7 @@
                 clubs: {},
                 position: null,
                 slickOptions: {
+                    permissions: true,
                     slidesToShow: 3,
                     slidesToScroll: 3,
                     autoplay: true,
@@ -114,22 +120,39 @@
 
                     navigator.geolocation.getCurrentPosition(function (position) {
 
-                        self.loading = true;
+                            self.loading = true;
 
-                        self.position = position.coords;
-                        let lat = self.position.latitude;
-                        let long = self.position.longitude;
+                            self.permissions = true;
 
-                        axios.get('/api/nearest-clubs?lat=' + lat + '&long=' + long)
-                            .then(function (response) {
-                                self.clubs = response;
-                                self.loading = false;
-                                // console.log(response);
-                            })
-                            .catch(function (error) {
-                                console.log(error);
-                            });
-                    });
+                            self.position = position.coords;
+                            let lat = self.position.latitude;
+                            let long = self.position.longitude;
+
+                            axios.get('/api/nearest-clubs?lat=' + lat + '&long=' + long)
+                                .then(function (response) {
+                                    self.clubs = response;
+                                    self.loading = false;
+                                    // console.log(response);
+                                })
+                                .catch(function (error) {
+                                    console.log(error);
+                                });
+                        },
+                        function (error) {
+                            if (error.code === error.PERMISSION_DENIED) {
+                                self.permissions = false;
+                                self.loading = true;
+                                axios.get('/api/nearest-clubs?lat=55&long=55')
+                                    .then(function (response) {
+                                        self.clubs = response;
+                                        self.loading = false;
+                                    })
+                                    .catch(function (error) {
+                                        console.log(error);
+                                    });
+                            }
+                        }
+                    );
                 }
             },
             getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
@@ -149,12 +172,12 @@
                 return deg * (Math.PI / 180)
             }
         },
-        created(){
-          // console.log(this)
+        created() {
+            // console.log(this)
         },
         watch: {
             clubs: function () {
-                if(this.$refs.slick === undefined) return;
+                if (this.$refs.slick === undefined) return;
                 let currIndex = this.$refs.slick.currentSlide();
                 this.$refs.slick.destroy();
                 this.$nextTick(() => {
@@ -182,7 +205,7 @@
         height: 120px !important;
     }
 
-    .slick-list{
+    .slick-list {
         padding-bottom: 1em !important;
         margin-bottom: 2em;
     }
@@ -205,7 +228,7 @@
     }
 
     /*#nearest-clubs h3 {*/
-        /*font-size: 2rem;*/
+    /*font-size: 2rem;*/
     /*}*/
 
     #nearest-clubs .show-more {

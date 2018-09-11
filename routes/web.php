@@ -52,7 +52,7 @@ Route::namespace( 'Clubs' )->group( function () {
 /* Middleware is declarate in controller!!! */
 Route::namespace( 'Events' )->group( function () {
 
-	Route::get( '/dashboard/attendance', 'EventsUserController@eventsAttendanceIndex' );
+	Route::get( '/dashboard/attendance', 'EventsUserController@eventsAttendanceIndex' )->name('attendance.index');
 
 	/* Rotes for events on guest/user front end portal (for all visitors) */
 	Route::get( 'events', 'EventsUserController@allEvents' )->name( 'all-events' );

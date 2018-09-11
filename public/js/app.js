@@ -10886,7 +10886,7 @@ function applyToTag (styleElement, obj) {
 "use strict";
 
 
-var bind = __webpack_require__(17);
+var bind = __webpack_require__(16);
 var isBuffer = __webpack_require__(40);
 
 /*global toString:true*/
@@ -12067,7 +12067,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(28)(content, options);
+var update = __webpack_require__(27)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -12098,7 +12098,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(28)(content, options);
+var update = __webpack_require__(27)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -12138,10 +12138,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(19);
+    adapter = __webpack_require__(18);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(19);
+    adapter = __webpack_require__(18);
   }
   return adapter;
 }
@@ -12216,7 +12216,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(18)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17)))
 
 /***/ }),
 /* 13 */
@@ -13918,53 +13918,6 @@ return $.ui.keyCode = {
 
 /***/ }),
 /* 15 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(137)
-/* template */
-var __vue_template__ = __webpack_require__(138)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\Clubs\\SingleClubLoop.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5bae1bb8", Component.options)
-  } else {
-    hotAPI.reload("data-v-5bae1bb8", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 16 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16493,7 +16446,7 @@ Popper.Defaults = Defaults;
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(7)))
 
 /***/ }),
-/* 17 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16511,7 +16464,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 18 */
+/* 17 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -16701,7 +16654,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 19 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16712,7 +16665,7 @@ var settle = __webpack_require__(43);
 var buildURL = __webpack_require__(45);
 var parseHeaders = __webpack_require__(46);
 var isURLSameOrigin = __webpack_require__(47);
-var createError = __webpack_require__(20);
+var createError = __webpack_require__(19);
 var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(48);
 
 module.exports = function xhrAdapter(config) {
@@ -16888,7 +16841,7 @@ module.exports = function xhrAdapter(config) {
 
 
 /***/ }),
-/* 20 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16913,7 +16866,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 21 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16925,7 +16878,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 22 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16951,7 +16904,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 23 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -17186,7 +17139,7 @@ return $.widget( "ui.mouse", {
 
 
 /***/ }),
-/* 24 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -17693,7 +17646,7 @@ return $.ui.position;
 
 
 /***/ }),
-/* 25 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;( function( factory ) {
@@ -17742,7 +17695,7 @@ return $.ui.safeActiveElement = function( document ) {
 
 
 /***/ }),
-/* 26 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28708,7 +28661,7 @@ module.exports = Vue;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7), __webpack_require__(68).setImmediate))
 
 /***/ }),
-/* 27 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -28759,7 +28712,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 28 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -29118,13 +29071,13 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 29 */
+/* 28 */
 /***/ (function(module, exports) {
 
 module.exports = "/fonts/vendor/slick-carousel/slick/slick.eot?ced611daf7709cc778da928fec876475";
 
 /***/ }),
-/* 30 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -29165,6 +29118,53 @@ if (false) {(function () {
     hotAPI.createRecord("data-v-30d2fe8f", Component.options)
   } else {
     hotAPI.reload("data-v-30d2fe8f", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(137)
+/* template */
+var __vue_template__ = __webpack_require__(138)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\Clubs\\SingleClubLoop.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5bae1bb8", Component.options)
+  } else {
+    hotAPI.reload("data-v-5bae1bb8", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -29270,7 +29270,7 @@ __webpack_require__(34);
 
 window.jquery_ui = __webpack_require__(6);
 
-window.Vue = __webpack_require__(26);
+window.Vue = __webpack_require__(25);
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_router__["a" /* default */]);
 
@@ -29281,8 +29281,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_router__["a" /* default */]);
  */
 Vue.component('image-component', __webpack_require__(70));
 Vue.component('pagination', __webpack_require__(76));
-Vue.component('flash-message', __webpack_require__(27));
-Vue.component('flash', __webpack_require__(27));
+Vue.component('flash-message', __webpack_require__(26));
+Vue.component('flash', __webpack_require__(26));
 Vue.component('address-search-box', __webpack_require__(81));
 Vue.component('city-search-box', __webpack_require__(88));
 // Vue.component('nearest-clubs', require('./components/nearestClubs'));
@@ -29292,14 +29292,14 @@ Vue.component('slick-slider', __webpack_require__(105));
 Vue.component('google-map', __webpack_require__(121));
 
 /* CLUBS COMPONENTS */
-Vue.component('clubs-main', __webpack_require__(30));
+Vue.component('clubs-main', __webpack_require__(29));
 Vue.component('search-clubs', __webpack_require__(130));
 Vue.component('clubs-header', __webpack_require__(133));
-Vue.component('single-club-loop', __webpack_require__(15));
+Vue.component('single-club-loop', __webpack_require__(30));
 Vue.component('clubs-nearest', __webpack_require__(139));
 Vue.component('club-rate', __webpack_require__(144));
 
-var ClubsMain = Vue.component('clubs-main', __webpack_require__(30));
+var ClubsMain = Vue.component('clubs-main', __webpack_require__(29));
 var Search = Vue.component('Search', __webpack_require__(150));
 // const SingleClub = Vue.component('SingleClub', require('./components/Clubs/SingleClub'));
 
@@ -29351,7 +29351,7 @@ window.flash = function (message) {
 
 
 window._ = __webpack_require__(35);
-window.Popper = __webpack_require__(16).default;
+window.Popper = __webpack_require__(15).default;
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -46557,7 +46557,7 @@ module.exports = function(module) {
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
 (function (global, factory) {
-   true ? factory(exports, __webpack_require__(0), __webpack_require__(16)) :
+   true ? factory(exports, __webpack_require__(0), __webpack_require__(15)) :
   typeof define === 'function' && define.amd ? define(['exports', 'jquery', 'popper.js'], factory) :
   (factory((global.bootstrap = {}),global.jQuery,global.Popper));
 }(this, (function (exports,$,Popper) { 'use strict';
@@ -50494,7 +50494,7 @@ module.exports = __webpack_require__(39);
 
 
 var utils = __webpack_require__(5);
-var bind = __webpack_require__(17);
+var bind = __webpack_require__(16);
 var Axios = __webpack_require__(41);
 var defaults = __webpack_require__(12);
 
@@ -50529,9 +50529,9 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(22);
+axios.Cancel = __webpack_require__(21);
 axios.CancelToken = __webpack_require__(55);
-axios.isCancel = __webpack_require__(21);
+axios.isCancel = __webpack_require__(20);
 
 // Expose all/spread
 axios.all = function all(promises) {
@@ -50684,7 +50684,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 "use strict";
 
 
-var createError = __webpack_require__(20);
+var createError = __webpack_require__(19);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -51117,7 +51117,7 @@ module.exports = InterceptorManager;
 
 var utils = __webpack_require__(5);
 var transformData = __webpack_require__(52);
-var isCancel = __webpack_require__(21);
+var isCancel = __webpack_require__(20);
 var defaults = __webpack_require__(12);
 var isAbsoluteURL = __webpack_require__(53);
 var combineURLs = __webpack_require__(54);
@@ -51277,7 +51277,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 "use strict";
 
 
-var Cancel = __webpack_require__(22);
+var Cancel = __webpack_require__(21);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -51531,7 +51531,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 		// AMD. Register as an anonymous module.
 		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [
 			__webpack_require__(0),
-			__webpack_require__(23),
+			__webpack_require__(22),
 			__webpack_require__(14),
 			__webpack_require__(3),
 			__webpack_require__(6)
@@ -52318,8 +52318,8 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 			__webpack_require__(0),
 			__webpack_require__(62),
 			__webpack_require__(14),
+			__webpack_require__(23),
 			__webpack_require__(24),
-			__webpack_require__(25),
 			__webpack_require__(3),
 			__webpack_require__(6)
 		], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
@@ -53008,8 +53008,8 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [
 			__webpack_require__(0),
 			__webpack_require__(14),
+			__webpack_require__(23),
 			__webpack_require__(24),
-			__webpack_require__(25),
 			__webpack_require__(63),
 			__webpack_require__(3),
 			__webpack_require__(6)
@@ -53747,7 +53747,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 		// AMD. Register as an anonymous module.
 		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [
 			__webpack_require__(0),
-			__webpack_require__(23),
+			__webpack_require__(22),
 			__webpack_require__(65),
 			__webpack_require__(66),
 			__webpack_require__(3),
@@ -57928,7 +57928,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7), __webpack_require__(18)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7), __webpack_require__(17)))
 
 /***/ }),
 /* 70 */
@@ -60197,7 +60197,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_jquery__);
@@ -63533,7 +63533,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "@charset 'UTF-8';\n/* Slider */\n.slick-loading .slick-list\n{\n    background: #fff url(" + escape(__webpack_require__(116)) + ") center center no-repeat;\n}\n\n/* Icons */\n@font-face\n{\n    font-family: 'slick';\n    font-weight: normal;\n    font-style: normal;\n\n    src: url(" + escape(__webpack_require__(29)) + ");\n    src: url(" + escape(__webpack_require__(29)) + "?#iefix) format('embedded-opentype'), url(" + escape(__webpack_require__(117)) + ") format('woff'), url(" + escape(__webpack_require__(118)) + ") format('truetype'), url(" + escape(__webpack_require__(119)) + "#slick) format('svg');\n}\n/* Arrows */\n.slick-prev,\n.slick-next\n{\n    font-size: 0;\n    line-height: 0;\n\n    position: absolute;\n    top: 50%;\n\n    display: block;\n\n    width: 20px;\n    height: 20px;\n    padding: 0;\n    -webkit-transform: translate(0, -50%);\n    -ms-transform: translate(0, -50%);\n    transform: translate(0, -50%);\n\n    cursor: pointer;\n\n    color: transparent;\n    border: none;\n    outline: none;\n    background: transparent;\n}\n.slick-prev:hover,\n.slick-prev:focus,\n.slick-next:hover,\n.slick-next:focus\n{\n    color: transparent;\n    outline: none;\n    background: transparent;\n}\n.slick-prev:hover:before,\n.slick-prev:focus:before,\n.slick-next:hover:before,\n.slick-next:focus:before\n{\n    opacity: 1;\n}\n.slick-prev.slick-disabled:before,\n.slick-next.slick-disabled:before\n{\n    opacity: .25;\n}\n\n.slick-prev:before,\n.slick-next:before\n{\n    font-family: 'slick';\n    font-size: 20px;\n    line-height: 1;\n\n    opacity: .75;\n    color: white;\n\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n}\n\n.slick-prev\n{\n    left: -25px;\n}\n[dir='rtl'] .slick-prev\n{\n    right: -25px;\n    left: auto;\n}\n.slick-prev:before\n{\n    content: '\\2190';\n}\n[dir='rtl'] .slick-prev:before\n{\n    content: '\\2192';\n}\n\n.slick-next\n{\n    right: -25px;\n}\n[dir='rtl'] .slick-next\n{\n    right: auto;\n    left: -25px;\n}\n.slick-next:before\n{\n    content: '\\2192';\n}\n[dir='rtl'] .slick-next:before\n{\n    content: '\\2190';\n}\n\n/* Dots */\n.slick-dotted.slick-slider\n{\n    margin-bottom: 30px;\n}\n\n.slick-dots\n{\n    position: absolute;\n    bottom: -25px;\n\n    display: block;\n\n    width: 100%;\n    padding: 0;\n    margin: 0;\n\n    list-style: none;\n\n    text-align: center;\n}\n.slick-dots li\n{\n    position: relative;\n\n    display: inline-block;\n\n    width: 20px;\n    height: 20px;\n    margin: 0 5px;\n    padding: 0;\n\n    cursor: pointer;\n}\n.slick-dots li button\n{\n    font-size: 0;\n    line-height: 0;\n\n    display: block;\n\n    width: 20px;\n    height: 20px;\n    padding: 5px;\n\n    cursor: pointer;\n\n    color: transparent;\n    border: 0;\n    outline: none;\n    background: transparent;\n}\n.slick-dots li button:hover,\n.slick-dots li button:focus\n{\n    outline: none;\n}\n.slick-dots li button:hover:before,\n.slick-dots li button:focus:before\n{\n    opacity: 1;\n}\n.slick-dots li button:before\n{\n    font-family: 'slick';\n    font-size: 6px;\n    line-height: 20px;\n\n    position: absolute;\n    top: 0;\n    left: 0;\n\n    width: 20px;\n    height: 20px;\n\n    content: '\\2022';\n    text-align: center;\n\n    opacity: .25;\n    color: black;\n\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n}\n.slick-dots li.slick-active button:before\n{\n    opacity: .75;\n    color: black;\n}\n", ""]);
+exports.push([module.i, "@charset 'UTF-8';\n/* Slider */\n.slick-loading .slick-list\n{\n    background: #fff url(" + escape(__webpack_require__(116)) + ") center center no-repeat;\n}\n\n/* Icons */\n@font-face\n{\n    font-family: 'slick';\n    font-weight: normal;\n    font-style: normal;\n\n    src: url(" + escape(__webpack_require__(28)) + ");\n    src: url(" + escape(__webpack_require__(28)) + "?#iefix) format('embedded-opentype'), url(" + escape(__webpack_require__(117)) + ") format('woff'), url(" + escape(__webpack_require__(118)) + ") format('truetype'), url(" + escape(__webpack_require__(119)) + "#slick) format('svg');\n}\n/* Arrows */\n.slick-prev,\n.slick-next\n{\n    font-size: 0;\n    line-height: 0;\n\n    position: absolute;\n    top: 50%;\n\n    display: block;\n\n    width: 20px;\n    height: 20px;\n    padding: 0;\n    -webkit-transform: translate(0, -50%);\n    -ms-transform: translate(0, -50%);\n    transform: translate(0, -50%);\n\n    cursor: pointer;\n\n    color: transparent;\n    border: none;\n    outline: none;\n    background: transparent;\n}\n.slick-prev:hover,\n.slick-prev:focus,\n.slick-next:hover,\n.slick-next:focus\n{\n    color: transparent;\n    outline: none;\n    background: transparent;\n}\n.slick-prev:hover:before,\n.slick-prev:focus:before,\n.slick-next:hover:before,\n.slick-next:focus:before\n{\n    opacity: 1;\n}\n.slick-prev.slick-disabled:before,\n.slick-next.slick-disabled:before\n{\n    opacity: .25;\n}\n\n.slick-prev:before,\n.slick-next:before\n{\n    font-family: 'slick';\n    font-size: 20px;\n    line-height: 1;\n\n    opacity: .75;\n    color: white;\n\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n}\n\n.slick-prev\n{\n    left: -25px;\n}\n[dir='rtl'] .slick-prev\n{\n    right: -25px;\n    left: auto;\n}\n.slick-prev:before\n{\n    content: '\\2190';\n}\n[dir='rtl'] .slick-prev:before\n{\n    content: '\\2192';\n}\n\n.slick-next\n{\n    right: -25px;\n}\n[dir='rtl'] .slick-next\n{\n    right: auto;\n    left: -25px;\n}\n.slick-next:before\n{\n    content: '\\2192';\n}\n[dir='rtl'] .slick-next:before\n{\n    content: '\\2190';\n}\n\n/* Dots */\n.slick-dotted.slick-slider\n{\n    margin-bottom: 30px;\n}\n\n.slick-dots\n{\n    position: absolute;\n    bottom: -25px;\n\n    display: block;\n\n    width: 100%;\n    padding: 0;\n    margin: 0;\n\n    list-style: none;\n\n    text-align: center;\n}\n.slick-dots li\n{\n    position: relative;\n\n    display: inline-block;\n\n    width: 20px;\n    height: 20px;\n    margin: 0 5px;\n    padding: 0;\n\n    cursor: pointer;\n}\n.slick-dots li button\n{\n    font-size: 0;\n    line-height: 0;\n\n    display: block;\n\n    width: 20px;\n    height: 20px;\n    padding: 5px;\n\n    cursor: pointer;\n\n    color: transparent;\n    border: 0;\n    outline: none;\n    background: transparent;\n}\n.slick-dots li button:hover,\n.slick-dots li button:focus\n{\n    outline: none;\n}\n.slick-dots li button:hover:before,\n.slick-dots li button:focus:before\n{\n    opacity: 1;\n}\n.slick-dots li button:before\n{\n    font-family: 'slick';\n    font-size: 6px;\n    line-height: 20px;\n\n    position: absolute;\n    top: 0;\n    left: 0;\n\n    width: 20px;\n    height: 20px;\n\n    content: '\\2022';\n    text-align: center;\n\n    opacity: .25;\n    color: black;\n\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n}\n.slick-dots li.slick-active button:before\n{\n    opacity: .75;\n    color: black;\n}\n", ""]);
 
 // exports
 
@@ -64152,7 +64152,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         runSearch: function runSearch() {
             var inputValue = document.getElementById("map").value;
-            window.location.href = this.$hostname + 'clubs#/clubs/search/' + inputValue;
+            if (inputValue === '') {
+                window.location.href = this.$hostname + 'clubs#/clubs/';
+            } else {
+                window.location.href = this.$hostname + 'clubs#/clubs/search/' + inputValue;
+            }
         },
         clearInputText: function clearInputText() {
             var inputValue = document.getElementById("map").value;
@@ -64583,7 +64587,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n#clubs-list .card[data-v-477276d6] {\n    margin: .5em;\n    margin-bottom: 1em;\n}\n#clubs-list .card .card-body[data-v-477276d6] {\n    background: transparent;\n    padding-top: .65em;\n    padding-bottom: 0;\n    height: 120px !important;\n}\n.slick-list[data-v-477276d6]{\n    padding-bottom: 1em !important;\n    margin-bottom: 2em;\n}\n.single-club[data-v-477276d6] {\n    -webkit-transition: .3s;\n    transition: .3s;\n    text-align: center;\n}\n.single-club[data-v-477276d6]:hover {\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n#nearest-clubs[data-v-477276d6] {\n    margin-top: 2em;\n}\n\n/*#nearest-clubs h3 {*/\n    /*font-size: 2rem;*/\n/*}*/\n#nearest-clubs .show-more[data-v-477276d6] {\n    margin-top: .75em;\n}\n#nearest-clubs .show-more[data-v-477276d6]:hover {\n    text-decoration: underline;\n}\n#nearest-clubs .single-club[data-v-477276d6] {\n    background: rgba(0, 0, 0, 0.4);\n    padding-bottom: .75em;\n}\n#nearest-clubs .single-club img[data-v-477276d6] {\n    padding-bottom: .5em;\n}\n#nearest-clubs .single-club[data-v-477276d6]:hover {\n    -webkit-transform: scale(1.075);\n            transform: scale(1.075);\n}\n#clubs-list .card[data-v-477276d6] {\n    margin: .5em !important;\n}\n#clubs-list a h4[data-v-477276d6] {\n    color: #de29a0;\n}\n", ""]);
+exports.push([module.i, "\n#clubs-list .card[data-v-477276d6] {\n    margin: .5em;\n    margin-bottom: 1em;\n}\n#clubs-list .card .card-body[data-v-477276d6] {\n    background: transparent;\n    padding-top: .65em;\n    padding-bottom: 0;\n    height: 120px !important;\n}\n.slick-list[data-v-477276d6] {\n    padding-bottom: 1em !important;\n    margin-bottom: 2em;\n}\n.single-club[data-v-477276d6] {\n    -webkit-transition: .3s;\n    transition: .3s;\n    text-align: center;\n}\n.single-club[data-v-477276d6]:hover {\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n#nearest-clubs[data-v-477276d6] {\n    margin-top: 2em;\n}\n\n/*#nearest-clubs h3 {*/\n/*font-size: 2rem;*/\n/*}*/\n#nearest-clubs .show-more[data-v-477276d6] {\n    margin-top: .75em;\n}\n#nearest-clubs .show-more[data-v-477276d6]:hover {\n    text-decoration: underline;\n}\n#nearest-clubs .single-club[data-v-477276d6] {\n    background: rgba(0, 0, 0, 0.4);\n    padding-bottom: .75em;\n}\n#nearest-clubs .single-club img[data-v-477276d6] {\n    padding-bottom: .5em;\n}\n#nearest-clubs .single-club[data-v-477276d6]:hover {\n    -webkit-transform: scale(1.075);\n            transform: scale(1.075);\n}\n#clubs-list .card[data-v-477276d6] {\n    margin: .5em !important;\n}\n#clubs-list a h4[data-v-477276d6] {\n    color: #de29a0;\n}\n", ""]);
 
 // exports
 
@@ -64596,12 +64600,17 @@ exports.push([module.i, "\n#clubs-list .card[data-v-477276d6] {\n    margin: .5e
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_slick__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_slick___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_slick__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Clubs_SingleClubLoop__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Clubs_SingleClubLoop__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Clubs_SingleClubLoop___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Clubs_SingleClubLoop__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_slick_carousel_slick_slick_css__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_slick_carousel_slick_slick_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_slick_carousel_slick_slick_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_slick_carousel_slick_slick_theme_css__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_slick_carousel_slick_slick_theme_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_slick_carousel_slick_slick_theme_css__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -64661,6 +64670,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             clubs: {},
             position: null,
             slickOptions: {
+                permissions: true,
                 slidesToShow: 3,
                 slidesToScroll: 3,
                 autoplay: true,
@@ -64716,6 +64726,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                     self.loading = true;
 
+                    self.permissions = true;
+
                     self.position = position.coords;
                     var lat = self.position.latitude;
                     var long = self.position.longitude;
@@ -64727,6 +64739,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     }).catch(function (error) {
                         console.log(error);
                     });
+                }, function (error) {
+                    if (error.code === error.PERMISSION_DENIED) {
+                        self.permissions = false;
+                        self.loading = true;
+                        axios.get('/api/nearest-clubs?lat=55&long=55').then(function (response) {
+                            self.clubs = response;
+                            self.loading = false;
+                        }).catch(function (error) {
+                            console.log(error);
+                        });
+                    }
                 });
             }
         },
@@ -64817,17 +64840,19 @@ var render = function() {
                     return _c(
                       "div",
                       [
-                        _c("single-club-loop", {
-                          attrs: {
-                            club: club,
-                            distance: _vm.getDistanceFromLatLonInKm(
-                              _vm.position.latitude,
-                              _vm.position.longitude,
-                              club.latitude,
-                              club.longitude
-                            )
-                          }
-                        })
+                        _vm.permissions
+                          ? _c("single-club-loop", {
+                              attrs: {
+                                club: club,
+                                distance: _vm.getDistanceFromLatLonInKm(
+                                  _vm.position.latitude,
+                                  _vm.position.longitude,
+                                  club.latitude,
+                                  club.longitude
+                                )
+                              }
+                            })
+                          : _c("single-club-loop", { attrs: { club: club } })
                       ],
                       1
                     )
@@ -65667,7 +65692,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n#nearest-events .card[data-v-4c575b6b] {\n    margin: .5em;\n}\n.single-event[data-v-4c575b6b] {\n    -webkit-transition: .3s;\n    transition: .3s;\n    text-align: center;\n}\n.single-event[data-v-4c575b6b]:hover {\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n#nearest-events[data-v-4c575b6b] {\n    margin-top: 0em;\n}\n\n/*#nearest-events h3 {*/\n    /*font-size: 2rem;*/\n/*}*/\n#nearest-events .show-more[data-v-4c575b6b] {\n    margin-top: .75em;\n}\n#nearest-events .show-more[data-v-4c575b6b]:hover {\n    text-decoration: underline;\n}\n#nearest-events .single-event[data-v-4c575b6b] {\n    background: rgba(0, 0, 0, 0.4);\n    padding-bottom: .75em;\n}\n#nearest-events .single-event img[data-v-4c575b6b] {\n    padding-bottom: .5em;\n}\n#nearest-events .single-event[data-v-4c575b6b]:hover {\n    -webkit-transform: scale(1.075);\n            transform: scale(1.075);\n}\n#events-list .card[data-v-4c575b6b] {\n    margin: .5em !important;\n}\n#events-list a h4[data-v-4c575b6b] {\n    color: #de29a0;\n}\n", ""]);
+exports.push([module.i, "\n#nearest-events .card[data-v-4c575b6b] {\n    margin: .5em;\n}\n.single-event[data-v-4c575b6b] {\n    -webkit-transition: .3s;\n    transition: .3s;\n    text-align: center;\n}\n.single-event[data-v-4c575b6b]:hover {\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n#nearest-events[data-v-4c575b6b] {\n    margin-top: 0em;\n}\n\n/*#nearest-events h3 {*/\n/*font-size: 2rem;*/\n/*}*/\n#nearest-events .show-more[data-v-4c575b6b] {\n    margin-top: .75em;\n}\n#nearest-events .show-more[data-v-4c575b6b]:hover {\n    text-decoration: underline;\n}\n#nearest-events .single-event[data-v-4c575b6b] {\n    background: rgba(0, 0, 0, 0.4);\n    padding-bottom: .75em;\n}\n#nearest-events .single-event img[data-v-4c575b6b] {\n    padding-bottom: .5em;\n}\n#nearest-events .single-event[data-v-4c575b6b]:hover {\n    -webkit-transform: scale(1.075);\n            transform: scale(1.075);\n}\n#events-list .card[data-v-4c575b6b] {\n    margin: .5em !important;\n}\n#events-list a h4[data-v-4c575b6b] {\n    color: #de29a0;\n}\n", ""]);
 
 // exports
 
@@ -65680,12 +65705,10 @@ exports.push([module.i, "\n#nearest-events .card[data-v-4c575b6b] {\n    margin:
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_slick__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_slick___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_slick__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Clubs_SingleClubLoop__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Clubs_SingleClubLoop___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Clubs_SingleClubLoop__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_slick_carousel_slick_slick_css__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_slick_carousel_slick_slick_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_slick_carousel_slick_slick_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_slick_carousel_slick_slick_theme_css__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_slick_carousel_slick_slick_theme_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_slick_carousel_slick_slick_theme_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_slick_carousel_slick_slick_css__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_slick_carousel_slick_slick_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_slick_carousel_slick_slick_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_slick_carousel_slick_slick_theme_css__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_slick_carousel_slick_slick_theme_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_slick_carousel_slick_slick_theme_css__);
 //
 //
 //
@@ -65726,7 +65749,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-
 
 
 
@@ -65737,6 +65759,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
+            permissions: true,
             hostname: this.$hostname,
             loading: false,
             events: {},
@@ -65797,8 +65820,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 navigator.geolocation.getCurrentPosition(function (position) {
 
-                    self.loading = true;
+                    console.log('test');
 
+                    self.loading = true;
+                    self.permissions = true;
                     self.position = position.coords;
                     var lat = self.position.latitude;
                     var long = self.position.longitude;
@@ -65810,6 +65835,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     }).catch(function (error) {
                         console.log(error);
                     });
+                }, function (error) {
+                    if (error.code == error.PERMISSION_DENIED) {
+                        console.log('test no per');
+                        self.loading = true;
+                        console.log("you denied me :-(");
+                        self.permissions = false;
+                        axios.get('/api/nearest-events?lat=55&long=55').then(function (response) {
+                            self.events = response;
+                            self.loading = false;
+                            // console.log(response);
+                        }).catch(function (error) {
+                            console.log(error);
+                        });
+                    }
                 });
             }
         }

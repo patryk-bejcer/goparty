@@ -16,7 +16,14 @@ class ClubsUserController extends Controller {
 	}
 
 	public function show( Club $club ) {
-		return view( 'site.clubs.single' )->with( 'club', $club );
+		if($club->active){
+			return view( 'site.clubs.single' )->with( 'club', $club );
+		} else {
+			return view('errors.404');
+		}
+
 	}
+
+
 
 }

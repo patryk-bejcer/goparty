@@ -1292,6 +1292,12 @@ main{
 
 //STYLES FOR SMARTPHONES
 @media (max-width: 768px) {
+
+  .register-btn {
+    margin-left:5px !important;
+    border:none !important;
+  }
+
   .carousel .carousel-inner {
     height: 400px;
   }
@@ -1392,8 +1398,5 @@ button{
 }
 
 @media (max-width: 479px) {
-  .register-btn {
-    margin-left:5px !important;
-    border:none !important;
-  }
+
 }

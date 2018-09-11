@@ -150,7 +150,7 @@
   margin-left: .5em;
   margin-right: .5em; }
 
-@media (max-width: 575.98px) {
+@media (max-width: 767.98px) {
   .search-top-bg {
     background: url(../img/banner/subpages-banner-top.jpg);
     background-position: center 45%;
@@ -158,7 +158,39 @@
     padding: 4em 0;
     background-size: 100%;
     margin-top: 0;
-    padding-top: 1.5em; } }
+    padding-top: 8em;
+    background-size: cover; }
+
+  #events-search-form .search-form-body {
+    background: rgba(255, 255, 255, 0.9);
+    padding-bottom: 0 !important;
+    margin-bottom: 0em;
+    margin-top: .5em;
+    border-radius: 0; }
+
+  #events-search-form .search-form-body input {
+    height: 55px;
+    border-radius: 0;
+    border-right: 0 !important; }
+
+  #events-search-form .btn {
+    border-radius: 0 !important;
+    text-transform: uppercase; }
+
+  #events-search-form .search-form-body #map {
+    border-right: 0 !important; }
+
+  #single_club {
+    min-height: 300px;
+    padding: 20px !important; }
+
+  .breadcrumb {
+    padding-top: 0 !important;
+    background: transparent;
+    padding-left: 20px !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0px !important;
+    padding-top: 0px !important; } }
 #single-event {
   min-height: 100vh; }
   #single-event .breadcrumbIn {

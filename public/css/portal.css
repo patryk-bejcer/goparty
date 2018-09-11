@@ -993,9 +993,4 @@ button:hover {
   border-color: transparent;
   background: rgba(255, 255, 255, 0.6); }
 
-@media (max-width: 479px) {
-  .register-btn {
-    margin-left: 5px !important;
-    border: none !important; } }
-
 /*# sourceMappingURL=portal.css.map */

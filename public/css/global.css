@@ -110,4 +110,14 @@ footer .social-media-list a {
   border-radius: 0;
   font-weight: 700; }
 
+.navbar-light .navbar-toggler-icon {
+  background-image: url(https://cdn4.iconfinder.com/data/icons/web-ui-color/128/Menu_green-512.png);
+  width: 40px;
+  height: 40px; }
+
+.navbar-light .navbar-toggler {
+  color: #FFF !important;
+  border-color: transparent;
+  background: transparent; }
+
 /*# sourceMappingURL=global.css.map */

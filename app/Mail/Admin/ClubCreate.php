@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mail;
+namespace App\Mail\Admin;
 
 use App\Club;
 use App\User;
@@ -32,6 +32,6 @@ class ClubCreate extends Mailable
      */
     public function build()
     {
-        return $this->from('info@goparty.pl')->view('emails.user.club-create')->subject('Właśnie utworzyłeś klub');
+        return $this->from('info@goparty.pl')->view('emails.admin.club-create')->subject('Użytkownik portalu dodał nowy klub');
     }
 }

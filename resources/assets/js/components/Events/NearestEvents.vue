@@ -10,12 +10,12 @@
                 </div>
             </div>
             <!--<div class="row">-->
-                <!--<div class="col-12 mt-3 pl-0">-->
-                    <!--<h3 class="text-left pull-left ml-3">NAJBLIŻSZE IMPREZY W TWOJEJ OKOLICY</h3>-->
-                    <!--<h5 class="pull-right show-more">-->
-                        <!--<a :href="`${hostname}/events`" class="text-white">Zobacz wszystkie</a>-->
-                    <!--</h5>-->
-                <!--</div>-->
+            <!--<div class="col-12 mt-3 pl-0">-->
+            <!--<h3 class="text-left pull-left ml-3">NAJBLIŻSZE IMPREZY W TWOJEJ OKOLICY</h3>-->
+            <!--<h5 class="pull-right show-more">-->
+            <!--<a :href="`${hostname}/events`" class="text-white">Zobacz wszystkie</a>-->
+            <!--</h5>-->
+            <!--</div>-->
             <!--</div>-->
 
             <div v-show="loading" class="data-loading">
@@ -40,7 +40,6 @@
 
 <script>
     import Slick from 'vue-slick';
-    import SingleClubLoop from '../Clubs/SingleClubLoop';
     import 'slick-carousel/slick/slick.css'
     import 'slick-carousel/slick/slick-theme.css'
 
@@ -49,6 +48,7 @@
 
         data: function () {
             return {
+                permissions: true,
                 hostname: this.$hostname,
                 loading: false,
                 events: {},
@@ -113,28 +113,48 @@
 
                     navigator.geolocation.getCurrentPosition(function (position) {
 
-                        self.loading = true;
+                            console.log('test');
 
-                        self.position = position.coords;
-                        let lat = self.position.latitude;
-                        let long = self.position.longitude;
+                            self.loading = true;
+                            self.permissions = true;
+                            self.position = position.coords;
+                            let lat = self.position.latitude;
+                            let long = self.position.longitude;
 
-                        axios.get('/api/nearest-events?lat=' + lat + '&long=' + long)
-                            .then(function (response) {
-                                self.events = response;
-                                self.loading = false;
-                                // console.log(response);
-                            })
-                            .catch(function (error) {
-                                console.log(error);
-                            });
-                    });
+                            axios.get('/api/nearest-events?lat=' + lat + '&long=' + long)
+                                .then(function (response) {
+                                    self.events = response;
+                                    self.loading = false;
+                                    // console.log(response);
+                                })
+                                .catch(function (error) {
+                                    console.log(error);
+                                });
+                        },
+                        function (error) {
+                            if (error.code == error.PERMISSION_DENIED) {
+                                console.log('test no per');
+                                self.loading = true;
+                                console.log("you denied me :-(");
+                                self.permissions = false;
+                                axios.get('/api/nearest-events?lat=55&long=55')
+                                    .then(function (response) {
+                                        self.events = response;
+                                        self.loading = false;
+                                        // console.log(response);
+                                    })
+                                    .catch(function (error) {
+                                        console.log(error);
+                                    });
+                            }
+                        }
+                    );
                 }
             },
         },
         watch: {
             events: function () {
-                if(this.$refs.slick === undefined) return;
+                if (this.$refs.slick === undefined) return;
                 let currIndex = this.$refs.slick.currentSlide();
                 this.$refs.slick.destroy();
                 this.$nextTick(() => {
@@ -170,7 +190,7 @@
     }
 
     /*#nearest-events h3 {*/
-        /*font-size: 2rem;*/
+    /*font-size: 2rem;*/
     /*}*/
 
     #nearest-events .show-more {
