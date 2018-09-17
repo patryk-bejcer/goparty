@@ -42,6 +42,7 @@ Route::namespace( 'Clubs' )->group( function () {
 	Route::prefix( 'dashboard' )->group( function () {
 		Route::resource( 'clubs', 'ClubsOwnerController' );
 		Route::get( 'clubs/{club}/club-events', 'ClubsOwnerController@clubEvents' )->name( 'club-events' );
+		Route::get( 'clubs/{club}/gallery', 'ClubsOwnerController@clubGalleryManager' )->name( 'club-gallery-manager' );
 	} );
 
 } );

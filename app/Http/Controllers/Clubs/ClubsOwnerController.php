@@ -21,7 +21,7 @@ class ClubsOwnerController extends Controller {
 		$this->middleware( 'auth' );
 
 		/* Check if user has owner role*/
-		$this->middleware( 'role:owner', [ 'except' => [ 'create', 'store' ] ] );
+		$this->middleware( 'role:owner', [ 'except' => [ 'create', 'store', 'clubGalleryManager' ] ] );
 
 		/* Check if user has permission (club belongs to user etc. in middleware) */
 		$this->middleware( 'club_permission', [ 'except' => [ 'index', 'create', 'store', 'clubEvent' ] ] );
@@ -164,6 +164,10 @@ class ClubsOwnerController extends Controller {
 		$club->where( 'active', true );
 
 		return view( 'dashboard.clubs.events', compact( 'club' ) );
+	}
+
+	public function clubGalleryManager( Club $club ){
+		return view('dashboard.clubs.galleryManager', compact('club'));
 	}
 
 }

@@ -13,12 +13,22 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::middleware('jwt.auth')->get('users', function(Request $request) {
+	return auth()->user();
+});
+
+/* Auth API Routing */
+Route::post('user/register', 'API\RegisterController@register');
+Route::post('user/login', 'API\LoginController@login');
+
 /* Clubs API Routing */
 Route::get('nearest-clubs', 'API\ClubsController@getNearestClubs');
 Route::get('clubs-archived', 'API\ClubsController@archivedClubs');
 Route::get('clubs-search', 'API\ClubsController@searchResults');
 Route::get('rate-club-get-sum', 'API\ClubsController@getRate');
 Route::post('rate-club', 'API\ClubsController@addRate');
+/* Parameter is club id 'club=1' */
+Route::get('club-images', 'API\ClubsController@allClubImages');
 
 /* Events API Routing */
 Route::get('nearest-events', 'API\EventsController@getNearestEvents');

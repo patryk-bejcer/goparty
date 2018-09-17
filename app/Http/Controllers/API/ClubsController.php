@@ -107,4 +107,10 @@ class ClubsController extends Controller {
 
 	}
 
+	public function allClubImages( Request $request ){
+		$images = Club::findOrFail( $request->input( 'club' ) )->images;
+		return response()
+			->json( $images, 201 );
+	}
+
 }

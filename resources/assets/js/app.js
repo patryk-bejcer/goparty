@@ -50,6 +50,7 @@ Vue.component('clubs-header', require('./components/Clubs/Header'));
 Vue.component('single-club-loop', require('./components/Clubs/SingleClubLoop'));
 Vue.component('clubs-nearest', require('./components/Clubs/NearestClubs'));
 Vue.component('club-rate', require('./components/Clubs/RateClub'));
+Vue.component('club-gallery-manager', require('./components/Clubs/GalleryManager'));
 
 
 const ClubsMain = Vue.component('clubs-main', require('./components/Clubs/Main.vue'));

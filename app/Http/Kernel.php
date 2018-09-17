@@ -63,6 +63,8 @@ class Kernel extends HttpKernel
         'event_permission' => \App\Http\Middleware\CheckEventPermission::class,
         'role' => \App\Http\Middleware\RoleMiddleware::class,
         'permission' => \App\Http\Middleware\PermissionMiddleware::class,
-        'user_dashboard_permissions' => \App\Http\Middleware\UserDashboard::class
+        'user_dashboard_permissions' => \App\Http\Middleware\UserDashboard::class,
+        'jwt.auth' => 'Tymon\JWTAuth\Middleware\GetUserFromToken',
+        'jwt.refresh' => 'Tymon\JWTAuth\Middleware\RefreshToken',
     ];
 }

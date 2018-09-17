@@ -55,6 +55,10 @@ class Club extends Model {
 		return $this->morphMany( 'App\Images', 'imagesable' );
 	}
 
+	public function images() {
+		return $this->morphMany( 'App\Images', 'imagesable' );
+	}
+
 	public function events() {
 		return $this->hasMany( 'App\Event' );
 	}

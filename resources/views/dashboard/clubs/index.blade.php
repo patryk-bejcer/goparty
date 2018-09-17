@@ -44,7 +44,9 @@
                                     <a href="{{url('dashboard/clubs/' . $club->id . '/club-events')}}"
                                        class="btn btn-primary btn-sm mb-2 mr-2">Wydarzenia</a>
                                     <a href="{{url('dashboard/clubs/' . $club->id . '/edit')}}"
-                                       class="btn btn-secondary btn-sm mr-2">Edycja</a>
+                                       class="btn btn-secondary btn-sm mr-2 mb-2">Edycja</a>
+                                    <a href="{{route('club-gallery-manager', ['id' => $club])}}"
+                                       class="btn btn-secondary btn-sm mr-2">Galeria zdjęć</a>
                                 </div>
 
                                     <a id="club-link" href="{{url('/clubs/' . $club->id)}}" class="btn btn-primary align-self-center hvr-sweep-to-right">Zobacz wiecej</a>
