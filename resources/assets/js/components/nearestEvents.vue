@@ -67,9 +67,7 @@
 </template>
 
 <script>
-    /*
-     * @TODO create nearest events api controller and vue componnt
-     */
+
     export default {
         name: "nearestClubs",
         data: function () {

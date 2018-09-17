@@ -31,7 +31,7 @@
 </template>
 
 <script>
-    /* TODO Add post methods auth in controller API */
+
     import StarRating from 'vue-star-rating';
 
     export default {

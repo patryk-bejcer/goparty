@@ -35,6 +35,8 @@ Vue.component('flash-message', require('./components/FlashMessage'));
 Vue.component('flash', require('./components/FlashMessage.vue'));
 Vue.component('address-search-box', require('./components/addressSearchBoxWithMap'));
 Vue.component('city-search-box', require('./components/citySearchFieldAutoComplete'));
+
+
 // Vue.component('nearest-clubs', require('./components/nearestClubs'));
 Vue.component('nearest-events', require('./components/nearestEvents'));
 Vue.component('take-part', require('./components/takePartComponent'));
