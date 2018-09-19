@@ -19,7 +19,8 @@
                         v-on:placechanged="getAddressData"
                         country="pl"
                         enable-geolocation="true"
-                        autofocus required
+                        autofocus
+                        :value="inputAddress"
                 >
                 </vue-google-autocomplete>
 
@@ -44,13 +45,14 @@
     export default {
         components: {VueGoogleAutocomplete},
 
-        props: ['ismap', 'latform', 'lngform','fulladdress'],
+        props: ['fulladdress', 'ismap', 'latform', 'lngform'],
         data: function () {
             return {
                 address: '',
                 checkAddress: false,
                 lat:52.232855,
-                lng:20.9211115
+                lng:20.9211115,
+                inputAddress: ''
             }
         },
 
@@ -63,16 +65,19 @@
             console.log(this.fulladdress);
 
             if(this.latform && this.lngform){
-                this.lat = this.latform;
-                this.lng = this.lngform;
+                this.initMap(15, this.latform, this.lngform);
+                this.inputAddress = this.fulladdress;
+                console.log('full:' + this.fulladdress);
+            } else {
+                if(this.ismap){
+                    this.initMap(15, this.lat, this.lng);
+                }
             }
 
             console.log(this.lat);
             console.log(this.lng);
 
-            if(this.ismap){
-                this.initMap(11, this.lat, this.lng);
-            }
+
 
 
         },
@@ -91,7 +96,7 @@
                 // console.log(this.address.longitude);
                 if (this.address.latitude && this.address.longitude) {
                     this.checkAddress = true;
-                    this.initMap(16, this.address.latitude, this.address.longitude);
+                    this.initMap(15, this.address.latitude, this.address.longitude);
                 }
                 // console.log('check:' + this.checkAddress);
             },

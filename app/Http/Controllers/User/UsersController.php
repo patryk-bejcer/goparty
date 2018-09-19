@@ -29,9 +29,11 @@ class UsersController extends Controller {
 	 * @return void
 	 */
 	public function index() {
-		$users = User::all();
-		dd( $users );
+		$users = User::orderBy('created_at', 'desc')->get();
+		return view('site.users.index', compact('users'));
 	}
+
+
 
 	public function update_image( Request $request ) {
 		$file     = $request->file( 'image' );

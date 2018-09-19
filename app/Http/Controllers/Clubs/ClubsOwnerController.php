@@ -8,6 +8,7 @@ use App\Events\ClubDestroy;
 use App\Http\Controllers\Controller;
 use App\Images;
 use App\Music;
+use App\Facilities;
 use App\Services\ImageUpload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,10 +22,18 @@ class ClubsOwnerController extends Controller {
 		$this->middleware( 'auth' );
 
 		/* Check if user has owner role*/
-		$this->middleware( 'role:owner', [ 'except' => [ 'create', 'store', 'clubGalleryManager' ] ] );
+		$this->middleware( 'role:owner', [ 'except' => [ 'create', 'store', 'clubGalleryManager', ] ] );
 
 		/* Check if user has permission (club belongs to user etc. in middleware) */
-		$this->middleware( 'club_permission', [ 'except' => [ 'index', 'create', 'store', 'clubEvent' ] ] );
+		$this->middleware( 'club_permission', [
+			'except' => [
+				'index',
+				'create',
+				'store',
+				'clubEvent',
+				'clubImagesUpload'
+			]
+		] );
 
 	}
 
@@ -38,11 +47,13 @@ class ClubsOwnerController extends Controller {
 
 	public function create() {
 		$musicTypes = Music::all();
+		$facilities = Facilities::all();
 
-		return view( 'dashboard.clubs.create', compact( 'musicTypes' ) );
+		return view( 'dashboard.clubs.create', compact( 'musicTypes', 'facilities' ) );
 	}
 
 	public function store( Request $request, ImageUpload $imageUpload ) {
+
 
 		$addressErrorMessage = 'Wprowadzony przez ciebie adres jest niepoprawny. Wprowadź pełny adres (nazwa ulicy/numer
                     lokalu/miasto/kraj)';
@@ -84,6 +95,7 @@ class ClubsOwnerController extends Controller {
 			'phone'                   => $request->phone,
 			'website_url'             => $request->website_url,
 			'facebook_url'            => $request->facebook_url,
+			'description'             => $request->description,
 			'active'                  => $active
 		] );
 
@@ -100,6 +112,9 @@ class ClubsOwnerController extends Controller {
 			'img_id' => $image->id,
 		] );
 
+		$club->facilities()->attach( $request->facilities );
+		$club->musics()->attach( $request->music_types );
+
 		event( new ClubCreated( $club ) );
 
 		return view( 'dashboard.clubs.after-create-club' );
@@ -108,11 +123,35 @@ class ClubsOwnerController extends Controller {
 
 	public function edit( Club $club ) {
 		$musicTypes = Music::all();
+		$facilities = Facilities::all();
 
-		return view( 'dashboard.clubs.edit', compact( 'club', 'musicTypes' ) );
+		return view( 'dashboard.clubs.edit', compact( 'club', 'musicTypes', 'facilities' ) );
 	}
 
 	public function update( Request $request, Club $club, ImageUpload $imageUpload ) {
+
+
+		$club->update( [
+			'official_name'           => $request->official_name,
+			'role'                    => $request->role,
+			'email'                   => $request->email,
+			'additional_address_info' => $request->additional_address_info,
+			'phone'                   => $request->phone,
+			'website_url'             => $request->website_url,
+			'facebook_url'            => $request->facebook_url,
+		] );
+
+		if($request->latitude || $request->longitude){
+			$club->update( [
+				'country'                 => $request->country,
+				'locality'                => $request->locality,
+				'voivodeship'             => $request->voivodeship,
+				'route'                   => $request->route,
+				'street_number'           => $request->street_number,
+				'latitude'                => $request->latitude,
+				'longitude'               => $request->longitude,
+			] );
+		}
 
 		$request->validate( [
 			'image' => 'mimes:jpeg,jpg,png|max:5000'
@@ -142,9 +181,15 @@ class ClubsOwnerController extends Controller {
 			'user_id'       => Auth::id(),
 			'official_name' => $request->official_name,
 			'role'          => $request->role,
-			'email'         => $request->email,
-			'img_id'        => $image->id,
+			'email'         => $request->email
 		] );
+
+		if ( $request->image ) {
+			$club->update( [ 'img_id' => $image->id ] );
+		}
+
+		$club->facilities()->sync( $request->facilities );
+		$club->musics()->sync( $request->music_types );
 
 
 		$message = 'Klub ' . $request->official_name . ' został zaktualizowany pomyślnie.';
@@ -166,8 +211,13 @@ class ClubsOwnerController extends Controller {
 		return view( 'dashboard.clubs.events', compact( 'club' ) );
 	}
 
-	public function clubGalleryManager( Club $club ){
-		return view('dashboard.clubs.galleryManager', compact('club'));
+	public function clubGalleryManager( Club $club ) {
+		return view( 'dashboard.clubs.galleryManager', compact( 'club' ) );
 	}
+
+	public function clubImagesUpload( Request $request ) {
+		return response()->json( $request );
+	}
+
 
 }

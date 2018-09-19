@@ -21,9 +21,15 @@ Route::get( '/register', 'Auth\RegisterController@getRegister' )->name( 'registe
 /* === END AUTH === */
 
 /* ====== USERS ====== */
+
+Route::get('/users', 'User\UsersController@index')->name('users.index');
+
+
+
 Route::group( [ 'namespace' => 'User', 'middleware' => [ 'auth' ] ], function () {
 
 	Route::get( '/dashboard', 'UserProfileController@edit' )->name( 'user.dashboard.index' );
+	Route::get( '/dashboard/notifications', 'UserProfileController@notifications' )->name( 'user.notifications' );
 	Route::get( '/dashboard/profile/edit', 'UserProfileController@edit' )->name( 'user.edit.profile' );
 	Route::put( '/dashboard/profile/edit', 'UserProfileController@update' )->name( 'user.update.profile' );
 	Route::delete( '/dashboard/profile/remove-avatar', 'UserProfileController@destroyAvatar' )->name( 'user.remove.avatar' );
@@ -43,6 +49,7 @@ Route::namespace( 'Clubs' )->group( function () {
 		Route::resource( 'clubs', 'ClubsOwnerController' );
 		Route::get( 'clubs/{club}/club-events', 'ClubsOwnerController@clubEvents' )->name( 'club-events' );
 		Route::get( 'clubs/{club}/gallery', 'ClubsOwnerController@clubGalleryManager' )->name( 'club-gallery-manager' );
+		Route::post( 'clubs//gallery/upload', 'ClubsOwnerController@clubImagesUpload' )->name( 'club-images-upload' );
 	} );
 
 } );

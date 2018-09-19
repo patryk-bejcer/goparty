@@ -63,6 +63,14 @@ class Club extends Model {
 		return $this->hasMany( 'App\Event' );
 	}
 
+	public function musics(){
+		return $this->belongsToMany('App\Music', 'club_music');
+	}
+
+	public function facilities(){
+		return $this->belongsToMany('App\Facilities', 'club_facilities');
+	}
+
 	/* Admin panel methods */
 	public function confirmClubBtn() {
 		return view('vendor.backpack.base.clubs.clubConfirm')->with('clubId', $this->id);

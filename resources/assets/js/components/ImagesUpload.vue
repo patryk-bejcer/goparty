@@ -1,10 +1,11 @@
 <template>
     <div>
         <div class="form-group col-md-12">
-            <label for="logo" class="control-label">Attachments</label>
+            <label class="control-label">Zdjęcia</label>
             <br><br>
             <div class="col-md-12">
-                <input name="images" type="file" multiple="multiple" id="attachments" @change="uploadFieldChange">
+                <input id="image-input" name="imagex" type="file"  class="form-control file-input inputfile inputfile-1" accept="image/x-png,image/gif,image/jpeg">
+                <input name="images[]" type="file" multiple="multiple" id="attachments" @change="uploadFieldChange">
                 <hr>
                 <div class="col-md-12">
                     <div class="attachment-holder animated fadeIn" v-cloak v-for="(attachment, index) in attachments">

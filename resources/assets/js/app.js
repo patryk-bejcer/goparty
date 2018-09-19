@@ -30,6 +30,7 @@ Vue.use(VueRouter);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 Vue.component('image-component', require('./components/Imageupload.vue'));
+Vue.component('images-upload', require('./components/ImagesUpload'));
 Vue.component('pagination', require('laravel-vue-pagination'));
 Vue.component('flash-message', require('./components/FlashMessage'));
 Vue.component('flash', require('./components/FlashMessage.vue'));

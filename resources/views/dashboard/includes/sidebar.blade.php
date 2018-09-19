@@ -16,12 +16,22 @@
 
             </div>
             <h4 class="mt-3 mb-0 text-center">{{Auth::user()->first_name}} {{Auth::user()->last_name}}</h4>
+
+                    <h5 class="text-center mt-2"><small><span class="badge-dark p-1 mt-1 text-center">
+                    @role('owner')
+                        właściciel
+                    @else
+                        użytkownik
+                    @endrole
+                    </span></small></h5>
+
+
             <hr>
         </div>
 
         <div class="list-group pb-4">
 
-            <a class="dropdown-item list-group-item collapsed" href="{{url('dashboard/attendance')}}">
+            <a class="dropdown-item list-group-item collapsed" href="{{route('user.notifications')}}">
                 <i class="fa fa-bell"></i>
                 {{ __('Powiadomienia') }}</a>
 

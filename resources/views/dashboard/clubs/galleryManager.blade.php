@@ -13,7 +13,11 @@
                     <div class="card-body">
                         <div class="pb-5 pt-1">
                             {{$club->images}}
-                            <club-gallery-manager></club-gallery-manager>
+                            <form action="{{route('club-images-upload')}}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <images-upload></images-upload>
+                                <input type="submit" value="Dodaj zdjęcia">
+                            </form>
                         </div>
                     </div>
                 </div>

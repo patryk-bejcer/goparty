@@ -29,6 +29,7 @@ Route::get('rate-club-get-sum', 'API\ClubsController@getRate');
 Route::post('rate-club', 'API\ClubsController@addRate');
 /* Parameter is club id 'club=1' */
 Route::get('club-images', 'API\ClubsController@allClubImages');
+Route::post('club-gallery-upload', 'ClubOwnerController@ClubGalleryUpload');
 
 /* Events API Routing */
 Route::get('nearest-events', 'API\EventsController@getNearestEvents');

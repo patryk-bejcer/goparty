@@ -1,9 +1,9 @@
 <template>
     <div>
         <div class="d-flex align-items-center justify-content-between">
-            <div>
+            <div class="mt-2">
                 <span v-if="avgRate > 0" class="number-rate">{{avgRate}}</span>
-                <span v-else class="number-rate" style="font-size:18px; font-weight: 300">Ten klub nie ma jescze ocen <br></span>
+                <!--<span v-else class="number-rate" style="font-size:18px; font-weight: 300">Ten klub nie ma jescze ocen <br></span>-->
                 <star-rating @rating-selected="setRating"
                              inactive-color="rgba(0, 0, 0, 0.4)"
                              active-color="#ef3ab1"

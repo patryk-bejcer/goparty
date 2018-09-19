@@ -14,10 +14,10 @@ class CreateClubsTable extends Migration {
 		Schema::create( 'clubs', function ( Blueprint $table ) {
 
 			$table->increments( 'id' )->unsigned();
+			$table->string( 'official_name' );
 			$table->integer( 'user_id' )->unsigned();
 			$table->integer( 'img_id' )->nullable();
 			$table->string( 'role' );
-			$table->string( 'official_name' );
 			$table->string( 'email' );
 
 			/* Address Fields */
@@ -34,10 +34,14 @@ class CreateClubsTable extends Migration {
 
 			/* Contact and social media fields */
 			$table->string( 'phone' );
+			$table->string( 'fax' )->nullable();
 			$table->string( 'website_url' )->nullable();
 			$table->string( 'facebook_url' )->nullable();
 			/* End of Contact and social media fields */
 
+			/* Club info fields */
+			$table->text( 'description' )->nullable();
+			/* End of club info fields */
 
 			$table->boolean( 'active' );
 			$table->softDeletes();

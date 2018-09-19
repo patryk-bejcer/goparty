@@ -21,6 +21,9 @@ class ClubMusic extends Migration
                 ->references('id')
                 ->on('clubs')
                 ->onDelete('cascade');
+	        $table->foreign('music_id')
+	              ->references('id')
+	              ->on('musics');
         });
     }
 

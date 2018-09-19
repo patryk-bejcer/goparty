@@ -36,6 +36,7 @@ class ClubsTableSeeder extends Seeder {
 				'phone'                   => $faker->tollFreePhoneNumber,
 				'website_url'             => $faker->domainName,
 				'facebook_url'            => 'facebook.com',
+				'description'            =>  $faker->text(400),
 				'active'                  => true,
 			];
 

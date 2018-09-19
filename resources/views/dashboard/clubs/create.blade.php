@@ -124,7 +124,7 @@
                                                 {{--</div>--}}
                                                 {{--<img class="img-fluid mb-1" id="output" src=""/>--}}
 
-                                                <div class="clearfix mt-1"></div>
+                                                {{--<div class="clearfix mt-1"></div>--}}
 
                                                 <label for="additional_address_info" style=""
                                                        class="mb-1">{{ __('Dodatkowe informacje adresowe') }}</label>
@@ -157,7 +157,7 @@
                                                 <label for="phone" style=""
                                                        class="">{{ __('Oficjalny numer telefonu klubu *') }}</label>
                                                 <input id="phone" type="text"
-                                                       class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
+                                                       class="form-control mt-1 {{ $errors->has('name') ? ' is-invalid' : '' }}"
                                                        name="phone" value="{{ old('phone') }}"
                                                        placeholder="Wprowadź oficjalny numer telefonu" required
                                                        autofocus>
@@ -173,7 +173,7 @@
                                                 <label for="fax" style=""
                                                        class="">{{ __('Faks') }}</label>
                                                 <input id="fax" type="text"
-                                                       class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
+                                                       class="form-control mt-1 {{ $errors->has('name') ? ' is-invalid' : '' }}"
                                                        name="fax" value="{{ old('fax') }}"
                                                        placeholder="Wprowadź oficjalny numer telefonu"
                                                        autofocus>
@@ -189,7 +189,7 @@
                                                 <label for="website_url" style=""
                                                        class="">{{ __('Adres Państwa witryny') }}</label>
                                                 <input id="website_url" type="text"
-                                                       class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
+                                                       class="form-control mt-1 {{ $errors->has('name') ? ' is-invalid' : '' }}"
                                                        name="website_url" value="{{ old('website_url') }}"
                                                        placeholder="Wprowadź adres strony www">
 
@@ -204,7 +204,7 @@
                                                 <label for="facebook_url" style=""
                                                        class="">{{ __('Strona w serwisie Facebook') }}</label>
                                                 <input id="facebook_url" type="text"
-                                                       class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
+                                                       class="form-control mt-1 {{ $errors->has('name') ? ' is-invalid' : '' }}"
                                                        name="facebook_url" value="{{ old('facebook_url') }}"
                                                        placeholder="Wprowadź adres profilu facebook">
 
@@ -221,7 +221,6 @@
                                             {{--<label for="official_name" class="col-md-2 col-form-label text-md-right">{{ __('First name') }}</label>--}}
 
 
-
                                         </div>
 
                                         <div class="form-group row mt-5">
@@ -230,11 +229,11 @@
                                                 <h3>Opis Twojego klubu</h3>
                                                 <p class="mb-2">limit to 400 znaków</p>
                                             </div>
-                                            
+
                                             <div class="col-12 col-md-9">
                                                 <textarea rows="4" id="additional_address_info" type="text"
                                                           class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                                                          name="additional_address_info"
+                                                          name="description"
                                                           value="{{ old('additional_address_info') }}"
                                                           placeholder="Wprowadź dotatkowe informacje adresowe (wskazówki dojazdu itp.)"></textarea>
                                             </div>
@@ -246,65 +245,38 @@
 
                                             <div class="col-md-12">
                                                 <h3>Informacje o klubie</h3>
-                                                <p class="mb-2">Czy ten klub oferuje dowolne z następujących udogodnień?</p>
+                                                <p class="mb-2">Czy ten klub oferuje dowolne z następujących
+                                                    udogodnień?</p>
                                             </div>
 
-                                            <div class="col-md-3 pl-4">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                                    <label class="custom-control-label" for="customCheck1">Palarnia</label>
-                                                </div>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck2">
-                                                    <label class="custom-control-label" for="customCheck2">Kasyno</label>
-                                                </div>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck3">
-                                                    <label class="custom-control-label" for="customCheck3">Pomieszczenie VIP</label>
-                                                </div>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck4">
-                                                    <label class="custom-control-label" for="customCheck4">Restauracja</label>
-                                                </div>
-
+                                            <div class="col-md-3 pl-3">
+                                                @foreach($facilities as $facility)
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input name="facilities[]" type="checkbox"
+                                                               value="{{$facility->id}}" class="custom-control-input"
+                                                               id="facility_{{$facility->id}}">
+                                                        <label class="custom-control-label"
+                                                               for="facility_{{$facility->id}}">{{$facility->name}}</label>
+                                                    </div>
+                                                @endforeach
                                             </div>
-
-                                            <div class="col-md-3">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck5">
-                                                    <label class="custom-control-label" for="customCheck5">Taksówka</label>
-                                                </div>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck6">
-                                                    <label class="custom-control-label" for="customCheck6">Szatnia</label>
-                                                </div>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck7">
-                                                    <label class="custom-control-label" for="customCheck7">Ochrona</label>
-                                                </div>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck8">
-                                                    <label class="custom-control-label" for="customCheck8">Striptiz</label>
-                                                </div>
-                                            </div>
-
 
                                         </div>
 
                                         <div class="form-group row mt-5">
                                             <div class="col-md-9">
+                                                <h3>Muzyka</h3>
                                                 <label for="music_types" style=""
-                                                       class="">{{ __('Jaka muzyka jest w Twoim klubie często grana?') }}</label>
+                                                       class="mb-2">{{ __('Jaka muzyka jest w Twoim klubie często grana?') }}</label>
                                                 <br>
 
                                                 @foreach($musicTypes as $musicType)
-                                                    <div class="form-check form-check-inline">
-                                                        <input name="music_types[]"
-                                                               class="form-check-input musicTypeCheckbox"
-                                                               type="checkbox" id="musicTypeCheckbox"
-                                                               value="{{$musicType->id}}">
-                                                        <label class="form-check-label"
-                                                               for="musicTypeCheckbox">{{$musicType->name}}</label>
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input name="music_types[]" type="checkbox"
+                                                               value="{{$musicType->id}}" class="custom-control-input"
+                                                               id="musicType_{{$musicType->id}}">
+                                                        <label class="custom-control-label"
+                                                               for="musicType_{{$musicType->id}}">{{$musicType->name}}</label>
                                                     </div>
                                                 @endforeach
 

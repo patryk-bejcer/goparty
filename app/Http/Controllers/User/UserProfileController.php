@@ -83,5 +83,9 @@ class UserProfileController extends Controller {
 
 	}
 
+	public function notifications(){
+		return view('dashboard.notifications.index');
+	}
+
 
 }

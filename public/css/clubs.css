@@ -81,17 +81,18 @@
     font-weight: 700; }
   .club-info h6 {
     font-size: 1.1rem; }
-  .club-info .rate {
-    font-size: 2rem; }
-    .club-info .rate p {
-      font-size: 1rem !important; }
-    .club-info .rate .number-rate {
-      margin-right: 5px;
-      font-weight: 900; }
-    .club-info .rate .number-of-rate {
-      font-size: 1rem; }
-    .club-info .rate i {
-      margin-right: 0px; }
+  .club-info .rate p {
+    font-size: 1rem !important;
+    margin-bottom: .5em; }
+  .club-info .rate .number-rate {
+    margin-right: 5px;
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 29px; }
+  .club-info .rate .number-of-rate {
+    font-size: 1rem; }
+  .club-info .rate i {
+    margin-right: 0px; }
 
 .prev-club {
   position: fixed;
@@ -124,5 +125,22 @@
 @media screen and (max-width 768px) {
   .search-top-bg {
     background-repeat: no-repeat !important; } }
+#club-row .btn {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  border: 1px solid #fff;
+  font-weight: 600;
+  transition: 0.3s;
+  width: 140px;
+  background: rgba(0, 0, 0, 0.3); }
+  #club-row .btn:hover {
+    transform: scale(1.075); }
+
+.club-offer-list li {
+  list-style-type: none;
+  font-size: 16px; }
+  .club-offer-list li i {
+    padding-right: 3px; }
 
 /*# sourceMappingURL=clubs.css.map */

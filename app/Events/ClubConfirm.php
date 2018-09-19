@@ -19,7 +19,7 @@ class ClubConfirm {
 	 * @param $club
 	 */
 	public function __construct( $club ) {
-		$this->user = Auth::user();
+		$this->user = $club->user;
 		$this->club = $club;
 	}
 

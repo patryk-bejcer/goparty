@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Mail\VerifyMail;
+use App\Mail\User\VerifyMail;
 use App\Music;
 use App\User;
 use App\VerifyUser;
