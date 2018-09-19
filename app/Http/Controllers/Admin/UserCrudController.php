@@ -24,8 +24,8 @@ class UserCrudController extends CrudController
         $this->crud->setModel(config('backpack.permissionmanager.user_model'));
         $this->crud->setEntityNameStrings(trans('backpack::permissionmanager.user'), trans('backpack::permissionmanager.users'));
         $this->crud->setRoute(config('backpack.base.route_prefix').'/user');
-        $this->crud->enableAjaxTable();
-	    $this->crud->addButtonFromModelFunction('line','sendEmail', 'sendEmailToUser', 'beginning');
+//        $this->crud->enableAjaxTable();
+//	    $this->crud->addButtonFromModelFunction('line','sendEmail', 'sendEmailToUser', 'beginning');
 
 
         // Columns.

@@ -36,7 +36,7 @@
 <style scoped>
     .google-map {
         width: 100%;
-        height: 350px;
+        height: 102%;
         margin: 0 auto;
         background: gray;
     }

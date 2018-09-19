@@ -5,7 +5,7 @@
 
             <div class="col-md-6">
 
-                <label for="country" style="" class="">Pełny adres  * <small>(nazwa ulicy/numer
+                <label for="country" style="" class="mb-2">Pełny adres  * <small>(nazwa ulicy/numer
                     lokalu/miasto/kraj)</small> </label>
 
                 <vue-google-autocomplete

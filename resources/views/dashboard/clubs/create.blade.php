@@ -9,16 +9,17 @@
             @include('dashboard.includes.sidebar')
             <div class="col-md-9">
                 <div class="card text-white bg-dark mb-3">
-                    <div class="card-header">
-                        <b>Formularz dodawania nowego klubu</b>
-                    </div>
+                    {{--<div class="card-header">--}}
+                    {{--<b>Formularz dodawania nowego klubu</b>--}}
+                    {{--</div>--}}
                     <div class="card-body">
 
                         <div id="register-club" class="">
-                            <div class="pb-5 pt-1">
+                            <div class="pb-2 pt-1">
 
                                 <div class="card-body pt-0 text-white">
-                                    <form method="POST" action="{{ route('clubs.store') }}" enctype="multipart/form-data">
+                                    <form method="POST" action="{{ route('clubs.store') }}"
+                                          enctype="multipart/form-data">
 
                                         @csrf
 
@@ -30,7 +31,9 @@
                                             </div>
                                         @endif
 
-                                        <h2 class="mb-4">Informacje dotyczące dodawanego przez Ciebie klubu</h2>
+                                        <h3 class="mb-1">Zamieść informacje o klubie w serwisie GoToParty</h3>
+                                        <a href="#"> Proszę przeczytać zasady strony GoToParty dotyczące klubu.</a>
+                                        <hr>
 
                                         <div class="form-group row">
 
@@ -92,10 +95,10 @@
 
                                         <hr>
 
-                                        <div class="form-group row">
+                                        <div class="form-group row mt-5">
 
                                             <div class="col-md-12">
-                                                <h2>Infomacje odnośnie lokalizacji</h2>
+                                                <h3>Infomacje odnośnie lokalizacji</h3>
                                             </div>
 
                                             <!--  VUE COMPONENT SEARCH BOX ADDRESS -->
@@ -103,41 +106,20 @@
                                             <!--  END VUE COMPONENT -->
 
 
-
                                             <div class="col-md-6">
-                                                <div class="input-group mb-3 mb-md-4 col-md-12 mr-0 pr-0 p-0">
 
-                                                    <div class="row flex-column mb-0">
-                                                        <div class="col-md-12">
-                                                            <p class="mb-2">Zdjęcie klubu <br>
-                                                                <small>dozwolone formaty to JPG//PNG/GIF, rozmiar nie powinien
-                                                                    przekraczać 5MB
-                                                                </small>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-
-                                                    <image-component></image-component>
-
-                                                    @if ($errors->has('image'))
-                                                        <span class="invalid-feedback">
-                                                        <strong>{{ $errors->first('image') }}</strong>
-                                                    </span>
-                                                    @endif
-
-                                                </div>
                                                 {{--<div class="mb-2 form-group{{ $errors->has('club_img') ? ' has-error' : '' }}">--}}
-                                                    {{--<label for="">Główne zdjęcie klubu</label>--}}
-                                                    {{--<input name="club_img" type="file"--}}
-                                                           {{--class="form-control upload-input mb-1"--}}
-                                                           {{--placeholder="Wybierz zdjęcie główne" accept=".jpg,.jpeg"--}}
-                                                           {{--onchange="loadFile(event)" multiple>--}}
+                                                {{--<label for="">Główne zdjęcie klubu</label>--}}
+                                                {{--<input name="club_img" type="file"--}}
+                                                {{--class="form-control upload-input mb-1"--}}
+                                                {{--placeholder="Wybierz zdjęcie główne" accept=".jpg,.jpeg"--}}
+                                                {{--onchange="loadFile(event)" multiple>--}}
 
-                                                    {{--@if ($errors->has('club_img'))--}}
-                                                        {{--<span class="help-block">--}}
-                                                             {{--<small class="text-danger">{{ $errors->first('club_img') }}</small>--}}
-                                                        {{--</span>--}}
-                                                    {{--@endif--}}
+                                                {{--@if ($errors->has('club_img'))--}}
+                                                {{--<span class="help-block">--}}
+                                                {{--<small class="text-danger">{{ $errors->first('club_img') }}</small>--}}
+                                                {{--</span>--}}
+                                                {{--@endif--}}
 
                                                 {{--</div>--}}
                                                 {{--<img class="img-fluid mb-1" id="output" src=""/>--}}
@@ -145,8 +127,8 @@
                                                 <div class="clearfix mt-1"></div>
 
                                                 <label for="additional_address_info" style=""
-                                                       class="">{{ __('Dodatkowe informacje adresowe') }}</label>
-                                                <textarea rows="7" id="additional_address_info" type="text"
+                                                       class="mb-1">{{ __('Dodatkowe informacje adresowe') }}</label>
+                                                <textarea rows="4" id="additional_address_info" type="text"
                                                           class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
                                                           name="additional_address_info"
                                                           value="{{ old('additional_address_info') }}"
@@ -164,10 +146,10 @@
 
                                         <hr>
 
-                                        <div class="form-group row">
+                                        <div class="form-group row mt-5">
 
                                             <div class="col-md-12">
-                                                <h2>Infomacje kontaktowe</h2>
+                                                <h3>Infomacje kontaktowe</h3>
                                             </div>
 
                                             {{--<label for="official_name" class="col-md-2 col-form-label text-md-right">{{ __('First name') }}</label>--}}
@@ -188,8 +170,24 @@
                                             </div>
 
                                             <div class="col-md-6">
+                                                <label for="fax" style=""
+                                                       class="">{{ __('Faks') }}</label>
+                                                <input id="fax" type="text"
+                                                       class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
+                                                       name="fax" value="{{ old('fax') }}"
+                                                       placeholder="Wprowadź oficjalny numer telefonu"
+                                                       autofocus>
+
+                                                @if ($errors->has('fax'))
+                                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('fax') }}</strong>
+                                    </span>
+                                                @endif
+                                            </div>
+
+                                            <div class="col-md-6 mt-2">
                                                 <label for="website_url" style=""
-                                                       class="">{{ __('Strona WWW') }}</label>
+                                                       class="">{{ __('Adres Państwa witryny') }}</label>
                                                 <input id="website_url" type="text"
                                                        class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
                                                        name="website_url" value="{{ old('website_url') }}"
@@ -202,13 +200,9 @@
                                                 @endif
                                             </div>
 
-                                        </div>
-
-                                        <div class="form-group row">
-                                            {{--<label for="official_name" class="col-md-2 col-form-label text-md-right">{{ __('First name') }}</label>--}}
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 mt-2">
                                                 <label for="facebook_url" style=""
-                                                       class="">{{ __('Adres do facebooka') }}</label>
+                                                       class="">{{ __('Strona w serwisie Facebook') }}</label>
                                                 <input id="facebook_url" type="text"
                                                        class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
                                                        name="facebook_url" value="{{ old('facebook_url') }}"
@@ -221,28 +215,83 @@
                                                 @endif
                                             </div>
 
+                                        </div>
+
+                                        <div class="form-group row">
+                                            {{--<label for="official_name" class="col-md-2 col-form-label text-md-right">{{ __('First name') }}</label>--}}
+
+
 
                                         </div>
 
-                                        {{--<div class="form-group row">--}}
-                                            {{--<div class="col-lg-10">--}}
-                                                {{--<label for="rules"> Zasady i możliwośći w twoim klubie </label> <br>--}}
-                                                {{--@foreach($rules as $rule)--}}
+                                        <div class="form-group row mt-5">
 
-                                                    {{--<div class="form-check form-check-inline">--}}
-                                                        {{--<input type="checkbox" name="rules[]" class="form-check-input" value="{{$rule->id}}">--}}
-                                                        {{--<label class="form-check-label"> {{$rule->name}}</label>--}}
-                                                    {{--</div>--}}
+                                            <div class="col-md-12">
+                                                <h3>Opis Twojego klubu</h3>
+                                                <p class="mb-2">limit to 400 znaków</p>
+                                            </div>
+                                            
+                                            <div class="col-12 col-md-9">
+                                                <textarea rows="4" id="additional_address_info" type="text"
+                                                          class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
+                                                          name="additional_address_info"
+                                                          value="{{ old('additional_address_info') }}"
+                                                          placeholder="Wprowadź dotatkowe informacje adresowe (wskazówki dojazdu itp.)"></textarea>
+                                            </div>
+
+                                        </div>
 
 
-                                                {{--@endforeach--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
+                                        <div class="form-group row mt-5">
 
-                                        <div class="form-group row">
+                                            <div class="col-md-12">
+                                                <h3>Informacje o klubie</h3>
+                                                <p class="mb-2">Czy ten klub oferuje dowolne z następujących udogodnień?</p>
+                                            </div>
+
+                                            <div class="col-md-3 pl-4">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                                    <label class="custom-control-label" for="customCheck1">Palarnia</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck2">
+                                                    <label class="custom-control-label" for="customCheck2">Kasyno</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck3">
+                                                    <label class="custom-control-label" for="customCheck3">Pomieszczenie VIP</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck4">
+                                                    <label class="custom-control-label" for="customCheck4">Restauracja</label>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck5">
+                                                    <label class="custom-control-label" for="customCheck5">Taksówka</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck6">
+                                                    <label class="custom-control-label" for="customCheck6">Szatnia</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck7">
+                                                    <label class="custom-control-label" for="customCheck7">Ochrona</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck8">
+                                                    <label class="custom-control-label" for="customCheck8">Striptiz</label>
+                                                </div>
+                                            </div>
 
 
+                                        </div>
 
+                                        <div class="form-group row mt-5">
                                             <div class="col-md-9">
                                                 <label for="music_types" style=""
                                                        class="">{{ __('Jaka muzyka jest w Twoim klubie często grana?') }}</label>
@@ -250,7 +299,8 @@
 
                                                 @foreach($musicTypes as $musicType)
                                                     <div class="form-check form-check-inline">
-                                                        <input name="music_types[]" class="form-check-input musicTypeCheckbox"
+                                                        <input name="music_types[]"
+                                                               class="form-check-input musicTypeCheckbox"
                                                                type="checkbox" id="musicTypeCheckbox"
                                                                value="{{$musicType->id}}">
                                                         <label class="form-check-label"
@@ -266,14 +316,44 @@
                                             </div>
                                         </div>
 
+                                        <div class="row d-flex align-self-center mt-5">
+                                            <div class="col-8">
+                                                <div class="input-group mb-3 mb-md-4 col-md-12 mr-0 pr-0 p-0">
 
-                                        <div class="form-group row mb-0">
-                                            <div class="col-md-6">
-                                                <button type="submit" class="btn btn-primary">
-                                                    {{ __('Dalej >>') }}
-                                                </button>
+                                                    <div class="row flex-column mb-0">
+                                                        <div class="col-md-12">
+                                                            <h3 class="mb-1">Wybierz zdjęcie klubu </h3>
+                                                            <p class="mb-1">
+                                                                <small>dozwolone formaty to JPG//PNG/GIF, rozmiar nie
+                                                                    powinien
+                                                                    przekraczać 5MB
+                                                                </small>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+
+                                                    <image-component></image-component>
+
+                                                    @if ($errors->has('image'))
+                                                        <span class="invalid-feedback">
+                                                        <strong>{{ $errors->first('image') }}</strong>
+                                                    </span>
+                                                    @endif
+
+                                                </div>
+                                            </div>
+                                            <div class="col-4 d-flex align-self-end justify-content-end">
+                                                <div class="form-group row mb-0">
+                                                    <div class="col-md-6">
+                                                        <button type="submit" class="btn btn-primary">
+                                                            {{ __('Dalej >>') }}
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
+
+
                                     </form>
                                 </div>
                             </div>

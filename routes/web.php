@@ -79,6 +79,7 @@ Route::group( [ 'prefix' => 'admin', 'middleware' => [ 'isAdmin' ], 'namespace' 
 	CRUD::resource( 'music-types', 'MusicTypesCrudController' );
 	CRUD::resource( 'clubs', 'ClubsCrudController' );
 	CRUD::resource( 'clubs-confirm', 'ClubsConfirmCrudController' );
+	Route::post( 'club-confirm', 'ClubsConfirmCrudController@confirmClub' )->name('club.confirm');
 } );
 
 Route::get( 'search/autocomplete', 'SearchController@autocomplete' );

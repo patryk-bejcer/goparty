@@ -7,9 +7,8 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Support\Facades\Auth;
 
-class ClubCreated
-{
-    use Dispatchable, InteractsWithSockets, SerializesModels;
+class ClubConfirm {
+	use Dispatchable, InteractsWithSockets, SerializesModels;
 
 	public $user;
 	public $club;
@@ -19,10 +18,9 @@ class ClubCreated
 	 *
 	 * @param $club
 	 */
-    public function __construct($club)
-    {
-        $this->user = Auth::user();
-        $this->club = $club;
-    }
+	public function __construct( $club ) {
+		$this->user = Auth::user();
+		$this->club = $club;
+	}
 
 }

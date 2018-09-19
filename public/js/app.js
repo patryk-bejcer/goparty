@@ -59304,7 +59304,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", { attrs: { for: "country" } }, [
+    return _c("label", { staticClass: "mb-2", attrs: { for: "country" } }, [
       _vm._v("Pełny adres  * "),
       _c("small", [_vm._v("(nazwa ulicy/numer\n        lokalu/miasto/kraj)")])
     ])
@@ -63709,7 +63709,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.google-map[data-v-34b46d08] {\n    width: 100%;\n    height: 350px;\n    margin: 0 auto;\n    background: gray;\n}\n@media (max-width: 768px) {\n.google-map[data-v-34b46d08] {\n        height: 300px;\n}\n}\n", ""]);
+exports.push([module.i, "\n.google-map[data-v-34b46d08] {\n    width: 100%;\n    height: 102%;\n    margin: 0 auto;\n    background: gray;\n}\n@media (max-width: 768px) {\n.google-map[data-v-34b46d08] {\n        height: 300px;\n}\n}\n", ""]);
 
 // exports
 

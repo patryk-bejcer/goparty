@@ -63,4 +63,9 @@ class Club extends Model {
 		return $this->hasMany( 'App\Event' );
 	}
 
+	/* Admin panel methods */
+	public function confirmClubBtn() {
+		return view('vendor.backpack.base.clubs.clubConfirm')->with('clubId', $this->id);
+	}
+
 }
