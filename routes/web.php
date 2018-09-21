@@ -15,6 +15,7 @@
 Route::get( '/', 'HomeController@index' )->name( 'home' );
 /* ====== END HOME PAGE ====== */
 
+
 /* ====== AUTH ====== */
 Auth::routes();
 Route::get( '/register', 'Auth\RegisterController@getRegister' )->name( 'register' );

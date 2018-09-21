@@ -10,6 +10,8 @@ use App\Images;
 use App\Music;
 use App\Facilities;
 use App\Services\ImageUpload;
+use App\User;
+use App\Notifications\Clubs\CreateClubByUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -115,6 +117,7 @@ class ClubsOwnerController extends Controller {
 		$club->facilities()->attach( $request->facilities );
 		$club->musics()->attach( $request->music_types );
 
+		User::findOrFail( $club->user_id )->notify( new CreateClubByUser( $club ) );
 		event( new ClubCreated( $club ) );
 
 		return view( 'dashboard.clubs.after-create-club' );

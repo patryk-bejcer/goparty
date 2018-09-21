@@ -120,4 +120,20 @@ footer .social-media-list a {
   border-color: transparent;
   background: transparent; }
 
+.bg-dark {
+  background-color: rgba(0, 0, 0, 0.9) !important;
+  border-radius: 3px;
+  color: #FFF; }
+  .bg-dark h1, .bg-dark h2, .bg-dark h3, .bg-dark h4, .bg-dark h5 {
+    color: #FFF; }
+
+.notification-card i {
+  font-size: 1.25em;
+  margin-top: 4px; }
+
+.notification {
+  border: 1px solid #333;
+  padding: .4em .35em;
+  margin-top: -1px; }
+
 /*# sourceMappingURL=global.css.map */

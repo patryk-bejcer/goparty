@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Club;
 use App\Events\ClubConfirm;
+use App\Notifications\Clubs\ClubConfirm as ClubConfirmNotification;
 use App\Http\Requests\ClubRequest as StoreRequest;
 use App\Http\Requests\ClubRequest as UpdateRequest;
+use App\User;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Illuminate\Http\Request;
 
@@ -108,6 +110,7 @@ class ClubsConfirmCrudController extends CrudController {
 
 		$club = Club::findOrFail( $request->input( 'clubId' ) );
 		$club->update( [ 'active' => true ] );
+		User::findOrFail( $club->user_id )->notify( new ClubConfirmNotification( $club ) );
 		event( new ClubConfirm( $club ) );
 
 		return back();

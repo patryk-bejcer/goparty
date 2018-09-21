@@ -18,6 +18,6 @@ class ClubConfirmEmail
 	 */
     public function handle(ClubConfirm $event)
     {
-        Mail::to($event->user->email)->sendNow(new ClubConfirmMail($event->club));
+        //Mail::to($event->user->email)->sendNow(new ClubConfirmMail($event->club));
     }
 }

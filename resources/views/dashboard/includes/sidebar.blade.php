@@ -31,7 +31,9 @@
 
         <div class="list-group pb-4">
 
-            <a class="dropdown-item list-group-item collapsed" href="{{route('user.notifications')}}">
+            <a class="dropdown-item list-group-item collapsed
+{{ Request::path() == 'dashboard/notifications' ? 'active' : '' }}
+" href="{{route('user.notifications')}}">
                 <i class="fa fa-bell"></i>
                 {{ __('Powiadomienia') }}</a>
 
