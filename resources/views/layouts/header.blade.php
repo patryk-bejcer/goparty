@@ -67,6 +67,7 @@
                             </form>
                         </div>
                     </li>
+                    {{--<li class="nav-item dropdown"><i class="fa fa-bell ml-2 pr-2 mt-3" aria-hidden="true"></i></li>--}}
                 @endguest
 
             </ul>

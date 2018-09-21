@@ -29,6 +29,23 @@ class Helper {
 
 	/* function return random banner url from img/banner */
 
+	/**
+	 *
+	 * This function accepts list of all items from database and single item from foreach loop.
+	 * Finally function returns whether checkbox is checked
+	 *
+	 * @param $allItemsFromDB
+	 * @param $item
+	 *
+	 * @return string
+	 */
+	public static function checkIfCheckboxIsChecked($allItemsFromDB, $item){
+		for($i = 0; $i < count($allItemsFromDB); $i++){
+			if($allItemsFromDB->toArray()[$i]['id'] === $item['id']){
+				return 'checked';
+			}
+		}
+	}
 
 
 }

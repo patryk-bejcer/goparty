@@ -33,7 +33,7 @@ class ClubConfirm extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail', 'database'];
+        return ['mail', 'database', 'broadcast'];
     }
 
     /**
@@ -61,4 +61,6 @@ class ClubConfirm extends Notification
              'message' => 'Dodany przez Ciebie klub został zatwierdzony przez administratora portalu.'
         ];
     }
+
+
 }

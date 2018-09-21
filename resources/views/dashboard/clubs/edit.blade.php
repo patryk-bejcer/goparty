@@ -71,14 +71,9 @@
                                                 @endif
                                             </div>
 
-                                            {{--<div class="col-md-6 mt-2 mb-0">--}}
-                                            {{--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum eligendi nam nesciunt odit officia quasi, sit suscipit! Aut,  vitae?</p>--}}
-                                            {{--</div>--}}
-
                                         </div>
 
                                         <div class="form-group row">
-                                            {{--<label for="official_name" class="col-md-2 col-form-label text-md-right">{{ __('First name') }}</label>--}}
                                             <div class="col-md-6">
                                                 <label for="email" style=""
                                                        class="">{{ __('Oficjalny aders E-mail *') }}</label>
@@ -206,14 +201,15 @@
 
                                             <div class="col-md-9 ml-4">
 
-                                                {{--{{$club->facilities}}--}}
-
                                                 @foreach($facilities as $facility)
                                                     <div class="custom-control-inline custom-checkbox pr-4 pl-1 mb-2">
                                                         <input name="facilities[]"
                                                                type="checkbox"
                                                                value="{{$facility->id}}" class="custom-control-input"
-                                                               id="facility_{{$facility->id}}">
+                                                               id="facility_{{$facility->id}}"
+
+                                                               {{ \App\Services\Helper::checkIfCheckboxIsChecked($club->facilities, $facility) }}
+                                                        >
                                                         <label class="custom-control-label"
                                                                for="facility_{{$facility->id}}">{{$facility->name}}</label>
                                                     </div>
@@ -235,7 +231,10 @@
                                                             <input name="music_types[]" type="checkbox"
                                                                    value="{{$musicType->id}}"
                                                                    class="custom-control-input"
-                                                                   id="musicType_{{$musicType->id}}">
+                                                                   id="musicType_{{$musicType->id}}"
+
+                                                                   {{ \App\Services\Helper::checkIfCheckboxIsChecked($club->musics, $musicType) }}
+                                                            >
                                                             <label class="custom-control-label"
                                                                    for="musicType_{{$musicType->id}}">{{$musicType->name}}</label>
                                                         </div>
@@ -261,7 +260,8 @@
                                                     <div class="row flex-column mb-0">
                                                         <div class="col-md-12">
                                                             @if (!$club->primaryImage->isEmpty())
-                                                                <img style="max-height: 320px; width: auto !important;" class="mb-2"
+                                                                <img style="max-height: 320px; width: auto !important;"
+                                                                     class="mb-2"
                                                                      src="{{url('/uploads/clubs/' . $club->primaryImage->last()->src)}}"
                                                                      alt="">
                                                             @endif

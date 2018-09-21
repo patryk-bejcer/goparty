@@ -124,6 +124,11 @@ class ClubsOwnerController extends Controller {
 
 	}
 
+	/**
+	 * @param Club $club
+	 *
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
 	public function edit( Club $club ) {
 		$musicTypes = Music::all();
 		$facilities = Facilities::all();
