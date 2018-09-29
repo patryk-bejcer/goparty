@@ -1,57 +1,59 @@
 <template>
-    <div>
-        <button class="btn btn-success pull-right" v-on:click="takePart">
-            {{btnText}}
-        </button>
-    </div>
+  <div>
+    <button
+      class="btn btn-success pull-right"
+      @click="takePart"
+    >
+      {{ btnText }}
+    </button>
+  </div>
 </template>
 
 <script>
-    export default {
-        name: "TakePartComponent",
+export default {
+  name: 'TakePartComponent',
 
-        //Get data from blade view.
-        props: ['user', 'event'],
+  // Get data from blade view.
+  props: ['user', 'event'],
 
-        data: function () {
-            return {
-                btnText: 'Weź udział',
-                eventAttendance: {
-                    event_id: this.event,
-                    user_id: this.user,
-                    status: 2,
-                }
-            }
-        },
+  data() {
+    return {
+      btnText: 'Weź udział',
+      eventAttendance: {
+        event_id: this.event,
+        user_id: this.user,
+        status: 2,
+      },
+    };
+  },
 
-        methods:{
-            checkIfExist(){
-                axios.get('/api/take-part?event_id=' + this.eventAttendance.event_id + '&user_id=' + this.eventAttendance.user_id, )
-                    .then(function (resp) {
-                        // console.log(resp);
-                        console.log('exist');
-                        btnText = 'Bierzesz udział';
-                    })
-                    .catch(function (resp) {
-                        // console.log(resp);
-                        console.log('not exist');
-                        btnText = 'Weź udział';
-                    });
-            },
+  methods: {
+    checkIfExist() {
+      axios.get(`/api/take-part?event_id=${this.eventAttendance.event_id}&user_id=${this.eventAttendance.user_id}`)
+        .then((resp) => {
+          // console.log(resp);
+          console.log('exist');
+          btnText = 'Bierzesz udział';
+        })
+        .catch((resp) => {
+          // console.log(resp);
+          console.log('not exist');
+          btnText = 'Weź udział';
+        });
+    },
 
-            takePart(){
-                console.log(this.eventAttendance);
+    takePart() {
+      console.log(this.eventAttendance);
 
-                axios.post('/api/take-part', this.eventAttendance)
-                    .then( response => {
-                    console.log(response.data);
-                }, error => {
-                    console.log(error);
-                });
-
-            }
-        }
-    }
+      axios.post('/api/take-part', this.eventAttendance)
+        .then((response) => {
+          console.log(response.data);
+        }, (error) => {
+          console.log(error);
+        });
+    },
+  },
+};
 
 </script>
 

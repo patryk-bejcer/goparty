@@ -3,8 +3,6 @@
 @section('content')
 
     <div class="container">
-
-
         @include('layouts.includes.subpages-banner')
         <div class="row justify-content-center">
             @include('dashboard.includes.sidebar')

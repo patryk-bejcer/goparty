@@ -1,50 +1,69 @@
 <template>
-        <div class="row" style="width:100%;">
-            <div class="col-md-4 pr-0 mb-3 mb-md-0" v-if="image">
-                <img style="max-width: 100%;" :src="image" class="img-responsive">
-            </div>
-            <div class="col-md-8">
-                <div class="box">
-                    <input id="image-input" name="image" type="file" v-on:change="onImageChange" class="form-control file-input inputfile inputfile-1" accept="image/x-png,image/gif,image/jpeg">
-                    <label for="image-input">
-                        <i class="fa fa-upload" aria-hidden="true"></i><span>{{buttonText}}</span>
-                    </label>
-                </div>
-            </div>
-        </div>
+  <div
+    class="row"
+    style="width:100%;"
+  >
+    <div
+      v-if="image"
+      class="col-md-4 pr-0 mb-3 mb-md-0"
+    >
+      <img
+        style="max-width: 100%;"
+        :src="image"
+        class="img-responsive"
+      >
+    </div>
+    <div class="col-md-8">
+      <div class="box">
+        <input
+          id="image-input"
+          name="image"
+          type="file"
+          class="form-control file-input inputfile inputfile-1"
+          accept="image/x-png,image/gif,image/jpeg"
+          @change="onImageChange"
+        >
+        <label for="image-input">
+          <i
+            class="fa fa-upload"
+            aria-hidden="true"
+          /><span>{{ buttonText }}</span>
+        </label>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                image: '',
-                buttonText: 'Wybierz plik z dysku...'
-            }
-        },
+export default {
+  data() {
+    return {
+      image: '',
+      buttonText: 'Wybierz plik z dysku...',
+    };
+  },
 
-        mounted:{
+  mounted: {
 
-        },
+  },
 
-        methods: {
-            onImageChange(e) {
-                let files = e.target.files || e.dataTransfer.files;
-                if (!files.length)
-                    return;
-                this.createImage(files[0]);
-                this.buttonText = files[0].name;
-            },
-            createImage(file) {
-                let reader = new FileReader();
-                let vm = this;
-                reader.onload = (e) => {
-                    vm.image = e.target.result;
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-    }
+  methods: {
+    onImageChange(e) {
+      const files = e.target.files || e.dataTransfer.files;
+      if (!files.length) { return; }
+      this.createImage(files[0]);
+      this.buttonText = files[0].name;
+    },
+    createImage(file) {
+      const reader = new FileReader();
+      const vm = this;
+      reader.onload = (e) => {
+        vm.image = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    },
+  },
+};
 </script>
 
 <style>

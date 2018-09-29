@@ -1,45 +1,51 @@
 <template>
-    <div>
-        <transition name="bounce">
-            <div class="alert alert-success spacing flash-success justify-content-between" role="alert" v-show="show">
-                <i class="fa fa-info-circle" aria-hidden="true"></i>
-                <p class="mb-0"> {{ body }}</p>
-            </div>
-        </transition>
-    </div>
+  <div>
+    <transition name="bounce">
+      <div
+        v-show="show"
+        class="alert alert-success spacing flash-success justify-content-between"
+        role="alert"
+      >
+        <i
+          class="fa fa-info-circle"
+          aria-hidden="true"
+        />
+        <p class="mb-0"> {{ body }}</p>
+      </div>
+    </transition>
+  </div>
 
 </template>
 
 <script>
-    export default {
-        props: ['message'],
-        data() {
-            return {
-                show: false,
-                body: ''
-            }
-        },
-        created() {
-            if (this.message) {
-                this.flash(this.message)
-            }
-            window.events.$on('flash', (message) => this.flash(message))
-
-        },
-        methods: {
-            flash(message) {
-                this.show = true
-                this.body = message
-
-                setTimeout(() => {
-                    this.hide()
-                }, 4500)
-            },
-            hide() {
-                this.show = false
-            }
-        }
+export default {
+  props: ['message'],
+  data() {
+    return {
+      show: false,
+      body: '',
+    };
+  },
+  created() {
+    if (this.message) {
+      this.flash(this.message);
     }
+    window.events.$on('flash', message => this.flash(message));
+  },
+  methods: {
+    flash(message) {
+      this.show = true;
+      this.body = message;
+
+      setTimeout(() => {
+        this.hide();
+      }, 4500);
+    },
+    hide() {
+      this.show = false;
+    },
+  },
+};
 </script>
 
 <style>

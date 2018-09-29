@@ -4,8 +4,6 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
-
 import 'jquery-ui';
 import 'jquery-ui/ui/effect.js';
 import 'jquery-ui/ui/effects/effect-fade.js';
@@ -15,6 +13,8 @@ import 'jquery-ui/ui/widgets/autocomplete.js';
 import 'jquery-ui/ui/widgets/resizable.js';
 
 import VueRouter from 'vue-router';
+
+require('./bootstrap');
 
 
 window.jquery_ui = require('jquery-ui');
@@ -67,38 +67,38 @@ Vue.component('events-nearest-date', require('./components/Events/NearestEventsB
 /* END OF EVENTS COMPONENTS */
 
 
-
 const routes = [
-    {
-        path: '/clubs',
-        name: 'clubs',
-        components: {
-            clubs: ClubsMain
-        }
+  {
+    path: '/clubs',
+    name: 'clubs',
+    components: {
+      clubs: ClubsMain,
     },
-    {
-        path: '/clubs/search/:city',
-        component: Search,
-        name: 'search'
-    },
-    // {
-    //     path: '/clubs/:id',
-    //     component: SingleClub,
-    //     name: 'singleClub'
-    // }
-]
+  },
+  {
+    path: '/clubs/search/:city',
+    component: Search,
+    name: 'search',
+  },
+  // {
+  //     path: '/clubs/:id',
+  //     component: SingleClub,
+  //     name: 'singleClub'
+  // }
+];
 
-const router = new VueRouter({routes});
+const router = new VueRouter({ routes });
 
 /* This is cons with app URL */
 // const appURL = 'http://localhost/goparty/public/';
 const appURL = process.env.MIX_APP_URL;
 
 const app = new Vue({
-    router, scrollBehavior(to, from, savedPosition) {
-        return {x: 0, y: 0}
-    }
-},).$mount('#app');
+  router,
+  scrollBehavior(to, from, savedPosition) {
+    return { x: 0, y: 0 };
+  },
+}).$mount('#app');
 
 axios.defaults.baseURL = process.env.MIX_APP_URL;
 
@@ -106,9 +106,6 @@ Vue.prototype.$hostname = appURL;
 
 window.events = new Vue();
 
-window.flash = function(message) {
-    window.events.$emit('flash',message);
-}
-
-
-
+window.flash = function (message) {
+  window.events.$emit('flash', message);
+};

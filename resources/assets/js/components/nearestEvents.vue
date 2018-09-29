@@ -38,89 +38,96 @@
 </style>
 
 <template>
-    <div id="nearest-events">
-        <div class="col-lg-auto mt-3 pl-0">
-            <h3 class="text-left pull-left">NAJBLIŻSZE IMPREZY W TWOJEJ OKOLICY</h3>
-            <h5 class="pull-right show-more">
-                <a class="text-white" href="">Zobacz wszystkie</a>
-            </h5>
-        </div>
-        
-        <div class="clearfix"></div>
-
-        <div class="row mt-3">
-
-            <div v-for="event in events.data" class="col-12 col-md mb-2">
-                <div class="single-event text-center">
-
-                    <a :href="this.$hostname + '/events/' + event.id">
-                        <img class="img-fluid" :src="url + '/thumbnails/300x180-' + event.event_img" alt="">
-                        <h5 class="text-white mt-2"> {{ event.title }} </h5>
-                        <h6 class="text-white mt-2"> {{ event.start_date }} </h6>
-                        <h6 class="text-white mt-2"> Klub: {{ event.official_name }} </h6>
-                    </a>
-                </div>
-            </div>
-
-        </div>
+  <div id="nearest-events">
+    <div class="col-lg-auto mt-3 pl-0">
+      <h3 class="text-left pull-left">NAJBLIŻSZE IMPREZY W TWOJEJ OKOLICY</h3>
+      <h5 class="pull-right show-more">
+        <a
+          class="text-white"
+          href=""
+        >Zobacz wszystkie</a>
+      </h5>
     </div>
+
+    <div class="clearfix" />
+
+    <div class="row mt-3">
+
+      <div
+        v-for="event in events.data"
+        class="col-12 col-md mb-2"
+      >
+        <div class="single-event text-center">
+
+          <a :href="this.$hostname + '/events/' + event.id">
+            <img
+              class="img-fluid"
+              :src="url + '/thumbnails/300x180-' + event.event_img"
+              alt=""
+            >
+            <h5 class="text-white mt-2"> {{ event.title }} </h5>
+            <h6 class="text-white mt-2"> {{ event.start_date }} </h6>
+            <h6 class="text-white mt-2"> Klub: {{ event.official_name }} </h6>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </template>
 
 <script>
 
-    export default {
-        name: "nearestClubs",
-        data: function () {
-            return {
-                position: null,
-                events: {},
-                url: this.$hostname + '/uploads/events/'
-            }
-        },
-        mounted: function () {
-            if (navigator.geolocation) {
-                let self = this;
+export default {
+  name: 'NearestClubs',
+  data() {
+    return {
+      position: null,
+      events: {},
+      url: `${this.$hostname}/uploads/events/`,
+    };
+  },
+  mounted() {
+    if (navigator.geolocation) {
+      const self = this;
 
-                navigator.geolocation.getCurrentPosition(function (position) {
-                    self.position = position.coords;
-                    let lat = self.position.latitude;
-                    let long = self.position.longitude;
+      navigator.geolocation.getCurrentPosition((position) => {
+        self.position = position.coords;
+        const lat = self.position.latitude;
+        const long = self.position.longitude;
 
-                    // console.log(self.position.latitude);
-                    // console.log(self.position.longitude);
+        // console.log(self.position.latitude);
+        // console.log(self.position.longitude);
 
-                    axios.get('/api/nearest-events?lat=' + lat + '&long=' + long)
-                        .then(function (response) {
-                            self.events = response;
-                            // console.log(self.events);
-                            // console.log('distance:' + self.getDistanceFromLatLonInKm(lat,long,50.667263, 17.935603899999933))
-                        })
-                        .catch(function (error) {
-                            console.log(error);
-                        });
-                });
-
-            }
-        },
-        methods: {
-            getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
-                let R = 6371; // Radius of the earth in km
-                let dLat = this.deg2rad(lat2 - lat1);  // deg2rad below
-                let dLon = this.deg2rad(lon2 - lon1);
-                let a =
-                    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                    Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) *
-                    Math.sin(dLon / 2) * Math.sin(dLon / 2)
-                ;
-                let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-                let d = R * c; // Distance in km
-                return d.toFixed(1);
-            },
-            deg2rad(deg) {
-                return deg * (Math.PI / 180)
-            }
-        }
+        axios.get(`/api/nearest-events?lat=${lat}&long=${long}`)
+          .then((response) => {
+            self.events = response;
+            // console.log(self.events);
+            // console.log('distance:' + self.getDistanceFromLatLonInKm(lat,long,50.667263, 17.935603899999933))
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      });
     }
+  },
+  methods: {
+    getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+      const R = 6371; // Radius of the earth in km
+      const dLat = this.deg2rad(lat2 - lat1); // deg2rad below
+      const dLon = this.deg2rad(lon2 - lon1);
+      const a = Math.sin(dLat / 2) * Math.sin(dLat / 2)
+                    + Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2))
+                    * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      const d = R * c; // Distance in km
+      return d.toFixed(1);
+    },
+    deg2rad(deg) {
+      return deg * (Math.PI / 180);
+    },
+  },
+};
 
 </script>
 
