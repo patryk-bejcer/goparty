@@ -8,7 +8,31 @@ use App\User;
 use Ghanem\Rating\Models\Rating;
 use Illuminate\Http\Request;
 
+/**
+ * @SWG\Swagger(
+ *   basePath="/goparty/public/api",
+ *   @SWG\Info(
+ *     title="Clubs API",
+ *     version="1.0.0"
+ *   )
+ * )
+ */
+
+
+
 class ClubsController extends Controller {
+
+    /**
+     * @SWG\Get(
+     *   path="/clubs-archived",
+     *   summary="List all clubs",
+     *   operationId="getArchivedClubs",
+     *   @SWG\Response(response=200, description="successful operation"),
+     *   @SWG\Response(response=406, description="not acceptable"),
+     *   @SWG\Response(response=500, description="internal server error")
+     * )
+     *
+     */
 
 	public function archivedClubs( Request $request ) {
 
