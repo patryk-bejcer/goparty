@@ -2,9 +2,5 @@
     "extends": [
         "airbnb",
         "plugin:vue/recommended"
-    ],
-    "plugins": [
-        "react",
-        "jsx-a11y"
     ]
 }

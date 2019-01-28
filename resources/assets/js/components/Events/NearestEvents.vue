@@ -58,6 +58,7 @@
 import Slick from 'vue-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import axios from 'axios';
 
 export default {
   name: 'NearestEvents',
@@ -69,7 +70,7 @@ export default {
   data() {
     return {
       permissions: true,
-      hostname: this.$hostname,
+      hostname: 'http://localhost:8000/',
       loading: false,
       events: {},
       position: null,
@@ -138,8 +139,6 @@ export default {
         const self = this;
 
         navigator.geolocation.getCurrentPosition((position) => {
-          console.log('test');
-
           self.loading = true;
           self.permissions = true;
           self.position = position.coords;

@@ -47,9 +47,7 @@
                 <a href="{{url('/dashboard/clubs/create')}}" class="list-group-item child" data-parent="#menu1"><i class="fa fa-plus" aria-hidden="true"></i>Dodaj
                     nowy klub</a>
             </div>
-            {{--<a class="dropdown-item list-group-item collapsed" href="{{url('dashboard/attendance')}}">--}}
-                {{--<i class="fa fa-music"></i>--}}
-                {{--{{ __('Imprezy u Ciebie') }}</a>--}}
+
             @endrole
 
             @role('user')
@@ -67,9 +65,9 @@
                 <i class="fa fa-users"></i>
                 {{ __('Znajomi') }}</a>
             @endrole
-            <a class="dropdown-item list-group-item collapsed" href="{{url('dashboard/attendance')}}">
-                <i class="fa fa-picture-o"></i>
-                {{ __('Zdjęcia') }}</a>
+            {{--<a class="dropdown-item list-group-item collapsed" href="{{url('dashboard/attendance')}}">--}}
+                {{--<i class="fa fa-picture-o"></i>--}}
+                {{--{{ __('Zdjęcia') }}</a>--}}
 
 
             <a class="dropdown-item list-group-item collapsed
@@ -77,6 +75,9 @@
                     " href="{{route('user.edit.profile')}}">
                 <i class="fa fa-gear"></i>
                 {{ __('Profil') }}</a>
+            <a class="dropdown-item list-group-item collapsed" href="{{url('dashboard/attendance')}}">
+                <i class="fa fa-music"></i>
+                {{ __('Weźmiesz udział') }}</a>
 
             <a class="dropdown-item list-group-item collapsed" href="{{url('dashboard/attendance')}}">
                 <i class="fa fa-sign-out"></i>

@@ -59,7 +59,7 @@
       >
         <div class="single-event text-center">
 
-          <a :href="this.$hostname + '/events/' + event.id">
+          <a :href="'http://localhost:8000/' + '/events/' + event.id">
             <img
               class="img-fluid"
               :src="url + '/thumbnails/300x180-' + event.event_img"
@@ -84,7 +84,7 @@ export default {
     return {
       position: null,
       events: {},
-      url: `${this.$hostname}/uploads/events/`,
+      url: `http://localhost:8000/uploads/events/`,
     };
   },
   mounted() {

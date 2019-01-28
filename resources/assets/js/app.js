@@ -1,8 +1,11 @@
+/* eslint-disable import/no-unresolved,import/no-extraneous-dependencies,import/extensions,no-undef */
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+
+import consts from './consts';
 
 import 'jquery-ui';
 import 'jquery-ui/ui/effect.js';
@@ -22,6 +25,7 @@ window.jquery_ui = require('jquery-ui');
 window.Vue = require('vue');
 
 Vue.use(VueRouter);
+
 
 
 /**
@@ -91,7 +95,9 @@ const router = new VueRouter({ routes });
 
 /* This is cons with app URL */
 // const appURL = 'http://localhost/goparty/public/';
-const appURL = process.env.MIX_APP_URL;
+const appURL = consts.appURL;
+
+Vue.prototype.$appUrl = consts.appURL;
 
 const app = new Vue({
   router,
@@ -109,3 +115,5 @@ window.events = new Vue();
 window.flash = function (message) {
   window.events.$emit('flash', message);
 };
+
+require('./mb-custom-scripts');

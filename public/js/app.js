@@ -29235,26 +29235,30 @@ module.exports = __webpack_require__(175);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery_ui__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery_ui___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery_ui__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery_ui_ui_effect_js__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery_ui_ui_effect_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_jquery_ui_ui_effect_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_jquery_ui_ui_effects_effect_fade_js__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_jquery_ui_ui_effects_effect_fade_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_jquery_ui_ui_effects_effect_fade_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_jquery_ui_ui_effects_effect_blind_js__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_jquery_ui_ui_effects_effect_blind_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_jquery_ui_ui_effects_effect_blind_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_jquery_ui_ui_widgets_slider_js__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_jquery_ui_ui_widgets_slider_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_jquery_ui_ui_widgets_slider_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_jquery_ui_ui_widgets_autocomplete_js__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_jquery_ui_ui_widgets_autocomplete_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_jquery_ui_ui_widgets_autocomplete_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_jquery_ui_ui_widgets_resizable_js__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_jquery_ui_ui_widgets_resizable_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_jquery_ui_ui_widgets_resizable_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vue_router__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__consts__ = __webpack_require__(174);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery_ui__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery_ui___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_jquery_ui__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_jquery_ui_ui_effect_js__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_jquery_ui_ui_effect_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_jquery_ui_ui_effect_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_jquery_ui_ui_effects_effect_fade_js__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_jquery_ui_ui_effects_effect_fade_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_jquery_ui_ui_effects_effect_fade_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_jquery_ui_ui_effects_effect_blind_js__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_jquery_ui_ui_effects_effect_blind_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_jquery_ui_ui_effects_effect_blind_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_jquery_ui_ui_widgets_slider_js__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_jquery_ui_ui_widgets_slider_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_jquery_ui_ui_widgets_slider_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_jquery_ui_ui_widgets_autocomplete_js__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_jquery_ui_ui_widgets_autocomplete_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_jquery_ui_ui_widgets_autocomplete_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_jquery_ui_ui_widgets_resizable_js__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_jquery_ui_ui_widgets_resizable_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_jquery_ui_ui_widgets_resizable_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vue_router__ = __webpack_require__(44);
+/* eslint-disable import/no-unresolved,import/no-extraneous-dependencies,import/extensions,no-undef */
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+
+
 
 
 
@@ -29272,7 +29276,7 @@ window.jquery_ui = __webpack_require__(6);
 
 window.Vue = __webpack_require__(25);
 
-Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_router__["a" /* default */]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_8_vue_router__["a" /* default */]);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -29326,11 +29330,13 @@ var routes = [{
   name: 'search'
 }];
 
-var router = new __WEBPACK_IMPORTED_MODULE_7_vue_router__["a" /* default */]({ routes: routes });
+var router = new __WEBPACK_IMPORTED_MODULE_8_vue_router__["a" /* default */]({ routes: routes });
 
 /* This is cons with app URL */
 // const appURL = 'http://localhost/goparty/public/';
-var appURL = "http://localhost:8000";
+var appURL = __WEBPACK_IMPORTED_MODULE_0__consts__["a" /* default */].appURL;
+
+Vue.prototype.$appUrl = __WEBPACK_IMPORTED_MODULE_0__consts__["a" /* default */].appURL;
 
 var app = new Vue({
   router: router,
@@ -29348,6 +29354,8 @@ window.events = new Vue();
 window.flash = function (message) {
   window.events.$emit('flash', message);
 };
+
+__webpack_require__(173);
 
 /***/ }),
 /* 34 */
@@ -60113,7 +60121,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     return {
       position: null,
       events: {},
-      url: this.$hostname + '/uploads/events/'
+      url: 'http://localhost:8000/uploads/events/'
     };
   },
   mounted: function mounted() {
@@ -60176,7 +60184,11 @@ var render = function() {
           _c("div", { staticClass: "single-event text-center" }, [
             _c(
               "a",
-              { attrs: { href: this.$hostname + "/events/" + event.id } },
+              {
+                attrs: {
+                  href: "http://localhost:8000/" + "/events/" + event.id
+                }
+              },
               [
                 _c("img", {
                   staticClass: "img-fluid",
@@ -64307,7 +64319,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.loading = true;
 
       // console.log('http://localhost/goparty/public/api/clubs-archived?lat=' + lat + '&long=' + long + '&page=' + page);
-      axios.get('http://localhost/goparty/public/api/clubs-archived?lat=' + lat + '&long=' + long + '&page=' + page).then(function (response) {
+      axios.get('http://localhost:8000/api/clubs-archived?lat=' + lat + '&long=' + long + '&page=' + page).then(function (response) {
         _this.clubsList = response.data;
         _this.loading = false;
       });
@@ -64561,14 +64573,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   methods: {
     getCityData: function getCityData(addressData, placeResultData, id) {
       this.address = addressData.locality;
-      window.location.href = this.$hostname + 'clubs#/clubs/search/' + this.address;
+      window.location.href = 'http://localhost:8000/clubs#/clubs/search/' + this.address;
     },
     runSearch: function runSearch() {
       var inputValue = document.getElementById('map').value;
       if (inputValue === '') {
-        window.location.href = this.$hostname + 'clubs#/clubs/';
+        window.location.href = 'http://localhost:8000/clubs#/clubs/';
       } else {
-        window.location.href = this.$hostname + 'clubs#/clubs/search/' + inputValue;
+        window.location.href = 'http://localhost:8000/clubs#/clubs/search/' + inputValue;
       }
     },
     clearInputText: function clearInputText() {
@@ -64840,12 +64852,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   methods: {
     renderImg: function renderImg(img) {
-      var imgDirectoryPath = this.$hostname + '/uploads/clubs/thumbnails/thumb-';
+      var imgDirectoryPath = 'http://localhost:8000/uploads/clubs/thumbnails/thumb-';
       if (img === null) return imgDirectoryPath + '1533504291.png';
       return imgDirectoryPath + img.src;
     },
     renderUrl: function renderUrl(id) {
-      return 'clubs/' + id;
+      return '/clubs/' + id;
     }
   }
 });
@@ -65106,7 +65118,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   data: function data() {
     return {
-      hostname: this.$hostname,
+      hostname: 'http://localhost:8000/',
       loading: false,
       clubs: {},
       position: null,
@@ -66285,10 +66297,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   methods: {
     errorImg: function errorImg(event) {
-      event.target.src = 'http://localhost/goparty/public/uploads/events/Klubowa-Noc-w-Bydgoszczy-plakat-obrazek_duzy_4049971.jpg';
+      event.target.src = 'http://localhost:8000/uploads/events/Klubowa-Noc-w-Bydgoszczy-plakat-obrazek_duzy_4049971.jpg';
     },
     renderImg: function renderImg(img) {
-      var imgDirectoryPath = this.$hostname + '/uploads/events/thumbnails/300x180-';
+      var imgDirectoryPath = 'http://localhost:8000/uploads/events/thumbnails/300x180-';
       if (img === null) return imgDirectoryPath + '1533504291.png';
       return imgDirectoryPath + img;
     },
@@ -66451,6 +66463,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_slick_carousel_slick_slick_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_slick_carousel_slick_slick_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_slick_carousel_slick_slick_theme_css__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_slick_carousel_slick_slick_theme_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_slick_carousel_slick_slick_theme_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_axios__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_axios__);
 //
 //
 //
@@ -66507,6 +66521,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
 
 
 
@@ -66522,7 +66537,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   data: function data() {
     return {
       permissions: true,
-      hostname: this.$hostname,
+      hostname: 'http://localhost:8000/',
       loading: false,
       events: {},
       position: null,
@@ -66591,15 +66606,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var self = this;
 
         navigator.geolocation.getCurrentPosition(function (position) {
-          console.log('test');
-
           self.loading = true;
           self.permissions = true;
           self.position = position.coords;
           var lat = self.position.latitude;
           var long = self.position.longitude;
 
-          axios.get('/api/nearest-events?lat=' + lat + '&long=' + long).then(function (response) {
+          __WEBPACK_IMPORTED_MODULE_3_axios___default.a.get('/api/nearest-events?lat=' + lat + '&long=' + long).then(function (response) {
             self.events = response;
             self.loading = false;
             // console.log(response);
@@ -66612,7 +66625,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             self.loading = true;
             console.log('you denied me :-(');
             self.permissions = false;
-            axios.get('/api/nearest-events?lat=55&long=55').then(function (response) {
+            __WEBPACK_IMPORTED_MODULE_3_axios___default.a.get('/api/nearest-events?lat=55&long=55').then(function (response) {
               self.events = response;
               self.loading = false;
               // console.log(response);
@@ -66900,7 +66913,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   data: function data() {
     return {
-      hostname: this.$hostname,
+      hostname: 'http://localhost:8000/',
       loading: false,
       events: {},
       position: null,
@@ -67088,8 +67101,503 @@ if (false) {
 }
 
 /***/ }),
-/* 173 */,
-/* 174 */,
+/* 173 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__consts__ = __webpack_require__(174);
+/* eslint-disable */
+
+
+var tab = ['cos tam', 'dwa'];
+
+function show_post() {
+  $('#user-photo').addClass('.animate-to-left');
+}
+function validateMessage(message) {
+  $('#validate-error-content').empty();
+  $('#validate-error-content').append(message);
+  $('#validate-errors').show('blind', 200, callback());
+  function callback() {
+    setTimeout(function () {
+      $('#validate-errors').hide('blind', 200);
+    }, 3000);
+  }
+}
+function change_active(div) {
+  var image_id = div.getAttribute('data-image_id');
+  console.log(image_id);
+  $.ajax({
+    method: 'post',
+    url: active_change_url,
+    data: { image_id: image_id, _token: token },
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+
+  }).done(function (msg) {});
+}
+function init_rate(fieldset, rate) {
+  counter = 5;
+  $(fieldset).children('label').each(function (index, element) {
+    counter -= 1;
+    if (counter < rate) {
+      element.style.color = 'rgb(239, 58, 177)';
+    }
+  });
+}
+function change_main(div) {
+  var image_id = div.getAttribute('data-image_id');
+  console.log(image_id);
+  $.ajax({
+    method: 'post',
+    url: main_change_url,
+    data: { image_id: image_id, _token: token },
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+
+  }).done(function (msg) {});
+}
+
+function check_if_empty(div) {
+  if (div.hasChildNodes()) {
+    console.log('POSIADA DZIECI');
+  } else {
+    var p = document.createElement('p');
+    p.className = 'text-center';
+    p.innerText = 'nie ma dodanych żadnych zdjęć';
+    div.appendChild(p);
+  }
+}
+
+function delete_club_image(link) {
+  var image_id = link.getAttribute('data-clubImageId');
+  $.ajax({
+    method: 'post',
+    url: image_delete_url,
+    data: { ClubImage_id: image_id, _token: token },
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  }).done(function (msg) {
+    var to_delete_div = link.parentNode.parentNode;
+    var last_parent = link.parentNode.parentNode.parentNode;
+
+    to_delete_div.remove();
+    check_if_empty(last_parent);
+  });
+}
+function loadGallery(img) {
+  $('#photos').modal('show');
+  var my_modal = document.getElementById('photos');
+  var modal_photo = document.getElementById('modal-photo');
+  modal_photo.setAttribute('src', img.getAttribute('src'));
+}
+function next_slide() {
+  var cen_slide = document.getElementById('club-slide-center');
+  var prev_slide = document.getElementById('club-slide-left');
+  var next_slide = document.getElementById('club-slide-right');
+  cen_slide.setAttribute('id', 'club-slide-right');
+  prev_slide.setAttribute('id', 'club-slide-center');
+  next_slide.setAttribute('id', 'club-slide-left');
+}
+function prev_slide() {
+  var cen_slide = document.getElementById('club-slide-center');
+  var prev_slide = document.getElementById('club-slide-left');
+  var next_slide = document.getElementById('club-slide-right');
+  cen_slide.setAttribute('id', 'club-slide-left');
+  prev_slide.setAttribute('id', 'club-slide-right');
+  next_slide.setAttribute('id', 'club-slide-center');
+}
+function showDiv(element) {
+  $div = element.parentNode.childNodes[4];
+  if ($div.style.display.valueOf() == '') {
+    $div.style.display = 'none';
+    return;
+  }
+
+  $div.style.display = '';
+}
+
+function next() {
+  var current_slide = document.getElementsByClassName('club-center')[0];
+  var next_slide = document.getElementsByClassName('club-next')[0];
+  var prev_slide = document.getElementsByClassName('club-prev')[0];
+  var prev_prev_slide = document.getElementById(prev_slide.getAttribute('prev-slide'));
+  var next_next_slide = document.getElementById(next_slide.getAttribute('next-slide'));
+  if (current_slide.classList.contains('club-prev-disable')) current_slide.classList.remove('club-prev-disable');
+  if (current_slide.classList.contains('club-next-disable')) current_slide.classList.remove('club-next-disable');
+  if (next_slide.classList.contains('club-prev-disable')) next_slide.classList.remove('club-prev-disable');
+  if (next_slide.classList.contains('club-next-disable')) next_slide.classList.remove('club-next-disable');
+  if (prev_slide.classList.contains('club-prev-disable')) prev_slide.classList.remove('club-prev-disable');
+  if (prev_slide.classList.contains('club-next-disable')) prev_slide.classList.remove('club-next-disable');
+  if (prev_prev_slide.classList.contains('club-prev-disable')) prev_prev_slide.classList.remove('club-prev-disable');
+  if (prev_prev_slide.classList.contains('club-next-disable')) prev_prev_slide.classList.remove('club-next-disable');
+  if (prev_prev_slide.classList.contains('club-disable')) prev_prev_slide.classList.remove('club-disable');
+
+  prev_prev_slide.classList.add('club-prev-disable');
+
+  setTimeout(function () {
+    current_slide.classList.remove('club-center');
+    current_slide.classList.add('club-next');
+
+    prev_slide.classList.remove('club-prev');
+    prev_slide.classList.add('club-center');
+
+    next_slide.classList.remove('club-next');
+    next_slide.classList.add('club-next-disable');
+
+    prev_prev_slide.classList.remove('club-prev-disable');
+    prev_prev_slide.classList.add('club-prev');
+  }, 100);
+}
+function prev() {
+  var current_slide = document.getElementsByClassName('club-center')[0];
+  var next_slide = document.getElementsByClassName('club-next')[0];
+  var prev_slide = document.getElementsByClassName('club-prev')[0];
+  var prev_prev_slide = document.getElementById(prev_slide.getAttribute('prev-slide'));
+  var next_next_slide = document.getElementById(next_slide.getAttribute('next-slide'));
+
+  if (current_slide.classList.contains('club-prev-disable')) current_slide.classList.remove('club-prev-disable');
+  if (current_slide.classList.contains('club-next-disable')) current_slide.classList.remove('club-next-disable');
+  if (next_slide.classList.contains('club-prev-disable')) next_slide.classList.remove('club-prev-disable');
+  if (next_slide.classList.contains('club-next-disable')) next_slide.classList.remove('club-next-disable');
+  if (prev_slide.classList.contains('club-prev-disable')) prev_slide.classList.remove('club-prev-disable');
+  if (prev_slide.classList.contains('club-next-disable')) prev_slide.classList.remove('club-next-disable');
+  if (next_next_slide.classList.contains('club-prev-disable')) next_next_slide.classList.remove('club-prev-disable');
+  if (next_next_slide.classList.contains('club-next-disable')) next_next_slide.classList.remove('club-next-disable');
+  if (next_next_slide.classList.contains('club-disable')) next_next_slide.classList.remove('club-disable');
+
+  next_next_slide.classList.add('club-next-disable');
+
+  setTimeout(function () {
+    current_slide.classList.remove('club-center');
+    current_slide.classList.add('club-prev');
+
+    prev_slide.classList.remove('club-prev');
+    prev_slide.classList.add('club-prev-disable');
+
+    next_slide.classList.remove('club-next');
+    next_slide.classList.add('club-center');
+
+    next_next_slide.classList.remove('club-next-disable');
+    next_next_slide.classList.remove('club-disable');
+    next_next_slide.classList.add('club-next');
+  }, 50);
+}
+$('.card-slider').onload = init_slider();
+
+function init_slider() {
+  var count = 1;
+  var next = 0;
+  var prev = 0;
+  $('.card-slider').children('.card-slide').each(function () {
+    next = count + 1;
+    prev = count - 1;
+    this.setAttribute('prev-slide', prev.toString());
+    this.setAttribute('next-slide', next.toString());
+
+    if (this.getAttribute('id') == $('.card-slider')[0].childElementCount) {
+      this.setAttribute('next-slide', '1');
+    }
+    if (this.getAttribute('id') == '1') {
+      this.setAttribute('prev-slide', $('.card-slider')[0].childElementCount.toString());
+    }
+    count += 1;
+  });
+}
+
+$(window).ready(function () {
+  $('div').each(function () {
+    if (this.hasAttribute('data-scroll')) {
+      $('html, body').animate({
+        scrollTop: this.offsetTop - 150
+      }, 200);
+    }
+  });
+});
+
+$('fieldset').each(function () {
+  if (this.hasAttribute('data-rate')) {
+    init_rate(this, this.getAttribute('data-rate'));
+  }
+});
+$(function () {
+  if (document.location.href.substr(document.location.href.lastIndexOf('/') + 1) == 'photo') {
+    $('html, body').animate({
+      scrollTop: document.getElementById('clubImageDiv').offsetTop
+    }, 200);
+  }
+
+  $('#distance-slider').slider({
+
+    range: true,
+    min: 0,
+
+    max: 200,
+    step: 0.1,
+    values: [parseFloat($('#distance-min-output').attr('value')), parseFloat($('#distance-max-output').attr('value'))],
+    slide: function slide(event, ui) {
+      $('#distance-min-output').empty();
+      $('#distance-min-output').val(ui.values[0]);
+      $('#distance-max-output').empty();
+      $('#distance-max-output').val(ui.values[1]);
+    }
+  });
+  $('#min_club_rate_slider').slider({
+    min: 1,
+    max: 5,
+    animate: true,
+    range: 'min',
+    slide: function slide(event, ui) {
+      $('#custom-handle').text(ui.value);
+    }
+  });
+
+  jQuery.fn.reverse = [].reverse;
+  $(window).scroll(function () {
+    if (window.scrollY == 0) {
+      $('.navbar').css('background-color', 'transparent');
+    } else {
+      $('.navbar').css('background-color', 'rgba(0,0,0,0.8)');
+    }
+    var banner = $('.banner')[0];
+  });
+
+  $('input.musicTypeCheckbox').on('click', function () {
+    var checked = 0;
+    $('input.musicTypeCheckbox').each(function (index, element) {
+      if (element.checked == true) {
+        checked++;
+      }
+    });
+    if (checked > 3) {
+      this.checked = false;
+      validateMessage('Możesz wybrać 3 główne rodzaje muzyki');
+    }
+  });
+
+  $('.attendEvent').submit(function (event) {
+    var tab = $(this).serializeArray();
+    var myForm = new FormData();
+    var thisForm = this;
+    $.each(tab, function (key, value) {
+      myForm.append(value.name, value.value);
+    });
+
+    console.log(myForm);
+    $.ajax({
+      method: 'POST',
+      url: $(this).attr('action'),
+      data: myForm,
+      processData: false,
+      contentType: false
+
+    }).done(function (msg) {
+      var button = $('button[type = submit]', thisForm);
+      $(button).addClass('disabled');
+      $(button).removeClass('hvr-sweep-to-right');
+    });
+
+    event.preventDefault();
+  });
+  $('#search-club').keyup(function () {
+    $('#slide').carousel('cycle');
+    if (this.value != '') {
+      $('#slide').carousel('pause');
+    }
+  });
+  $('#search-club').autocomplete({
+    source: 'http://localhost:8000/search/autocomplete',
+    minLength: 1,
+    select: function select(event, ui) {
+      window.location.href = 'http://localhost:8000/clubs/' + ui.item.id;
+    }
+  }).data('ui-autocomplete')._renderItem = function (ul, item) {
+    if (item.label.length > 30) {
+      item.label = item.label.substr(0, 30) + '...';
+    }
+    return $("<li class='ui-menu-item'>").attr('data-value', item.id).append(item.label).append('<span class="pull-right">' + item.locality + '</span>').appendTo(ul);
+  };
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  $('.full').click(function () {
+    var input = this.previousSibling;
+
+    var myData = new FormData();
+    myData.append('club_id', input.dataset.club);
+    myData.append('user_id', input.dataset.user);
+    myData.append('rate', input.value);
+    $.ajax({
+      method: 'POST',
+      url: club_rate,
+      data: myData,
+      processData: false,
+      contentType: false
+
+    }).done(function (msg) {
+      var label = input.nextSibling;
+      var parent = label.parentNode;
+      $(parent).children('label').each(function (index, element) {
+        element.style.color = 'rgba(255,255,255,0.1)';
+      });
+      $(parent).children('label').reverse().each(function (index, element) {
+        element.style.color = 'rgb(239, 58, 177)';
+        if (element == label) {
+          return false;
+        }
+      });
+    });
+  });
+  $('[data-toggle="tooltip"]').tooltip();
+
+  $('.remove_rate').click(function () {
+    var button = this;
+    var myForm = new FormData();
+    myForm.append('club_id', this.dataset.club);
+    myForm.append('user_id', this.dataset.user);
+    myForm.append('_token', token);
+
+    $.ajax({
+      url: club_rate_delete,
+      method: 'POST',
+      data: myForm,
+      contentType: false,
+      processData: false
+
+    }).done(function (msg) {
+      console.log(button);
+      var fieldset = button.previousSibling.previousSibling;
+      console.log(fieldset);
+      $(button).remove();
+      $(fieldset).children('label').each(function (index, element) {
+        element.style.color = 'rgba(255,255,255,0.1)';
+      });
+      alert(msg.message);
+    });
+  });
+
+  $('#image').on('change', function () {
+    console.log('AMIRNWFW');
+    var image_place = $('#image-place');
+
+    var club_id = this.dataset.clubid;
+    var user_id = this.dataset.userid;
+
+    var myformData = new FormData();
+    myformData.append('image', this.files[0]);
+    myformData.append('club_id', club_id);
+    myformData.append('user_id', user_id);
+
+    myformData.append('_token', token);
+
+    $.ajax({
+      method: 'POST',
+      url: club_image_create_url,
+      data: myformData,
+      processData: false,
+      contentType: false,
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+
+    }).done(function (msg) {
+      var errors = msg.responseJSON;
+      console.log(errors);
+      var main_input = document.createElement('input');
+
+      var img_src = url + '/' + user_id + '/' + msg.image_path;
+      console.log(img_src);
+      var div = document.createElement('div');
+      div.className = 'image_div';
+      var image = document.createElement('img');
+
+      image.setAttribute('src', img_src);
+      var place = document.getElementById('image-place');
+      place.appendChild(div);
+      div.appendChild(image);
+      var new_div = document.createElement('div');
+      new_div.className = 'button';
+      div.appendChild(new_div);
+      var delete_button = document.createElement('a');
+      var refresh = document.createElement('a');
+      refresh.setAttribute('href', '#');
+      refresh.innerText = 'odswież';
+      delete_button.setAttribute('onclick', 'delete_club_image(this)');
+
+      delete_button.setAttribute('data-clubImageId', msg.id);
+      delete_button.innerText = 'usun';
+
+      new_div.appendChild(delete_button);
+
+      var child = image_place.children();
+      if (child[0].tagName == 'P') {
+        child[0].remove();
+      }
+    });
+  });
+
+  $('#user-image-input').on('change', function () {
+    $(this.previousElementSibling).empty();
+    this.previousElementSibling.append(this.files[0].name);
+    var user_id = this.getAttribute('data-user_id');
+    var myformData = new FormData();
+    myformData.append('image', this.files[0]);
+    myformData.append('user_id', user_id);
+
+    myformData.append('_token', token);
+
+    $.ajax({
+      method: 'POST',
+      url: 'update_user_image',
+      data: myformData,
+      processData: false,
+      contentType: false
+
+    }).done(function (msg) {
+      console.log(msg);
+      var img_src = url + '/' + user_id + '/' + msg.image_path;
+      $('#user_image').attr('src', img_src);
+    });
+  });
+
+  $('#remove_user_image').on('click', function () {
+    var myForm = new FormData();
+    var user_id = this.getAttribute('data-user_id');
+
+    myForm.append('user_id', user_id);
+    myForm.append('_token', token);
+
+    $.ajax({
+      method: 'POST',
+      url: 'remove_user_image',
+      data: myForm,
+      processData: false,
+      contentType: false
+    }).done(function (msg) {
+      $('#user_image').attr('src', msg);
+    });
+  });
+});
+
+/***/ }),
+/* 174 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* eslint-disable no-unused-vars */
+/* harmony default export */ __webpack_exports__["a"] = (function () {
+  var consts = {
+    appURL: "http://localhost:8000"
+  };
+});
+
+/***/ }),
 /* 175 */
 /***/ (function(module, exports) {
 

@@ -1,6 +1,10 @@
 
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+@import url("https://fonts.googleapis.com/css?family=Muli:300,400,700,900");
+
+// Font Awesome 4.7
+@import '~font-awesome/css/font-awesome.min.css';
 
 // Variables
 @import "variables";
@@ -8,9 +12,31 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+//Portal global styles
+@import "global";
+
+// Portal styles
+@import "portal";
+
+// Home page styles
+@import "home";
+
+//Home slider styles
+@import "slider";
+
+//Events page styles
+@import "events";
+
+//Clubs page styles
+@import "clubs";
+
+//User dashboard panel styles
+@import "dashboard";
+
+//Jquery UI styles
 @import '~jquery-ui/themes/base/all.css';
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-}
+//Rating start css
+@import "../css/rating.css";
+
+@import "../css/nouislider.min.css";

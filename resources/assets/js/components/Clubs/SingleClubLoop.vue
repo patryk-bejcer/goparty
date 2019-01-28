@@ -52,12 +52,12 @@ export default {
 
   methods: {
     renderImg(img) {
-      const imgDirectoryPath = `${this.$hostname}/uploads/clubs/thumbnails/thumb-`;
+      const imgDirectoryPath = `http://localhost:8000/uploads/clubs/thumbnails/thumb-`;
       if (img === null) return `${imgDirectoryPath}1533504291.png`;
       return imgDirectoryPath + img.src;
     },
     renderUrl(id) {
-      return `clubs/${id}`;
+      return `/clubs/${id}`;
     },
     // getRate(clubId) {
     //     axios.get('rate-club-get-sum', {

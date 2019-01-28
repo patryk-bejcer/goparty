@@ -46,15 +46,15 @@ class UserCrudController extends CrudController
                 'type'  => 'email',
             ],
 
-	        [       // SelectMultiple = n-n relationship (with pivot table)
-		        'label' => "Favorite music",
-		        'type' => 'select_multiple',
-		        'name' => 'favoriteMusic', // the method that defines the relationship in your Model
-		        'entity' => 'favoriteMusic', // the method that defines the relationship in your Model
-		        'attribute' => 'name', // foreign key attribute that is shown to user
-		        'model' => "App\MusicType", // foreign key model
-		        'pivot' => true, // on create&update, do you need to add/delete pivot table entries?
-	        ],
+//	        [       // SelectMultiple = n-n relationship (with pivot table)
+//		        'label' => "Favorite music",
+//		        'type' => 'select_multiple',
+//		        'name' => 'favoriteMusic', // the method that defines the relationship in your Model
+//		        'entity' => 'favoriteMusic', // the method that defines the relationship in your Model
+//		        'attribute' => 'name', // foreign key attribute that is shown to user
+//		        'model' => "App\Music", // foreign key model
+//		        'pivot' => true, // on create&update, do you need to add/delete pivot table entries?
+//	        ],
             [ // n-n relationship (with pivot table)
                'label'     => trans('backpack::permissionmanager.roles'), // Table column heading
                'type'      => 'select_multiple',
@@ -98,7 +98,7 @@ class UserCrudController extends CrudController
 		        'name' => 'favoriteMusic', // the method that defines the relationship in your Model
 		        'entity' => 'favoriteMusic', // the method that defines the relationship in your Model
 		        'attribute' => 'name', // foreign key attribute that is shown to user
-		        'model' => "App\MusicType", // foreign key model
+		        'model' => "App\Music", // foreign key model
 		        'pivot' => true, // on create&update, do you need to add/delete pivot table entries?
 	        ],
             [

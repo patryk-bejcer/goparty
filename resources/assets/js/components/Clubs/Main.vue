@@ -83,7 +83,7 @@ export default {
       this.loading = true;
 
       // console.log('http://localhost/goparty/public/api/clubs-archived?lat=' + lat + '&long=' + long + '&page=' + page);
-      axios.get(`http://localhost/goparty/public/api/clubs-archived?lat=${lat}&long=${long}&page=${page}`)
+      axios.get(`http://localhost:8000/api/clubs-archived?lat=${lat}&long=${long}&page=${page}`)
         .then((response) => {
           this.clubsList = response.data;
           this.loading = false;
