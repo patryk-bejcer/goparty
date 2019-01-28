@@ -17,9 +17,9 @@
 
                 <li> <a class="nav-link" href="{{ route('all-events') }}">Imprezy</a> </li>
                 <li> <a class="nav-link" href="{{ url('clubs/#clubs') }}">Kluby</a> </li>
-                <li> <a class="nav-link" href="#" >Artyści</a> </li>
+                {{--<li> <a class="nav-link" href="#" >Artyści</a> </li>--}}
                 <li> <a class="nav-link" href="{{ route('users.index' ) }}">Społeczność</a> </li>
-                <li> <a class="nav-link" href="#">Muzyka</a> </li>
+                {{--<li> <a class="nav-link" href="#">Muzyka</a> </li>--}}
                 <li><a class="nav-link" href="{{ route('clubs.create') }}">{{ __('Dodaj klub') }}</a></li>
 
             </ul>
@@ -45,8 +45,6 @@
                             <a class="dropdown-item" href="{{route('user.notifications')}}">{{ __('Powiadomienia') }}</a>
                             <a class="dropdown-item" href="{{url('dashboard/attendance')}}">{{ __('Twoje imprezy') }}</a>
                             <a class="dropdown-item" href="{{url('dashboard/attendance')}}">{{ __('Ulubione kluby') }}</a>
-                            <a class="dropdown-item" href="{{url('dashboard/attendance')}}">{{ __('Znajomi') }}</a>
-                            <a class="dropdown-item" href="{{url('dashboard/attendance')}}">{{ __('Zdjęcia') }}</a>
                             <!-- End tabs for owner -->
 
                             <!-- Tabs for owner -->

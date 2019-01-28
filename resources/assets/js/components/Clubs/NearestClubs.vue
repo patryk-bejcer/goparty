@@ -77,7 +77,7 @@ export default {
 
   data() {
     return {
-      hostname: this.$hostname,
+      hostname: 'http://localhost:8000/',
       loading: false,
       clubs: {},
       position: null,

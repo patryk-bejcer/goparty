@@ -1,4 +1,4 @@
-let mix = require('laravel-mix');
+const mix = require('laravel-mix');
 
 /*
  |--------------------------------------------------------------------------
@@ -12,17 +12,4 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
-
-mix.styles([
-    // 'public/css/font-awesome.min.css',
-    // 'public/css/portal.css',
-    // 'public/css/home.css',
-    // 'public/css/events.css',
-    // 'public/css/clubs.css',
-    // 'public/css/dashboard.css',
-    // 'public/css/global.css',
-    // 'public/css/hover-min.css',
-    // 'public/css/rating.css',
-], 'public/css/all.css');
-
+  .sass('resources/assets/sass/app.scss', 'public/css');

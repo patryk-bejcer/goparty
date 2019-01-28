@@ -66,14 +66,14 @@ export default {
   methods: {
     getCityData(addressData, placeResultData, id) {
       this.address = addressData.locality;
-      window.location.href = `${this.$hostname}clubs#/clubs/search/${this.address}`;
+      window.location.href = `http://localhost:8000/clubs#/clubs/search/${this.address}`;
     },
     runSearch() {
       const inputValue = document.getElementById('map').value;
       if (inputValue === '') {
-        window.location.href = `${this.$hostname}clubs#/clubs/`;
+        window.location.href = `http://localhost:8000/clubs#/clubs/`;
       } else {
-        window.location.href = `${this.$hostname}clubs#/clubs/search/${inputValue}`;
+        window.location.href = `http://localhost:8000/clubs#/clubs/search/${inputValue}`;
       }
     },
     clearInputText() {

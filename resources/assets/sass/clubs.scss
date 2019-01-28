@@ -1,0 +1,198 @@
+/* Stylesheets for Clubs */
+
+#clubs-list {
+  .slick-list {
+    margin-bottom: 1.5em;
+    padding-bottom: 1.5em;
+  }
+  h1 {
+    font-size: 42px;
+    margin-bottom: .5em;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: 900;
+    text-align: center;
+  }
+  .single-event {
+    background: rgba(0, 0, 0, 0.5);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    .badge {
+      float: right;
+      background: #ef3ab1;
+      padding: 10px;
+      font-size: 26px;
+    }
+  }
+  .pagination {
+    float: none;
+    display: inline-block;
+    overflow: hidden;
+    width: 100% !important;
+    .active {
+      background-color: #de29a0;
+      &:hover {
+        background: #de29a0;
+        cursor: none;
+      }
+    }
+    li {
+      display: inline-block;
+      text-align: center;
+      float: none;
+      background: rgba(4, 25, 98, 0.6);
+      margin: 1px 3px;
+      color: #FFF !important;
+      padding: 0px 0px 7px;
+      &:hover {
+        background: rgba(4, 25, 98, 1);
+      }
+      a {
+        color: #FFF;
+      }
+    }
+  }
+  .card {
+    transition: .3s;
+    border: 0 !important;
+    &:hover {
+      transform: scale(1.03);
+      cursor: pointer;
+    }
+    .rate {
+      position: absolute;
+      background: #de29a0;
+      padding: 10px;
+      font-size: 1.8rem;
+      font-weight: 900;
+      right: 0px;
+      top: 0px;
+    }
+    color: #FFF;
+    background: rgba(0, 0, 0, 0.5);
+    .card-body {
+      background: transparent;
+      padding-top: .65em;
+      padding-bottom: 0em;
+      h6 {
+        line-height: 20px;
+      }
+    }
+  }
+}
+
+#single_club {
+  min-height: 300px;
+
+}
+
+#clubs-list .card {
+  margin: .5em !important;
+  h4 {
+    color: #de29a0 !important;
+  }
+}
+
+.club-info {
+  margin-bottom: 5em !important;
+  h5 {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    margin-bottom: .5em;
+    font-weight: 700;
+  }
+  h6 {
+    font-size: 1.1rem;
+  }
+  .rate {
+    //font-size: 2rem;
+    p {
+      font-size: 1rem !important;
+      margin-bottom: .5em;
+    }
+    .number-rate {
+      margin-right: 5px;
+      font-weight: 900;
+      font-size: 30px;
+      line-height: 29px;
+    }
+    .number-of-rate {
+      font-size: 1rem;
+    }
+    i {
+      margin-right: 0px;
+    }
+  }
+}
+
+.prev-club {
+  position: fixed;
+  z-index: 1000;
+  top: 42%;
+  left: 30px;
+  color: #FFF;
+  i {
+    color: #FFF;
+    &:hover {
+      color: #ef3ab1;
+    }
+  }
+}
+
+.images-controls {
+  font-size: 4rem;
+}
+
+.next-club {
+  position: fixed;
+  z-index: 1000;
+  top: 42%;
+  right: 30px;
+  color: #FFF;
+  i {
+    color: #FFF;
+    &:hover {
+      color: #ef3ab1;
+    }
+  }
+}
+
+#nearest-clubs {
+  h3 {
+    color: #FFF !important;
+  }
+}
+
+//@media screen and (max-width 768px) {
+//  .search-top-bg {
+//    background-repeat: no-repeat !important;
+//  }
+//}
+
+#club-row {
+  .btn {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    border: 1px solid #fff;
+    font-weight: 600;
+    transition: 0.3s;
+    width: 140px;
+    background: rgba(0, 0, 0, 0.3);
+    &:hover {
+      transform: scale(1.075);
+    }
+  }
+}
+
+.club-offer-list {
+  li {
+    list-style-type: none;
+    font-size: 16px;
+    i {
+      padding-right: 3px;
+    }
+  }
+}
+

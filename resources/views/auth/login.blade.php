@@ -36,7 +36,7 @@
 
                                 <div class="form-group row">
                                     <label for="email"
-                                           class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                                           class="col-sm-4 col-form-label text-md-right">{{ __('Adres E-mail') }}</label>
 
                                     <div class="col-md-6">
                                         <input id="email" type="email"
@@ -53,7 +53,7 @@
 
                                 <div class="form-group row">
                                     <label for="password"
-                                           class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                                           class="col-md-4 col-form-label text-md-right">{{ __('Hasło') }}</label>
 
                                     <div class="col-md-6">
                                         <input id="password" type="password"
@@ -73,7 +73,7 @@
                                         <div class="checkbox">
                                             <label>
                                                 <input type="checkbox"
-                                                       name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember Me') }}
+                                                       name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Zapamiętaj mnie') }}
                                             </label>
                                         </div>
                                     </div>
@@ -86,7 +86,7 @@
                                         </button>
                                         <br>
                                         <a class="btn-link mt-5" href="{{ route('password.request') }}">
-                                            {{ __('Forgot Your Password?') }}
+                                            {{ __('Zapomniałeś hasła?') }}
                                         </a>
                                     </div>
                                 </div>
