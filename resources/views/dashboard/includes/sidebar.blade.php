@@ -56,14 +56,14 @@
                  {{ Request::path() == 'dashboard/attendance' ? 'active' : '' }}
                     " href="{{url('dashboard/attendance')}}">
                 <i class="fa fa-music"></i>
-                {{ __('Imprezy') }}</a>
+                {{ __('Weźmiesz udział') }}</a>
 
-            <a class="dropdown-item list-group-item collapsed" href="{{url('dashboard/attendance')}}">
-                <i class="fa fa-hospital-o"></i>
-                {{ __('Ulubione kluby') }}</a>
-            <a class="dropdown-item list-group-item collapsed" href="{{url('dashboard/attendance')}}">
-                <i class="fa fa-users"></i>
-                {{ __('Znajomi') }}</a>
+            {{--<a class="dropdown-item list-group-item collapsed" href="{{url('dashboard/attendance')}}">--}}
+                {{--<i class="fa fa-hospital-o"></i>--}}
+                {{--{{ __('Ulubione kluby') }}</a>--}}
+            {{--<a class="dropdown-item list-group-item collapsed" href="{{url('dashboard/attendance')}}">--}}
+                {{--<i class="fa fa-users"></i>--}}
+                {{--{{ __('Znajomi') }}</a>--}}
             @endrole
             {{--<a class="dropdown-item list-group-item collapsed" href="{{url('dashboard/attendance')}}">--}}
                 {{--<i class="fa fa-picture-o"></i>--}}
@@ -75,13 +75,21 @@
                     " href="{{route('user.edit.profile')}}">
                 <i class="fa fa-gear"></i>
                 {{ __('Profil') }}</a>
-            <a class="dropdown-item list-group-item collapsed" href="{{url('dashboard/attendance')}}">
-                <i class="fa fa-music"></i>
-                {{ __('Weźmiesz udział') }}</a>
+            {{--<a class="dropdown-item list-group-item collapsed" href="{{url('dashboard/attendance')}}">--}}
+                {{--<i class="fa fa-music"></i>--}}
+                {{--{{ __('Weźmiesz udział') }}</a>--}}
 
-            <a class="dropdown-item list-group-item collapsed" href="{{url('dashboard/attendance')}}">
+            <a onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();" class="dropdown-item list-group-item collapsed" href="{{url('dashboard/attendance')}}">
                 <i class="fa fa-sign-out"></i>
                 {{ __('Wyloguj się') }}</a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                   style="display: none;">
+                @csrf
+            </form>
+
+
 
             {{--<a href="#menu2" class="list-group-item collapsed" data-toggle="collapse" data-parent="#sidebar"--}}
             {{--aria-expanded="false"><i class="fa fa-music"></i> <span class="hidden-sm-down"> Wydarzenia</span> </a>--}}

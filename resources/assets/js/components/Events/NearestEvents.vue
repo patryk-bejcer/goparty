@@ -70,7 +70,7 @@ export default {
   data() {
     return {
       permissions: true,
-      hostname: 'http://localhost:8000/',
+      hostname: this.$appUrl,
       loading: false,
       events: {},
       position: null,
@@ -145,7 +145,7 @@ export default {
           const lat = self.position.latitude;
           const long = self.position.longitude;
 
-          axios.get(`/api/nearest-events?lat=${lat}&long=${long}`)
+          axios.get(`${this.$appUrl}/api/nearest-events?lat=${lat}&long=${long}`)
             .then((response) => {
               self.events = response;
               self.loading = false;
@@ -161,7 +161,7 @@ export default {
             self.loading = true;
             console.log('you denied me :-(');
             self.permissions = false;
-            axios.get('/api/nearest-events?lat=55&long=55')
+            axios.get( `${this.$appUrl}/api/nearest-events?lat=55&long=55`)
               .then((response) => {
                 self.events = response;
                 self.loading = false;

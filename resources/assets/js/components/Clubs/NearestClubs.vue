@@ -77,7 +77,7 @@ export default {
 
   data() {
     return {
-      hostname: 'http://localhost:8000/',
+      hostname: this.$appUrl,
       loading: false,
       clubs: {},
       position: null,
@@ -156,7 +156,7 @@ export default {
           const lat = self.position.latitude;
           const long = self.position.longitude;
 
-          axios.get(`/api/nearest-clubs?lat=${lat}&long=${long}`)
+          axios.get(`${this.$appUrl}/api/nearest-clubs?lat=${lat}&long=${long}`)
             .then((response) => {
               self.clubs = response;
               self.loading = false;
@@ -170,7 +170,7 @@ export default {
           if (error.code === error.PERMISSION_DENIED) {
             self.permissions = false;
             self.loading = true;
-            axios.get('/api/nearest-clubs?lat=55&long=55')
+            axios.get(`${this.$appUrl}/api/nearest-clubs?lat=55&long=55`)
               .then((response) => {
                 self.clubs = response;
                 self.loading = false;

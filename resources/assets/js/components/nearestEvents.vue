@@ -59,7 +59,7 @@
       >
         <div class="single-event text-center">
 
-          <a :href="'http://localhost:8000/' + '/events/' + event.id">
+          <a :href="`${this.$appUrl}/events/${event.id}`">
             <img
               class="img-fluid"
               :src="url + '/thumbnails/300x180-' + event.event_img"
@@ -84,7 +84,7 @@ export default {
     return {
       position: null,
       events: {},
-      url: `http://localhost:8000/uploads/events/`,
+      url: `${this.$appUrl}/uploads/events/`,
     };
   },
   mounted() {
@@ -99,7 +99,7 @@ export default {
         // console.log(self.position.latitude);
         // console.log(self.position.longitude);
 
-        axios.get(`/api/nearest-events?lat=${lat}&long=${long}`)
+        axios.get(`${this.$appUrl}/api/nearest-events?lat=${lat}&long=${long}`)
           .then((response) => {
             self.events = response;
             // console.log(self.events);

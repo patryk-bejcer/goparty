@@ -35,19 +35,21 @@
                 </div>
 
             </div>
+            @if(!Auth::check())
             <div class="col-12 col-sm-4 col-lg-2 ">
                 <div class="link" style="margin-bottom: 30px;">
                     <a> Dołącz do nas </a>
                 </div>
 
                 <div class="link">
-                    <a href="#" id="footer-link">Zaloguj sie</a>
+                    <a  href="{{ route('login') }}" id="footer-link">Zaloguj sie</a>
                 </div>
                 <div class="link">
-                    <a href="#" id="footer-link">Zarejestruj sie</a>
+                    <a href="{{ route('register') }}" id="footer-link">Zarejestruj sie</a>
                 </div>
 
             </div>
+            @endif
 
             <div class="col-12 col-lg-2 pr-2 pl-0">
 

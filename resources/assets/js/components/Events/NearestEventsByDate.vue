@@ -69,7 +69,7 @@ export default {
 
   data() {
     return {
-      hostname: 'http://localhost:8000/',
+      hostname: this.$appUrl,
       loading: false,
       events: {},
       position: null,
@@ -145,7 +145,7 @@ export default {
           const lat = self.position.latitude;
           const long = self.position.longitude;
 
-          axios.get(`/api/nearest-events?lat=${lat}&long=${long}`)
+          axios.get(`${this.$appUrl}/api/nearest-events?lat=${lat}&long=${long}`)
             .then((response) => {
               self.events = response;
               self.loading = false;

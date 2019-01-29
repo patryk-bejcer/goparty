@@ -7,7 +7,7 @@
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="true"></i></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -41,15 +41,15 @@
 
 
                             <!-- Tabs for users -->
+                            <a class="dropdown-item" href="{{url('dashboard/notifications')}}">{{ __('Powiadomienia') }}</a>
                             <a class="dropdown-item" href="{{route('user.edit.profile')}}">{{ __('Profil') }}</a>
-                            <a class="dropdown-item" href="{{route('user.notifications')}}">{{ __('Powiadomienia') }}</a>
-                            <a class="dropdown-item" href="{{url('dashboard/attendance')}}">{{ __('Twoje imprezy') }}</a>
-                            <a class="dropdown-item" href="{{url('dashboard/attendance')}}">{{ __('Ulubione kluby') }}</a>
+                            <a class="dropdown-item" href="{{url('dashboard/attendance')}}">{{ __('Weźmiesz udział') }}</a>
+                            {{--<a class="dropdown-item" href="{{url('dashboard/attendance')}}">{{ __('Ulubione kluby') }}</a>--}}
                             <!-- End tabs for owner -->
 
                             <!-- Tabs for owner -->
                             @role('owner')
-                            <a class="dropdown-item" href="{{url('/dashboard/clubs')}}">{{ __('Zarządzaj klubem') }}</a>
+                            <a class="dropdown-item" href="{{url('/dashboard/clubs')}}">{{ __('Zarządzanie klubem') }}</a>
                             @endrole
                             <!-- End tabs for owner -->
 

@@ -13,7 +13,7 @@
                 <div class="col-12">
                     <div class="breadcrumbIn" itemprop="breadcrumb"><b><a href="https://codevz.com/demo/remix/"><i
                                         class="fa fa-home tip" title="Home"></i></a></b> <i
-                                class="fa fa-angle-right"></i> <b><a href="#"><span>Imprezy</span></a></b> <i
+                                class="fa fa-angle-right"></i> <b><a href="{{ url('events') }}"><span>Imprezy</span></a></b> <i
                                 class="fa fa-angle-right"></i> <b class="inactive_l"><a href="#" onclick="return false;"
                             ><span>{{$event->title}}</span></a></b></div>
                 </div>
@@ -26,29 +26,41 @@
                     <article>
                         <div class="card text-white mb-3 pt-3 pb-3 pl-3 pr-3">
 
-                            <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between ">
                                 <div>
                                     <h1>{{$event->title}}</h1>
                                 </div>
-                                <div class="d-flex justify-content-end align-items-center">
-                                    <a class="btn btn-success mr-3" href="">Weź udział</a>
-                                    <div class="likes_dislikes mr-4">
-                                        <a href="#">
-                                            <i class="fa fa-heart"></i>
-                                            <b>2</b>
-                                        </a>
-                                        <a href="#" class="ml-2">
-                                            <i class="fa fa-heart-o"></i>
-                                            <b>0</b>
-                                        </a></div>
+                                <div class="d-flex justify-content-end ">
+                                    @if(Auth::check())
+                                        @if(!$event->checkIfAttendance())
+
+                                            <form method="POST" action="{{url('/take-part')}}">
+                                                @csrf
+                                                <input name="event_id" type="hidden" value="{{$event->id}}">
+                                                <input style="background: #EF3AB1 !important" class="btn btn-success pull-right" type="submit" value="Weź udział">
+                                            </form>
+
+                                        @else
+
+                                            <form method="POST" action="{{url('/take-part')}}">
+                                                {{ csrf_field() }}
+                                                {{ method_field('DELETE') }}
+                                                <input name="event_id" type="hidden" value="{{$event->id}}">
+                                                <input style="background: #EF3AB1 !important" class="btn btn-success pull-right" type="submit" value="Zrezygnuj z imprezy">
+                                            </form>
+
+                                        @endif
+
+                                    @endif
+
                                 </div>
                             </div>
 
                             <div class="row p-2">
-                                <div class="col-12 col-md-6 pr-2">
+                                <div class="col-12 col-md-4 pr-2">
                                     <div class="h-100 event-img" ></div>
                                 </div>
-                                <div class="col-12 col-md-6 pl-2">
+                                <div class="col-12 col-md-4 pl-2 pr-3" >
                                     <h4>Informacje</h4>
                                     <h5>Lokalizacja</h5> <h6><i aria-hidden="true"
                                                                 class="fa fa-map-marker pt-1 mr-1"></i>
@@ -61,59 +73,66 @@
                                         It sounded.
                                     </h6>
 
-                                    <h4 class="mt-4">Osoby biorące udział</h4>
-                                    <div class="row pl-3 pr-2">
-                                        <div class="col-2 pl-0 pr-2">
-                                            <img class="img-fluid"
-                                                 src="https://www.bitgab.com/uploads/profile/files/default.png" alt="">
-                                        </div>
-                                        <div class="col-2 pl-0 pr-2">
-                                            <img class="img-fluid"
-                                                 src="https://www.bitgab.com/uploads/profile/files/default.png" alt="">
-                                        </div>
-                                        <div class="col-2 pl-0 pr-2">
-                                            <img class="img-fluid"
-                                                 src="https://www.bitgab.com/uploads/profile/files/default.png" alt="">
-                                        </div>
-                                        <div class="col-2 pl-0 pr-2">
-                                            <img class="img-fluid"
-                                                 src="https://www.bitgab.com/uploads/profile/files/default.png" alt="">
-                                        </div>
-                                        <div class="col-2 pl-0 pr-2">
-                                            <img class="img-fluid"
-                                                 src="https://www.bitgab.com/uploads/profile/files/default.png" alt="">
-                                        </div>
-                                        <div class="col-2 pl-0 pr-2">
-                                            <img class="img-fluid"
-                                                 src="https://www.bitgab.com/uploads/profile/files/default.png" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="row pl-3 mt-2 pr-2">
-                                        <div class="col-2 pl-0 pr-2">
-                                            <img class="img-fluid"
-                                                 src="https://www.bitgab.com/uploads/profile/files/default.png" alt="">
-                                        </div>
-                                        <div class="col-2 pl-0 pr-2">
-                                            <img class="img-fluid"
-                                                 src="https://www.bitgab.com/uploads/profile/files/default.png" alt="">
-                                        </div>
-                                        <div class="col-2 pl-0 pr-2">
-                                            <img class="img-fluid"
-                                                 src="https://www.bitgab.com/uploads/profile/files/default.png" alt="">
-                                        </div>
-                                        <div class="col-2 pl-0 pr-2">
-                                            <img class="img-fluid"
-                                                 src="https://www.bitgab.com/uploads/profile/files/default.png" alt="">
-                                        </div>
-                                        <div class="col-2 pl-0 pr-2">
-                                            <img class="img-fluid"
-                                                 src="https://www.bitgab.com/uploads/profile/files/default.png" alt="">
-                                        </div>
-                                        <div class="col-2 pl-0 pr-2">
-                                            <img class="img-fluid"
-                                                 src="https://www.bitgab.com/uploads/profile/files/default.png" alt="">
-                                        </div>
-                                    </div>
+                                    {{--<h4 class="mt-4">Osoby biorące udział</h4>--}}
+                                    {{--<div class="row pl-3 pr-2">--}}
+                                        {{--<div class="col-2 pl-0 pr-2">--}}
+                                            {{--<img class="img-fluid"--}}
+                                                 {{--src="https://www.bitgab.com/uploads/profile/files/default.png" alt="">--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-2 pl-0 pr-2">--}}
+                                            {{--<img class="img-fluid"--}}
+                                                 {{--src="https://www.bitgab.com/uploads/profile/files/default.png" alt="">--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-2 pl-0 pr-2">--}}
+                                            {{--<img class="img-fluid"--}}
+                                                 {{--src="https://www.bitgab.com/uploads/profile/files/default.png" alt="">--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-2 pl-0 pr-2">--}}
+                                            {{--<img class="img-fluid"--}}
+                                                 {{--src="https://www.bitgab.com/uploads/profile/files/default.png" alt="">--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-2 pl-0 pr-2">--}}
+                                            {{--<img class="img-fluid"--}}
+                                                 {{--src="https://www.bitgab.com/uploads/profile/files/default.png" alt="">--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-2 pl-0 pr-2">--}}
+                                            {{--<img class="img-fluid"--}}
+                                                 {{--src="https://www.bitgab.com/uploads/profile/files/default.png" alt="">--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                    {{--<div class="row pl-3 mt-2 pr-2">--}}
+                                        {{--<div class="col-2 pl-0 pr-2">--}}
+                                            {{--<img class="img-fluid"--}}
+                                                 {{--src="https://www.bitgab.com/uploads/profile/files/default.png" alt="">--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-2 pl-0 pr-2">--}}
+                                            {{--<img class="img-fluid"--}}
+                                                 {{--src="https://www.bitgab.com/uploads/profile/files/default.png" alt="">--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-2 pl-0 pr-2">--}}
+                                            {{--<img class="img-fluid"--}}
+                                                 {{--src="https://www.bitgab.com/uploads/profile/files/default.png" alt="">--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-2 pl-0 pr-2">--}}
+                                            {{--<img class="img-fluid"--}}
+                                                 {{--src="https://www.bitgab.com/uploads/profile/files/default.png" alt="">--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-2 pl-0 pr-2">--}}
+                                            {{--<img class="img-fluid"--}}
+                                                 {{--src="https://www.bitgab.com/uploads/profile/files/default.png" alt="">--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-2 pl-0 pr-2">--}}
+                                            {{--<img class="img-fluid"--}}
+                                                 {{--src="https://www.bitgab.com/uploads/profile/files/default.png" alt="">--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                </div>
+                                <div class="col-12 col-md-4 pl-3">
+                                    <h4>Mapa dojazdu</h4>
+                                    <iframe class="p-0 pr-0"
+                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d312776.9797743159!2d20.781008020168624!3d52.23302685911996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecc669a869f01%3A0x72f0be2a88ead3fc!2sWarszawa!5e0!3m2!1spl!2spl!4v1536223712309"
+                                            width="100%" height="90%" frameborder="0" style="border:0"
+                                            allowfullscreen></iframe>
                                 </div>
                             </div>
 
@@ -155,7 +174,7 @@
                             </div>
 
 
-                            <div class="row">
+                            <div class="row d-none">
                                 <div class="col-12 pl-4">
                                     <p class="tagcloud mt clr"><a href="https://codevz.com/demo/remix/tag/arena/"
                                                                   rel="tag"><i class="fa fa-tag mi"></i>Arena</a><a
@@ -173,7 +192,7 @@
 
             </div>
 
-            <div class="row mt-3">
+            <div class="row mt-3 d-none" >
 
                 <div class="col-12">
                         <div class="card text-white mb-3 pt-3 pb-3 pl-3 pr-3">

@@ -88,23 +88,15 @@ const routes = [
   //     path: '/clubs/:id',
   //     component: SingleClub,
   //     name: 'singleClub'
-  // }
+  // }process.env.MIX_APP_URL;
 ];
 
 const router = new VueRouter({ routes });
 
 /* This is cons with app URL */
-// const appURL = 'http://localhost/goparty/public/';
-const appURL = consts.appURL;
+const appURL = process.env.MIX_APP_URL;
 
-Vue.prototype.$appUrl = consts.appURL;
-
-const app = new Vue({
-  router,
-  scrollBehavior(to, from, savedPosition) {
-    return { x: 0, y: 0 };
-  },
-}).$mount('#app');
+Vue.prototype.$appUrl = appURL;
 
 axios.defaults.baseURL = process.env.MIX_APP_URL;
 
@@ -117,3 +109,12 @@ window.flash = function (message) {
 };
 
 require('./mb-custom-scripts');
+
+const app = new Vue({
+    router,
+    scrollBehavior(to, from, savedPosition) {
+        return { x: 0, y: 0 };
+    },
+}).$mount('#app');
+
+// console.log('home url from app.js',process.env.MIX_APP_URL);

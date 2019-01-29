@@ -12076,9 +12076,16 @@ footer .social-media-list a i:hover {
 }
 
 @media (max-width: 575.98px) {
+  .navbar-light .navbar-toggler {
+    color: #FFF !important;
+    border-color: transparent;
+    background: #ef3ab1 !important;
+  }
+
   .navbar {
     background: rgba(4, 25, 98, 0.9) !important;
-    padding: 7px 10px;
+    width: 100%;
+    padding: 0px 1em !important;
   }
 
   .slick-arrow:before {
@@ -12148,48 +12155,65 @@ footer .social-media-list a i:hover {
   font-weight: 700;
 }
 
-.navbar-light .navbar-toggler-icon {
-  background-image: url(https://cdn4.iconfinder.com/data/icons/web-ui-color/128/Menu_green-512.png);
-  width: 40px;
-  height: 40px;
+.navbar-light {
+  margin-right: .5em;
+  background: #ef3ab1;
 }
 
-.navbar-light .navbar-toggler {
+.navbar-light .navbar-toggler-icon {
+  background-image: none;
+  width: 25px;
+  height: 29px;
+}
+
+.navbar-light .navbar-toggler-icon i {
+  font-size: 1.5em;
+  color: #FFF;
+}
+
+.navbar-light .navbar-light .navbar-toggler {
   color: #FFF !important;
   border-color: transparent;
-  background: transparent;
+  background: #ef3ab1 !important;
+  margin: 10px;
 }
 
-.bg-dark {
+.navbar-light .navbar-light .navbar-toggler {
+  color: #FFF !important;
+  border-color: transparent;
+  background: #ef3ab1 !important;
+}
+
+.navbar-light .bg-dark {
   background-color: rgba(0, 0, 0, 0.9) !important;
   border-radius: 3px;
   color: #FFF;
 }
 
-.bg-dark h1,
-.bg-dark h2,
-.bg-dark h3,
-.bg-dark h4,
-.bg-dark h5 {
+.navbar-light .bg-dark h1,
+.navbar-light .bg-dark h2,
+.navbar-light .bg-dark h3,
+.navbar-light .bg-dark h4,
+.navbar-light .bg-dark h5 {
   color: #FFF;
 }
 
-.notification-card i {
+.navbar-light .notification-card i {
   font-size: 1.25em;
   margin-top: 4px;
 }
 
-.notification {
+.navbar-light .notification {
   border: 1px solid #333;
   padding: .4em .35em;
   margin-top: -1px;
 }
 
-pre {
+.navbar-light pre {
   color: #FFF !important;
 }
 
-.slick-dots li button:before {
+.navbar-light .slick-dots li button:before {
   display: none !important;
 }
 
@@ -12205,10 +12229,15 @@ a {
   color: #ef3ab1;
 }
 
+.btn {
+  border-radius: 0;
+}
+
 body {
   font-family: Muli;
   margin: 0px !important;
   background: purple url(/images/bg.jpg?59c81963afc0075f75b8334127654c00) top center;
+  background-size: cover;
 }
 
 body .no-padding {
@@ -12253,7 +12282,6 @@ main {
 }
 
 .navbar {
-  margin-top: .5em;
   padding: 0px;
   -webkit-transition: all 400ms !important;
   transition: all 400ms !important;
@@ -13580,7 +13608,9 @@ main {
   }
 
   .navbar {
-    background: rgba(4, 25, 98, 0.9) !important;
+    background: #041962 !important;
+    width: 100%;
+    padding: 0px 1em !important;
   }
 }
 
@@ -13657,6 +13687,11 @@ button:hover {
   color: #FFF !important;
   border-color: transparent;
   background: rgba(255, 255, 255, 0.6);
+}
+
+.notification-card {
+  background: #000;
+  color: #FFF;
 }
 
 #home-page h3 {
@@ -13779,7 +13814,7 @@ button:hover {
 
 @media (max-width: 767.98px) {
   #slider-main {
-    margin-top: 5.5em;
+    margin-top: 4.5em;
   }
 
   #slider-main .carousel-control-prev,
@@ -13802,7 +13837,7 @@ button:hover {
   }
 
   #slider-main .carousel .carousel-inner {
-    height: 55vh;
+    height: 285px;
   }
 
   #slider-main .carousel .carousel-inner .carousel-item #search-bar {
@@ -13880,7 +13915,7 @@ button:hover {
 
 @media (max-width: 575.98px) {
   #slider-main {
-    margin-top: 6.5em;
+    margin-top: 5.5em;
   }
 
   #slider-main .carousel-control-prev,
@@ -13903,7 +13938,7 @@ button:hover {
   }
 
   #slider-main .carousel .carousel-inner {
-    height: 35vh;
+    height: 285px;
   }
 
   #slider-main .carousel .carousel-inner .carousel-item #search-bar {
@@ -13985,7 +14020,7 @@ button:hover {
   }
 
   #slider-main {
-    height: 28vh;
+    height: 178px;
   }
 
   #slider-main .carousel #search-bar {

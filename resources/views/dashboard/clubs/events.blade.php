@@ -17,10 +17,10 @@
                     </div>
                     <div class="card-body">
                         @foreach($club->events as $event)
-                            <p>{{$event->start_date}} - {{$event->title}}</p>
-                            <p>Klub: {{$event->club->official_name}}</p>
+                            <h3><b>{{$event->title}}</b> (<small>{{$event->start_date}}) </small></h3>
+                            <h4>Klub: <a href="">{{$event->club->official_name}}</a></h4>
                             <a href="{{url('dashboard/clubs/' . $event->club->id . '/events/' . $event->id . '/edit')}}"
-                               class="btn btn-secondary btn-sm mr-2">Edycja</a>
+                               class="btn btn-primary btn-sm mr-2">Edytuj wydarzenie</a>
                             <hr>
                         @endforeach
 
