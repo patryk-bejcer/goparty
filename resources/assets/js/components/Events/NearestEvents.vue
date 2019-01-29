@@ -70,7 +70,7 @@ export default {
   data() {
     return {
       permissions: true,
-      hostname: 'http://localhost:8000/',
+      hostname: this.$appUrl,
       loading: false,
       events: {},
       position: null,

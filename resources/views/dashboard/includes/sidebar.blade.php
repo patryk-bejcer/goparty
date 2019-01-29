@@ -79,9 +79,17 @@
                 <i class="fa fa-music"></i>
                 {{ __('Weźmiesz udział') }}</a>
 
-            <a class="dropdown-item list-group-item collapsed" href="{{url('dashboard/attendance')}}">
+            <a onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();" class="dropdown-item list-group-item collapsed" href="{{url('dashboard/attendance')}}">
                 <i class="fa fa-sign-out"></i>
                 {{ __('Wyloguj się') }}</a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                   style="display: none;">
+                @csrf
+            </form>
+
+
 
             {{--<a href="#menu2" class="list-group-item collapsed" data-toggle="collapse" data-parent="#sidebar"--}}
             {{--aria-expanded="false"><i class="fa fa-music"></i> <span class="hidden-sm-down"> Wydarzenia</span> </a>--}}

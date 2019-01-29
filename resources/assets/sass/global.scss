@@ -96,10 +96,15 @@ footer{
 
 @media (max-width: 575.98px) {
 
-
+  .navbar-light .navbar-toggler {
+    color: #FFF !important;
+    border-color: transparent;
+    background: rgb(239, 58, 177) !important;
+  }
   .navbar {
     background: rgba(4, 25, 98, 0.9) !important;
-    padding: 7px 10px;
+    width: 100%;
+    padding: 0px 1em !important;
   }
 
   .slick-arrow:before {
@@ -174,46 +179,61 @@ footer{
 
 
 
-.navbar-light .navbar-toggler-icon {
-  background-image: url(https://cdn4.iconfinder.com/data/icons/web-ui-color/128/Menu_green-512.png);
-  width: 40px;
-  height: 40px;
-}
+.navbar-light {
+  margin-right: .5em;
+  background: rgb(239, 58, 177);
+  .navbar-toggler-icon {
 
-.navbar-light .navbar-toggler {
-  color: #FFF !important;
-  border-color: transparent;
-  background: transparent;
-}
+    background-image: none;
+    width: 25px;
+    height: 29px;
+    i {
+      font-size: 1.5em;
+      color: #FFF;
+    }
+  }
 
-.bg-dark {
-  background-color: rgba(0,0,0,0.9) !important;
-  border-radius: 3px;
-  color:#FFF;
-  h1,h2,h3,h4,h5{
-    color:#FFF;
+  .navbar-light .navbar-toggler {
+    color: #FFF !important;
+    border-color: transparent;
+    background: rgb(239, 58, 177) !important;
+    margin: 10px;
+  }
+
+  .navbar-light .navbar-toggler {
+    color: #FFF !important;
+    border-color: transparent;
+    background: rgb(239, 58, 177) !important;
+  }
+
+  .bg-dark {
+    background-color: rgba(0, 0, 0, 0.9) !important;
+    border-radius: 3px;
+    color: #FFF;
+    h1, h2, h3, h4, h5 {
+      color: #FFF;
+    }
+  }
+
+  .notification-card {
+    i {
+      font-size: 1.25em;
+      margin-top: 4px;
+    }
+  }
+
+  .notification {
+    border: 1px solid #333;
+    padding: .4em .35em;
+    margin-top: -1px;
+  }
+
+  pre {
+    color: #FFF !important;
+  }
+
+  .slick-dots li button:before {
+    display: none !important;
   }
 }
 
-
-.notification-card{
-  i{
-    font-size: 1.25em;
-    margin-top: 4px;
-  }
-}
-
-.notification{
-  border: 1px solid #333;
-  padding: .4em .35em;
-  margin-top: -1px;
-}
-
-
-pre{
-  color:#FFF !important;
-}
-
-.slick-dots li button:before{
-  display:none !important;
-}

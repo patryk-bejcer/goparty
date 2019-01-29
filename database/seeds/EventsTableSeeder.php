@@ -19,7 +19,6 @@ class EventsTableSeeder extends Seeder {
 			'38-festival-poster-design.jpg',
 			'500_F_136841060_OEF6nECeFvYF7Md8h84Szf1z3Q3tOqYd.jpg',
 			'1527793975.jpg',
-			'1527785204.jpg',
 			'depositphotos_78791182-stock-illustration-modern-music-festival-poster-design.jpg',
 			'Poster-Bohemian-Nights.jpg',
 			'front_302.jpg',

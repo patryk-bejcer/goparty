@@ -69,7 +69,7 @@ export default {
 
   data() {
     return {
-      hostname: 'http://localhost:8000/',
+      hostname: this.$appUrl,
       loading: false,
       events: {},
       position: null,

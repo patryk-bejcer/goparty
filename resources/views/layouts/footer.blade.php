@@ -35,6 +35,7 @@
                 </div>
 
             </div>
+            @if(!Auth::check())
             <div class="col-12 col-sm-4 col-lg-2 ">
                 <div class="link" style="margin-bottom: 30px;">
                     <a> Dołącz do nas </a>
@@ -48,6 +49,7 @@
                 </div>
 
             </div>
+            @endif
 
             <div class="col-12 col-lg-2 pr-2 pl-0">
 

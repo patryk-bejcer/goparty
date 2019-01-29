@@ -99,13 +99,6 @@ const appURL = consts.appURL;
 
 Vue.prototype.$appUrl = consts.appURL;
 
-const app = new Vue({
-  router,
-  scrollBehavior(to, from, savedPosition) {
-    return { x: 0, y: 0 };
-  },
-}).$mount('#app');
-
 axios.defaults.baseURL = process.env.MIX_APP_URL;
 
 Vue.prototype.$hostname = appURL;
@@ -117,3 +110,10 @@ window.flash = function (message) {
 };
 
 require('./mb-custom-scripts');
+
+const app = new Vue({
+    router,
+    scrollBehavior(to, from, savedPosition) {
+        return { x: 0, y: 0 };
+    },
+}).$mount('#app');

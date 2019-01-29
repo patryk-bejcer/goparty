@@ -14,10 +14,22 @@ a {
   color: $pink-color;
 }
 
+.card hr{
+
+}
+
+
+.btn{
+  border-radius: 0;
+}
+
+
 body {
   font-family: Muli;
   margin: 0px !important;
   background: purple url(../img/bg.jpg) top center;
+  -webkit-background-size: cover;
+  background-size: cover;
   .no-padding {
     padding: 0px;
   }
@@ -1299,7 +1311,9 @@ main{
     height: 400px;
   }
   .navbar {
-    background: rgba(4, 25, 98, .9) !important;
+    background: rgba(4, 25, 98, 1) !important;
+    width: 100%;
+    padding: 0px 1em !important;
   }
 }
 

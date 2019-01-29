@@ -13924,7 +13924,7 @@ module.exports = defaults;
 /* eslint-disable no-unused-vars */
 /* harmony default export */ __webpack_exports__["a"] = (function () {
   var consts = {
-    appURL: "http://localhost:8000/"
+    appURL: "http://localhost:8000"
   };
 });
 
@@ -29356,14 +29356,7 @@ var appURL = __WEBPACK_IMPORTED_MODULE_0__consts__["a" /* default */].appURL;
 
 Vue.prototype.$appUrl = __WEBPACK_IMPORTED_MODULE_0__consts__["a" /* default */].appURL;
 
-var app = new Vue({
-  router: router,
-  scrollBehavior: function scrollBehavior(to, from, savedPosition) {
-    return { x: 0, y: 0 };
-  }
-}).$mount('#app');
-
-axios.defaults.baseURL = "http://localhost:8000/";
+axios.defaults.baseURL = "http://localhost:8000";
 
 Vue.prototype.$hostname = appURL;
 
@@ -29374,6 +29367,13 @@ window.flash = function (message) {
 };
 
 __webpack_require__(174);
+
+var app = new Vue({
+  router: router,
+  scrollBehavior: function scrollBehavior(to, from, savedPosition) {
+    return { x: 0, y: 0 };
+  }
+}).$mount('#app');
 
 /***/ }),
 /* 36 */
@@ -66549,7 +66549,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   data: function data() {
     return {
       permissions: true,
-      hostname: 'http://localhost:8000/',
+      hostname: this.$appUrl,
       loading: false,
       events: {},
       position: null,
@@ -66925,7 +66925,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   data: function data() {
     return {
-      hostname: 'http://localhost:8000/',
+      hostname: this.$appUrl,
       loading: false,
       events: {},
       position: null,

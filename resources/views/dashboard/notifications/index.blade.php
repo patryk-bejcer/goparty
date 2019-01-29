@@ -26,9 +26,9 @@
                                     {!!$notification->data['message']!!} <br>
                                     <small>{{$notification->created_at}}</small>
                                 </div>
-                                <div class="col-1">
-                                    <a class="pull-right pr-1" href=""><i class="fa fa-trash" aria-hidden="true"></i></a>
-                                </div>
+                                {{--<div class="col-1">--}}
+                                    {{--<a class="pull-right pr-1" href=""><i class="fa fa-trash" aria-hidden="true"></i></a>--}}
+                                {{--</div>--}}
                             </div>
                         </div>
                     @endforeach
