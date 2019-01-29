@@ -11,8 +11,8 @@
             @include('dashboard.includes.sidebar')
 
 
-            <section class="notification-card col-12 col-md-9 justify-content-center align-items-lg-stretch">
-                <div class="inner bg-dark p-3 pb-5">
+            <section class=" col-12 col-md-9 justify-content-center align-items-lg-stretch">
+                <div class="inner p-3 pb-5 notification-card">
                     <div class="row justify-content-center p-3">
                         <i class="fa fa-bell pr-2" aria-hidden="true"></i>
                         <h4>Twoje powiadomienia ({{Auth::user()->notifications->count()}})</h4>

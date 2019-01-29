@@ -29,7 +29,7 @@ export default {
 
   methods: {
     checkIfExist() {
-      axios.get(`/api/take-part?event_id=${this.eventAttendance.event_id}&user_id=${this.eventAttendance.user_id}`)
+      axios.get(`${this.$appUrl}/api/take-part?event_id=${this.eventAttendance.event_id}&user_id=${this.eventAttendance.user_id}`)
         .then((resp) => {
           // console.log(resp);
           console.log('exist');
@@ -45,7 +45,7 @@ export default {
     takePart() {
       console.log(this.eventAttendance);
 
-      axios.post('/api/take-part', this.eventAttendance)
+      axios.post(`${this.$appUrl}/api/take-part`, this.eventAttendance)
         .then((response) => {
           console.log(response.data);
         }, (error) => {

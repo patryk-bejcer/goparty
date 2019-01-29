@@ -77,7 +77,7 @@ export default {
 
   methods: {
     getRate() {
-      axios.get(`http://localhost:8000/api/rate-club-get-sum`, {
+      axios.get(`${this.$appUrl}/api/rate-club-get-sum`, {
         params: {
           club_id: this.club,
           user_id: this.userId,

@@ -13689,6 +13689,11 @@ button:hover {
   background: rgba(255, 255, 255, 0.6);
 }
 
+.notification-card {
+  background: #000;
+  color: #FFF;
+}
+
 #home-page h3 {
   color: #FFF;
   font-size: 2rem;
@@ -13832,7 +13837,7 @@ button:hover {
   }
 
   #slider-main .carousel .carousel-inner {
-    height: 55vh;
+    height: 285px;
   }
 
   #slider-main .carousel .carousel-inner .carousel-item #search-bar {
@@ -13933,7 +13938,7 @@ button:hover {
   }
 
   #slider-main .carousel .carousel-inner {
-    height: 35vh;
+    height: 285px;
   }
 
   #slider-main .carousel .carousel-inner .carousel-item #search-bar {
@@ -14015,7 +14020,7 @@ button:hover {
   }
 
   #slider-main {
-    height: 28vh;
+    height: 178px;
   }
 
   #slider-main .carousel #search-bar {

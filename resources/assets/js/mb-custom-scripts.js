@@ -1,5 +1,8 @@
 /* eslint-disable */
 import consts from './consts';
+import 'jquery-ui/ui/widgets/autocomplete.js';
+
+const appUrl = process.env.MIX_APP_URL;
 
 const tab = ['cos tam', 'dwa'];
 
@@ -315,10 +318,10 @@ $(() => {
     }
   });
   $('#search-club').autocomplete({
-    source: 'http://localhost:8000/search/autocomplete',
+    source: `${appUrl}/search/autocomplete`,
     minLength: 1,
     select(event, ui) {
-      window.location.href = `http://localhost:8000/clubs/${ui.item.id}`;
+      window.location.href = `${appUrl}/clubs/${ui.item.id}`;
     },
 
 

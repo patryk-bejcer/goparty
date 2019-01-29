@@ -52,7 +52,7 @@ export default {
 
   methods: {
     renderImg(img) {
-      const imgDirectoryPath = `http://localhost:8000/uploads/clubs/thumbnails/thumb-`;
+      const imgDirectoryPath = `${this.$appUrl}/uploads/clubs/thumbnails/thumb-`;
       if (img === null) return `${imgDirectoryPath}1533504291.png`;
       return imgDirectoryPath + img.src;
     },

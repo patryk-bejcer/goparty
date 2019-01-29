@@ -38,10 +38,10 @@ export default {
 
   methods: {
     errorImg(event) {
-      event.target.src = 'http://localhost:8000/uploads/events/Klubowa-Noc-w-Bydgoszczy-plakat-obrazek_duzy_4049971.jpg';
+      event.target.src = `${this.$appUrl}/uploads/events/Klubowa-Noc-w-Bydgoszczy-plakat-obrazek_duzy_4049971.jpg`;
     },
     renderImg(img) {
-      const imgDirectoryPath = `http://localhost:8000/uploads/events/thumbnails/300x180-`;
+      const imgDirectoryPath = `${this.$appUrl}/uploads/events/thumbnails/300x180-`;
       if (img === null) return `${imgDirectoryPath}1533504291.png`;
       return imgDirectoryPath + img;
     },

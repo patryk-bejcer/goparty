@@ -1,30 +1,4 @@
-<style>
-    #nearest-clubs{
-        margin-top: 4em;
-    }
-    #nearest-clubs h3{
-        font-size: 2rem;
-    }
-    #nearest-clubs .show-more{
-        margin-top: .75em;
-    }
-    #nearest-clubs .show-more:hover{
-        text-decoration: underline;
-    }
 
-    #nearest-clubs .single-club{
-        background: rgba(0,0,0,0.4);
-        padding-bottom: .75em;
-    }
-
-    #nearest-clubs  .single-club img{
-        padding-bottom: .5em;
-    }
-
-    #nearest-clubs .single-club:hover{
-        transform:scale(1.075);
-    }
-</style>
 
 <template>
 
@@ -51,14 +25,6 @@
       </div>
     </slick>
 
-    <!--<slick ref="slick" :options="slickOptions">-->
-    <!--<a href="http://placehold.it/2000x1000"><img src="http://localhost/goparty/public/uploads/clubs/thumbnails/300x180-1533504291.png" alt=""></a>-->
-    <!--<a href="http://placehold.it/2000x1000"><img src="http://localhost/goparty/public/uploads/clubs/thumbnails/300x180-1533504291.png" alt=""></a>-->
-    <!--<a href="http://placehold.it/2000x1000"><img src="http://localhost/goparty/public/uploads/clubs/thumbnails/300x180-1533504291.png" alt=""></a>-->
-    <!--<a href="http://placehold.it/2000x1000"><img src="http://localhost/goparty/public/uploads/clubs/thumbnails/300x180-1533504291.png" alt=""></a>-->
-    <!--<a href="http://placehold.it/2000x1000"><img src="http://localhost/goparty/public/uploads/clubs/thumbnails/300x180-1533504291.png" alt=""></a>-->
-    <!--</slick>-->
-
     <div class="row mt-3">
 
       <div
@@ -67,10 +33,10 @@
       >
         <div class="single-club">
 
-          <a :href="'http://localhost/goparty/public/clubs/' + club.id">
+          <a :href="`${this.appURL}/${club.id}/clubs/${club.id}`">
             <img
               class="img-fluid"
-              :src="'http://localhost/goparty/public/uploads/clubs/thumbnails/300x180-' + club.club_img"
+              :src="`${this.appURL}/${club.id}/uploads/clubs/thumbnails/300x180-${club.club_img}`"
               alt=""
             >
             <b><h4 class="text-white mt-2"> {{ club.official_name }}</h4></b>
@@ -142,7 +108,7 @@ export default {
         console.log(self.position.longitude);
 
 
-        axios.get(`/api/nearest-clubs?lat=${lat}&long=${long}`)
+        axios.get(`${this.$appUrl}/api/nearest-clubs?lat=${lat}&long=${long}`)
           .then((response) => {
             self.clubs = response;
 
@@ -198,4 +164,30 @@ export default {
         -o-transform: scale(1.1);
         transform: scale(1.1);
     }
+
+  #nearest-clubs{
+    margin-top: 4em;
+  }
+  #nearest-clubs h3{
+    font-size: 2rem;
+  }
+  #nearest-clubs .show-more{
+    margin-top: .75em;
+  }
+  #nearest-clubs .show-more:hover{
+    text-decoration: underline;
+  }
+
+  #nearest-clubs .single-club{
+    background: rgba(0,0,0,0.4);
+    padding-bottom: .75em;
+  }
+
+  #nearest-clubs  .single-club img{
+    padding-bottom: .5em;
+  }
+
+  #nearest-clubs .single-club:hover{
+    transform:scale(1.075);
+  }
 </style>

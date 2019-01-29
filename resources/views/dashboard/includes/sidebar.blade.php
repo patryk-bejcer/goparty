@@ -56,14 +56,14 @@
                  {{ Request::path() == 'dashboard/attendance' ? 'active' : '' }}
                     " href="{{url('dashboard/attendance')}}">
                 <i class="fa fa-music"></i>
-                {{ __('Imprezy') }}</a>
+                {{ __('Weźmiesz udział') }}</a>
 
-            <a class="dropdown-item list-group-item collapsed" href="{{url('dashboard/attendance')}}">
-                <i class="fa fa-hospital-o"></i>
-                {{ __('Ulubione kluby') }}</a>
-            <a class="dropdown-item list-group-item collapsed" href="{{url('dashboard/attendance')}}">
-                <i class="fa fa-users"></i>
-                {{ __('Znajomi') }}</a>
+            {{--<a class="dropdown-item list-group-item collapsed" href="{{url('dashboard/attendance')}}">--}}
+                {{--<i class="fa fa-hospital-o"></i>--}}
+                {{--{{ __('Ulubione kluby') }}</a>--}}
+            {{--<a class="dropdown-item list-group-item collapsed" href="{{url('dashboard/attendance')}}">--}}
+                {{--<i class="fa fa-users"></i>--}}
+                {{--{{ __('Znajomi') }}</a>--}}
             @endrole
             {{--<a class="dropdown-item list-group-item collapsed" href="{{url('dashboard/attendance')}}">--}}
                 {{--<i class="fa fa-picture-o"></i>--}}
@@ -75,9 +75,9 @@
                     " href="{{route('user.edit.profile')}}">
                 <i class="fa fa-gear"></i>
                 {{ __('Profil') }}</a>
-            <a class="dropdown-item list-group-item collapsed" href="{{url('dashboard/attendance')}}">
-                <i class="fa fa-music"></i>
-                {{ __('Weźmiesz udział') }}</a>
+            {{--<a class="dropdown-item list-group-item collapsed" href="{{url('dashboard/attendance')}}">--}}
+                {{--<i class="fa fa-music"></i>--}}
+                {{--{{ __('Weźmiesz udział') }}</a>--}}
 
             <a onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();" class="dropdown-item list-group-item collapsed" href="{{url('dashboard/attendance')}}">
