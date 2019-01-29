@@ -42,10 +42,10 @@
                 </div>
 
                 <div class="link">
-                    <a href="#" id="footer-link">Zaloguj sie</a>
+                    <a  href="{{ route('login') }}" id="footer-link">Zaloguj sie</a>
                 </div>
                 <div class="link">
-                    <a href="#" id="footer-link">Zarejestruj sie</a>
+                    <a href="{{ route('register') }}" id="footer-link">Zarejestruj sie</a>
                 </div>
 
             </div>
