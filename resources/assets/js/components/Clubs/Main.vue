@@ -82,7 +82,7 @@
 
                 this.loading = true;
 
-                 axios.get(`${this.$appUrl}/api/clubs-archived?lat=${lat}&long=${long}&page=${page}`)
+                axios.get(`${this.$appUrl}/api/clubs-archived?lat=${lat}&long=${long}&page=${page}`)
                     .then((response) => {
                         this.clubsList = response.data;
                         this.loading = false;

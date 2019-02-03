@@ -53,7 +53,7 @@ class RegisterController extends Controller {
 		$musicTypes = Music::all();
 
 //		$cities = City::all();
-		return view( 'auth.register', compact( 'musicTypes', 'cities' ) );
+		return view( 'auth.register', compact( 'musicTypes' ) );
 	}
 
 	/**
