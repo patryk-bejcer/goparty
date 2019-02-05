@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+{!! NoCaptcha::renderJs() !!}
+
 @section('content')
 
     <div class="container">
@@ -9,9 +11,7 @@
             @include('dashboard.includes.sidebar')
             <div class="col-md-9">
                 <div class="card text-white bg-dark mb-3">
-                    {{--<div class="card-header">--}}
-                    {{--<b>Formularz dodawania nowego klubu</b>--}}
-                    {{--</div>--}}
+
                     <div class="card-body">
 
                         <div id="register-club" class="">
@@ -67,9 +67,6 @@
                                                 @endif
                                             </div>
 
-                                            {{--<div class="col-md-6 mt-2 mb-0">--}}
-                                            {{--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum eligendi nam nesciunt odit officia quasi, sit suscipit! Aut,  vitae?</p>--}}
-                                            {{--</div>--}}
 
                                         </div>
 
@@ -107,24 +104,6 @@
 
 
                                             <div class="col-md-6">
-
-                                                {{--<div class="mb-2 form-group{{ $errors->has('club_img') ? ' has-error' : '' }}">--}}
-                                                {{--<label for="">Główne zdjęcie klubu</label>--}}
-                                                {{--<input name="club_img" type="file"--}}
-                                                {{--class="form-control upload-input mb-1"--}}
-                                                {{--placeholder="Wybierz zdjęcie główne" accept=".jpg,.jpeg"--}}
-                                                {{--onchange="loadFile(event)" multiple>--}}
-
-                                                {{--@if ($errors->has('club_img'))--}}
-                                                {{--<span class="help-block">--}}
-                                                {{--<small class="text-danger">{{ $errors->first('club_img') }}</small>--}}
-                                                {{--</span>--}}
-                                                {{--@endif--}}
-
-                                                {{--</div>--}}
-                                                {{--<img class="img-fluid mb-1" id="output" src=""/>--}}
-
-                                                {{--<div class="clearfix mt-1"></div>--}}
 
                                                 <label for="additional_address_info" style=""
                                                        class="mb-1">{{ __('Dodatkowe informacje adresowe') }}</label>
@@ -292,7 +271,7 @@
                                             <div class="col-8">
                                                 <div class="input-group mb-3 mb-md-4 col-md-12 mr-0 pr-0 p-0">
 
-                                                    <div class="row flex-column mb-0">
+                                                    <div class="row mb-0">
                                                         <div class="col-md-12">
                                                             <h3 class="mb-1">Wybierz zdjęcie klubu </h3>
                                                             <p class="mb-1">
@@ -313,10 +292,17 @@
                                                     @endif
 
                                                 </div>
+                                                {!! NoCaptcha::display() !!}
+                                                @if ($errors->has('g-recaptcha-response'))
+                                                    <span class="invalid-feedback">
+                                                                <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                                                            </span>
+                                                @endif
                                             </div>
-                                            <div class="col-4 d-flex align-self-end justify-content-end">
+                                            <div class="col-12 d-flex align-self-end justify-content-end">
                                                 <div class="form-group row mb-0">
                                                     <div class="col-md-6">
+
                                                         <button type="submit" class="btn btn-primary">
                                                             {{ __('Dalej >>') }}
                                                         </button>

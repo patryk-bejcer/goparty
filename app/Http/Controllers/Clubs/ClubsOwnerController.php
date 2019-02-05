@@ -56,7 +56,6 @@ class ClubsOwnerController extends Controller {
 
 	public function store( Request $request, ImageUpload $imageUpload ) {
 
-
 		$addressErrorMessage = 'Wprowadzony przez ciebie adres jest niepoprawny. Wprowadź pełny adres (nazwa ulicy/numer
                     lokalu/miasto/kraj)';
 
@@ -67,10 +66,12 @@ class ClubsOwnerController extends Controller {
 			'latitude'      => 'required',
 			'longitude'     => 'required',
 			'street_number' => 'required',
+            'g-recaptcha-response' => 'required|captcha'
 		], [
 			'latitude.required'      => $addressErrorMessage,
 			'longitude.required'     => $addressErrorMessage,
 			'street_number.required' => 'Prosimy o podanie dokładniejszych danych adresowych (number lokalu)',
+			'g-recaptcha-response.required' => 'Prosimy o potwierdzenie że nie jesteś robotem.',
 		] );
 
 		$active = true;
