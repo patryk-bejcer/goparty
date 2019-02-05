@@ -158,6 +158,27 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group row">
+                                    <div class="col-md-8 offset-md-1">
+
+                                        <div class="form-check">
+                                            <input name="accept_check" class="form-check-input" type="checkbox"  id="accept_check">
+                                            <label class="form-check-label" for="accept_check">
+                                                Oświadczam, że znam i akceptuję postanowienia Regulaminu <a
+                                                        href="#">GoToParty.pl</a>
+                                            </label>
+                                        </div>
+
+                                        @if ($errors->has('accept_check'))
+                                            <span class="invalid-feedback">
+                                                <strong>{{ $errors->first('accept_check') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+
+
+
                                 <div class="form-group row mb-3">
                                     <div class="col-md-6 offset-md-1">
                                         {!! NoCaptcha::display() !!}
