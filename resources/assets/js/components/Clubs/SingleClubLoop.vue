@@ -2,7 +2,7 @@
   <div>
     <a :href="renderUrl(club.id)">
       <div class="card mb-4 pb-2">
-        <span class="rate">9.25</span>
+        <!--<span class="rate">9.25</span>-->
         <img
           :src="renderImg(club.club_img)"
           class="card-img-top"

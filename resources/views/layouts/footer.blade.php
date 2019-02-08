@@ -9,10 +9,10 @@
                 </div>
 
                 <div class="link">
-                    <a id="footer-link">Wydarzenia</a>
+                    <a href="{{url('/events')}}" id="footer-link">Wydarzenia</a>
                 </div>
                 <div class="link">
-                    <a id="footer-link">Kluby</a>
+                    <a href="{{url('/clubs/#/clubs')}}" id="footer-link">Kluby</a>
                 </div>
                 <div class="link">
                     <a id="footer-link">Muzyka</a>
@@ -28,7 +28,7 @@
                     <a id="footer-link">O nas</a>
                 </div>
                 <div class="link">
-                    <a id="footer-link">Kontakt</a>
+                    <a href="{{url('/contact')}}" id="footer-link">Kontakt</a>
                 </div>
                 <div class="link">
                     <a id="footer-link">Wsparcie</a>

@@ -58,7 +58,7 @@
 
                             <div class="row p-2">
                                 <div class="col-12 col-md-4 pr-2">
-                                    <div class="h-100 event-img" ></div>
+                                    <div style="background-image:url('{{ url('/uploads/events/' . $event->event_img) }}')" class="h-100 event-img" ></div>
                                 </div>
                                 <div class="col-12 col-md-4 pl-2 pr-3" >
                                     <h4>Informacje</h4>
@@ -73,59 +73,7 @@
                                         It sounded.
                                     </h6>
 
-                                    {{--<h4 class="mt-4">Osoby biorące udział</h4>--}}
-                                    {{--<div class="row pl-3 pr-2">--}}
-                                        {{--<div class="col-2 pl-0 pr-2">--}}
-                                            {{--<img class="img-fluid"--}}
-                                                 {{--src="https://www.bitgab.com/uploads/profile/files/default.png" alt="">--}}
-                                        {{--</div>--}}
-                                        {{--<div class="col-2 pl-0 pr-2">--}}
-                                            {{--<img class="img-fluid"--}}
-                                                 {{--src="https://www.bitgab.com/uploads/profile/files/default.png" alt="">--}}
-                                        {{--</div>--}}
-                                        {{--<div class="col-2 pl-0 pr-2">--}}
-                                            {{--<img class="img-fluid"--}}
-                                                 {{--src="https://www.bitgab.com/uploads/profile/files/default.png" alt="">--}}
-                                        {{--</div>--}}
-                                        {{--<div class="col-2 pl-0 pr-2">--}}
-                                            {{--<img class="img-fluid"--}}
-                                                 {{--src="https://www.bitgab.com/uploads/profile/files/default.png" alt="">--}}
-                                        {{--</div>--}}
-                                        {{--<div class="col-2 pl-0 pr-2">--}}
-                                            {{--<img class="img-fluid"--}}
-                                                 {{--src="https://www.bitgab.com/uploads/profile/files/default.png" alt="">--}}
-                                        {{--</div>--}}
-                                        {{--<div class="col-2 pl-0 pr-2">--}}
-                                            {{--<img class="img-fluid"--}}
-                                                 {{--src="https://www.bitgab.com/uploads/profile/files/default.png" alt="">--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                    {{--<div class="row pl-3 mt-2 pr-2">--}}
-                                        {{--<div class="col-2 pl-0 pr-2">--}}
-                                            {{--<img class="img-fluid"--}}
-                                                 {{--src="https://www.bitgab.com/uploads/profile/files/default.png" alt="">--}}
-                                        {{--</div>--}}
-                                        {{--<div class="col-2 pl-0 pr-2">--}}
-                                            {{--<img class="img-fluid"--}}
-                                                 {{--src="https://www.bitgab.com/uploads/profile/files/default.png" alt="">--}}
-                                        {{--</div>--}}
-                                        {{--<div class="col-2 pl-0 pr-2">--}}
-                                            {{--<img class="img-fluid"--}}
-                                                 {{--src="https://www.bitgab.com/uploads/profile/files/default.png" alt="">--}}
-                                        {{--</div>--}}
-                                        {{--<div class="col-2 pl-0 pr-2">--}}
-                                            {{--<img class="img-fluid"--}}
-                                                 {{--src="https://www.bitgab.com/uploads/profile/files/default.png" alt="">--}}
-                                        {{--</div>--}}
-                                        {{--<div class="col-2 pl-0 pr-2">--}}
-                                            {{--<img class="img-fluid"--}}
-                                                 {{--src="https://www.bitgab.com/uploads/profile/files/default.png" alt="">--}}
-                                        {{--</div>--}}
-                                        {{--<div class="col-2 pl-0 pr-2">--}}
-                                            {{--<img class="img-fluid"--}}
-                                                 {{--src="https://www.bitgab.com/uploads/profile/files/default.png" alt="">--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
+
                                 </div>
                                 <div class="col-12 col-md-4 pl-3">
                                     <h4>Mapa dojazdu</h4>
@@ -202,22 +150,7 @@
                                 </div>
                             </div>
                             <div class="row pl-4 pr-2 pb-4">
-                                <div class="col-3 pl-0 pr-3">
-                                    <img class="img-fluid"
-                                         src="https://st3.depositphotos.com/3648855/15162/i/1600/depositphotos_151627892-stock-photo-summer-party-poster.jpg" alt="">
-                                </div>
-                                <div class="col-3 pl-0 pr-3">
-                                    <img class="img-fluid"
-                                         src="https://st3.depositphotos.com/3648855/15162/i/1600/depositphotos_151627892-stock-photo-summer-party-poster.jpg" alt="">
-                                </div>
-                                <div class="col-3 pl-0 pr-3">
-                                    <img class="img-fluid"
-                                         src="https://st3.depositphotos.com/3648855/15162/i/1600/depositphotos_151627892-stock-photo-summer-party-poster.jpg" alt="">
-                                </div>
-                                <div class="col-3 pl-0 pr-3">
-                                    <img class="img-fluid"
-                                         src="https://st3.depositphotos.com/3648855/15162/i/1600/depositphotos_151627892-stock-photo-summer-party-poster.jpg" alt="">
-                                </div>
+
                             </div>
                         </div>
                 </div>

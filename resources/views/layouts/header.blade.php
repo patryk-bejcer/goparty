@@ -13,7 +13,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
             <ul class="navbar-nav mr-auto">
-                <li> <a class="nav-link" href="#" >Start</a> </li>
+                <li> <a class="nav-link" href="{{url('/')}}" >Start</a> </li>
 
                 <li> <a class="nav-link" href="{{ route('all-events') }}">Imprezy</a> </li>
                 <li> <a class="nav-link" href="{{ url('clubs/#clubs') }}">Kluby</a> </li>

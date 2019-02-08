@@ -37,7 +37,7 @@
     @else
         {{--@include ('layouts.banner')--}}
     @endif
-    <main style="" class="mb-5">
+    <main style="" class="mb-3">
         @yield('content')
     </main>
 

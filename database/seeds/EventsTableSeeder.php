@@ -16,17 +16,18 @@ class EventsTableSeeder extends Seeder {
 		$events = [];
 
 		$events_images = [
-			'38-festival-poster-design.jpg',
-			'500_F_136841060_OEF6nECeFvYF7Md8h84Szf1z3Q3tOqYd.jpg',
-			'1527793975.jpg',
-			'depositphotos_78791182-stock-illustration-modern-music-festival-poster-design.jpg',
-			'Poster-Bohemian-Nights.jpg',
-			'front_302.jpg',
-			'Klubowa-Noc-w-Bydgoszczy-plakat-obrazek_duzy_4049971.jpg',
-			'Poster-Bohemian-Nights.jpg',
-			'topmejt-impreza-2018-plakat.jpg',
-			'Dub-Arena-plakat.jpg',
-			'Dub-Arena-plakat.jpg',
+		    'event-default-img.jpg'
+//			'38-festival-poster-design.jpg',
+//			'500_F_136841060_OEF6nECeFvYF7Md8h84Szf1z3Q3tOqYd.jpg',
+//			'1527793975.jpg',
+//			'depositphotos_78791182-stock-illustration-modern-music-festival-poster-design.jpg',
+//			'Poster-Bohemian-Nights.jpg',
+//			'front_302.jpg',
+//			'Klubowa-Noc-w-Bydgoszczy-plakat-obrazek_duzy_4049971.jpg',
+//			'Poster-Bohemian-Nights.jpg',
+//			'topmejt-impreza-2018-plakat.jpg',
+//			'Dub-Arena-plakat.jpg',
+//			'Dub-Arena-plakat.jpg',
 		];
 
 		$clubsCount = \App\Club::all()->count();
@@ -46,7 +47,8 @@ class EventsTableSeeder extends Seeder {
                 'selection'     => true,
 				'description' => $faker->realText( rand( 50, 300 ) ),
 				'website'     => $faker->domainName,
-				'event_img'     => $events_images[rand(0, count($events_images) - 1)]
+//				'event_img'     => $events_images[rand(0, count($events_images) - 1)],
+				'event_img'     => 'event-default-img.jpg'
 			];
 
 			array_push( $events, $arr );

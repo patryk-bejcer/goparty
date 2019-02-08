@@ -38,7 +38,7 @@ export default {
 
   methods: {
     errorImg(event) {
-      event.target.src = `${this.$appUrl}/uploads/events/Klubowa-Noc-w-Bydgoszczy-plakat-obrazek_duzy_4049971.jpg`;
+      event.target.src = `${this.$appUrl}/uploads/events/${this.event.event_img}`;
     },
     renderImg(img) {
       const imgDirectoryPath = `${this.$appUrl}/uploads/events/thumbnails/300x180-`;

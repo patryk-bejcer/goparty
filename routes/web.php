@@ -15,6 +15,11 @@
 Route::get( '/', 'HomeController@index' )->name( 'home' );
 /* ====== END HOME PAGE ====== */
 
+/* ====== PAGE ====== */
+Route::get( '/contact', 'CustomPagesController@contact' )->name( 'contact' );
+Route::get( '/private-policy', 'CustomPagesController@privatePolicy' )->name( 'private-policy' );
+/* ====== END HOME PAGE ====== */
+
 
 /* ====== AUTH ====== */
 Auth::routes();

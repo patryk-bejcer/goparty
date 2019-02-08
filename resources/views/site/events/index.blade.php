@@ -23,7 +23,7 @@
                                      src="@if($event->event_img) {{ url('/uploads/events/' . $event->event_img )  }} @else {{url('/img/default-event-img.jpg')}} @endif "
                                      alt="Card image top">
                             </a>
-                            <div class="card-body">
+                            <div class="card-body pb-0">
                                 <a href="{{ url('/events/' . $event->id)  }}"><h4>{{$event->title}}</h4></a>
                                 <h6><i class="fa fa-calendar-o" aria-hidden="true"></i>
                                     {{--{{ Carbon\Carbon::now() }}--}}
@@ -40,7 +40,7 @@
                                             class="text-success">Darmowy wstęp</span> @endif
                                     <br>
                                     Selekcja: @if($event->selection) Tak @else Nie @endif</p>
-                                <p>{{ str_limit($event->description, $limit = 120, $end = '...') }}</p>
+                                {{--<p class="pb-0 mb-0">{{ str_limit($event->description, $limit = 120, $end = '...') }}</p>--}}
 
                                 @if(Auth::check())
                                     @if(!$event->checkIfAttendance())
