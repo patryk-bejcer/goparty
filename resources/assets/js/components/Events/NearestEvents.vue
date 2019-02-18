@@ -157,9 +157,9 @@ export default {
         },
         (error) => {
           if (error.code == error.PERMISSION_DENIED) {
-            console.log('test no per');
+            // console.log('test no per');
             self.loading = true;
-            console.log('you denied me :-(');
+            // console.log('you denied me :-(');
             self.permissions = false;
             axios.get( `${this.$appUrl}/api/nearest-events?lat=55&long=55`)
               .then((response) => {

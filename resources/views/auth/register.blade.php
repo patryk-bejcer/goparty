@@ -165,7 +165,7 @@
                                             <input name="accept_check" class="form-check-input" type="checkbox"  id="accept_check">
                                             <label class="form-check-label" for="accept_check">
                                                 Oświadczam, że znam i akceptuję postanowienia Regulaminu <a
-                                                        href="#">GoToParty.pl</a>
+                                                        href="{{route('private-policy')}}">GoToParty.pl</a>
                                             </label>
                                         </div>
 

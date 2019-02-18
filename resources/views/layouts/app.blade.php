@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'GoParty') }} - @yield('title')</title>
+    <title>{{ config('app.name', 'GoToParty.pl') }} - @yield('title', 'Najlepsze imprezy i kluby w zasięgu Twojej ręki')</title>
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('img/logo.png')}}"/>

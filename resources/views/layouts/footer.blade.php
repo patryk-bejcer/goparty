@@ -31,7 +31,7 @@
                     <a href="{{url('/contact')}}" id="footer-link">Kontakt</a>
                 </div>
                 <div class="link">
-                    <a id="footer-link">Wsparcie</a>
+                    <a href="{{route('private-policy')}}" id="footer-link">Polityka prywatności</a>
                 </div>
 
             </div>

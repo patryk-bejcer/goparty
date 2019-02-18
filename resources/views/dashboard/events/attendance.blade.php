@@ -19,8 +19,16 @@
 
                         @if(($events->count() == 0))
                         <h3 class="text-center">Niestety nie bierzesz udziału w żadnej imprezie :(</h3>
-                            <a  href="{{url('/events')}}" class="text-white text-center center-block">
-                                <div class="btn btn-success mt-3 margin-auto">Przejdz do imprez aby dodać</div></a>
+
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col text-center">
+                                        <a  href="{{url('/events')}}" class="d-block text-white text-center center-block">
+                                            <div class="btn btn-success mt-3 margin-auto">Przejdz do imprez aby dodać</div></a>
+                                    </div>
+                                </div>
+                            </div>
+
                         @else
                         @foreach($events as $event)
                             <div class="single-event mb-3 p-4">

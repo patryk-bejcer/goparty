@@ -32,7 +32,7 @@
                                         @endif
 
                                         <h3 class="mb-1">Zamieść informacje o klubie w serwisie GoToParty</h3>
-                                        <a href="#"> Proszę przeczytać zasady strony GoToParty dotyczące klubu.</a>
+                                        <a href="{{route('private-policy')}}"> Proszę przeczytać zasady strony GoToParty dotyczące klubu.</a>
                                         <hr>
 
                                         <div class="form-group row">

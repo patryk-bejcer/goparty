@@ -11,7 +11,7 @@
             <div class="row mb-3">
 
                 <div class="col-12">
-                    <div class="breadcrumbIn" itemprop="breadcrumb"><b><a href="https://codevz.com/demo/remix/"><i
+                    <div class="breadcrumbIn" itemprop="breadcrumb"><b><a href="{{url('/')}}"><i
                                         class="fa fa-home tip" title="Home"></i></a></b> <i
                                 class="fa fa-angle-right"></i> <b><a href="{{ url('events') }}"><span>Imprezy</span></a></b> <i
                                 class="fa fa-angle-right"></i> <b class="inactive_l"><a href="#" onclick="return false;"
@@ -124,11 +124,11 @@
 
                             <div class="row d-none">
                                 <div class="col-12 pl-4">
-                                    <p class="tagcloud mt clr"><a href="https://codevz.com/demo/remix/tag/arena/"
+                                    <p class="tagcloud mt clr"><a href="{{url('/')}}tag/arena/"
                                                                   rel="tag"><i class="fa fa-tag mi"></i>Arena</a><a
-                                                href="https://codevz.com/demo/remix/tag/garden/" rel="tag"><i
+                                                href="{{url('/')}}" rel="tag"><i
                                                     class="fa fa-tag mi"></i>Garden</a><a
-                                                href="https://codevz.com/demo/remix/tag/grand/" rel="tag"><i
+                                                href="{{'/'}}" rel="tag"><i
                                                     class="fa fa-tag mi"></i>Grand</a></p>
                                 </div>
                             </div>
@@ -140,21 +140,21 @@
 
             </div>
 
-            <div class="row mt-3 d-none" >
+            {{--<div class="row mt-3 d-none" >--}}
 
-                <div class="col-12">
-                        <div class="card text-white mb-3 pt-3 pb-3 pl-3 pr-3">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <h1>Podobne imprezy</h1>
-                                </div>
-                            </div>
-                            <div class="row pl-4 pr-2 pb-4">
+                {{--<div class="col-12">--}}
+                        {{--<div class="card text-white mb-3 pt-3 pb-3 pl-3 pr-3">--}}
+                            {{--<div class="d-flex justify-content-between align-items-center">--}}
+                                {{--<div>--}}
+                                    {{--<h1>Podobne imprezy</h1>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<div class="row pl-4 pr-2 pb-4">--}}
 
-                            </div>
-                        </div>
-                </div>
-            </div>
+                            {{--</div>--}}
+                        {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
 
 @endsection
 
