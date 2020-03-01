@@ -24,7 +24,7 @@ https://goparty.patrykbejcer.pl
 
 7. Open portal in browser :)
 
-## LOGINS (user, manager, admin)
+## LOGINS (user, manager, admin) - from database seed :)
 ```
         $admin = \App\User::create([
 	        'first_name' => 'Admin',
@@ -33,23 +33,18 @@ https://goparty.patrykbejcer.pl
 	        'password' => Hash::make('pass'),
         ]);
 
-	    $admin->assignRole('user');
-	    $admin->assignRole('owner');
-	    $admin->assignRole('admin');
-
-	    $owner = \App\User::create([
+	$owner = \App\User::create([
 		    'first_name' => 'Janusz',
 		    'last_name' => 'Kowalski',
 		    'email' => 'owner@gmail.com',
 		    'password' => Hash::make('pass'),
-	    ]);
-	    $owner->assignRole('owner');
+	]);
 
-	    $user = \App\User::create([
+	$user = \App\User::create([
 		    'first_name' => 'Michał',
 		    'last_name' => 'Nowak',
 		    'email' => 'user@gmail.com',
 		    'password' => Hash::make('pass'),
-	    ]);
-	    $user->assignRole('user');
+	]);       
+
 ```
