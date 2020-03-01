@@ -15,3 +15,6 @@ npm-debug.log
 yarn-error.log
 .env
 ./storage/api-docs
+/goparty.sql.zip
+/public/vendor/
+/public/bower_components/
