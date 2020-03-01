@@ -12,15 +12,6 @@
           <h3 class="text-center second-heading">NAJBLIŻEJ CIEBIE</h3>
         </div>
       </div>
-      <!--<div class="row">-->
-      <!--<div class="col-12 mt-3 pl-0">-->
-      <!--<h3 class="text-left pull-left ml-3">NAJBLIŻSZE IMPREZY W TWOJEJ OKOLICY</h3>-->
-      <!--<h5 class="pull-right show-more">-->
-      <!--<a :href="`${hostname}/events`" class="text-white">Zobacz wszystkie</a>-->
-      <!--</h5>-->
-      <!--</div>-->
-      <!--</div>-->
-
       <div
         v-show="loading"
         class="data-loading"

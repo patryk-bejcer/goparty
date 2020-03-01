@@ -11,15 +11,6 @@ use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller {
 	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
-	public function __construct() {
-//        $this->middleware('auth');
-	}
-
-	/**
 	 * Show the application dashboard.
 	 *
 	 * @return \Illuminate\Http\Response
@@ -37,18 +28,5 @@ class HomeController extends Controller {
 		$this->dispatch( ( new SendWelcomeEmail() )->delay( 60 * 5 ) );
 		Log::info( "Request Cycle with Queues Ends" );
 	}
-
-//	public function send()
-//	{
-//		Log::info("Request cycle without Queues started");
-//		Mail::send('emails.welcome', ['data'=>'data'], function ($message) {
-//
-//			$message->from('me@gmail.com', 'Christian Nwmaba');
-//
-//			$message->to('patryk.bejcer@gmail.com');
-//
-//		});
-//		Log::info("Request cycle without Queues finished");
-//	}
 
 }

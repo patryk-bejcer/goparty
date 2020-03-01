@@ -2,7 +2,6 @@
   <div>
     <a :href="renderUrl(event.id)">
       <div class="card mb-4 pb-2 ">
-        <!--<span class="rate">{{'9,5'}}</span>-->
         <img
           :src="renderImg(event.event_img)"
           class="card-img-top"
