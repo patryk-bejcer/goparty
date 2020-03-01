@@ -5,7 +5,7 @@ If you find event near your city - use GoParty :)
 Backend: Laravel 5.6 <br/>
 Frontend: Vue.js
 
-Hosted: 
+URL to demo app: 
 https://goparty.patrykbejcer.pl
 
 ## How to run app on localhost.
